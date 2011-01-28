@@ -82,14 +82,14 @@ Because of:
    * the protocol provides some data typing (DTDs) 
    * single end-point URL
    * all the API calls "looks similar"
-   * the complexity (and powerfull expression) of the operations
+   * the complexity (and powerful expression) of the operations
 
 ...we think that is good idea that the "Intacct Mule Connector" sticks to the 
 Intacct's content/function syntax, instead of defining another type of XML 
 like in the Salesforce or the Authorize.net connectors. So that was the 
-aproach we took. 
+approach we took. 
 To ease the To ease the maintenance and minimize the coding 
-and minimize the coding (170+ API calls) this is the aproache we took:
+and minimize the coding (170+ API calls) this is the approach we took:
 
    1. We dowloaded the DTDs from http://developer.intacct.com. Saved for 
       future record in 
@@ -116,12 +116,12 @@ and minimize the coding (170+ API calls) this is the aproache we took:
    6. We wrote the IntacctCloudConnector class  that implements the config 
       element and the 
          Response operation(final Function function)
-      Here we are using a IntacctFacade interface to abstact the actual 
+      Here we are using a IntacctFacade interface to abstract the actual 
       connection to the endpoint.  The idea is that in the future the 
       implementation used by the IntacctCloudConnector could be configured
       so it is easy to test.
    7. We wrote the IntacctNamespaceHandler to register the config and the 
-      operation elements, and we write some extentions to:
+      operation elements, and we write some extensions to:
       * ChildDefinitionParser: to allow having JAXB DTO's to the connector 
         functions.
       * InvokerMessageProcessor: to allow message expression resolution to all
@@ -142,4 +142,3 @@ then we recommend to configure Eclipse so it can find the xsd file
    3. select mule-intacct.xsd from the intacct project, 
    4. change Key Type to "Schema Location".
 
-   * 
