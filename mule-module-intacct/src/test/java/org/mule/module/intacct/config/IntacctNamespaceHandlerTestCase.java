@@ -29,8 +29,8 @@ public class IntacctNamespaceHandlerTestCase extends FunctionalTestCase
         */
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
-            payload.put("someparam", "foo");
-            payload.put("controlid", "controlid");
+            payload.put("controlid", "controlid!");
+            payload.put("accountnoLower", "500");
             SimpleFlowConstruct flow = lookupFlowConstruct("theFlow");
             final MuleEvent event = getTestEvent(payload);
             final MuleEvent responseEvent = flow.process(event);

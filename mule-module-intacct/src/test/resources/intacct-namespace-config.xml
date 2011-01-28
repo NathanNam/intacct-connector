@@ -19,21 +19,37 @@
     <flow name="theFlow">
         <intacct:operation xmlns="http://www.mulesoft.org/schema/mule/intacct">
           <function controlid="#[map-payload:controlid]" >
-            <intacct:get_invoice key="#[map-payload:key]"/>
-           <get_list object="invoice">
-             <filter>
-               <logical logical_operator="and">
+             <get_list object="glaccount">
+              <filter>
+               <logical logical_operator="or">
+                <logical logical_operator="and">
                  <expression>
-                    <field>totalammount</field>
-                    <operator>%gt</operator>
-                    <value>#[map-payload:key]</value>   
+                  <field>accountno</field>
+                  <operator>&gt;</operator>
+                  <value>#[map-payload:accountnoLower]</value>
                  </expression>
                  <expression>
-                     <field></field>
+                  <field>normalbalance</field>
+                  <operator>=</operator>
+                  <value>debit</value>
                  </expression>
+                </logical>
+                <expression>
+                 <field>normalbalance</field>
+                 <operator>=</operator>
+                 <value>credit</value>
+                </expression>
                </logical>
-             </filter>
-           </get_list>
+              </filter>
+              <sorts>
+               <sortfield order="asc">normalbalance</sortfield>
+               <sortfield order="asc">title</sortfield>
+              </sorts>
+              <fields>
+               <field>title</field>
+               <field>normalbalance</field>
+              </fields>
+             </get_list>
           </function>
         </intacct:operation>
     </flow>
