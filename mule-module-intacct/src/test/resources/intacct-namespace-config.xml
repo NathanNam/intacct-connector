@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/3.1/mule-intacct.xsd">
+
+    <!--
+        Declare one flow like this one per element you add in your schema.
+
+        See the comment in IntacctNamespaceHandlerTestCase for an example how to send
+        Mule events directly to this flow.
+   -->
+   <intacct:config senderId="12345"/>
+   
+    <flow name="theFlow">
+        <intacct:operation xmlns="http://www.mulesoft.org/schema/mule/intacct">
+          <function controlid="#[map-payload:controlid]" >
+            <intacct:get_invoice key="#[map-payload:key]"/>
+           <get_list object="invoice">
+             <filter>
+               <logical logical_operator="and">
+                 <expression>
+                    <field>totalammount</field>
+                    <operator>%gt</operator>
+                    <value>#[map-payload:key]</value>   
+                 </expression>
+                 <expression>
+                     <field></field>
+                 </expression>
+               </logical>
+             </filter>
+           </get_list>
+          </function>
+        </intacct:operation>
+    </flow>
+</mule>

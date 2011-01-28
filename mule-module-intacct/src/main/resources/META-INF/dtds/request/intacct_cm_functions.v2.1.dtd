@@ -1,0 +1,59 @@
+<!--  	This DTD maintains function specifications for Cash Management
+         File:               intacct_cm_functions.v2.1.dtd
+         Version:            2.1
+			
+         (C)2002, Intacct Corporation, All Rights Reserved 
+
+         Intacct Corporation Proprietary Information.
+         This document contains trade secret data that belongs to Intacct 
+         corporation and is protected by the copyright laws. Information herein 
+         may not be used, copied or disclosed in whole or part without prior 
+         written consent from Intacct Corporation.
+-->
+<!-- CASH MANAGEMENT FUNCTIONS -->
+<!ELEMENT record_cctransaction (chargecardid, paymentdate, referenceno?, payee?, description?, ccpayitems)>
+<!ELEMENT ccpayitems (ccpayitem+)>
+<!ELEMENT ccpayitem ((glaccountno | accountlabel), description?, paymentamount, departmentid?, locationid?)>
+<!ELEMENT record_otherreceipt (paymentdate, payee, receiveddate, paymentmethod, undepglaccountno, refid?, description?, receiptitems)>
+<!ELEMENT record_deposit (bankaccountid, depositdate, depositid, (receipts | receiptkeys), description?)>
+<!ELEMENT create_checkingaccount (bankaccountid,bankaccountno?, locationid, bankname,routingno?,branchid?,phone?,currency?,mailaddress?,status?,disableiet?,financialdata?,glaccountno?,(servicechargeglaccount|servicechargeaccountlabel)?,(interestearnedglaccount|interestearnedaccountlabel)?,departmentid?,checkinfocontact?,checklayout?,nextcheck?)>
+<!ELEMENT create_savingsaccount (bankaccountid,bankaccountno?, locationid, bankname,routingno?,branchid?,phone?,currency?,mailaddress?,status?,disableiet?,financialdata?,glaccountno?,(servicechargeglaccount|servicechargeaccountlabel)?,(interestearnedglaccount|interestearnedaccountlabel)?,departmentid?)>
+<!ELEMENT update_checkingaccount (bankaccountno?, locationid?, bankname?,routingno?,branchid?,phone?,currency?,mailaddress?,status?,disableiet?,financialdata?,(servicechargeglaccount|servicechargeaccountlabel)?,(interestearnedglaccount|interestearnedaccountlabel)?,departmentid?,checkinfocontact?,checklayout?,nextcheck?)>
+<!ATTLIST update_checkingaccount
+        bankaccountid CDATA #REQUIRED
+        set_nulls (true | false) "false"
+        externalkey (true | false) "false"
+>
+<!ELEMENT update_savingsaccount (bankaccountno?, locationid?, bankname?,routingno?,branchid?,phone?,currency?,mailaddress?,status?,disableiet?,financialdata?,(servicechargeglaccount|servicechargeaccountlabel)?,(interestearnedglaccount|interestearnedaccountlabel)?,departmentid?)>
+<!ATTLIST update_savingsaccount
+        bankaccountid CDATA #REQUIRED
+        set_nulls (true | false) "false"
+        externalkey (true | false) "false"
+>
+<!ELEMENT delete_checkingaccount EMPTY>
+<!ATTLIST delete_checkingaccount
+        bankaccountid CDATA #REQUIRED
+        externalkey (true | false) "false"
+>
+<!ELEMENT delete_savingsaccount EMPTY>
+<!ATTLIST delete_savingsaccount
+        bankaccountid CDATA #REQUIRED
+        externalkey (true | false) "false"
+>
+<!ELEMENT reconcile_bank (bankaccountid, cutoffdate?, statementendingdate, reconmode, statementendingbalance, banktxns)>
+
+<!ELEMENT update_cctransaction (paymentdate?, referenceno?, payee?, description?, updateccpayitems?)>
+<!ATTLIST update_cctransaction
+	key CDATA #REQUIRED
+>
+<!ELEMENT reverse_cctransaction (datereversed, memo?)>
+<!ATTLIST reverse_cctransaction
+	key CDATA #REQUIRED
+>
+
+<!ELEMENT updateccpayitems (ccpayitem | updateccpayitem)+>
+<!ELEMENT updateccpayitem ((glaccountno | accountlabel)?, description?, paymentamount?, departmentid?, locationid?)>
+<!ATTLIST updateccpayitem
+	line_num CDATA #REQUIRED
+>
+
