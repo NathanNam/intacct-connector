@@ -1,11 +1,22 @@
+
 package org.mule.module.intacct.config;
 
 import org.mule.api.MuleEvent;
+import org.mule.api.client.MuleClient;
 import org.mule.construct.SimpleFlowConstruct;
+import org.mule.module.intacct.impl.SystemOutIntacctFacade;
+import org.mule.module.intacct.schema.request.Login;
+import org.mule.module.intacct.schema.request.Operation;
+import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.response.Response;
 import org.mule.tck.FunctionalTestCase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
+
+import junit.framework.Assert;
 
 public class IntacctNamespaceHandlerTestCase extends FunctionalTestCase
 {
@@ -15,27 +26,92 @@ public class IntacctNamespaceHandlerTestCase extends FunctionalTestCase
         return "intacct-namespace-config.xml";
     }
 
-    public void testSendMessageToFlow() throws Exception
+    public void testSendMessageFunctionToFlow() throws Exception
     {
         /*
-            This test case tests your Mule integration.
-            
-            To test your flow directly (i.e. without any inbound endpoints, declare a flow in
-            intacct-namespace-config.xml and put the element from your
-            cloud connector's namespace that you want to test into it.
-            A proper example was put into intacct-namespace-config.xml
+         * This test case tests your Mule integration. To test your flow directly
+         * (i.e. without any inbound endpoints, declare a flow in
+         * intacct-namespace-config.xml and put the element from your cloud
+         * connector's namespace that you want to test into it. A proper example was
+         * put into intacct-namespace-config.xml Now you can send data to your test
+         * flow from the unit test:
+         */
+        final Map<String, String> payload = new HashMap<String, String>();
+        payload.put("key", "1234");
+        payload.put("controlid", "controlid!");
+        payload.put("accountnoLower", "500");
+        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+        SystemOutIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
+        Request requestCreated = intacct.getRequest();
+        // Valido las cosas del request segun el XML de prueba
+        Assert.assertEquals("12345", requestCreated.getControl().getSenderid());
+        Assert.assertEquals("password Control", requestCreated.getControl().getPassword());
+        Assert.assertEquals("mi id", requestCreated.getControl().getControlid());
+        Assert.assertEquals("false", requestCreated.getControl().getUniqueid());
+        Operation operation = requestCreated.getOperation().get(0);
+        Assert.assertNotNull(operation);
+        Object loginObject = operation.getAuthentication().getLoginOrSessionid().get(0);
+        Assert.assertNotNull(loginObject);
+        Assert.assertTrue(loginObject instanceof Login);
+        Login login = (Login) loginObject;
+        Assert.assertEquals("usuario", login.getUserid());
+        Assert.assertEquals("miPass", login.getPassword());
+        Assert.assertEquals("compId", login.getCompanyid());
+        Assert.assertTrue(responseEvent.getMessage().getPayload() instanceof Response);
+    }
 
-            Now you can send data to your test flow from the unit test:
-        */
-            final Map<String, String> payload = new HashMap<String, String>();
-            payload.put("key", "1234");
-            payload.put("controlid", "controlid!");
-            payload.put("accountnoLower", "500");
-            SimpleFlowConstruct flow = lookupFlowConstruct("theFlow");
-            final MuleEvent event = getTestEvent(payload);
-            final MuleEvent responseEvent = flow.process(event);
-            System.out.println(responseEvent.getMessage().getPayload());
-//            assertEquals("", responseEvent.getMessage().getPayloadAsString());
+    public void testSendMessageRequestToFlow() throws Exception
+    {
+
+        final Map<String, String> payload = new HashMap<String, String>();
+        payload.put("key", "1234");
+        payload.put("controlid", "controlid!");
+        payload.put("accountnoLower", "500");
+        SimpleFlowConstruct flow = lookupFlowConstruct("requestFlow");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+        SystemOutIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
+        Request requestCreated = intacct.getRequest();
+        // Valido las cosas del request segun lo enviado en el flow y NO segun el config
+           
+        Assert.assertEquals("intacct_dev", requestCreated.getControl().getSenderid());
+        Assert.assertEquals("babbage", requestCreated.getControl().getPassword());
+        Assert.assertEquals("XML Sample", requestCreated.getControl().getControlid());
+        Assert.assertEquals(null, requestCreated.getControl().getUniqueid());
+        Operation operation = requestCreated.getOperation().get(0);
+        Assert.assertNotNull(operation);
+        Object loginObject = operation.getAuthentication().getLoginOrSessionid().get(0);
+        Assert.assertNotNull(loginObject);
+        Assert.assertTrue(loginObject instanceof Login);
+        Login login = (Login) loginObject;
+        Assert.assertEquals("xmluser", login.getUserid());
+        Assert.assertEquals("abc123", login.getPassword());
+        Assert.assertEquals("XML Sample", login.getCompanyid());
+        Assert.assertTrue(responseEvent.getMessage().getPayload() instanceof Response);
+    }
+    
+    public void testFunctionFlowWithQueue() throws Exception
+    {
+        /*
+         * This test case tests your Mule integration. To test your flow directly
+         * (i.e. without any inbound endpoints, declare a flow in
+         * intacct-namespace-config.xml and put the element from your cloud
+         * connector's namespace that you want to test into it. A proper example was
+         * put into intacct-namespace-config.xml Now you can send data to your test
+         * flow from the unit test:
+         */
+        final Map<String, String> payload = new HashMap<String, String>();
+        payload.put("key", "1234");
+        payload.put("controlid", "controlid!");
+        payload.put("accountnoLower", "500");
+        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        
+        final MuleEvent responseEvent = flow.process(event);
+        System.out.println(responseEvent.getMessage().getPayloadAsString());
+     
     }
 
     private SimpleFlowConstruct lookupFlowConstruct(String name)

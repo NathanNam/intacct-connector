@@ -16,11 +16,14 @@ import org.mule.module.intacct.IntacctCloudConnector;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.processor.InvokerMessageProcessor;
+import org.mule.util.CollectionUtils;
 
+import java.util.Collection;
 import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Collections;
 
+import org.apache.commons.collections.Transformer;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.FactoryBeanNotInitializedException;
 import org.springframework.context.ApplicationContext;
@@ -53,9 +56,22 @@ public class DTOEvaluationInvokerMessageProcessorFactoryBean
             new DTOEvaluationInvokerMessageProcessor(Request.class.getPackage());
         invokerMessageProcessor.setArguments(arguments);
         invokerMessageProcessor.setMethodName("operation");
+        invokerMessageProcessor.setArgumentTypes(createArrayFromList(arguments));
         invokerMessageProcessor.setObject(appContext.getBean(IntacctCloudConnector.class));
         return invokerMessageProcessor;
     }
+    
+    private Class<?>[] createArrayFromList(List<Object> collection) {
+        Class<?>[] ret = new Class<?>[collection.size()];
+        int i = 0;
+        for(Object elem: collection) {
+            ret[i] = elem.getClass();
+            i++;
+        }
+        return ret;
+    }
+    
+    
 
     @Override
     public Class<?> getObjectType()

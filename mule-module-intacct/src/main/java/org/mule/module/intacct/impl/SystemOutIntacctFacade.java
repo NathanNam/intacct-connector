@@ -26,9 +26,12 @@ import org.apache.commons.lang.UnhandledException;
 
 public class SystemOutIntacctFacade implements IntacctFacade
 {
+    private Request request;
+    
     @Override
     public Response executeOperation(final Request request)
     {
+        this.request = request;
         try
         {
             final Marshaller m = REQUEST_JAXB_CTX.createMarshaller();
@@ -44,6 +47,16 @@ public class SystemOutIntacctFacade implements IntacctFacade
         {
             throw new UnhandledException(e);
         }
+    }
+
+    public void setRequest(Request request)
+    {
+        this.request = request;
+    }
+
+    public Request getRequest()
+    {
+        return request;
     }
 
 }

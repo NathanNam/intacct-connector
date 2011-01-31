@@ -27,18 +27,40 @@
     <!-- Configration -->
     <xsd:element name="config" type="configType" substitutionGroup="mule:abstract-extension"/>
     <xsd:complexType name="configType">
-        <xsd:complexContent>
-            <xsd:extension base="mule:abstractExtensionType">
-                <xsd:attribute name="senderId" type="xsd:string">
-                </xsd:attribute>
-            </xsd:extension>
-        </xsd:complexContent>
+    	<xsd:complexContent>
+    		<xsd:extension base="mule:abstractExtensionType">
+    			<xsd:attribute name="senderId" type="xsd:string">
+    			</xsd:attribute>
+    			<xsd:attribute name="controlPassword"
+    				type="xsd:string">
+    			</xsd:attribute>
+    			<xsd:attribute name="uniqueid" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="controlid" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="userid" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="userPassword" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="companyid" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="intacctImplementation-ref" type="xsd:string"></xsd:attribute>
+    		</xsd:extension>
+    	</xsd:complexContent>
     </xsd:complexType>
 
     <!-- Operations -->
-    <xsd:element name="operation" type="operationType" substitutionGroup="mule:abstract-message-processor">
+    <xsd:element name="executeRequest" type="actionType" substitutionGroup="mule:abstract-message-processor">
     </xsd:element>
-    <xsd:complexType name="operationType">
+    <xsd:complexType name="actionType">
+     <xsd:complexContent>
+      <xsd:extension
+       base="mule:abstractInterceptingMessageProcessorType">
+       <xsd:sequence>
+        <xsd:element name="request" type="requestType"></xsd:element>
+       </xsd:sequence>
+      </xsd:extension>
+     </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="executeFunction" type="functionDoType" substitutionGroup="mule:abstract-message-processor">
+    </xsd:element>
+    <xsd:complexType name="functionDoType">
      <xsd:complexContent>
       <xsd:extension
        base="mule:abstractInterceptingMessageProcessorType">
@@ -51,7 +73,7 @@
 
  <!--  HERE STARTs the generated part -->
  
-  <xs:element name="accountgroup">
+    <xs:element name="accountgroup">
     <xs:simpleType>
       <xs:restriction base="xs:string"/>
     </xs:simpleType>
@@ -151,6 +173,17 @@
         <xs:element name="year" type="xs:string"/>
         <xs:element name="month" type="xs:string"/>
         <xs:element name="day" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="authentication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="tns:login"/>
+          <xs:element ref="tns:sessionid"/>
+        </xs:choice>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -294,6 +327,12 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="clientid">
+    <xs:simpleType>
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+  </xs:element>
+
   <xs:element name="companypref">
     <xs:complexType>
       <xs:sequence>
@@ -392,6 +431,28 @@
     <xs:simpleType>
       <xs:restriction base="xs:string"/>
     </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:function" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="senderid" type="xs:string"/>
+        <xs:element name="password" type="xs:string"/>
+        <xs:element name="controlid" type="xs:string"/>
+        <xs:element name="uniqueid" type="xs:string" minOccurs="0"/>
+        <xs:element name="dtdversion" type="xs:string" minOccurs="0"/>
+        <xs:element name="policyid" type="xs:string" minOccurs="0"/>
+        <xs:element name="debug" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
   </xs:element>
 
   <xs:element name="create_allocation">
@@ -2944,6 +3005,20 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="userid" type="xs:string"/>
+        <xs:element name="companyid" type="xs:string"/>
+        <xs:element name="password" type="xs:string"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="tns:clientid"/>
+          <xs:element ref="tns:locationid"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="lotno">
     <xs:simpleType>
       <xs:restriction base="xs:string"/>
@@ -2960,6 +3035,24 @@
         <xs:element name="zip" type="xs:string" minOccurs="0"/>
         <xs:element name="country" type="xs:string" minOccurs="0"/>
         <xs:element name="isocountrycode" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="modulepref">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="application" type="xs:string"/>
+        <xs:element name="preference" type="xs:string"/>
+        <xs:element name="prefvalue" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="moduleprefs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:modulepref" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2992,6 +3085,42 @@
         <xs:element name="securitycode" type="xs:string" minOccurs="0"/>
         <xs:element name="usedefaultcard" type="xs:string" minOccurs="0"/>
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:authentication"/>
+        <xs:element name="preferences" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="companyprefs" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="tns:companypref" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="moduleprefs" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="tns:modulepref" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="content" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="tns:function" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="transaction" type="xs:string"/>
     </xs:complexType>
   </xs:element>
 
@@ -3206,6 +3335,27 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="tns:potransitem" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="preferences">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="companyprefs" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="tns:companypref" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="moduleprefs" nillable="true" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="tns:modulepref" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3587,6 +3737,15 @@
     </xs:simpleType>
   </xs:element>
 
+  <xs:element name="request" type="tns:requestType" />
+  
+  <xs:complexType name="requestType">
+      <xs:sequence>
+        <xs:element ref="tns:control"/>
+        <xs:element ref="tns:operation" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+
   <xs:element name="restricted_depts">
     <xs:complexType>
       <xs:sequence>
@@ -3698,6 +3857,12 @@
   </xs:element>
 
   <xs:element name="servicechargeglaccount">
+    <xs:simpleType>
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="sessionid">
     <xs:simpleType>
       <xs:restriction base="xs:string"/>
     </xs:simpleType>
