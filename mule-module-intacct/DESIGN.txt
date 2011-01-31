@@ -84,21 +84,20 @@ Because of:
    * all the API calls "looks similar"
    * the complexity (and powerful expression) of the operations
 
-...we think that is good idea that the "Intacct Mule Connector" sticks to the 
+...we think that it is a good idea that the "Intacct Mule Connector" sticks to the 
 Intacct's content/function syntax, instead of defining another type of XML 
-like in the Salesforce or the Authorize.net connectors. So that was the 
+like Salesforce or the Authorize.net connectors. That was the 
 approach we took. 
-To ease the To ease the maintenance and minimize the coding 
-and minimize the coding (170+ API calls) this is the approach we took:
+To ease the maintenance and minimize the coding (170+ API calls) this is what we did:
 
-   1. We dowloaded the DTDs from http://developer.intacct.com. Saved for 
+   1. We dowloaded the DTDs from http://developer.intacct.com. They are saved for 
       future record in 
          src/main/resources/META-INF/dtds/request/ 
       and 
          src/main/resources/META-INF/dtds/response/
    2. We had to fix some small DTDs typos :^O
    3. With JAXB xjc.sh we generated the java classes that represent the schema
-      (although DTD support is "experimental", works better than trang's 
+      (although DTD support is "experimental", it works better than trang's 
       conversion from dtd to xsd) for the request and the response 
       (classes are located at org.mule.module.intacct.schema.request and 
       org.mule.module.intacct.schema.response packages). This step could 
