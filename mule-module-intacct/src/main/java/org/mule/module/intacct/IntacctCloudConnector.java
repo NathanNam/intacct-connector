@@ -12,6 +12,8 @@ package org.mule.module.intacct;
 
 import org.mule.api.lifecycle.Initialisable;
 import org.mule.api.lifecycle.InitialisationException;
+import org.mule.module.intacct.exception.IntracctException;
+import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 import org.mule.module.intacct.impl.SystemOutIntacctFacade;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
@@ -39,12 +41,15 @@ public class IntacctCloudConnector implements Initialisable
     private String userPassword;
     private String companyid;
     private IntacctFacade intacctImplementation;
-
+    private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
     
     @Override
     public void initialise() throws InitialisationException
     {
-        
+        if (intacctImplementation == null) 
+        {
+            intacctImplementation = new JerseySslIntacctFacade(URL);
+        }
     }
 
     
@@ -61,7 +66,18 @@ public class IntacctCloudConnector implements Initialisable
 
     public Response sendRequest(final Request request) throws JAXBException 
     {
-        return intacctImplementation.executeOperation(request);
+        try
+        {
+            return intacctImplementation.executeOperation(request);
+        }
+        catch (Throwable ex)
+        {
+            throw new IntracctException(
+                "There was an error sending the request to the server." +
+                " Please check the cause for further information",
+                ex);
+        }
+        
     }
     
     /** Reconoce la operacion con valores default setteados en el config */
@@ -86,8 +102,7 @@ public class IntacctCloudConnector implements Initialisable
         final Content content = new Content();
         content.getFunction().add(function);
         operation.getContent().add(content);
-        return sendRequest(request);
-        //return operation(request);
+        return operation(request);
         
     }
     

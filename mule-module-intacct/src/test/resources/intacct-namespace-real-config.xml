@@ -19,8 +19,8 @@
         Mule events directly to this flow.
    -->
    <spring:beans> 
-   	<spring:bean id="httpIntacct" class="org.mule.module.intacct.impl.JerseyIntacctFacade">
-   		<spring:constructor-arg index="0" value="http://www.google.com" ></spring:constructor-arg>
+   	<spring:bean id="httpIntacct" class="org.mule.module.intacct.utils.JerseyIntacctFacade">
+   		<spring:constructor-arg index="0" value="http://localhost:50443/" ></spring:constructor-arg>
    	</spring:bean>
    </spring:beans>
    

@@ -30,12 +30,13 @@ import org.mortbay.jetty.handler.AbstractHandler;
 public abstract class JaxBOkHandler extends AbstractHandler
 {
 
-    private String requestBody;
     private final Object objectToMarshall;
+    private Request request;
 
     public JaxBOkHandler(Object objectToMarshall)
     {
         this.objectToMarshall = objectToMarshall;
+        
 
     }
 
@@ -46,7 +47,7 @@ public abstract class JaxBOkHandler extends AbstractHandler
         Request baseRequest = request instanceof Request
                                                         ? (Request) request
                                                         : HttpConnection.getCurrentConnection().getRequest();
-        setRequestBody(IOUtils.toString(baseRequest.getInputStream()));
+        setRequest(baseRequest);
         response.setStatus(SC_OK);
         response.setContentType("text/xml;charset=utf-8");
         try
@@ -65,14 +66,14 @@ public abstract class JaxBOkHandler extends AbstractHandler
     
     protected abstract JAXBContext getContext();
 
-    public void setRequestBody(String requestBody)
+    public void setRequest(Request request)
     {
-        this.requestBody = requestBody;
+        this.request = request;
     }
 
-    public String getRequestBody()
+    public Request getRequest()
     {
-        return requestBody;
+        return request;
     }
 
 }

@@ -32,6 +32,7 @@ public class SystemOutIntacctFacade implements IntacctFacade
     public Response executeOperation(final Request request)
     {
         this.request = request;
+        
         try
         {
             final Marshaller m = JaxBUtils.REQUEST_JAXB_CTX.createMarshaller();

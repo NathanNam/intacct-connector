@@ -5,6 +5,7 @@ import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.module.client.MuleClient;
+import org.mule.module.intacct.BaseIntacctTest;
 import org.mule.module.intacct.impl.SystemOutIntacctFacade;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
@@ -17,14 +18,26 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-public class IntacctNamespaceHandlerTestCase extends FunctionalTestCase
+public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
 {
     @Override
     protected String getConfigResources()
     {
         return "intacct-namespace-config.xml";
     }
-
+    
+    
+    public void testFunctionWithExchHandling() throws Exception
+    {
+        final Map<String, String> payload = new HashMap<String, String>();
+        payload.put("key", "1234");
+        payload.put("controlid", "controlid!");
+        payload.put("accountnoLower", "500");
+        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlowWithExHandling");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+    }
+    
     public void testSendMessageFunctionToFlow() throws Exception
     {
         /*
@@ -111,8 +124,5 @@ public class IntacctNamespaceHandlerTestCase extends FunctionalTestCase
      
     }
 
-    private SimpleFlowConstruct lookupFlowConstruct(String name)
-    {
-        return (SimpleFlowConstruct) muleContext.getRegistry().lookupFlowConstruct(name);
-    }
+   
 }

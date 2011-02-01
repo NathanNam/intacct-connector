@@ -48,6 +48,26 @@ public class RealHttpTestCase extends BaseIntacctTest
     {
         return "intacct-namespace-real-config.xml";
     }
+    
+    private HttpTestServer server;
+    
+    
+
+    @Override
+    protected void doSetUp() throws Exception
+    {
+        super.doSetUp();
+    }
+
+
+
+    @Override
+    protected void doTearDown() throws Exception
+    {
+        super.doTearDown();
+    }
+
+
 
     public void testSendSomething() throws Exception
     {
@@ -57,7 +77,8 @@ public class RealHttpTestCase extends BaseIntacctTest
         control.setControlid(controlId);
         response.setControl(control);
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-        HttpTestServer server = new HttpTestServer(handler, 50443);
+        final int port = 50443;
+        HttpTestServer server = new HttpTestServer(handler, port);
         server.start();
         final Map<String, String> payload = new HashMap<String, String>();
         payload.put("key", "1234");
@@ -78,6 +99,11 @@ public class RealHttpTestCase extends BaseIntacctTest
         Response resp = (Response) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);
         Assert.assertEquals(controlId, resp.getControl().getControlid());
+    }
+    
+    public void testSendNoResponse() 
+    {
+        
     }
 
 }

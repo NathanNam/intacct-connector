@@ -33,18 +33,19 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
 
 /**
  * Executes an operation using Intacct XML Gateway.
  */
-public class JerseySslIntacctFacade implements IntacctFacade 
+public class JerseySslIntacctFacade implements IntacctFacade
 {
     private WebResource gateway;
 
     /** constructor */
-    public JerseySslIntacctFacade(final String gatewayURI) 
+    public JerseySslIntacctFacade(final String gatewayURI)
     {
         createGateway(gatewayURI, createClient(gatewayURI));
     }
@@ -53,37 +54,37 @@ public class JerseySslIntacctFacade implements IntacctFacade
     {
         Validate.notNull("client can't be null");
         Validate.notEmpty(gatewayURI, "gatewayURI can't be empty");
-        
+
         gateway = client.resource(gatewayURI);
     }
-    
+
     /** creates the client for the intacct XML gateway */
     private Client createClient(final String gatewayURI)
     {
-            
-          
+
         try
-            {
-                final ClientConfig config = new DefaultClientConfig();   
-                addSslConfiguration();
-                config.getClasses().add(Request.class);
-                config.getClasses().add(Response.class);
-                return Client.create(config);
-            }
-            catch (KeyManagementException e)
-            {
-                throw new UnhandledException(e);
-            }
-            catch (NoSuchAlgorithmException e)
-            {
-                throw new UnhandledException(e);
-            }
-            
+        {
+            final ClientConfig config = new DefaultClientConfig();
+            addSslConfiguration();
+            config.getClasses().add(Request.class);
+            config.getClasses().add(Response.class);
+            return Client.create(config);
+        }
+        catch (KeyManagementException e)
+        {
+            throw new UnhandledException(e);
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            throw new UnhandledException(e);
+        }
+
     }
-    
-    protected void addSslConfiguration() throws NoSuchAlgorithmException, KeyManagementException {
+
+    protected void addSslConfiguration() throws NoSuchAlgorithmException, KeyManagementException
+    {
         final SSLContext ctx = SSLContext.getInstance("SSL");
-        
+
         ctx.init(null, null, null);
     }
 
@@ -92,7 +93,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
     {
         createGateway(gatewayURI, client);
     }
-    
+
     @Override
     public Response executeOperation(final Request request)
     {
@@ -104,13 +105,20 @@ public class JerseySslIntacctFacade implements IntacctFacade
             StringWriter writer = new StringWriter();
             m.marshal(request, writer);
             map.add("xmlrequest", writer.toString());
-            return gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE).post(Response.class, map);
+            Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
+                .post(Response.class, map);
+            if (post == null || post.getControl() == null
+                || StringUtils.isBlank(post.getControl().getControlid()))
+            {
+                throw new IntracctException(
+                    "The response from the server is empty or doesn't have a control id");
+            }
+            return post;
         }
         catch (JAXBException e)
         {
             throw new IntracctException("Error parseando el XML", e);
         }
-        
+
     }
 }
-
