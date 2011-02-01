@@ -29,17 +29,17 @@
     <xsd:complexType name="configType">
     	<xsd:complexContent>
     		<xsd:extension base="mule:abstractExtensionType">
-    			<xsd:attribute name="senderId" type="xsd:string">
+    			<xsd:attribute name="senderId" type="xsd:string" use="required">
     			</xsd:attribute>
     			<xsd:attribute name="controlPassword"
-    				type="xsd:string">
+    				type="xsd:string" use="required">
     			</xsd:attribute>
-    			<xsd:attribute name="uniqueid" type="xsd:string"></xsd:attribute>
-    			<xsd:attribute name="controlid" type="xsd:string"></xsd:attribute>
-    			<xsd:attribute name="userid" type="xsd:string"></xsd:attribute>
-    			<xsd:attribute name="userPassword" type="xsd:string"></xsd:attribute>
-    			<xsd:attribute name="companyid" type="xsd:string"></xsd:attribute>
-    			<xsd:attribute name="intacctImplementation-ref" type="xsd:string"></xsd:attribute>
+    			<xsd:attribute name="uniqueid" type="xsd:string" use="required"></xsd:attribute>
+    			<xsd:attribute name="controlid" type="xsd:string" use="required"></xsd:attribute>
+    			<xsd:attribute name="userid" type="xsd:string" use="required"></xsd:attribute>
+    			<xsd:attribute name="userPassword" type="xsd:string" use="required"></xsd:attribute>
+    			<xsd:attribute name="companyid" type="xsd:string" use="required"></xsd:attribute>
+    			<xsd:attribute name="intacctImplementation-ref" type="xsd:string" use="optional"></xsd:attribute>
     		</xsd:extension>
     	</xsd:complexContent>
     </xsd:complexType>

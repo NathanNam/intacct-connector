@@ -4,11 +4,13 @@
       xmlns:spring="http://www.springframework.org/schema/beans"
       xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
       xmlns:util="http://www.springframework.org/schema/util"
+      xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
         http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/3.1/mule-intacct.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd">
 
     <!--
         Declare one flow like this one per element you add in your schema.
@@ -116,4 +118,43 @@
 			</function>
 		</intacct:executeFunction>
 	</flow>
+	
+	<flow name="realFunctionFlow">
+		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
+		<intacct:executeFunction xmlns="http://www.mulesoft.org/schema/mule/intacct">
+			<function controlid="#[map-payload:controlid]">
+				<get_list object="glaccount">
+					<filter>
+						<logical logical_operator="or">
+							<logical logical_operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+				</get_list>
+			</function>
+		</intacct:executeFunction>
+		</flow>
 </mule>

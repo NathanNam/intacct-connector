@@ -12,6 +12,7 @@ package org.mule.module.intacct.config;
 import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
 import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
 import org.mule.module.intacct.IntacctCloudConnector;
+import org.mule.module.intacct.util.JaxBUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class DTOChildDefinitionParser extends ChildDefinitionParser
                 {
                     if (um == null) 
                     {
-                        um = IntacctCloudConnector.REQUEST_JAXB_CTX.createUnmarshaller();
+                        um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
                     }
                     arguments.add(um.unmarshal(node));
                 }

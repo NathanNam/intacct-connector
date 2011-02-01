@@ -29,7 +29,7 @@ import org.apache.commons.lang.UnhandledException;
 
 public class IntacctCloudConnector implements Initialisable
 {
-    public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
+    
     
     private String senderId;
     private String controlPassword;
@@ -97,20 +97,7 @@ public class IntacctCloudConnector implements Initialisable
         return sendRequest(req);
     }
     
-    /** loads JAXB context */
-    private static JAXBContext loadJaxBCtx(final String pkg) 
-    {
-        JAXBContext ctx;
-        try
-        {
-            ctx = JAXBContext.newInstance(pkg);
-        }
-        catch (final JAXBException e)
-        {
-            throw new UnhandledException(e);
-        }
-        return ctx;
-    }
+  
 
 
     public void setControlPassword(String controlPassword)

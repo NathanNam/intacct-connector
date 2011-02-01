@@ -10,17 +10,17 @@
 
 package org.mule.module.intacct.impl;
 
-import static org.mule.module.intacct.IntacctCloudConnector.REQUEST_JAXB_CTX;
+
 
 import org.mule.module.intacct.IntacctFacade;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.util.JaxBUtils;
 
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.apache.commons.lang.UnhandledException;
 
@@ -34,7 +34,7 @@ public class SystemOutIntacctFacade implements IntacctFacade
         this.request = request;
         try
         {
-            final Marshaller m = REQUEST_JAXB_CTX.createMarshaller();
+            final Marshaller m = JaxBUtils.REQUEST_JAXB_CTX.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.setProperty(Marshaller.JAXB_ENCODING, "utf-8");
             StringWriter w = new StringWriter();
