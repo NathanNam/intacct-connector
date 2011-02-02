@@ -21,7 +21,6 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.representation.Form;
-import com.sun.jersey.core.header.MediaTypes;
 
 import java.io.StringWriter;
 import java.security.KeyManagementException;
@@ -70,11 +69,11 @@ public class JerseySslIntacctFacade implements IntacctFacade
             config.getClasses().add(Response.class);
             return Client.create(config);
         }
-        catch (KeyManagementException e)
+        catch (final KeyManagementException e)
         {
             throw new UnhandledException(e);
         }
-        catch (NoSuchAlgorithmException e)
+        catch (final NoSuchAlgorithmException e)
         {
             throw new UnhandledException(e);
         }
@@ -99,13 +98,13 @@ public class JerseySslIntacctFacade implements IntacctFacade
     {
         try
         {
-            MultivaluedMap<String, String> map = new Form();
+            final MultivaluedMap<String, String> map = new Form();
             Marshaller m;
             m = JaxBUtils.REQUEST_JAXB_CTX.createMarshaller();
-            StringWriter writer = new StringWriter();
+            final StringWriter writer = new StringWriter();
             m.marshal(request, writer);
             map.add("xmlrequest", writer.toString());
-            Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
+            final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
                 .post(Response.class, map);
             if (post == null || post.getControl() == null
                 || StringUtils.isBlank(post.getControl().getControlid()))

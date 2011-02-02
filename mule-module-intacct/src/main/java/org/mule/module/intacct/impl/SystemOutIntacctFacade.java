@@ -24,6 +24,10 @@ import javax.xml.bind.Marshaller;
 
 import org.apache.commons.lang.UnhandledException;
 
+/**
+ * Implementation of {@link IntacctFacade} useful for debugging.
+ * Prints the request on System.out.
+ */
 public class SystemOutIntacctFacade implements IntacctFacade
 {
     private Request request;
@@ -44,13 +48,13 @@ public class SystemOutIntacctFacade implements IntacctFacade
             System.out.println(w);
             return new Response();
         }
-        catch (JAXBException e)
+        catch (final JAXBException e)
         {
             throw new UnhandledException(e);
         }
     }
 
-    public void setRequest(Request request)
+    public void setRequest(final Request request)
     {
         this.request = request;
     }
