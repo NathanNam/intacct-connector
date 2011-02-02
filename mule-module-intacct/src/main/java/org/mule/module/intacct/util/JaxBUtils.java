@@ -18,8 +18,17 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.commons.lang.UnhandledException;
 
-public class JaxBUtils
+/**
+ * Holds the JAXB Context for parsing Intacct XML request and response 
+ */
+public final class JaxBUtils
 {
+    /** utility class */
+    private JaxBUtils()
+    {
+        // nothing to do
+    }
+    
     public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
     
     public static final JAXBContext RESPONSE_JAXB_CTX = loadJaxBCtx(Response.class.getPackage().getName());
