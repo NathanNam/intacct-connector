@@ -15,6 +15,7 @@ import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.util.NamespaceFilter;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -23,6 +24,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.representation.Form;
 
 import java.io.StringWriter;
+import java.io.Writer;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
@@ -35,6 +37,8 @@ import javax.xml.bind.Marshaller;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 
 /**
  * Executes an operation using Intacct XML Gateway.
@@ -99,10 +103,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
         try
         {
             final MultivaluedMap<String, String> map = new Form();
-            Marshaller m;
-            m = JaxBUtils.REQUEST_JAXB_CTX.createMarshaller();
-            final StringWriter writer = new StringWriter();
-            m.marshal(request, writer);
+            Writer writer = JaxBUtils.marshallWithoutNamespace(request, JaxBUtils.REQUEST_JAXB_CTX);
             map.add("xmlrequest", writer.toString());
             final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
                 .post(Response.class, map);

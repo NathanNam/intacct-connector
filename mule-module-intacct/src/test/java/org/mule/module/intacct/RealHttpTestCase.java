@@ -20,8 +20,10 @@ import org.mule.module.intacct.util.JaxBUtils;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
+import org.mule.module.intacct.utils.NotFoundResponseHandler;
 
 import com.sun.jersey.api.client.ClientHandlerException;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
 
 import java.io.ByteArrayInputStream;
@@ -180,6 +182,43 @@ public class RealHttpTestCase extends BaseIntacctTest
             Assert.assertNotNull(iex.getCause());
             Assert.assertTrue(iex.getCause() instanceof ClientHandlerException);
             Assert.assertTrue(iex.getCause().getCause() instanceof ConnectException);
+        }
+        finally
+        {
+            if (server != null)
+            {
+                server.stop();
+            }
+        }
+
+    }
+    
+    public void testNotFoundResponse() throws Exception
+    {
+        HttpTestServer server = null;
+        try
+        {
+            final int port = 50443;
+            String controlId = "mi id";
+            NotFoundResponseHandler handler = new NotFoundResponseHandler();
+            server = new HttpTestServer(handler, port);
+            server.start();
+            final Map<String, String> payload = new HashMap<String, String>();
+            payload.put("key", "1234");
+            payload.put("controlid", controlId);
+            payload.put("accountnoLower", "500");
+            SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+            final MuleEvent event = getTestEvent(payload);
+            flow.process(event);
+            Assert.fail();
+
+        }
+        catch (Throwable ex)
+        {
+            IntacctException iex = getDomainException(ex);
+            Assert.assertNotNull(iex);
+            Assert.assertNotNull(iex.getCause());
+            Assert.assertTrue(iex.getCause() instanceof UniformInterfaceException);
         }
         finally
         {

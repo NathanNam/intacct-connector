@@ -18,6 +18,7 @@ import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
 
 import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -39,13 +40,7 @@ public class SystemOutIntacctFacade implements IntacctFacade
         
         try
         {
-            final Marshaller m = JaxBUtils.REQUEST_JAXB_CTX.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            m.setProperty(Marshaller.JAXB_ENCODING, "utf-8");
-            StringWriter w = new StringWriter();
-            m.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-            m.marshal(request, w);
-            System.out.println(w);
+            System.out.println(JaxBUtils.marshallWithoutNamespace(request, JaxBUtils.REQUEST_JAXB_CTX));
             return new Response();
         }
         catch (final JAXBException e)

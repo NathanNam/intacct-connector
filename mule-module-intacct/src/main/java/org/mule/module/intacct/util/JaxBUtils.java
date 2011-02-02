@@ -13,13 +13,19 @@ package org.mule.module.intacct.util;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
+import java.io.StringWriter;
+import java.io.Writer;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.apache.commons.lang.UnhandledException;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 
 /**
- * Holds the JAXB Context for parsing Intacct XML request and response 
+ * Holds the JAXB Context for parsing Intacct XML request and response
  */
 public final class JaxBUtils
 {
@@ -28,12 +34,13 @@ public final class JaxBUtils
     {
         // nothing to do
     }
-    
+
     public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
-    
+
     public static final JAXBContext RESPONSE_JAXB_CTX = loadJaxBCtx(Response.class.getPackage().getName());
+
     /** loads JAXB context */
-    private static JAXBContext loadJaxBCtx(final String pkg) 
+    private static JAXBContext loadJaxBCtx(final String pkg)
     {
         JAXBContext ctx;
         try
@@ -47,6 +54,18 @@ public final class JaxBUtils
         return ctx;
     }
 
+    public static Writer marshallWithoutNamespace(Object objectToMarshall, JAXBContext c) throws JAXBException
+    {
+        NamespaceFilter outFilter = new NamespaceFilter(null, false);
+        OutputFormat format = new OutputFormat();
+        format.setIndent(true);
+        format.setNewlines(true);
+        final StringWriter writer = new StringWriter();
+        XMLWriter xmlWriter = new XMLWriter(writer, format);
+        outFilter.setContentHandler(xmlWriter);
+        Marshaller m = c.createMarshaller();
+        m.marshal(objectToMarshall, outFilter);
+        return writer;
+    }
+
 }
-
-
