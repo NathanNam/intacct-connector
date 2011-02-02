@@ -10,25 +10,30 @@
 
 package org.mule.module.intacct.exception;
 
-public class IntracctException extends RuntimeException
+/**
+ * Exception used to wrap connector's errors.
+ */
+public class IntacctException extends RuntimeException
 {
 
-    public IntracctException()
+    private static final long serialVersionUID = 942551423883775681L;
+
+    public IntacctException()
     {
         super();
     }
 
-    public IntracctException(String message, Throwable cause)
+    public IntacctException(final String message, final Throwable cause)
     {
         super(message, cause);
     }
 
-    public IntracctException(String message)
+    public IntacctException(final String message)
     {
         super(message);
     }
 
-    public IntracctException(Throwable cause)
+    public IntacctException(final Throwable cause)
     {
         super(cause);
     }

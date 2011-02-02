@@ -12,7 +12,7 @@ package org.mule.module.intacct;
 
 import org.mule.api.lifecycle.Initialisable;
 import org.mule.api.lifecycle.InitialisationException;
-import org.mule.module.intacct.exception.IntracctException;
+import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 import org.mule.module.intacct.impl.SystemOutIntacctFacade;
 import org.mule.module.intacct.schema.request.Authentication;
@@ -72,7 +72,7 @@ public class IntacctCloudConnector implements Initialisable
         }
         catch (Throwable ex)
         {
-            throw new IntracctException(
+            throw new IntacctException(
                 "There was an error sending the request to the server." +
                 " Please check the cause for further information",
                 ex);

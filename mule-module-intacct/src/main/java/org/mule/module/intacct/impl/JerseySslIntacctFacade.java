@@ -11,7 +11,7 @@
 package org.mule.module.intacct.impl;
 
 import org.mule.module.intacct.IntacctFacade;
-import org.mule.module.intacct.exception.IntracctException;
+import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
@@ -109,14 +109,14 @@ public class JerseySslIntacctFacade implements IntacctFacade
             if (post == null || post.getControl() == null
                 || StringUtils.isBlank(post.getControl().getControlid()))
             {
-                throw new IntracctException(
+                throw new IntacctException(
                     "The response from the server is empty or doesn't have a control id");
             }
             return post;
         }
         catch (JAXBException e)
         {
-            throw new IntracctException("Error parseando el XML", e);
+            throw new IntacctException("Error parseando el XML", e);
         }
 
     }
