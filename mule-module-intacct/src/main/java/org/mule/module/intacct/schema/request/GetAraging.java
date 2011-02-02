@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"agingperiods", "customerid", "invoiceno", "locationid", "departmentid",
+@XmlType(name = "get_aragingType", propOrder = {"agingperiods", "customerid", "invoiceno", "locationid", "departmentid",
     "asofdate", "useduedate", "showdetails", "documenttype", "useglpostdate"})
 @XmlRootElement(name = "get_araging")
 public class GetAraging

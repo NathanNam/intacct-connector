@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"pricelistid", "itemidOrProductlineid", "datefrom", "dateto",
+@XmlType(name = "create_invpricelistentryType", propOrder = {"pricelistid", "itemidOrProductlineid", "datefrom", "dateto",
     "minimumQuantity", "maximumQuantity", "value", "valuetype", "fixed", "status"})
 @XmlRootElement(name = "create_invpricelistentry")
 public class CreateInvpricelistentry

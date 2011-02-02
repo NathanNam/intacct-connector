@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"datefrom", "dateto", "status"})
+@XmlType(name = "update_popricelistType", propOrder = {"datefrom", "dateto", "status"})
 @XmlRootElement(name = "update_popricelist")
 public class UpdatePopricelist
 {

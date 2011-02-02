@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "delete_allocationType")
 @XmlRootElement(name = "delete_allocation")
 public class DeleteAllocation
 {

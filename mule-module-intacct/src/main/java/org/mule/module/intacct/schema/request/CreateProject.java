@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"projectid", "name", "description", "parentid", "projectcategory",
+@XmlType(name = "create_projectType", propOrder = {"projectid", "name", "description", "parentid", "projectcategory",
     "projecttype", "projectstatus", "customerid", "managerid", "salescontactid", "begindate", "enddate",
     "departmentid", "locationid", "currency", "billingtype", "termname", "billto", "shipto", "contactinfo",
     "sonumber", "ponumber", "poamount", "pqnumber", "status", "projectresources", "customfields"})

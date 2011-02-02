@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"name", "parentid", "termname", "custrepid", "shippingmethod", "custtype",
+@XmlType(name = "update_customerType", propOrder = {"name", "parentid", "termname", "custrepid", "shippingmethod", "custtype",
     "taxid", "creditlimit", "territoryid", "resaleno", "deliveryoptions", "accountlabel", "glaccountno",
     "glgroup", "comments", "status", "currency", "primary", "billto", "shipto", "contactinfo", "contactlist",
     "vsoepricelist", "customfields", "visibility"})

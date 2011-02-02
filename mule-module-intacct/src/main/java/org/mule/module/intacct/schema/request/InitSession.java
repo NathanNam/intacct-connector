@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"activity"})
+@XmlType(name = "init_sessionType", propOrder = {"activity"})
 @XmlRootElement(name = "init_session")
 public class InitSession
 {

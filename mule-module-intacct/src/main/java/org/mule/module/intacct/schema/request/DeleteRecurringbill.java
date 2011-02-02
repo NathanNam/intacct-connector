@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "delete_recurringbillType")
 @XmlRootElement(name = "delete_recurringbill")
 public class DeleteRecurringbill
 {

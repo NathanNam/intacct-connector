@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "get_applicationsType")
 @XmlRootElement(name = "get_applications")
 public class GetApplications
 {

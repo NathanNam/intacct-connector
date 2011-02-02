@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"accountgroupname"})
+@XmlType(name = "get_accountgroupdetailsType", propOrder = {"accountgroupname"})
 @XmlRootElement(name = "get_accountgroupdetails")
 public class GetAccountgroupdetails
 {

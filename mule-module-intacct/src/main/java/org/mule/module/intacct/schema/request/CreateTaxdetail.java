@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"detailid", "description", "taxtype", "value", "mintaxable", "maxtaxable",
+@XmlType(name = "create_taxdetailType", propOrder = {"detailid", "description", "taxtype", "value", "mintaxable", "maxtaxable",
     "include", "mintax", "maxtax", "glaccountno", "accountlabel", "taxauthority", "status"})
 @XmlRootElement(name = "create_taxdetail")
 public class CreateTaxdetail

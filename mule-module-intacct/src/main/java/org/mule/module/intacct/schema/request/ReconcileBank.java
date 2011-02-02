@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"bankaccountid", "cutoffdate", "statementendingdate", "reconmode",
+@XmlType(name = "reconcile_bankType", propOrder = {"bankaccountid", "cutoffdate", "statementendingdate", "reconmode",
     "statementendingbalance", "banktxns"})
 @XmlRootElement(name = "reconcile_bank")
 public class ReconcileBank

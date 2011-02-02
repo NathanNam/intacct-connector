@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"datereversed", "description"})
+@XmlType(name = "reverse_billType", propOrder = {"datereversed", "description"})
 @XmlRootElement(name = "reverse_bill")
 public class ReverseBill
 {

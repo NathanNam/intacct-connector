@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"customerid", "reportingperiodnameOrStartdateOrEnddate"})
+@XmlType(name = "get_salestotalsType", propOrder = {"customerid", "reportingperiodnameOrStartdateOrEnddate"})
 @XmlRootElement(name = "get_salestotals")
 public class GetSalestotals
 {

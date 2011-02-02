@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"datecreated", "referenceno", "message", "externalid", "customfields",
+@XmlType(name = "update_ictransactionType", propOrder = {"datecreated", "referenceno", "message", "externalid", "customfields",
     "updateictransitems", "updatesubtotals"})
 @XmlRootElement(name = "update_ictransaction")
 public class UpdateIctransaction

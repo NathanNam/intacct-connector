@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "get_closedbooksdateType")
 @XmlRootElement(name = "get_closedbooksdate")
 public class GetClosedbooksdate
 {

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"vendorid", "name", "parentid", "termname", "glaccountno", "accountlabel",
+@XmlType(name = "create_vendorType", propOrder = {"vendorid", "name", "parentid", "termname", "glaccountno", "accountlabel",
     "vendtype", "taxid", "creditlimit", "billingtype", "vendoraccountno", "comments", "status", "currency",
     "onetime", "externalid", "primary", "returnto", "payto", "contactinfo", "contactlist", "name1099",
     "customfields", "achenabled", "wireenabled", "checkenabled", "achbankroutingnumber", "achaccountnumber",

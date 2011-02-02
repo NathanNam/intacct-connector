@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"billno", "referenceno", "description", "termname", "datedue", "recpaydate",
+@XmlType(name = "reclassify_billType", propOrder = {"billno", "referenceno", "description", "termname", "datedue", "recpaydate",
     "paypriority", "onhold", "reclassifyitems"})
 @XmlRootElement(name = "reclassify_bill")
 public class ReclassifyBill

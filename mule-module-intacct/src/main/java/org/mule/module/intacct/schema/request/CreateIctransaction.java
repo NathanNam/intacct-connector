@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"transactiontype", "datecreated", "createdfrom", "documentno",
+@XmlType(name = "create_ictransactionType", propOrder = {"transactiontype", "datecreated", "createdfrom", "documentno",
     "referenceno", "message", "externalid", "basecurr", "customfields", "ictransitems", "subtotals"})
 @XmlRootElement(name = "create_ictransaction")
 public class CreateIctransaction

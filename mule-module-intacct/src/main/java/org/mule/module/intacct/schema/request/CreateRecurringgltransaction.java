@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"journalid", "datecreated", "description", "referenceno", "supdocid",
+@XmlType(name = "create_recurringgltransactionType", propOrder = {"journalid", "datecreated", "description", "referenceno", "supdocid",
     "startdate", "ending", "modenew", "interval", "eom", "errnotifyemailids", "revstartdate", "revending",
     "revmodenew", "revinterval", "reveom", "reverrnotifyemailids", "customfields", "gltransactionentries"})
 @XmlRootElement(name = "create_recurringgltransaction")

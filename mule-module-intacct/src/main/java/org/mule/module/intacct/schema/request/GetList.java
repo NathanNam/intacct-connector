@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"filter", "sorts", "fields"})
+@XmlType(name = "get_listType", propOrder = {"filter", "sorts", "fields"})
 @XmlRootElement(name = "get_list")
 public class GetList
 {

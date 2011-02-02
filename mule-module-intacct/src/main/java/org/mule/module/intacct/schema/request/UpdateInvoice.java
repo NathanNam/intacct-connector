@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"customerid", "datecreated", "datedue", "termname", "invoiceno", "ponumber",
+@XmlType(name = "update_invoiceType", propOrder = {"customerid", "datecreated", "datedue", "termname", "invoiceno", "ponumber",
     "description", "payto", "returnto", "currency", "exchratedateOrExchratetypeOrExchrate", "customfields",
     "updateinvoiceitems"})
 @XmlRootElement(name = "update_invoice")

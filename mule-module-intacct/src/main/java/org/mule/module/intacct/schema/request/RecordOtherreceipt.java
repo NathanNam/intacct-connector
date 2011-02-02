@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"paymentdate", "payee", "receiveddate", "paymentmethod", "undepglaccountno",
+@XmlType(name = "record_otherreceiptType", propOrder = {"paymentdate", "payee", "receiveddate", "paymentmethod", "undepglaccountno",
     "refid", "description", "receiptitems"})
 @XmlRootElement(name = "record_otherreceipt")
 public class RecordOtherreceipt

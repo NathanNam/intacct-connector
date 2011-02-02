@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "delete_expensereportType")
 @XmlRootElement(name = "delete_expensereport")
 public class DeleteExpensereport
 {

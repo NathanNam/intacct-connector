@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"employeeid", "begindate", "timesheetdescription", "timesheetitems"})
+@XmlType(name = "update_timesheetType", propOrder = {"employeeid", "begindate", "timesheetdescription", "timesheetitems"})
 @XmlRootElement(name = "update_timesheet")
 public class UpdateTimesheet
 {
