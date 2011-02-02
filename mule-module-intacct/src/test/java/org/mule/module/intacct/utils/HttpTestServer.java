@@ -25,7 +25,7 @@ public class HttpTestServer
  
     
  
-    public HttpTestServer(AbstractHandler handler, int port) 
+    public HttpTestServer(final AbstractHandler handler, final int port) 
     {
         this.handler = handler;
         this.port = port;
@@ -65,10 +65,4 @@ public class HttpTestServer
     {
         return server;
     }
- 
- 
- 
 }
-
-
-

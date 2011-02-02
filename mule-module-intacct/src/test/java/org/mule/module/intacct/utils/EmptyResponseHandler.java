@@ -22,10 +22,11 @@ public class EmptyResponseHandler extends AbstractHandler
 {
 
     @Override
-    public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
+    public void handle(final String target, final HttpServletRequest request, 
+                       final HttpServletResponse response, final int dispatch)
         throws IOException, ServletException
     {
-
+        // nothing to do
     }
 
 }

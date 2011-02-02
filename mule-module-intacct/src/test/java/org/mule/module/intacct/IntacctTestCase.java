@@ -2,8 +2,6 @@ package org.mule.module.intacct;
 
 import org.junit.Test;
 
-import org.mule.module.intacct.IntacctCloudConnector;
-
 public class IntacctTestCase
 {
     @Test

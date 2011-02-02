@@ -18,12 +18,9 @@ import org.mortbay.jetty.security.SslSocketConnector;
 
 public class SslTestServer extends HttpTestServer
 {
-    
-
-    
     private final int sslPort;
 
-    public SslTestServer(AbstractHandler handler, int port, int sslPort)
+    public SslTestServer(final AbstractHandler handler, final int port, final int sslPort)
     {
         super(handler, port);
         this.sslPort = sslPort;

@@ -17,7 +17,7 @@ import javax.xml.bind.JAXBContext;
 public class IntacctJaxBOkHandler extends JaxBOkHandler
 {
 
-    public IntacctJaxBOkHandler(Object objectToMarshall)
+    public IntacctJaxBOkHandler(final Object objectToMarshall)
     {
         super(objectToMarshall);
     }

@@ -18,7 +18,7 @@ import java.security.NoSuchAlgorithmException;
 public class JerseyIntacctFacade extends JerseySslIntacctFacade
 {
 
-    public JerseyIntacctFacade(String gatewayURI)
+    public JerseyIntacctFacade(final String gatewayURI)
     {
         super(gatewayURI);
     }
