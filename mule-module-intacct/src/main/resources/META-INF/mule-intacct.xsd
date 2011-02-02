@@ -45,7 +45,7 @@
     </xsd:complexType>
 
     <!-- Operations -->
-    <xsd:element name="executeRequest" type="actionType" substitutionGroup="mule:abstract-message-processor">
+    <xsd:element name="execute-request" type="actionType" substitutionGroup="mule:abstract-message-processor">
     </xsd:element>
     <xsd:complexType name="actionType">
      <xsd:complexContent>
@@ -58,7 +58,7 @@
      </xsd:complexContent>
     </xsd:complexType>
     
-    <xsd:element name="executeFunction" type="functionDoType" substitutionGroup="mule:abstract-message-processor">
+    <xsd:element name="execute-function" type="functionDoType" substitutionGroup="mule:abstract-message-processor">
     </xsd:element>
     <xsd:complexType name="functionDoType">
      <xsd:complexContent>

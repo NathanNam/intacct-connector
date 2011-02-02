@@ -17,6 +17,7 @@ import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.util.NamespaceFilter;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
@@ -36,9 +37,13 @@ import java.util.Map;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.sax.SAXSource;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 public class RealHttpTestCase extends BaseIntacctTest
 {
@@ -76,7 +81,13 @@ public class RealHttpTestCase extends BaseIntacctTest
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
         Unmarshaller um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
-        Request req = (Request) um.unmarshal(in);
+        XMLReader reader = XMLReaderFactory.createXMLReader();
+        NamespaceFilter inFilter = new NamespaceFilter("http://www.mulesoft.org/schema/mule/intacct", true);
+        inFilter.setParent(reader);
+        InputSource is = new InputSource(in);
+        SAXSource source = new SAXSource(inFilter, is);
+
+        Request req = (Request) um.unmarshal(source);
         Assert.assertEquals(controlId, req.getControl().getControlid());
         Response resp = (Response) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);

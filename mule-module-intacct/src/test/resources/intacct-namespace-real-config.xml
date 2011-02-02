@@ -27,7 +27,7 @@
    <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="httpIntacct" />
 
 	<flow name="functionFlow">
-		<intacct:executeFunction xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
 			<function controlid="#[map-payload:controlid]">
 				<get_list object="glaccount">
 					<filter>
@@ -61,7 +61,7 @@
 					</fields>
 				</get_list>
 			</function>
-		</intacct:executeFunction>
+		</intacct:execute-function>
 	</flow>
 
 </mule>

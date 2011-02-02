@@ -30,7 +30,7 @@
 
 
 	<flow name="requestFlow">
-		<intacct:executeRequest xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:execute-request xmlns="http://www.mulesoft.org/schema/mule/intacct">
 			<request>
 				<control>
 					<senderid>intacct_dev</senderid>
@@ -82,11 +82,11 @@
 					</content>
 				</operation>
 			</request>
-		</intacct:executeRequest>
+		</intacct:execute-request>
 	</flow>
 
 	<flow name="functionFlow">
-		<intacct:executeFunction xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
 			<function controlid="#[map-payload:controlid]">
 				<get_list object="glaccount">
 					<filter>
@@ -120,12 +120,12 @@
 					</fields>
 				</get_list>
 			</function>
-		</intacct:executeFunction>
+		</intacct:execute-function>
 	</flow>
 	
 	
 	<flow name="functionFlowWithExHandling">
-		<intacct:executeFunction xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
 			<function controlid="#[map-payload:controlid]">
 				<get_list object="glaccount">
 					<filter>
@@ -159,12 +159,12 @@
 					</fields>
 				</get_list>
 			</function>
-		</intacct:executeFunction>
+		</intacct:execute-function>
 	</flow>
 	
 	<flow name="realFunctionFlow">
 		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
-		<intacct:executeFunction xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
 			<function controlid="#[map-payload:controlid]">
 				<get_list object="glaccount">
 					<filter>
@@ -198,6 +198,6 @@
 					</fields>
 				</get_list>
 			</function>
-		</intacct:executeFunction>
+		</intacct:execute-function>
 		</flow>
 </mule>
