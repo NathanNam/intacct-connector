@@ -10,25 +10,27 @@
 
 package org.mule.module.intacct.utils;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mortbay.jetty.handler.AbstractHandler;
-
-public class EmptyResponseHandler extends AbstractHandler
+public class EmptyResponseHandler extends AbstractTestHandler
 {
 
+
     @Override
-    public void handle(final String target, final HttpServletRequest request, 
-                       final HttpServletResponse response, final int dispatch)
-        throws IOException, ServletException
+    protected void doHandle(String target,
+                            HttpServletRequest request,
+                            HttpServletResponse response,
+                            int dispatch)
     {
-        // nothing to do
+        //Does nothing, the response is empty and the rest is on the parent
+        
+    }
+
+    @Override
+    protected int getResponseStatus()
+    {
+        return HttpServletResponse.SC_OK;
     }
 
 }
-
-

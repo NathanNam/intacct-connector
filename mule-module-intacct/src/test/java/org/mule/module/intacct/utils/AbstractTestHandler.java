@@ -17,60 +17,42 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
 import org.mortbay.jetty.HttpConnection;
 import org.mortbay.jetty.Request;
 import org.mortbay.jetty.handler.AbstractHandler;
 
-public abstract class JaxBOkHandler extends AbstractTestHandler
+public abstract class AbstractTestHandler extends AbstractHandler
 {
-
-    private final Object objectToMarshall;
     private Request request;
-
-    public JaxBOkHandler(Object objectToMarshall)
-    {
-        this.objectToMarshall = objectToMarshall;
-        
-
-    }
-
     @Override
-    public void doHandle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
+    public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
         throws IOException, ServletException
     {
-        try
-        {
-            Marshaller m = getContext().createMarshaller();
-            m.marshal(objectToMarshall, response.getOutputStream());
-        }
-        catch (JAXBException e)
-        {
-            Assert.fail();
-        }
+        Request baseRequest = request instanceof Request
+                                                        ? (Request) request
+                                                        : HttpConnection.getCurrentConnection().getRequest();
+        setRequest(baseRequest);
+        response.setContentType("text/xml;charset=utf-8");
+        response.setStatus(getResponseStatus());
+        doHandle(target, baseRequest, response, dispatch);
+        getRequest().setHandled(true);
     }
     
-    @Override
-    protected int getResponseStatus() 
-    {
-        return SC_OK;
-    }
+    protected abstract int getResponseStatus();
     
-    protected abstract JAXBContext getContext();
+    protected abstract void doHandle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
+        throws IOException, ServletException;
 
     public void setRequest(Request request)
     {
         this.request = request;
     }
-
     public Request getRequest()
     {
         return request;
     }
 
 }
+
+
