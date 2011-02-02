@@ -16,6 +16,9 @@ import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.handler.AbstractHandler;
 import org.mortbay.jetty.security.SslSocketConnector;
 
+/**
+ *  This is a test server that works with SSL and no SSL.
+ */
 public class SslTestServer extends HttpTestServer
 {
     private final int sslPort;

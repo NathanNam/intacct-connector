@@ -13,6 +13,9 @@ package org.mule.module.intacct.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *  This responds a 404
+ */
 public class NotFoundResponseHandler extends AbstractTestHandler
 {
 

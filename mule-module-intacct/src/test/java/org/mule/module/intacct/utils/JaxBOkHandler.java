@@ -27,6 +27,9 @@ import org.mortbay.jetty.HttpConnection;
 import org.mortbay.jetty.Request;
 import org.mortbay.jetty.handler.AbstractHandler;
 
+/**
+ *  This handler recieves an object and marshales it to XML and sends it in the response
+ */
 public abstract class JaxBOkHandler extends AbstractTestHandler
 {
 

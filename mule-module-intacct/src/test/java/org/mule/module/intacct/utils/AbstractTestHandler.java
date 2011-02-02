@@ -10,8 +10,6 @@
 
 package org.mule.module.intacct.utils;
 
-import static javax.servlet.http.HttpServletResponse.SC_OK;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -22,9 +20,14 @@ import org.mortbay.jetty.HttpConnection;
 import org.mortbay.jetty.Request;
 import org.mortbay.jetty.handler.AbstractHandler;
 
+/**
+ * This abstract class is used by every Abstract Handler for the Http Server. It has
+ * the basic request and response functionality
+ */
 public abstract class AbstractTestHandler extends AbstractHandler
 {
     private Request request;
+
     @Override
     public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
         throws IOException, ServletException
@@ -38,21 +41,22 @@ public abstract class AbstractTestHandler extends AbstractHandler
         doHandle(target, baseRequest, response, dispatch);
         getRequest().setHandled(true);
     }
-    
+
     protected abstract int getResponseStatus();
-    
-    protected abstract void doHandle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
-        throws IOException, ServletException;
+
+    protected abstract void doHandle(String target,
+                                     HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     int dispatch) throws IOException, ServletException;
 
     public void setRequest(Request request)
     {
         this.request = request;
     }
+
     public Request getRequest()
     {
         return request;
     }
 
 }
-
-

@@ -17,11 +17,7 @@ import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
 
-import java.io.StringWriter;
-import java.io.Writer;
-
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 import org.apache.commons.lang.UnhandledException;
 

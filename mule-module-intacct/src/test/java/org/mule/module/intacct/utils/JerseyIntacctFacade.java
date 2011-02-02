@@ -15,6 +15,9 @@ import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ *  This uses jersey to connect to the server but it DOESN'T use SSL (for server usages)
+ */
 public class JerseyIntacctFacade extends JerseySslIntacctFacade
 {
 

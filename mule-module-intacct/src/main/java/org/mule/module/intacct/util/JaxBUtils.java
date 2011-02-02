@@ -54,7 +54,13 @@ public final class JaxBUtils
         return ctx;
     }
 
-    public static Writer marshallWithoutNamespace(Object objectToMarshall, JAXBContext c) throws JAXBException
+    /**
+     * This uses {@link XMLWriter} with a filter to remove the namespace when
+     * marshalling and then returns a {@link StringWriter} so that the XML can be
+     * gotten
+     */
+    public static Writer marshallWithoutNamespace(Object objectToMarshall, JAXBContext c)
+        throws JAXBException
     {
         NamespaceFilter outFilter = new NamespaceFilter(null, false);
         OutputFormat format = new OutputFormat();

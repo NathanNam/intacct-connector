@@ -45,6 +45,10 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+/**
+ * This uses the Http Server and does real testing (integration). It tests success
+ * cases, empty response, etc.
+ */
 public class RealHttpTestCase extends BaseIntacctTest
 {
 
@@ -53,8 +57,6 @@ public class RealHttpTestCase extends BaseIntacctTest
     {
         return "intacct-namespace-real-config.xml";
     }
-
-
 
     public void testSendSomething() throws Exception
     {
@@ -130,7 +132,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-    
+
     public void testSendResponseWithNoControlId() throws Exception
     {
         HttpTestServer server = null;
@@ -170,7 +172,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-    
+
     public void testServerDown() throws Exception
     {
         HttpTestServer server = null;
@@ -203,7 +205,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-    
+
     public void testNotFoundResponse() throws Exception
     {
         HttpTestServer server = null;

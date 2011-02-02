@@ -88,7 +88,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         final MuleEvent responseEvent = flow.process(event);
         SystemOutIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
         Request requestCreated = intacct.getRequest();
-        // Valido las cosas del request segun lo enviado en el flow y NO segun el config
+        // Now i check that what was sent is NOT what was in config. It must be overriden
            
         Assert.assertEquals("intacct_dev", requestCreated.getControl().getSenderid());
         Assert.assertEquals("babbage", requestCreated.getControl().getPassword());

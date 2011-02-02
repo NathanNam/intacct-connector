@@ -14,7 +14,6 @@ import org.mule.api.lifecycle.Initialisable;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
-import org.mule.module.intacct.impl.SystemOutIntacctFacade;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
@@ -24,15 +23,14 @@ import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
-import org.apache.commons.lang.UnhandledException;
-
+/**
+ * This is the real cloud connector for intacct
+ */
 public class IntacctCloudConnector implements Initialisable
 {
-    
-    
+
     private String senderId;
     private String controlPassword;
     private String controlid;
@@ -42,46 +40,45 @@ public class IntacctCloudConnector implements Initialisable
     private String companyid;
     private IntacctFacade intacctImplementation;
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
-    
+
     @Override
     public void initialise() throws InitialisationException
     {
-        if (intacctImplementation == null) 
+        // As the intacct implementation is optional, if no ref is passed we set a
+        // default to Jersey SSL with the url
+        if (intacctImplementation == null)
         {
             intacctImplementation = new JerseySslIntacctFacade(URL);
         }
     }
 
-    
     public String getSenderId()
     {
         return senderId;
     }
-
 
     public void setSenderId(String senderId)
     {
         this.senderId = senderId;
     }
 
-    public Response sendRequest(final Request request) throws JAXBException 
+    public Response sendRequest(final Request request) throws JAXBException
     {
         try
         {
             return intacctImplementation.executeOperation(request);
         }
+        // Here we catch everything and we wrap it in our domain exception
         catch (Throwable ex)
         {
-            throw new IntacctException(
-                "There was an error sending the request to the server." +
-                " Please check the cause for further information",
-                ex);
+            throw new IntacctException("There was an error sending the request to the server."
+                                       + " Please check the cause for further information", ex);
         }
-        
+
     }
-    
-    /** Reconoce la operacion con valores default setteados en el config */
-    public Response operation(final Function function) throws JAXBException 
+
+    /** Given the function we create the request with the parameters for default given in the config */
+    public Response operation(final Function function) throws JAXBException
     {
         final Request request = new Request();
         final Control control = new Control();
@@ -103,95 +100,79 @@ public class IntacctCloudConnector implements Initialisable
         content.getFunction().add(function);
         operation.getContent().add(content);
         return operation(request);
-        
+
     }
-    
+
     /** Reconoce la operacion con valores default setteados en el config */
-    public Response operation(final Request req) throws JAXBException 
+    public Response operation(final Request req) throws JAXBException
     {
         return sendRequest(req);
     }
-    
-  
-
 
     public void setControlPassword(String controlPassword)
     {
         this.controlPassword = controlPassword;
     }
 
-
     public String getControlPassword()
     {
         return controlPassword;
     }
-
 
     public void setControlid(String controlid)
     {
         this.controlid = controlid;
     }
 
-
     public String getControlid()
     {
         return controlid;
     }
-
 
     public void setUniqueid(String uniqueid)
     {
         this.uniqueid = uniqueid;
     }
 
-
     public String getUniqueid()
     {
         return uniqueid;
     }
-
 
     public void setUserid(String userid)
     {
         this.userid = userid;
     }
 
-
     public String getUserid()
     {
         return userid;
     }
-
 
     public void setUserPassword(String userPassword)
     {
         this.userPassword = userPassword;
     }
 
-
     public String getUserPassword()
     {
         return userPassword;
     }
-
 
     public void setCompanyid(String companyid)
     {
         this.companyid = companyid;
     }
 
-
     public String getCompanyid()
     {
         return companyid;
     }
 
-
     public void setIntacctImplementation(IntacctFacade intacctImplementation)
     {
         this.intacctImplementation = intacctImplementation;
     }
-
 
     public IntacctFacade getIntacctImplementation()
     {

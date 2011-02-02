@@ -15,7 +15,7 @@ import org.mortbay.jetty.handler.AbstractHandler;
  
 
 /**
- * Some Http Test server for the connector
+ * Some Http Test server to do some real testing
  */
 public class HttpTestServer 
 {

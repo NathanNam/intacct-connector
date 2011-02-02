@@ -102,11 +102,22 @@ public class JerseySslIntacctFacade implements IntacctFacade
     {
         try
         {
+            //It is important to make clear that we are using FORM URLENCODED instead of 
+            //the custom media type because Jersey uses an "object" model. It requires that
+            //the content type must be parsed to some MediaType object.
+            //Every media type must have a type and a subtype, as that custom type
+            //doesn't use a subtype we cannot use it with Jersey.
+            
+            //We use a form because that's what jersey needs with URLENCODED type to detect it
+            //by itself with the MessageBodyWriter
             final MultivaluedMap<String, String> map = new Form();
+            //As the xml sent doesn't have the namespace we're removing it here
             Writer writer = JaxBUtils.marshallWithoutNamespace(request, JaxBUtils.REQUEST_JAXB_CTX);
+            //We must send an attribute xmlrequest with the xml value
             map.add("xmlrequest", writer.toString());
             final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
                 .post(Response.class, map);
+            //If there's no response or it has no control id it must "explode"
             if (post == null || post.getControl() == null
                 || StringUtils.isBlank(post.getControl().getControlid()))
             {

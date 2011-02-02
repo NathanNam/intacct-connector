@@ -14,6 +14,9 @@ import org.mule.module.intacct.util.JaxBUtils;
 
 import javax.xml.bind.JAXBContext;
 
+/**
+ *  A {@link JaxBOkHandler} that uses the response context for intacct
+ */
 public class IntacctJaxBOkHandler extends JaxBOkHandler
 {
 

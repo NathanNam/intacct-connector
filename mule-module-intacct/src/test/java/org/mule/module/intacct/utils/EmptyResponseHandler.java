@@ -13,6 +13,9 @@ package org.mule.module.intacct.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * This response handler responds with an empty response and a 200 status code
+ */
 public class EmptyResponseHandler extends AbstractTestHandler
 {
 

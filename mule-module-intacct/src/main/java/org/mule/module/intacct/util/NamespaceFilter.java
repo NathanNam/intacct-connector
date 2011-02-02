@@ -12,16 +12,21 @@ package org.mule.module.intacct.util;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
 import org.xml.sax.helpers.XMLFilterImpl;
 
+/**
+ * This filter is used with the {@link XMLReader} if the constructor arguments are
+ * null and false then no namespace is written, otherwise the namespace sent in the
+ * first parameter is written in the xml
+ */
 public class NamespaceFilter extends XMLFilterImpl
 {
 
     private String usedNamespaceUri;
     private boolean addNamespace;
 
-    // State variable
     private boolean addedNamespace = false;
 
     public NamespaceFilter(String namespaceUri, boolean addNamespace)
