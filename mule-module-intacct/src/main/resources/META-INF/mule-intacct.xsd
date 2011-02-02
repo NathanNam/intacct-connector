@@ -25,47 +25,118 @@
     </xsd:annotation>
 
     <!-- Configration -->
-    <xsd:element name="config" type="configType" substitutionGroup="mule:abstract-extension"/>
+    <xsd:element name="config" type="configType" substitutionGroup="mule:abstract-extension">
+    	<xsd:annotation>
+    		<xsd:documentation>This element is used to configure the whole cloud connector. It has all the configurations used when sending the function directly to the Intacct connector. If you send a whole request all this settings are overriden.</xsd:documentation>
+    	</xsd:annotation></xsd:element>
     <xsd:complexType name="configType">
     	<xsd:complexContent>
     		<xsd:extension base="mule:abstractExtensionType">
     			<xsd:attribute name="senderId" type="xsd:string" use="required">
+                    <xsd:annotation>
+                    	<xsd:documentation>This is the default sender id used. It corresponds to the Request\Control\Senderid. It is only used when using execute-function. It is mandatory</xsd:documentation>
+                    </xsd:annotation>
     			</xsd:attribute>
     			<xsd:attribute name="controlPassword"
     				type="xsd:string" use="required">
+                    <xsd:annotation>
+                    	<xsd:documentation>This is the default password used in the control tag when sending the request. 
+It corresponds to the Request\Control\Password
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+                    </xsd:annotation>
     			</xsd:attribute>
-    			<xsd:attribute name="uniqueid" type="xsd:string" use="required"></xsd:attribute>
-    			<xsd:attribute name="controlid" type="xsd:string" use="required"></xsd:attribute>
-    			<xsd:attribute name="userid" type="xsd:string" use="required"></xsd:attribute>
-    			<xsd:attribute name="userPassword" type="xsd:string" use="required"></xsd:attribute>
-    			<xsd:attribute name="companyid" type="xsd:string" use="required"></xsd:attribute>
-    			<xsd:attribute name="intacctImplementation-ref" type="xsd:string" use="optional"></xsd:attribute>
+    			<xsd:attribute name="uniqueid" type="xsd:string" use="required">
+    				<xsd:annotation>
+    					<xsd:documentation>This is the unique id used in the control tag when sending the request. 
+Its possibles values are true or false. It's stated in the intacct api documentation.
+It corresponds to the Request\Control\Uniqueid
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
+    			<xsd:attribute name="controlid" type="xsd:string" use="required">
+    				<xsd:annotation>
+    					<xsd:documentation>This is the control id used in the control tag when sending the request. 
+It identifies uniequivocally a request. When the request is answered the same control id must be sent.
+It corresponds to the Request\Control\controlid
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
+    			<xsd:attribute name="userid" type="xsd:string" use="required">
+    				<xsd:annotation>
+    					<xsd:documentation>This is the user id which with the password identifies a given user of the system.
+It corresponds to the Request\Operation\Authentication\Login\userid
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
+    			<xsd:attribute name="userPassword" type="xsd:string" use="required">
+    				<xsd:annotation>
+    					<xsd:documentation>This is the password which with the userid identifies a given user of the system.
+It corresponds to the Request\Operation\Authentication\Login\password
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
+    			<xsd:attribute name="companyid" type="xsd:string" use="required">
+    				<xsd:annotation>
+    					<xsd:documentation>This is the companyid which tells to which company the user and password correspond to.
+It corresponds to the Request\Operation\Authentication\Login\companyid
+It is only used when using execute-function.
+It is mandatory</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
+    			<xsd:attribute name="intacctImplementation-ref" type="xsd:string" use="optional">
+    				<xsd:annotation>
+    					<xsd:documentation>This property refers to the intacct implementation that will be used when sending the request.
+This property ends with a "-ref" because it is a reference to another spring bean.
+This Spring Bean must implement org.mule.module.intacct.IntacctFacade.
+This filed is optional, if it is not provided a Jersey SSL client to the default URL of intacct is used.
+For testing purporses there's another implementation that simple does System Out of the marshalled content.</xsd:documentation>
+    				</xsd:annotation></xsd:attribute>
     		</xsd:extension>
     	</xsd:complexContent>
     </xsd:complexType>
 
     <!-- Operations -->
     <xsd:element name="execute-request" type="actionType" substitutionGroup="mule:abstract-message-processor">
+        <xsd:annotation>
+        	<xsd:documentation>The execute-request element represents one of the two ways provided by this Cloud Connector to connect to Intacct.
+This has the complete request inside for when you don't want to use the default values for both the control and authentication element.
+This means that every default value in the config is overriden with what the request is filled.</xsd:documentation>
+        </xsd:annotation>
     </xsd:element>
     <xsd:complexType name="actionType">
      <xsd:complexContent>
       <xsd:extension
        base="mule:abstractInterceptingMessageProcessorType">
        <xsd:sequence>
-        <xsd:element name="request" type="requestType"></xsd:element>
+        <xsd:element name="request" type="requestType">
+        	<xsd:annotation>
+        		<xsd:documentation>The only element of the execute-request is a request element. This element respects the intacct API. 
+That XSD element and its children were autogenerated.
+The function element is a child of this request element</xsd:documentation>
+        	</xsd:annotation></xsd:element>
        </xsd:sequence>
       </xsd:extension>
      </xsd:complexContent>
     </xsd:complexType>
     
     <xsd:element name="execute-function" type="functionDoType" substitutionGroup="mule:abstract-message-processor">
+        <xsd:annotation>
+        	<xsd:documentation>The execute-function element is used to provide one of the two ways to connect to intacct.
+This is used when sending a function alone. When this is the case, a request 
+is automatically created by the Cloud Connector with the default values for its fields
+which were provided in the config element</xsd:documentation>
+        </xsd:annotation>
     </xsd:element>
     <xsd:complexType name="functionDoType">
      <xsd:complexContent>
       <xsd:extension
        base="mule:abstractInterceptingMessageProcessorType">
        <xsd:sequence>
-        <xsd:element name="function" type="functionType"></xsd:element>
+        <xsd:element name="function" type="functionType">
+        	<xsd:annotation>
+        		<xsd:documentation>The only element of the execute-function is a function element. This element respects the intacct API. 
+That XSD element and its children were autogenerated.</xsd:documentation>
+        	</xsd:annotation></xsd:element>
        </xsd:sequence>
       </xsd:extension>
      </xsd:complexContent>
@@ -2731,20 +2802,27 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:element name="get_list">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="tns:filter" minOccurs="0"/>
-        <xs:element ref="tns:sorts" minOccurs="0"/>
-        <xs:element ref="tns:fields" minOccurs="0"/>
-      </xs:sequence>
-      <xs:attribute name="showprivate" type="xs:string"/>
-      <xs:attribute name="maxitems" type="xs:string"/>
-      <xs:attribute name="start" type="xs:string"/>
-      <xs:attribute name="object" type="xs:string" use="required"/>
-    </xs:complexType>
-  </xs:element>
+ 
+  
+  <xsd:element name="get_list" type="getListType" substitutionGroup="mule:abstract-message-processor" />
 
+	<xsd:complexType name="getListType">
+	     <xsd:complexContent>
+      <xsd:extension
+       base="mule:abstractInterceptingMessageProcessorType">
+	     <xs:sequence>
+	       <xs:element ref="tns:filter" minOccurs="0"/>
+	       <xs:element ref="tns:sorts" minOccurs="0"/>
+	       <xs:element ref="tns:fields" minOccurs="0"/>
+	     </xs:sequence>
+	     <xs:attribute name="showprivate" type="xs:string"/>
+	     <xs:attribute name="maxitems" type="xs:string"/>
+	     <xs:attribute name="start" type="xs:string"/>
+	     <xs:attribute name="object" type="xs:string" use="required"/>
+	     </xsd:extension>
+	     </xsd:complexContent>
+	   </xsd:complexType>
+    
   <xs:element name="get_myclients">
     <xs:complexType>
       <xs:sequence>

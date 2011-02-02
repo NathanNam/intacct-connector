@@ -108,6 +108,8 @@ public class IntacctCloudConnector implements Initialisable
     {
         return sendRequest(req);
     }
+    
+    
 
     public void setControlPassword(String controlPassword)
     {

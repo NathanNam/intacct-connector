@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"bankaccountid", "bankaccountno", "locationid", "bankname", "routingno",
+@XmlType(name = "create_savingsaccountType", propOrder = {"bankaccountid", "bankaccountno", "locationid", "bankname", "routingno",
     "branchid", "phone", "currency", "mailaddress", "status", "disableiet", "financialdata", "glaccountno",
     "servicechargeglaccountOrServicechargeaccountlabel",
     "interestearnedglaccountOrInterestearnedaccountlabel", "departmentid"})

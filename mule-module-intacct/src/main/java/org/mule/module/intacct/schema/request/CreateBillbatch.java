@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"batchtitle", "datecreated", "createBill"})
+@XmlType(name = "create_billbatchType", propOrder = {"batchtitle", "datecreated", "createBill"})
 @XmlRootElement(name = "create_billbatch")
 public class CreateBillbatch
 {

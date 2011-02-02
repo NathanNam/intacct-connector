@@ -11,9 +11,11 @@
 package org.mule.module.intacct.config;
 
 import org.mule.module.intacct.IntacctCloudConnector;
+import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.processor.InvokerMessageProcessor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Collections;
@@ -48,9 +50,23 @@ public class DTOEvaluationInvokerMessageProcessorFactoryBean
         }
         final InvokerMessageProcessor invokerMessageProcessor = 
             new DTOEvaluationInvokerMessageProcessor(Request.class.getPackage());
-        invokerMessageProcessor.setArguments(arguments);
+        List<Object> finalArguments = new ArrayList<Object>();
+        for (Object arg : arguments)
+        {
+            if (!(arg instanceof Request) && !(arg instanceof Function))
+            {
+                Function func = new Function();
+                func.getCmd().add(arg);
+                finalArguments.add(func);
+            }
+            else
+            {
+                finalArguments.add(arg);
+            }
+        }
+        invokerMessageProcessor.setArguments(finalArguments);
         invokerMessageProcessor.setMethodName("operation");
-        invokerMessageProcessor.setArgumentTypes(createArrayFromList(arguments));
+        invokerMessageProcessor.setArgumentTypes(createArrayFromList(finalArguments));
         invokerMessageProcessor.setObject(appContext.getBean(IntacctCloudConnector.class));
         return invokerMessageProcessor;
     }

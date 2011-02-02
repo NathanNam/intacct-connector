@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"vendorid", "datecreated", "recordid", "docnumber", "description",
+@XmlType(name = "create_recurringbillType", propOrder = {"vendorid", "datecreated", "recordid", "docnumber", "description",
     "contractid", "contractdesc", "termname", "currency", "exchratedateOrExchratetypeOrExchrate", "status",
     "supdocid", "paytocontactname", "returntocontactname", "startdate", "ending", "modenew", "interval",
     "eom", "recurbillitems"})

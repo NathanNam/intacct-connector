@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"customerid", "paymentamount", "translatedamount",
+@XmlType(name = "create_arpaymentType", propOrder = {"customerid", "paymentamount", "translatedamount",
     "batchkeyOrBankaccountidOrUndepfundsacct", "refid", "overpaylocid", "overpaydeptid", "datereceived",
     "paymentmethod", "basecurr", "currency", "exchratedateOrExchratetypeOrExchrate", "authcode",
     "arpaymentitem", "onlinecardpaymentOrOnlineachpayment"})

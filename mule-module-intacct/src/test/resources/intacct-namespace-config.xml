@@ -123,6 +123,40 @@
 		</intacct:execute-function>
 	</flow>
 	
+	<flow name="getListFlow">
+		<intacct:get_list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+					<filter>
+						<logical logical_operator="or">
+							<logical logical_operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+		</intacct:get_list>
+	</flow>
+	
 	
 	<flow name="functionFlowWithExHandling">
 		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">

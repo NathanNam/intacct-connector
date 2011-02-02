@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"vendorid", "datecreated", "dateposted", "batchkey", "adjustmentno",
+@XmlType(name = "create_apadjustmentType", propOrder = {"vendorid", "datecreated", "dateposted", "batchkey", "adjustmentno",
     "billno", "description", "externalid", "basecurr", "currency", "exchratedateOrExchratetypeOrExchrate",
     "nogl", "customfields", "apadjustmentitems"})
 @XmlRootElement(name = "create_apadjustment")

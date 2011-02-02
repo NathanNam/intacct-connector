@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"glaccountno", "accountlabel", "description", "offsetglaccountno", "status",
+@XmlType(name = "create_araccountlabelType", propOrder = {"glaccountno", "accountlabel", "description", "offsetglaccountno", "status",
     "externalid", "taxcode"})
 @XmlRootElement(name = "create_araccountlabel")
 public class CreateAraccountlabel

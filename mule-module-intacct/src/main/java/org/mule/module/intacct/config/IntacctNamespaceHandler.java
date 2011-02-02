@@ -25,6 +25,10 @@ public class IntacctNamespaceHandler extends AbstractMuleNamespaceHandler
         registerMuleBeanDefinitionParser("config", 
             new OrphanDefinitionParser(IntacctCloudConnector.class, true));
         
+        registerMuleBeanDefinitionParser("get_list", 
+            new DTOChildDefinitionParserNoAttributes("messageProcessor",
+                DTOEvaluationInvokerMessageProcessorFactoryBean.class, "arguments"));
+        
         registerMuleBeanDefinitionParser("execute-function", 
             new DTOChildDefinitionParser("messageProcessor",
                 DTOEvaluationInvokerMessageProcessorFactoryBean.class, "arguments"));

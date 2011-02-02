@@ -58,6 +58,9 @@ public class RealHttpTestCase extends BaseIntacctTest
         return "intacct-namespace-real-config.xml";
     }
 
+    /**
+     * This tests sending some real request and getting some response. This sends a function so all the request values
+     */
     public void testSendSomething() throws Exception
     {
         Response response = new Response();
