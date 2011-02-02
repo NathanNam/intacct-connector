@@ -16,12 +16,13 @@ import org.mule.exception.DefaultServiceExceptionStrategy;
 
 import java.beans.ExceptionListener;
 
-public class ExceptionHandler extends DefaultServiceExceptionStrategy implements MessagingExceptionHandler, ExceptionListener 
+public class ExceptionHandler extends DefaultServiceExceptionStrategy
+                           implements MessagingExceptionHandler, ExceptionListener 
 {
 
     
     @Override
-    protected void defaultHandler(Throwable t)
+    protected void defaultHandler(final Throwable t)
     {
         exception = t;
     }
@@ -29,7 +30,7 @@ public class ExceptionHandler extends DefaultServiceExceptionStrategy implements
     private Throwable exception;
     
 
-    public void setException(Exception exception)
+    public void setException(final Exception exception)
     {
         this.exception = exception;
     }
@@ -40,14 +41,14 @@ public class ExceptionHandler extends DefaultServiceExceptionStrategy implements
     }
 
     @Override
-    public MuleEvent handleException(Exception exception, MuleEvent event)
+    public MuleEvent handleException(final Exception exception, final MuleEvent event)
     {
         this.exception = exception;
         return event;
     }
 
     @Override
-    public void exceptionThrown(Exception e)
+    public void exceptionThrown(final Exception e)
     {
         exception = e;
         

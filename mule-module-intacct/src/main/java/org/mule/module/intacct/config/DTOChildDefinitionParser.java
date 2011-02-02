@@ -11,7 +11,6 @@ package org.mule.module.intacct.config;
 
 import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
 import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
-import org.mule.module.intacct.IntacctCloudConnector;
 import org.mule.module.intacct.util.JaxBUtils;
 
 import java.util.ArrayList;

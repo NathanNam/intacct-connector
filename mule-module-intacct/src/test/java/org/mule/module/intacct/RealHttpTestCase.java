@@ -18,23 +18,16 @@ import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
-import org.mule.module.intacct.utils.JaxBOkHandler;
-import org.mule.module.intacct.utils.SslTestServer;
-import org.mule.tck.FunctionalTestCase;
 
 import com.sun.jersey.core.util.ReaderWriter;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
-import javax.servlet.http.HttpUtils;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.IOUtils;

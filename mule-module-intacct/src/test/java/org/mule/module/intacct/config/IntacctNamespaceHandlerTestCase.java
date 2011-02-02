@@ -11,7 +11,6 @@ import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.tck.FunctionalTestCase;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -13,9 +13,10 @@ package org.mule.module.intacct;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.tck.FunctionalTestCase;
 
+/** abstract class for connectors tests */
 public abstract class BaseIntacctTest extends FunctionalTestCase
 {
-    protected SimpleFlowConstruct lookupFlowConstruct(String name)
+    protected SimpleFlowConstruct lookupFlowConstruct(final String name)
     {
         return (SimpleFlowConstruct) muleContext.getRegistry().lookupFlowConstruct(name);
     }
