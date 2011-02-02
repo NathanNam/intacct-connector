@@ -14,6 +14,9 @@ import org.mule.config.spring.handlers.AbstractMuleNamespaceHandler;
 import org.mule.config.spring.parsers.generic.OrphanDefinitionParser;
 import org.mule.module.intacct.IntacctCloudConnector;
 
+/**
+ * This namespace handler for spring for intacct
+ */
 public class IntacctNamespaceHandler extends AbstractMuleNamespaceHandler
 {
 

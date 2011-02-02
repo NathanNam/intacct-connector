@@ -121,6 +121,17 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.4</version>
+                <configuration>
+		          <instrumentation>
+		            <ignores>
+		              <ignore>org.mule.module.intacct.schema.*</ignore>
+		            </ignores>
+		            <excludes>
+                      <exclude>org/mule/module/intacct/schema/**/*.class</exclude>
+                      <exclude>org/mule/module/intacct/schema/**/*Test.class</exclude>
+                    </excludes>
+		      	</instrumentation>
+		        </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
