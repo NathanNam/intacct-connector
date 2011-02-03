@@ -123,7 +123,18 @@
 		</intacct:execute-function>
 	</flow>
 	
-	<!-- <flow name="getListFlow">
+ 	<flow name="getFlow">
+ 	<intacct:get object="glaccount" key="1000" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+    <fields>
+        <field>title</field>
+        <field>normalbalance</field>
+    </fields>
+	</intacct:get>
+ 	
+</flow>
+	 
+	 
+	 <flow name="getListFlow">
 		<intacct:get_list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 					<filter>
 						<logical logical_operator="or">
@@ -155,7 +166,7 @@
 						<field>normalbalance</field>
 					</fields>
 		</intacct:get_list>
-	</flow> -->
+	</flow> 
 	
 	
 	<flow name="functionFlowWithExHandling">
