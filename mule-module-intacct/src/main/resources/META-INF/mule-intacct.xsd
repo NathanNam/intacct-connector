@@ -201,9 +201,15 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 		substitutionGroup="mule:abstract-message-processor" />
 
 	<xs:element name="aradjustmentitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Ar Adjustment items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:lineitem" maxOccurs="unbounded" />
+				<xs:element ref="tns:lineitem" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>Line Items</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -259,28 +265,55 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="asofdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The date from which to calculate the invoice’s age. If this argument is not supplied, the
+extract will use today’s date. The date should be formatted in the standard XML date format.
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="year" type="xs:string" />
-				<xs:element name="month" type="xs:string" />
-				<xs:element name="day" type="xs:string" />
+				<xs:element name="year" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Year</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="month" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Month</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="day" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Day</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="authentication">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The user authentication section contains the user's login information. One can include either the login
+information or the sessionid information.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="tns:login" />
-					<xs:element ref="tns:sessionid" />
+					<xs:element ref="tns:login" >
+						<xsd:annotation>
+							<xsd:documentation>The login information specifies the user's Intacct identity (userid), the user's company (companyid) the
+password (password). This is the same information you see when you log onto the Intacct system.
+</xsd:documentation></xsd:annotation></xs:element>
+					<xs:element ref="tns:sessionid" >
+						<xsd:annotation>
+							<xsd:documentation>A user can also specify a sessionid in lieu of a login information.</xsd:documentation></xsd:annotation></xs:element>
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="bankaccountid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>References to the Bank Account</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -309,13 +342,18 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="batchkey">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Reference to Batch</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="begindate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The begin date</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -359,7 +397,9 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="birthdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Birthdate</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -369,7 +409,10 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="category">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The category</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -598,10 +641,19 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="contactitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The contact item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:category" />
-				<xs:element ref="tns:contactname" />
+				<xs:element ref="tns:category" >
+					<xsd:annotation>
+						<xsd:documentation>The category</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:contactname" >
+					<xsd:annotation>
+						<xsd:documentation>Unique ID of the contact
+</xsd:documentation></xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -621,13 +673,19 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="contactname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the contact
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="content">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The content of the request</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:function" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -635,7 +693,10 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="control">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The part of the request that controls the comunication with the server.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="senderid" type="xs:string" />
 				<xs:element name="password" type="xs:string" />
@@ -939,7 +1000,10 @@ The vendor object represents a business partner from whom goods are purchased in
 		substitutionGroup="mule:abstract-message-processor" />
 
 	<xs:element name="customerid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the customer
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -980,7 +1044,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datecreated">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date Created</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -990,7 +1057,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datedue">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Due Date</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1000,7 +1070,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datefrom">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date Form</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1040,7 +1113,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datereceived">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Creation date of payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1277,13 +1353,23 @@ The location object represents a physical location or organizational unit in the
 		substitutionGroup="mule:abstract-message-processor" />
 
 	<xs:element name="deliveryoption">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Default Invoice & Statement Delivery
+preference
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="deliveryoptions">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Default Invoice & Statement Delivery
+preference
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:deliveryoption" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -1291,7 +1377,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="departmentid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Department</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1334,7 +1423,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="discount">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Terms for discount</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:discday" />
@@ -1391,13 +1483,20 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="employeeid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the employee</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="endaccountno">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The starting and ending account numbers to report balances. All
+accounts with account numbers falling in this range will be returned.
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1471,26 +1570,48 @@ The location object represents a physical location or organizational unit in the
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="tns:expensetype" />
-					<xs:element ref="tns:glaccountno" />
+					<xs:element ref="tns:expensetype" >
+						<xsd:annotation>
+							<xsd:documentation>Expense Type</xsd:documentation></xsd:annotation></xs:element>
+					<xs:element ref="tns:glaccountno" >
+						<xsd:annotation>
+							<xsd:documentation>GL Account Number</xsd:documentation></xsd:annotation></xs:element>
 				</xs:choice>
-				<xs:element name="amount" type="xs:string" />
+				<xs:element name="amount" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Amount</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="currency" type="xs:string" minOccurs="0" />
 				<xs:element name="trx_amount" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:exchratedate" minOccurs="0" />
 				<xs:element ref="tns:exchratetype" minOccurs="0" />
 				<xs:element ref="tns:exchrate" minOccurs="0" />
 				<xs:element ref="tns:expensedate" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
+				<xs:element name="memo" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Memo</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="form1099" type="xs:string" minOccurs="0" />
 				<xs:element name="paidfor" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Location</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Department</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:itemid" minOccurs="0" />
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
@@ -1509,15 +1630,23 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="expenses">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The expenses</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:expense" maxOccurs="unbounded" />
+				<xs:element ref="tns:expense" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>The expense</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="expensetype">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Expense Type ID</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1543,21 +1672,33 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="field">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The Field to get</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="fields">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The fields</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:field" maxOccurs="unbounded" />
+				<xs:element ref="tns:field" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>All the fields</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="filter">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The filter to do</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:logical" />
@@ -1643,7 +1784,10 @@ The location object represents a physical location or organizational unit in the
 	<xs:element name="glaccountno" type="tns:glaccountnoType" />
 
 	<xs:element name="glentry">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>An Entry for a Gl Transaction</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="trtype" type="xs:string" />
 				<xs:element name="amount" type="xs:string" />
@@ -1666,7 +1810,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="gltransactionentries">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Line Items</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="glentry" nillable="true" minOccurs="0"
 					maxOccurs="unbounded">
@@ -1698,7 +1844,11 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="ictransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:itemid" />
 				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
@@ -1720,7 +1870,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="ictransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:ictransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -1757,7 +1909,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itaxgroup">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation></xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="key" type="xs:string" minOccurs="0" />
 				<xs:element name="name" type="xs:string" minOccurs="0" />
@@ -1782,9 +1937,15 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itemdetails">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Item details</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:itemdetail" maxOccurs="unbounded" />
+				<xs:element ref="tns:itemdetail" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>Item detail</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1800,7 +1961,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itemid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Key to an icitem</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1869,13 +2032,19 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="locationid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique identifier of the location</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="logical">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>A logical operator</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="tns:logical" />
@@ -1889,14 +2058,33 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="login">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The login information specifies the user's Intacct identity (userid), the user's company (companyid) the
+password (password). This is the same information you see when you log onto the Intacct system.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="userid" type="xs:string" />
-				<xs:element name="companyid" type="xs:string" />
-				<xs:element name="password" type="xs:string" />
+				<xs:element name="userid" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The user id</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="companyid" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The company id</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="password" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The password</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="tns:clientid" />
-					<xs:element ref="tns:locationid" />
+					<xs:element ref="tns:clientid" >
+						<xsd:annotation>
+							<xsd:documentation>Client Id</xsd:documentation>
+						</xsd:annotation></xs:element>
+					<xs:element ref="tns:locationid" >
+						<xsd:annotation>
+							<xsd:documentation>Location Id</xsd:documentation>
+						</xsd:annotation></xs:element>
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -2000,7 +2188,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="operation">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>This block contains the Authentication, Content and Function Block</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:authentication" />
 				<xs:element name="preferences" nillable="true" minOccurs="0"
@@ -2075,13 +2266,19 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="paymentamount">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Amount of payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="paymentdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date of the payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -2126,7 +2323,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="payto">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The contact whom to pay</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:contact" />
@@ -2153,7 +2353,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="penalty">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Terms for penalty</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:pen_type" />
@@ -2188,7 +2391,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="penpercamn">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation></xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2203,7 +2409,8 @@ The location object represents a physical location or organizational unit in the
 
 	<xs:element name="personalinfo">
         <xsd:annotation>
-        	<xsd:documentation>Personal info of the employee</xsd:documentation>
+        	<xsd:documentation>Personal info of the employee.
+Contains either a contact or a reference to an existing contact via contactname</xsd:documentation>
         </xsd:annotation>
         <xs:complexType>
 			<xs:sequence>
@@ -2232,26 +2439,62 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="potransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:itemid" />
-				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
+				<xs:element ref="tns:itemid" >
+					<xsd:annotation>
+						<xsd:documentation>Key to an icitem</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="itemdesc" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item description</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="taxable" type="xs:string" minOccurs="0" />
 				<xs:element name="warehouseid" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="quantity" type="xs:string" />
-				<xs:element name="unit" type="xs:string" minOccurs="0" />
-				<xs:element name="price" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
+					minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to a warehouse</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="quantity" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Quantity of items</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="unit" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item unit of measure</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="price" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item cost</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="memo" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Memo</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:itemdetails" minOccurs="0" />
 				<xs:element name="form1099" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
 			</xs:sequence>
@@ -2259,7 +2502,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="potransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:potransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2329,7 +2575,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="productlineid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>ID of ProductLine this item belongs to</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2585,13 +2833,20 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="reportingperiodname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Reporting Period to which this budget
+item belongs
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="request" type="tns:requestType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>The request of intacct.</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="restricted_depts">
 		<xs:complexType>
@@ -2611,7 +2866,7 @@ The location object represents a physical location or organizational unit in the
 
 	<xs:element name="returnto">
         <xsd:annotation>
-        	<xsd:documentation>Return To</xsd:documentation>
+        	<xsd:documentation>Return To. Either a new contact or the contact name to reference an existing one</xsd:documentation>
         </xsd:annotation>
         <xs:complexType>
 			<xs:sequence>
@@ -2698,7 +2953,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sessionid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>A user can also specify a sessionid in lieu of a login information.</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2727,7 +2985,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sortfield">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Chosee the field to do the sorting.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="xs:string">
 					<xs:attribute name="order" type="xs:string" use="required" />
@@ -2737,7 +2998,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sorts">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The sorts</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:sortfield" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2745,24 +3009,51 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sotransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="bundlenumber" type="xs:string"
 					minOccurs="0" />
-				<xs:element ref="tns:itemid" />
-				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
+				<xs:element ref="tns:itemid" >
+					<xsd:annotation>
+						<xsd:documentation>Key to an icitem</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="itemdesc" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item Description</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="taxable" type="xs:string" minOccurs="0" />
 				<xs:element name="warehouseid" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="quantity" type="xs:string" />
-				<xs:element name="unit" type="xs:string" minOccurs="0" />
-				<xs:element name="price" type="xs:string" minOccurs="0" />
+					minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to a warehouse</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="quantity" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Quantity of items</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="unit" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item unit of measure</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="price" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item Price</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="discsurchargememo" type="xs:string"
 					minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:itemdetails" minOccurs="0" />
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+                <xs:element name="memo" type="xsd:string" minOccurs="0" >
+                	<xsd:annotation>
+                		<xsd:documentation>Memo</xsd:documentation>
+                	</xsd:annotation></xs:element>
+                <xs:element ref="tns:itemdetails" minOccurs="0" />
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="revrectemplate" type="xs:string"
 					minOccurs="0" />
@@ -2771,16 +3062,28 @@ The location object represents a physical location or organizational unit in the
 				<xs:element name="renewalmacro" type="xs:string"
 					minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="sotransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:sotransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2845,20 +3148,42 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="subtotal">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Subtotal Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="description" type="xs:string" />
-				<xs:element name="total" type="xs:string" />
-				<xs:element name="absval" type="xs:string" minOccurs="0" />
-				<xs:element name="percentval" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
+				<xs:element name="description" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Subtotal description</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="total" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="absval" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>The absolute subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="percentval" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>The percentage subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this
+subtotal is posted
+</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this
+subtotal is posted
+</xsd:documentation></xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="subtotals">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Subtotals line items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:subtotal" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2874,7 +3199,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="termname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Id of the term used in this document</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -3479,7 +3807,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="vendorid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
