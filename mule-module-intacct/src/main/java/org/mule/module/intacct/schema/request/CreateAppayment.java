@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"bankaccountid", "vendorid", "memo", "checkdate", "checkno", "billno",
+@XmlType(name = "create_appaymentType", propOrder = {"bankaccountid", "vendorid", "memo", "checkdate", "checkno", "billno",
     "payitems"})
 @XmlRootElement(name = "create_appayment")
 public class CreateAppayment

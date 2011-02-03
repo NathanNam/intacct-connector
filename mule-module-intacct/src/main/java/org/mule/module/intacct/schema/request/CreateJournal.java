@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"symbol", "title", "status", "externalid", "bookkey"})
+@XmlType(name = "create_journalType", propOrder = {"symbol", "title", "status", "externalid", "bookkey"})
 @XmlRootElement(name = "create_journal")
 public class CreateJournal
 {

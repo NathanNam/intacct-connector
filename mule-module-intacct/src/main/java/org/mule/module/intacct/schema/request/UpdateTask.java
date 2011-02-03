@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"taskname", "projectid", "pbegindate", "penddate", "itemid", "billable",
+@XmlType(name = "update_taskType", propOrder = {"taskname", "projectid", "pbegindate", "penddate", "itemid", "billable",
     "taskdescription", "ismilestone", "utilized", "priority", "taskno", "taskstatus", "parenttaskname",
     "budgetqty", "estqty", "taskresources", "customfields"})
 @XmlRootElement(name = "update_task")

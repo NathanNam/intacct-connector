@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"control", "operation"})
+@XmlType(name = "requestType", propOrder = {"control", "operation"})
 @XmlRootElement(name = "request")
 public class Request
 {

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"itemid", "name", "status", "itemtype", "enableBins", "extendedDescription",
+@XmlType(name = "create_itemType", propOrder = {"itemid", "name", "status", "itemtype", "enableBins", "extendedDescription",
     "productlineid", "substituteid", "shipWeight", "datelastsold", "datelastrecvd", "taxable", "costMethod",
     "standardCost", "averageCost", "basePrice", "standardUnit", "purchaseUnit", "purchaseUnitFactor",
     "salesUnit", "salesUnitFactor", "defaultWarehouse", "glgroup", "note", "inventoryPrecision",

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "get_aradjustmentType")
 @XmlRootElement(name = "get_aradjustment")
 public class GetAradjustment
 {

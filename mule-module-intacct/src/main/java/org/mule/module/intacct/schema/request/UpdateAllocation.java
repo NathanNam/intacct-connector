@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"description", "status", "allocateby", "allocateto", "docnumber",
+@XmlType(name = "update_allocationType", propOrder = {"description", "status", "allocateby", "allocateto", "docnumber",
     "supdocid", "updateallocationentry"})
 @XmlRootElement(name = "update_allocation")
 public class UpdateAllocation

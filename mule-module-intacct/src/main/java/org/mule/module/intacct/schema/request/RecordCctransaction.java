@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"chargecardid", "paymentdate", "referenceno", "payee", "description",
+@XmlType(name = "record_cctransactionType", propOrder = {"chargecardid", "paymentdate", "referenceno", "payee", "description",
     "ccpayitems"})
 @XmlRootElement(name = "record_cctransaction")
 public class RecordCctransaction

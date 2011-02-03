@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"id", "name", "members"})
+@XmlType(name = "create_locationgroupType", propOrder = {"id", "name", "members"})
 @XmlRootElement(name = "create_locationgroup")
 public class CreateLocationgroup
 {

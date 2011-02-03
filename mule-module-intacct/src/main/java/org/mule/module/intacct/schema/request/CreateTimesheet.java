@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"employeeid", "begindate", "timesheetdescription", "timesheetitems"})
+@XmlType(name = "create_timesheetType", propOrder = {"employeeid", "begindate", "timesheetdescription", "timesheetitems"})
 @XmlRootElement(name = "create_timesheet")
 public class CreateTimesheet
 {

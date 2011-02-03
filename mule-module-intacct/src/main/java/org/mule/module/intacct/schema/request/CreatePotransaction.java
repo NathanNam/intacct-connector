@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"transactiontype", "datecreated", "createdfrom", "vendorid", "documentno",
+@XmlType(name = "create_potransactionType", propOrder = {"transactiontype", "datecreated", "createdfrom", "vendorid", "documentno",
     "referenceno", "vendordocno", "termname", "datedue", "message", "shippingmethod", "returnto", "payto",
     "externalid", "basecurr", "currency", "exchratedateOrExchratetypeOrExchrate", "customfields",
     "potransitems", "subtotals"})

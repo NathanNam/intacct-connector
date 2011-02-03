@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"companytype"})
+@XmlType(name = "get_myclientsType", propOrder = {"companytype"})
 @XmlRootElement(name = "get_myclients")
 public class GetMyclients
 {

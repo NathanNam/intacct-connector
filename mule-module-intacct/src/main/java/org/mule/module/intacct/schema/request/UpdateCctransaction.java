@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"paymentdate", "referenceno", "payee", "description", "updateccpayitems"})
+@XmlType(name = "update_cctransactionType", propOrder = {"paymentdate", "referenceno", "payee", "description", "updateccpayitems"})
 @XmlRootElement(name = "update_cctransaction")
 public class UpdateCctransaction
 {

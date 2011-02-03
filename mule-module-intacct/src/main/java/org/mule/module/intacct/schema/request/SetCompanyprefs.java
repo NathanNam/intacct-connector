@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"companyprefs"})
+@XmlType(name = "set_companyprefsType", propOrder = {"companyprefs"})
 @XmlRootElement(name = "set_companyprefs")
 public class SetCompanyprefs
 {

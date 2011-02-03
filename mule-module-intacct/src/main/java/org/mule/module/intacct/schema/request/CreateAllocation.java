@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"allocationid", "description", "status", "allocateby", "allocateto",
+@XmlType(name = "create_allocationType", propOrder = {"allocationid", "description", "status", "allocateby", "allocateto",
     "docnumber", "supdocid", "allocationentry"})
 @XmlRootElement(name = "create_allocation")
 public class CreateAllocation

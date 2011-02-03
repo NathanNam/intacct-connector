@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"wucctransactions"})
+@XmlType(name = "record_wucctransactionsType", propOrder = {"wucctransactions"})
 @XmlRootElement(name = "record_wucctransactions")
 public class RecordWucctransactions
 {

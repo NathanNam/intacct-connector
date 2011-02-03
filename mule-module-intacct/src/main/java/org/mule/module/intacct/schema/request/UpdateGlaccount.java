@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"title", "normalbalance", "accounttype", "closingtype", "closingaccountno",
+@XmlType(name = "update_glaccountType", propOrder = {"title", "normalbalance", "accounttype", "closingtype", "closingaccountno",
     "status", "requiredept", "requireloc", "requireproject", "requirecustomer", "requirevendor",
     "requireitem", "requireemployee", "requireclass", "taxable", "customfields", "category", "taxcode",
     "mrccode"})

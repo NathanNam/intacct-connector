@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"title", "status"})
+@XmlType(name = "delete_statjournalType", propOrder = {"title", "status"})
 @XmlRootElement(name = "delete_statjournal")
 public class DeleteStatjournal
 {

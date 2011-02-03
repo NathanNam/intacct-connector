@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"name", "description", "status", "due", "discount", "penalty"})
+@XmlType(name = "create_aptermType", propOrder = {"name", "description", "status", "due", "discount", "penalty"})
 @XmlRootElement(name = "create_apterm")
 public class CreateApterm
 {

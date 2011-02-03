@@ -38,7 +38,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
     }
     
     
-    public void testGetListEvent() throws Exception
+    /*public void testGetListEvent() throws Exception
     {
         final Map<String, String> payload = new HashMap<String, String>();
         payload.put("key", "1234");
@@ -48,7 +48,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
         
-    }
+    }*/
     public void testSendMessageFunctionToFlow() throws Exception
     {
         /*

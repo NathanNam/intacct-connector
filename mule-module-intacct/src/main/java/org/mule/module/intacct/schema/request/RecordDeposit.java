@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"bankaccountid", "depositdate", "depositid", "receiptsOrReceiptkeys",
+@XmlType(name = "record_depositType", propOrder = {"bankaccountid", "depositdate", "depositid", "receiptsOrReceiptkeys",
     "description"})
 @XmlRootElement(name = "record_deposit")
 public class RecordDeposit

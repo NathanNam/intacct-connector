@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"territoryid", "name", "parentid", "managerid", "status", "externalid",
+@XmlType(name = "create_territoryType", propOrder = {"territoryid", "name", "parentid", "managerid", "status", "externalid",
     "customfields"})
 @XmlRootElement(name = "create_territory")
 public class CreateTerritory

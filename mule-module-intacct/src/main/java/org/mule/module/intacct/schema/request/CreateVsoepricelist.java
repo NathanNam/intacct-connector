@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"name", "description", "status", "isdefault"})
+@XmlType(name = "create_vsoepricelistType", propOrder = {"name", "description", "status", "isdefault"})
 @XmlRootElement(name = "create_vsoepricelist")
 public class CreateVsoepricelist
 {
