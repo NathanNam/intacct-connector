@@ -198,12 +198,21 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="apply_arpayment" type="tns:apply_arpaymentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Applys an arpayment. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="aradjustmentitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Ar Adjustment items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:lineitem" maxOccurs="unbounded" />
+				<xs:element ref="tns:lineitem" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>Line Items</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -259,28 +268,55 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="asofdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The date from which to calculate the invoice’s age. If this argument is not supplied, the
+extract will use today’s date. The date should be formatted in the standard XML date format.
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="year" type="xs:string" />
-				<xs:element name="month" type="xs:string" />
-				<xs:element name="day" type="xs:string" />
+				<xs:element name="year" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Year</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="month" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Month</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="day" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The Day</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="authentication">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The user authentication section contains the user's login information. One can include either the login
+information or the sessionid information.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="tns:login" />
-					<xs:element ref="tns:sessionid" />
+					<xs:element ref="tns:login" >
+						<xsd:annotation>
+							<xsd:documentation>The login information specifies the user's Intacct identity (userid), the user's company (companyid) the
+password (password). This is the same information you see when you log onto the Intacct system.
+</xsd:documentation></xsd:annotation></xs:element>
+					<xs:element ref="tns:sessionid" >
+						<xsd:annotation>
+							<xsd:documentation>A user can also specify a sessionid in lieu of a login information.</xsd:documentation></xsd:annotation></xs:element>
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="bankaccountid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>References to the Bank Account</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -309,13 +345,18 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="batchkey">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Reference to Batch</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="begindate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The begin date</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -359,7 +400,9 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="birthdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Birthdate</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -369,7 +412,10 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="category">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The category</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -598,10 +644,19 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="contactitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The contact item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:category" />
-				<xs:element ref="tns:contactname" />
+				<xs:element ref="tns:category" >
+					<xsd:annotation>
+						<xsd:documentation>The category</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:contactname" >
+					<xsd:annotation>
+						<xsd:documentation>Unique ID of the contact
+</xsd:documentation></xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -621,13 +676,19 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="contactname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the contact
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="content">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The content of the request</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:function" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -635,7 +696,10 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="control">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The part of the request that controls the comunication with the server.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="senderid" type="xs:string" />
 				<xs:element name="password" type="xs:string" />
@@ -649,7 +713,11 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 	</xs:element>
 
 	<xs:element name="create_allocation" type="tns:create_allocationType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an allocation.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="create_apaccountlabel" type="tns:create_apaccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -660,16 +728,28 @@ The AP Account Label is used to specify the product being purchased, when creati
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_apadjustment" type="tns:create_apadjustmentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to create a new AP Adjustment. The batch can optionally be specified in the AP Adjustment, or by using the Set Current AP Adjustment Batch API, or by using the Create AP Adjustment Batch API. Alternatively, autobatching can be used to create an automatic batch, based the AP Module Preferences. See the section on autobatching for more information.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_apadjustmentbatch" type="tns:create_apadjustmentbatchType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to create a new AP Adjustment Batch. The create_apadjustment function can be optionally nested inside, to simultaneously create new adjustments.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_appayment" type="tns:create_appaymentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an appayment. An AP Payment represents a payment to a vendor which is applied to outstanding bills. Intacct XML allows developers to extract AP Payment records using the get_list method.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_apterm" type="tns:create_aptermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an apterm. An AP Term defines conditions for payment of a bill in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AP term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_araccountlabel" type="tns:create_araccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -704,13 +784,15 @@ The AR Account Label is used to specify the product being sold, when creating AR
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_arterm" type="tns:create_artermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an arterm. An AR Term defines conditions for payment of an invoice in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AR term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_bill" type="tns:create_billType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>Creates a bill
-This API allows you to create a new Bill. The batch can optionally be specified in the Bill, or by using the Set Current Bill Batch API, or by using the Create Bill Batch API. Alternatively, autobatching can be used to create an automatic batch, based the AP Module Preferences. See the section on autobatching for more information.
+			<xsd:documentation>This API allows you to create a new Bill. The batch can optionally be specified in the Bill, or by using the Set Current Bill Batch API, or by using the Create Bill Batch API. Alternatively, autobatching can be used to create an automatic batch, based the AP Module Preferences. See the section on autobatching for more information.
 </xsd:documentation>
 		</xsd:annotation></xs:element>
 
@@ -718,10 +800,14 @@ This API allows you to create a new Bill. The batch can optionally be specified 
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>This API allows you to create a new Bill Batch. The create_bill function can be optionally nested inside, to simultaneously create new bills.
-</xsd:documentation></xsd:annotation></xs:element>
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="create_checkingaccount">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Creates a checkingaccount.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:bankaccountid" />
 				<xs:element name="bankaccountno" type="xs:string"
@@ -754,7 +840,10 @@ This API allows you to create a new Bill. The batch can optionally be specified 
 	</xs:element>
 
 	<xs:element name="create_class" type="tns:create_classType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a class.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_contact" type="tns:create_contactType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -765,7 +854,10 @@ The contact object represents generic contact and address information in the sys
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_contacttaxgroup" type="tns:create_contacttaxgroupType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a contacttaxgroup.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_customer" type="tns:create_customerType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -776,13 +868,22 @@ The customer object represents a business partner to whom goods are sold in the 
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_customerachinfo" type="tns:create_customerachinfoType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a customerachinfo.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_customerbankaccount" type="tns:create_customerbankaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a customerbankaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_customerchargecard" type="tns:create_customerchargecardType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a customerchargecard.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_department" type="tns:create_departmentType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -801,22 +902,43 @@ The employee object represents an employee in the Intacct system. The employee l
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_expensereport" type="tns:create_expensereportType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to create a new Expense Report. The batch can optionally be specified in the Expense Report, or by using the Set Current Expense Report Batch API, or by using the Create Expense Report Batch API. Alternatively, autobatching can be used to create an automatic batch, based the EE Module Preferences. See the section on autobatching for more information.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="create_expensereportbatch" type="tns:create_expensereportbatchType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to create a new Expense Report Batch. The create_expensereport function can be optionally nested inside, to simultaneously create new expense reports.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_expensetype" type="tns:create_expensetypeType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an expensetype.
+
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="create_glaccount" type="tns:create_glaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a glaccount. The GL Account object represents a General Ledger financial account in the Intacct system. The size of the main and sub accounts, as well as the separator between the main- and sub-accounts are determined at company creation time. The format of the GL account specified in the following APIs must adhere to the format defined in the company settings
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_gltransaction" type="tns:create_gltransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a gltransaction. A GL Transaction represents a batch of journal entries in the Intacct system.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_ictransaction" type="tns:create_ictransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Using the create_ictransaction function, you can create an Inventory application transaction. The transactiontype element is required to define the document type. The response document from a create_ictransaction will contain a ‘key’ element containing the system generated transactionid.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_invoice" type="tns:create_invoiceType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -833,16 +955,29 @@ The employee object represents an employee in the Intacct system. The employee l
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_invpricelistentry" type="tns:create_invpricelistentryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an invpricelistentry.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_item" type="tns:create_itemType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an item.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_itemtaxgroup" type="tns:create_itemtaxgroupType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates an itemtaxgroup.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_journal" type="tns:create_journalType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a journal. The Journal object represents a General Ledger Journal in the Intacct system
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="create_location" type="tns:create_locationType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -853,76 +988,148 @@ The location object represents a physical location or organizational unit in the
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_locationgroup" type="tns:create_locationgroupType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a locationgroup.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_paymentrequest" type="tns:create_paymentrequestType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a paymentrequest.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_popricelist" type="tns:create_popricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a popricelist. A POPriceList contains prices for ICItems contained in the list. IntacctXML supports getting the list of POPriceLists using the get_list function.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_potransaction" type="tns:create_potransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Using the create_potransaction function, you can create a purchasing application transaction. The transactiontype element is required to define the document type. The response document from a create_potransaction will contain a ‘key’ element containing the system-generated transactionid.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_project" type="tns:create_projectType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a project.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_recurringbill" type="tns:create_recurringbillType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a recurringbill.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_recurringgltransaction" type="tns:create_recurringgltransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a recurringgltransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_recurringinvoice" type="tns:create_recurringinvoiceType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a recurringinvoice.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_recurringstatgltrans" type="tns:create_recurringstatgltransType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a recurringstatgltrans.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_recursotransaction" type="tns:create_recursotransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a recursotransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_savingsaccount" type="tns:create_savingsaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a savingsaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_sopricelist" type="tns:create_sopricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a sopricelist. A SOPriceList contains prices for ICItems. IntacctXML supports getting the list of SOPriceLists using the get_list function.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_sotransaction" type="tns:create_sotransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Using the create_sotransaction function, you can create an order entry application transaction. The  transactiontype element is required to define the document type. The response document from a create_sotransaction will contain a ‘key’ element containing the system-generated transactionid.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_statglaccount" type="tns:create_statglaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a statglaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_statgltransaction" type="tns:create_statgltransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a statgltransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_statjournal" type="tns:create_statjournalType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a statjournal.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_stkittransaction" type="tns:create_stkittransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a stkittransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_task" type="tns:create_taskType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a task.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_taxdetail" type="tns:create_taxdetailType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a taxdetail.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_taxschedule" type="tns:create_taxscheduleType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a taxschedule.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_taxscheduledetail" type="tns:create_taxscheduledetailType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a taxscheduledetail.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_taxschedulemap" type="tns:create_taxschedulemapType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a taxschedulemap.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_territory" type="tns:create_territoryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a territory.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_timesheet" type="tns:create_timesheetType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a timesheet.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_vendor" type="tns:create_vendorType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -933,13 +1140,22 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:annotation></xs:element>
 
 	<xs:element name="create_vsoeitempricelist" type="tns:create_vsoeitempricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a vsoeitempricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create_vsoepricelist" type="tns:create_vsoepricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Creates a vsoepricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="customerid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the customer
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -980,7 +1196,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datecreated">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date Created</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -990,7 +1209,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datedue">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Due Date</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1000,7 +1222,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datefrom">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date Form</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1040,7 +1265,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="datereceived">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Creation date of payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -1070,7 +1298,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="delete_allocation" type="tns:delete_allocationType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an allocation.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_apaccountlabel" type="tns:delete_apaccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1081,10 +1312,16 @@ The AP Account Label is used to specify the product being purchased, when creati
 		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_apadjustment" type="tns:delete_apadjustmentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to delete an AP Adjustment. Only open adjustments can be deleted.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_apterm" type="tns:delete_aptermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an apterm. An AP Term defines conditions for payment of a bill in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AP term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_araccountlabel" type="tns:delete_araccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1101,19 +1338,34 @@ The AR Account Label is used to specify the product being sold, when creating AR
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_arpayment" type="tns:delete_arpaymentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an arpayment. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_arterm" type="tns:delete_artermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an arterm. An AR Term defines conditions for payment of an invoice in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AR term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_bill" type="tns:delete_billType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to delete a Bill. Only unpaid bills can be deleted.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_checkingaccount" type="tns:delete_checkingaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a checkingaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_class" type="tns:delete_classType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a class.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_contact" type="tns:delete_contactType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1124,7 +1376,11 @@ The contact object represents generic contact and address information in the sys
 		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_contacttaxgroup" type="tns:delete_contacttaxgroupType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a contacttaxgroup.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_customer" type="tns:delete_customerType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1135,13 +1391,22 @@ The customer object represents a business partner to whom goods are sold in the 
 		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_customerachinfo" type="tns:delete_customerachinfoType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a customerachinfo.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_customerbankaccount" type="tns:delete_customerbankaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a customerbankaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_customerchargecard" type="tns:delete_customerchargecardType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a customerchargecard.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_department" type="tns:delete_departmentType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1160,19 +1425,35 @@ The employee object represents an employee in the Intacct system. The employee l
 		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_expensereport" type="tns:delete_expensereportType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to delete an Expense Report. Only unpaid expense reports can be deleted.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_expensetype" type="tns:delete_expensetypeType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an expensetype.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_glaccount" type="tns:delete_glaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a glaccount. The GL Account object represents a General Ledger financial account in the Intacct system. The size of the main and sub accounts, as well as the separator between the main- and sub-accounts are determined at company creation time. The format of the GL account specified in the following APIs must adhere to the format defined in the company settings
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_gltransaction" type="tns:delete_gltransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a gltransaction. A GL Transaction represents a batch of journal entries in the Intacct system.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_ictransaction" type="tns:delete_ictransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an ictransaction. An ICTransaction represents any transactional document created in the Inventory Control application. Each document in the Inventory Control application is user definable; there are no statically defined document types. When querying ICTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘receiver.’ By setting the transactiontype field equal to ‘receiver’ in the get_list function, the query will return only ‘receiver’ documents. For a complete schema diagram of the ICTransaction and related objects, see Appendix A: Application Schemata
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_invoice" type="tns:delete_invoiceType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1181,16 +1462,28 @@ The employee object represents an employee in the Intacct system. The employee l
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_invpricelistentry" type="tns:delete_invpricelistentryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an invpricelistentry.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_item" type="tns:delete_itemType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an item.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_itemtaxgroup" type="tns:delete_itemtaxgroupType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes an itemtaxgroup.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_journal" type="tns:delete_journalType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a journal. The Journal object represents a General Ledger Journal in the Intacct system
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_location" type="tns:delete_locationType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1201,89 +1494,172 @@ The location object represents a physical location or organizational unit in the
 		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_paymentrequest" type="tns:delete_paymentrequestType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a paymentrequest.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_popricelist" type="tns:delete_popricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a popricelist. A POPriceList contains prices for ICItems contained in the list. IntacctXML supports getting the list of POPriceLists using the get_list function.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_potransaction" type="tns:delete_potransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a potransaction. An POTransaction represents any transactional document created in the Purchasing application. Each document in the Purchasing application is user definable; there are no statically defined document types. When querying POTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘purchaseorder.’ Setting the transactiontype field equal to ‘purchaseorder’ in the get_list function will cause the query to return only ‘purchaseorder’ documents.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_project" type="tns:delete_projectType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a project.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_recurringbill" type="tns:delete_recurringbillType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a recurringbill.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_recurringgltransaction" type="tns:delete_recurringgltransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a recurringgltransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_recurringinvoice" type="tns:delete_recurringinvoiceType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a recurringinvoice.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_recurringstatgltrans" type="tns:delete_recurringstatgltransType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a recurringstatgltrans.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_recursotransaction" type="tns:delete_recursotransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a recursotransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_savingsaccount" type="tns:delete_savingsaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a savingsaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_sopricelist" type="tns:delete_sopricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a sopricelist. A SOPriceList contains prices for ICItems. IntacctXML supports getting the list of SOPriceLists using the get_list function.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_sotransaction" type="tns:delete_sotransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a sotransaction. An SOTransaction represents any transactional document created in the Order Entry application. Each document in the Order Entry application is user definable; there are no statically defined document types. When querying SOTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘salesorder.’ Setting the transactiontype field equal to ‘salesorder’ in the get_list function will cause the query to return only ‘salesorder’ documents.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_statglaccount" type="tns:delete_statglaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a statglaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_statjournal" type="tns:delete_statjournalType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a statjournal.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_task" type="tns:delete_taskType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a task.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_taxdetail" type="tns:delete_taxdetailType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a taxdetail.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_taxschedule" type="tns:delete_taxscheduleType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a taxschedule.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_taxscheduledetail" type="tns:delete_taxscheduledetailType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a taxscheduledetail.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_taxschedulemap" type="tns:delete_taxschedulemapType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a taxschedulemap.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="delete_territory" type="tns:delete_territoryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a territory.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_timesheet">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Deletes a timesheet.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence />
 			<xs:attribute name="key" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="delete_vendor" type="tns:delete_vendorType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a vendor. The vendor object represents a business partner from whom goods are purchased in the Intacct system.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_vsoeitempricelist" type="tns:delete_vsoeitempricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a vsoeitempricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="delete_vsoepricelist" type="tns:delete_vsoepricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Deletes a vsoepricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="deliveryoption">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Default Invoice & Statement Delivery
+preference
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="deliveryoptions">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Default Invoice & Statement Delivery
+preference
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:deliveryoption" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -1291,7 +1667,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="departmentid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Department</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1334,7 +1713,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="discount">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Terms for discount</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:discday" />
@@ -1391,13 +1773,20 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="employeeid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique ID of the employee</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="endaccountno">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The starting and ending account numbers to report balances. All
+accounts with account numbers falling in this range will be returned.
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1471,26 +1860,48 @@ The location object represents a physical location or organizational unit in the
 		<xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="tns:expensetype" />
-					<xs:element ref="tns:glaccountno" />
+					<xs:element ref="tns:expensetype" >
+						<xsd:annotation>
+							<xsd:documentation>Expense Type</xsd:documentation></xsd:annotation></xs:element>
+					<xs:element ref="tns:glaccountno" >
+						<xsd:annotation>
+							<xsd:documentation>GL Account Number</xsd:documentation></xsd:annotation></xs:element>
 				</xs:choice>
-				<xs:element name="amount" type="xs:string" />
+				<xs:element name="amount" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Amount</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="currency" type="xs:string" minOccurs="0" />
 				<xs:element name="trx_amount" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:exchratedate" minOccurs="0" />
 				<xs:element ref="tns:exchratetype" minOccurs="0" />
 				<xs:element ref="tns:exchrate" minOccurs="0" />
 				<xs:element ref="tns:expensedate" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
+				<xs:element name="memo" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Memo</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="form1099" type="xs:string" minOccurs="0" />
 				<xs:element name="paidfor" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Location</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Department</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique id of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:itemid" minOccurs="0" />
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
@@ -1509,15 +1920,23 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="expenses">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The expenses</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:expense" maxOccurs="unbounded" />
+				<xs:element ref="tns:expense" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>The expense</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="expensetype">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Expense Type ID</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1543,21 +1962,33 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="field">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>The Field to get</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="fields">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The fields</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:field" maxOccurs="unbounded" />
+				<xs:element ref="tns:field" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>All the fields</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="filter">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The filter to do</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:logical" />
@@ -1584,19 +2015,34 @@ The location object represents a physical location or organizational unit in the
 		substitutionGroup="mule:abstract-message-processor" />
 
 	<xs:element name="get_accountbalances" type="tns:get_accountbalancesType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Using the get_accountbalances function, you can retrieve the account balances for specified GL accounts for a given time period. The time can be defined either by a reporting period, or by specifying start and end dates. The range of accounts can be specified by either a glaccount range, or a single account, or an account group. You can also choose whether to display zero balances, for accounts with no activity in the specified period.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_accountgroupdetails" type="tns:get_accountgroupdetailsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an accountgroupdetails.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_apadjustment" type="tns:get_apadjustmentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an apadjustment. An AP Adjustment is a document within the Intacct system. The AP Adjustment represents an adjustment to the customer’s account, with or without reference to an existing invoice. Generally, the AP Adjustment is an internal document, not an invoice, and therefore does not have a due date.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_applications" type="tns:get_applicationsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an applications.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_aradjustment" type="tns:get_aradjustmentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an aradjustment. An AR Adjustment is a document within the Intacct system. The AR Adjustment represents an adjustment to the customer’s account, with or without reference to an existing invoice. Generally, the AR Adjustment is an internal document, not an invoice, and therefore does not have a due date.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_araging" type="tns:get_aragingType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -1605,34 +2051,64 @@ The location object represents a physical location or organizational unit in the
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_bill" type="tns:get_billType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets a bill. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_closedbooksdate" type="tns:get_closedbooksdateType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets a closedbooksdate.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_companyprefs" type="tns:get_companyprefsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets a companyprefs.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_expensereport" type="tns:get_expensereportType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an expensereport. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_icitemtotals" type="tns:get_icitemtotalsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an icitemtotals.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_invoice" type="tns:get_invoiceType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets an invoice. An invoice is a document within the Intacct system. The invoice represents a transaction between the company and a customer.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_list" type="tns:get_listType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets a list.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_myclients" type="tns:get_myclientsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Gets a myclients.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_salestotals" type="tns:get_salestotalsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Sales totals can be retrieved from the Order Entry application using the get_salestotals function. This function queries sales totals based on a customerid and, optionally, date filters. The function allows a filtered date range to be specified by either a reportingperiod or a startdate and enddate.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="get_trialbalance" type="tns:get_trialbalanceType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Using the get_trialbalance function, you can retrieve the account balances for your entire chart of accounts for a given time period. The time can be defined either by a reporting period, or by specifying start and end dates. You can also choose whether to display zero balances, for accounts with no activity in the specified period.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="glaccountkey">
 		<xs:simpleType>
@@ -1643,7 +2119,10 @@ The location object represents a physical location or organizational unit in the
 	<xs:element name="glaccountno" type="tns:glaccountnoType" />
 
 	<xs:element name="glentry">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>An Entry for a Gl Transaction</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="trtype" type="xs:string" />
 				<xs:element name="amount" type="xs:string" />
@@ -1666,7 +2145,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="gltransactionentries">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Line Items</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="glentry" nillable="true" minOccurs="0"
 					maxOccurs="unbounded">
@@ -1698,7 +2179,11 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="ictransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items
+</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:itemid" />
 				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
@@ -1720,7 +2205,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="ictransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:ictransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -1728,7 +2215,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="init_session" type="tns:init_sessionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Inits a session.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="interestearnedaccountlabel">
 		<xs:simpleType>
@@ -1757,7 +2247,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itaxgroup">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation></xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="key" type="xs:string" minOccurs="0" />
 				<xs:element name="name" type="xs:string" minOccurs="0" />
@@ -1782,9 +2275,15 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itemdetails">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Item details</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:itemdetail" maxOccurs="unbounded" />
+				<xs:element ref="tns:itemdetail" maxOccurs="unbounded" >
+					<xsd:annotation>
+						<xsd:documentation>Item detail</xsd:documentation>
+					</xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -1800,7 +2299,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="itemid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Key to an icitem</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -1869,13 +2370,19 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="locationid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique identifier of the location</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="logical">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>A logical operator</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="tns:logical" />
@@ -1889,14 +2396,33 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="login">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The login information specifies the user's Intacct identity (userid), the user's company (companyid) the
+password (password). This is the same information you see when you log onto the Intacct system.
+</xsd:documentation></xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="userid" type="xs:string" />
-				<xs:element name="companyid" type="xs:string" />
-				<xs:element name="password" type="xs:string" />
+				<xs:element name="userid" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The user id</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="companyid" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The company id</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="password" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>The password</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="tns:clientid" />
-					<xs:element ref="tns:locationid" />
+					<xs:element ref="tns:clientid" >
+						<xsd:annotation>
+							<xsd:documentation>Client Id</xsd:documentation>
+						</xsd:annotation></xs:element>
+					<xs:element ref="tns:locationid" >
+						<xsd:annotation>
+							<xsd:documentation>Location Id</xsd:documentation>
+						</xsd:annotation></xs:element>
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -2000,7 +2526,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="operation">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>This block contains the Authentication, Content and Function Block</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:authentication" />
 				<xs:element name="preferences" nillable="true" minOccurs="0"
@@ -2075,13 +2604,19 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="paymentamount">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Amount of payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="paymentdate">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Date of the payment</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
 				<xs:element name="month" type="xs:string" />
@@ -2126,7 +2661,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="payto">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The contact whom to pay</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:contact" />
@@ -2153,7 +2691,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="penalty">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Terms for penalty</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
 					<xs:element ref="tns:pen_type" />
@@ -2188,7 +2729,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="penpercamn">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation></xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2203,7 +2747,8 @@ The location object represents a physical location or organizational unit in the
 
 	<xs:element name="personalinfo">
         <xsd:annotation>
-        	<xsd:documentation>Personal info of the employee</xsd:documentation>
+        	<xsd:documentation>Personal info of the employee.
+Contains either a contact or a reference to an existing contact via contactname</xsd:documentation>
         </xsd:annotation>
         <xs:complexType>
 			<xs:sequence>
@@ -2232,26 +2777,62 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="potransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element ref="tns:itemid" />
-				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
+				<xs:element ref="tns:itemid" >
+					<xsd:annotation>
+						<xsd:documentation>Key to an icitem</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="itemdesc" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item description</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="taxable" type="xs:string" minOccurs="0" />
 				<xs:element name="warehouseid" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="quantity" type="xs:string" />
-				<xs:element name="unit" type="xs:string" minOccurs="0" />
-				<xs:element name="price" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
+					minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to a warehouse</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="quantity" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Quantity of items</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="unit" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item unit of measure</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="price" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item cost</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="memo" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Memo</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element ref="tns:itemdetails" minOccurs="0" />
 				<xs:element name="form1099" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
 			</xs:sequence>
@@ -2259,7 +2840,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="potransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:potransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2329,7 +2913,9 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="productlineid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>ID of ProductLine this item belongs to</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2424,10 +3010,16 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="reclassify_bill" type="tns:reclassify_billType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reclassifys a bill. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="reclassify_invoice" type="tns:reclassify_invoiceType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reclassifys an invoice. An invoice is a document within the Intacct system. The invoice represents a transaction between the company and a customer.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="reclassifyitems">
 		<xs:complexType>
@@ -2470,31 +3062,60 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="reconcile_bank" type="tns:reconcile_bankType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reconciles a bank.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_cctransaction" type="tns:record_cctransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a cctransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_deposit" type="tns:record_depositType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a deposit.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_otherreceipt" type="tns:record_otherreceiptType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records an otherreceipt.
+
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="record_wuadjjournalentries" type="tns:record_wuadjjournalentriesType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a wuadjjournalentries.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_wucctransactions" type="tns:record_wucctransactionsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a wucctransactions.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_wudisbursements" type="tns:record_wudisbursementsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a wudisbursements.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_wujournalentries" type="tns:record_wujournalentriesType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a wujournalentries.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="record_wureceipts" type="tns:record_wureceiptsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Records a wureceipts.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="recpaydate">
 		<xs:complexType>
@@ -2585,13 +3206,20 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="reportingperiodname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Reporting Period to which this budget
+item belongs
+</xsd:documentation></xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="request" type="tns:requestType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>The request of intacct.</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="restricted_depts">
 		<xs:complexType>
@@ -2611,7 +3239,7 @@ The location object represents a physical location or organizational unit in the
 
 	<xs:element name="returnto">
         <xsd:annotation>
-        	<xsd:documentation>Return To</xsd:documentation>
+        	<xsd:documentation>Return To. Either a new contact or the contact name to reference an existing one</xsd:documentation>
         </xsd:annotation>
         <xs:complexType>
 			<xs:sequence>
@@ -2641,13 +3269,22 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="reverse_appayment" type="tns:reverse_appaymentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reverses an appayment. An AP Payment represents a payment to a vendor which is applied to outstanding bills. Intacct XML allows developers to extract AP Payment records using the get_list method.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="reverse_bill" type="tns:reverse_billType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reverses a bill. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="reverse_cctransaction" type="tns:reverse_cctransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Reverses a cctransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="revrecenddate">
 		<xs:complexType>
@@ -2698,13 +3335,19 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sessionid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>A user can also specify a sessionid in lieu of a login information.</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
 
 	<xs:element name="set_companyprefs" type="tns:set_companyprefsType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Sets a companyprefs.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="shipto">
         <xsd:annotation>
@@ -2727,7 +3370,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sortfield">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Chosee the field to do the sorting.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="xs:string">
 					<xs:attribute name="order" type="xs:string" use="required" />
@@ -2737,7 +3383,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sorts">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>The sorts</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:sortfield" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2745,24 +3394,51 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="sotransitem">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element name="bundlenumber" type="xs:string"
 					minOccurs="0" />
-				<xs:element ref="tns:itemid" />
-				<xs:element name="itemdesc" type="xs:string" minOccurs="0" />
+				<xs:element ref="tns:itemid" >
+					<xsd:annotation>
+						<xsd:documentation>Key to an icitem</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="itemdesc" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item Description</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="taxable" type="xs:string" minOccurs="0" />
 				<xs:element name="warehouseid" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="quantity" type="xs:string" />
-				<xs:element name="unit" type="xs:string" minOccurs="0" />
-				<xs:element name="price" type="xs:string" minOccurs="0" />
+					minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to a warehouse</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element name="quantity" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Quantity of items</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="unit" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item unit of measure</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="price" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Item Price</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="discsurchargememo" type="xs:string"
 					minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
-				<xs:element name="memo" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:itemdetails" minOccurs="0" />
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this subtotal is posted</xsd:documentation>
+					</xsd:annotation></xs:element>
+                <xs:element name="memo" type="xsd:string" minOccurs="0" >
+                	<xsd:annotation>
+                		<xsd:documentation>Memo</xsd:documentation>
+                	</xsd:annotation></xs:element>
+                <xs:element ref="tns:itemdetails" minOccurs="0" />
 				<xs:element ref="tns:customfields" minOccurs="0" />
 				<xs:element name="revrectemplate" type="xs:string"
 					minOccurs="0" />
@@ -2771,16 +3447,28 @@ The location object represents a physical location or organizational unit in the
 				<xs:element name="renewalmacro" type="xs:string"
 					minOccurs="0" />
 				<xs:element name="projectid" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:customerid" minOccurs="0" />
-				<xs:element ref="tns:vendorid" minOccurs="0" />
-				<xs:element ref="tns:employeeid" minOccurs="0" />
+				<xs:element ref="tns:customerid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the customer</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:vendorid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+					</xsd:annotation></xs:element>
+				<xs:element ref="tns:employeeid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Unique identifier of the employee</xsd:documentation>
+					</xsd:annotation></xs:element>
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="sotransitems">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Transaction line items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:sotransitem" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2845,20 +3533,42 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="subtotal">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Subtotal Line Item</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
-				<xs:element name="description" type="xs:string" />
-				<xs:element name="total" type="xs:string" />
-				<xs:element name="absval" type="xs:string" minOccurs="0" />
-				<xs:element name="percentval" type="xs:string" minOccurs="0" />
-				<xs:element ref="tns:locationid" minOccurs="0" />
-				<xs:element ref="tns:departmentid" minOccurs="0" />
+				<xs:element name="description" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Subtotal description</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="total" type="xs:string" >
+					<xsd:annotation>
+						<xsd:documentation>Subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="absval" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>The absolute subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element name="percentval" type="xs:string" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>The percentage subtotal amount</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:locationid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the location to which this
+subtotal is posted
+</xsd:documentation></xsd:annotation></xs:element>
+				<xs:element ref="tns:departmentid" minOccurs="0" >
+					<xsd:annotation>
+						<xsd:documentation>Key to the department to which this
+subtotal is posted
+</xsd:documentation></xsd:annotation></xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="subtotals">
-		<xs:complexType>
+        <xsd:annotation>
+        	<xsd:documentation>Subtotals line items</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:subtotal" maxOccurs="unbounded" />
 			</xs:sequence>
@@ -2874,7 +3584,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="termname">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Id of the term used in this document</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -2916,7 +3629,10 @@ The location object represents a physical location or organizational unit in the
 	</xs:element>
 
 	<xs:element name="update_allocation" type="tns:update_allocationType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an allocation.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_apaccountlabel" type="tns:update_apaccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -2927,10 +3643,16 @@ The AP Account Label is used to specify the product being purchased, when creati
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_apadjustment" type="tns:update_apadjustmentType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to edit an existing AP Adjustment. You must know the key of the AP Adjustment. The key is returned in the response of the create_apadjustment API, and is also available through the getlist function. You have the ability to edit the existing AP Adjustment line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_apterm" type="tns:update_aptermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an apterm. An AP Term defines conditions for payment of a bill in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AP term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_araccountlabel" type="tns:update_araccountlabelType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -2947,7 +3669,10 @@ The AR Account Label is used to specify the product being sold, when creating AR
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_arterm" type="tns:update_artermType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an arterm. An AR Term defines conditions for payment of an invoice in the Intacct system. Conditions for the due date, discount for early payment, and penalty for late payment are all included in the definition of an AR term.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_bill" type="tns:update_billType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -2957,10 +3682,16 @@ The AR Account Label is used to specify the product being sold, when creating AR
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_cctransaction" type="tns:update_cctransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a cctransaction.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_checkingaccount" type="tns:update_checkingaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a checkingaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_contact" type="tns:update_contactType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -2979,13 +3710,22 @@ The customer object represents a business partner to whom goods are sold in the 
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_customerachinfo" type="tns:update_customerachinfoType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a customerachinfo.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_customerbankaccount" type="tns:update_customerbankaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a customerbankaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_customerchargecard" type="tns:update_customerchargecardType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a customerchargecard.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_department" type="tns:update_departmentType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -3004,16 +3744,28 @@ The employee object represents an employee in the Intacct system. The employee l
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_expensereport" type="tns:update_expensereportType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>This API allows you to edit an existing Expense Report. You must know the key of the Expense Report. The key is returned in the response of the create_expensereport API, and is also available through the getlist function. You have the ability to edit the existing expense report line items, and add new line items. In the sample below, line 1 is being edited.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_expensetype" type="tns:update_expensetypeType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an expensetype.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_glaccount" type="tns:update_glaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a glaccount. The GL Account object represents a General Ledger financial account in the Intacct system. The size of the main and sub accounts, as well as the separator between the main- and sub-accounts are determined at company creation time. The format of the GL account specified in the following APIs must adhere to the format defined in the company settings
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_ictransaction" type="tns:update_ictransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an ictransaction. An ICTransaction represents any transactional document created in the Inventory Control application. Each document in the Inventory Control application is user definable; there are no statically defined document types. When querying ICTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘receiver.’ By setting the transactiontype field equal to ‘receiver’ in the get_list function, the query will return only ‘receiver’ documents. For a complete schema diagram of the ICTransaction and related objects, see Appendix A: Application Schemata
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_invoice" type="tns:update_invoiceType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -3022,13 +3774,23 @@ The employee object represents an employee in the Intacct system. The employee l
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_invpricelistentry" type="tns:update_invpricelistentryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an invpricelistentry.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_item" type="tns:update_itemType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates an item.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="update_journal" type="tns:update_journalType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a journal. The Journal object represents a General Ledger Journal in the Intacct system
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_location" type="tns:update_locationType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -3039,40 +3801,77 @@ The location object represents a physical location or organizational unit in the
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_popricelist" type="tns:update_popricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a popricelist. A POPriceList contains prices for ICItems contained in the list. IntacctXML supports getting the list of POPriceLists using the get_list function.
+</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="update_potransaction" type="tns:update_potransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a potransaction. An POTransaction represents any transactional document created in the Purchasing application. Each document in the Purchasing application is user definable; there are no statically defined document types. When querying POTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘purchaseorder.’ Setting the transactiontype field equal to ‘purchaseorder’ in the get_list function will cause the query to return only ‘purchaseorder’ documents.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_project" type="tns:update_projectType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a project.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_savingsaccount" type="tns:update_savingsaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a savingsaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_sopricelist" type="tns:update_sopricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a sopricelist. A SOPriceList contains prices for ICItems. IntacctXML supports getting the list of SOPriceLists using the get_list function.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_sotransaction" type="tns:update_sotransactionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a sotransaction. An SOTransaction represents any transactional document created in the Order Entry application. Each document in the Order Entry application is user definable; there are no statically defined document types. When querying SOTransactions, it may be useful to filter the query by the transactiontype field. For example, suppose the client has defined a document entitled ‘salesorder.’ Setting the transactiontype field equal to ‘salesorder’ in the get_list function will cause the query to return only ‘salesorder’ documents.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_statglaccount" type="tns:update_statglaccountType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a statglaccount.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_task" type="tns:update_taskType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a task.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_taxdetail" type="tns:update_taxdetailType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a taxdetail.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_taxschedule" type="tns:update_taxscheduleType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a taxschedule.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_territory" type="tns:update_territoryType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a territory.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_timesheet" type="tns:update_timesheetType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a timesheet.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_vendor" type="tns:update_vendorType"
 		substitutionGroup="mule:abstract-message-processor" >
@@ -3083,10 +3882,16 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:annotation></xs:element>
 
 	<xs:element name="update_vsoeitempricelist" type="tns:update_vsoeitempricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a vsoeitempricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update_vsoepricelist" type="tns:update_vsoepricelistType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>Updates a vsoepricelist.
+</xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="updateallocationentry">
 		<xs:complexType>
@@ -3479,7 +4284,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	</xs:element>
 
 	<xs:element name="vendorid">
-		<xs:simpleType>
+        <xsd:annotation>
+        	<xsd:documentation>Unique identifier of the vendor</xsd:documentation>
+        </xsd:annotation>
+        <xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
 	</xs:element>
@@ -3997,7 +4805,10 @@ The vendor object represents a business partner from whom goods are purchased in
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
-					<xs:element ref="tns:vendorid" />
+					<xs:element ref="tns:vendorid" >
+						<xsd:annotation>
+							<xsd:documentation></xsd:documentation>
+						</xsd:annotation></xs:element>
 					<xs:element ref="tns:datecreated" />
 					<xs:element ref="tns:dateposted" minOccurs="0" />
 					<xs:element ref="tns:batchkey" minOccurs="0" />
@@ -4242,7 +5053,10 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="arpaymentkey" type="xs:string" />
 					<xs:element ref="tns:paymentdate" />
 					<xs:element ref="tns:batchkey" minOccurs="0" />
-					<xs:element name="memo" type="xs:string" minOccurs="0" />
+					<xs:element name="memo" type="xs:string" minOccurs="0" >
+						<xsd:annotation>
+							<xsd:documentation>Memo</xsd:documentation>
+						</xsd:annotation></xs:element>
 					<xs:element name="overpaylocid" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="overpaydeptid" type="xs:string"
