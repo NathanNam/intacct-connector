@@ -1644,7 +1644,7 @@ The location object represents a physical location or organizational unit in the
 
 	<xs:element name="deliveryoption">
         <xsd:annotation>
-        	<xsd:documentation>Default Invoice & Statement Delivery
+        	<xsd:documentation>Default Invoice &amp; Statement Delivery
 preference
 </xsd:documentation>
         </xsd:annotation>
@@ -1655,7 +1655,7 @@ preference
 
 	<xs:element name="deliveryoptions">
         <xsd:annotation>
-        	<xsd:documentation>Default Invoice & Statement Delivery
+        	<xsd:documentation>Default Invoice &amp; Statement Delivery
 preference
 </xsd:documentation>
         </xsd:annotation>
