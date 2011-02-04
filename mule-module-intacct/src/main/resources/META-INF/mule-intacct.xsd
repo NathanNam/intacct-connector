@@ -1963,7 +1963,10 @@ accounts with account numbers falling in this range will be returned.
 	</xs:element>
 
 	<xs:element name="function" type="tns:functionType"
-		substitutionGroup="mule:abstract-message-processor" />
+		substitutionGroup="mule:abstract-message-processor" >
+		<xsd:annotation>
+			<xsd:documentation>The function element is the one that inside has any of the almost 200 api calls.</xsd:documentation>
+		</xsd:annotation></xs:element>
 
 	<xs:element name="get" type="tns:getType"
 		substitutionGroup="mule:abstract-message-processor" />
@@ -3172,7 +3175,8 @@ item belongs
 	<xs:element name="request" type="tns:requestType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>The request of intacct.</xsd:documentation>
+			<xsd:documentation>The request of intacct. Inside this one is the Control Block, The Authentication and the function with the corresponding Api Call.
+In the request there can be more than one function, you can do more than one api call at the same time. You cannot do this using any of the other action</xsd:documentation>
 		</xsd:annotation></xs:element>
 
 	<xs:element name="restricted_depts">
