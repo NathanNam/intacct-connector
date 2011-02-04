@@ -28,11 +28,10 @@
    
    <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="sysoIntacct" />
 
-
 	 <flow name="requestFlow">
 			<intacct:request xmlns="http://www.mulesoft.org/schema/mule/intacct">
 				<control>
-					<senderid>intacct_dev</senderid>
+					<senderid>intacct-dev</senderid>
 					<password>babbage</password>
 					<controlid>XML Sample</controlid>
 				</control>
@@ -48,8 +47,8 @@
 						<function controlid="#[map-payload:controlid]">
 							<get-list object="glaccount">
 								<filter>
-									<logical logical_operator="or">
-										<logical logical_operator="and">
+									<logical logical-operator="or">
+										<logical logical-operator="and">
 											<expression>
 												<field>accountno</field>
 												<operator>&gt;</operator>
@@ -86,8 +85,8 @@
 			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 				<get-list object="glaccount">
 					<filter>
-						<logical logical_operator="or">
-							<logical logical_operator="and">
+						<logical logical-operator="or">
+							<logical logical-operator="and">
 								<expression>
 									<field>accountno</field>
 									<operator>&gt;</operator>
@@ -127,12 +126,11 @@
 	</intacct:get>
  	
 </flow>
-	 
 	 <flow name="getListFlow">
 		<intacct:get-list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 					<filter>
-						<logical logical_operator="or">
-							<logical logical_operator="and">
+						<logical logical-operator="or">
+							<logical logical-operator="and">
 								<expression>
 									<field>accountno</field>
 									<operator>&gt;</operator>
@@ -162,13 +160,12 @@
 		</intacct:get-list>
 	</flow> 
 	
-	
 	<flow name="functionFlowWithExHandling">
 			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 				<get-list object="glaccount">
 					<filter>
-						<logical logical_operator="or">
-							<logical logical_operator="and">
+						<logical logical-operator="or">
+							<logical logical-operator="and">
 								<expression>
 									<field>accountno</field>
 									<operator>&gt;</operator>
@@ -204,8 +201,8 @@
 			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 				<get-list object="glaccount">
 					<filter>
-						<logical logical_operator="or">
-							<logical logical_operator="and">
+						<logical logical-operator="or">
+							<logical logical-operator="and">
 								<expression>
 									<field>accountno</field>
 									<operator>&gt;</operator>
@@ -235,5 +232,5 @@
 				</get-list>
 			</intacct:function>
 		</flow>
-		 
+		  
 </mule>

@@ -96,7 +96,7 @@ For testing purporses there's another implementation that simple does System Out
     </xsd:complexType>
 
     
- <!--  HERE STARTs the generated part -->
+ <!--   HERE STARTs the generated part -->
 
 
 <xs:element name="accountgroup">
@@ -151,7 +151,7 @@ Account Groups are hierarchical, and can therefore contain other account groups,
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="apply_arpayment" type="tns:apply_arpaymentType"
+	<xs:element name="apply-arpayment" type="tns:apply-arpaymentType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Applys an arpayment. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
@@ -690,7 +690,7 @@ The AP Account Label is used to specify the product being purchased, when creati
 	<xs:element name="create-apadjustmentbatch" type="tns:create-apadjustmentbatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new AP Adjustment Batch. The create_apadjustment function can be optionally nested inside, to simultaneously create new adjustments.
+			<xsd:documentation>This API allows you to create a new AP Adjustment Batch. The create-apadjustment function can be optionally nested inside, to simultaneously create new adjustments.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-appayment" type="tns:create-appaymentType"
@@ -722,7 +722,7 @@ The AR Account Label is used to specify the product being sold, when creating AR
 	<xs:element name="create-aradjustmentbatch" type="tns:create-aradjustmentbatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new AR Adjustment Batch. The create_aradjustment function can be optionally nested inside, to simultaneously create new adjustments
+			<xsd:documentation>This API allows you to create a new AR Adjustment Batch. The create-aradjustment function can be optionally nested inside, to simultaneously create new adjustments
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-arpayment" type="tns:create-arpaymentType"
@@ -734,7 +734,7 @@ The AR Account Label is used to specify the product being sold, when creating AR
 	<xs:element name="create-arpaymentbatch" type="tns:create-arpaymentbatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new AR Payment Batch. The create_arpayment function can be optionally nested inside, to simultaneously create new payments.
+			<xsd:documentation>This API allows you to create a new AR Payment Batch. The create-arpayment function can be optionally nested inside, to simultaneously create new payments.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-arterm" type="tns:create-artermType"
@@ -753,7 +753,7 @@ The AR Account Label is used to specify the product being sold, when creating AR
 	<xs:element name="create-billbatch" type="tns:create-billbatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new Bill Batch. The create_bill function can be optionally nested inside, to simultaneously create new bills.
+			<xsd:documentation>This API allows you to create a new Bill Batch. The create-bill function can be optionally nested inside, to simultaneously create new bills.
 </xsd:documentation>
 		</xsd:annotation></xs:element>
 
@@ -865,7 +865,7 @@ The employee object represents an employee in the Intacct system. The employee l
 	<xs:element name="create-expensereportbatch" type="tns:create-expensereportbatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new Expense Report Batch. The create_expensereport function can be optionally nested inside, to simultaneously create new expense reports.
+			<xsd:documentation>This API allows you to create a new Expense Report Batch. The create-expensereport function can be optionally nested inside, to simultaneously create new expense reports.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-expensetype" type="tns:create-expensetypeType"
@@ -891,7 +891,7 @@ The employee object represents an employee in the Intacct system. The employee l
 	<xs:element name="create-ictransaction" type="tns:create-ictransactionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>Using the create_ictransaction function, you can create an Inventory application transaction. The transactiontype element is required to define the document type. The response document from a create_ictransaction will contain a ‘key’ element containing the system generated transactionid.
+			<xsd:documentation>Using the create-ictransaction function, you can create an Inventory application transaction. The transactiontype element is required to define the document type. The response document from a create-ictransaction will contain a ‘key’ element containing the system generated transactionid.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-invoice" type="tns:create-invoiceType"
@@ -904,7 +904,7 @@ The employee object represents an employee in the Intacct system. The employee l
 	<xs:element name="create-invoicebatch" type="tns:create-invoicebatchType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to create a new Invoice Batch. The create_invoice function can be optionally nested inside, to simultaneously create new invoices
+			<xsd:documentation>This API allows you to create a new Invoice Batch. The create-invoice function can be optionally nested inside, to simultaneously create new invoices
 </xsd:documentation>
 		</xsd:annotation></xs:element>
 
@@ -962,7 +962,7 @@ The location object represents a physical location or organizational unit in the
 	<xs:element name="create-potransaction" type="tns:create-potransactionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>Using the create_potransaction function, you can create a purchasing application transaction. The transactiontype element is required to define the document type. The response document from a create_potransaction will contain a ‘key’ element containing the system-generated transactionid.
+			<xsd:documentation>Using the create-potransaction function, you can create a purchasing application transaction. The transactiontype element is required to define the document type. The response document from a create-potransaction will contain a ‘key’ element containing the system-generated transactionid.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-project" type="tns:create-projectType"
@@ -1016,7 +1016,7 @@ The location object represents a physical location or organizational unit in the
 	<xs:element name="create-sotransaction" type="tns:create-sotransactionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>Using the create_sotransaction function, you can create an order entry application transaction. The  transactiontype element is required to define the document type. The response document from a create_sotransaction will contain a ‘key’ element containing the system-generated transactionid.
+			<xsd:documentation>Using the create-sotransaction function, you can create an order entry application transaction. The  transactiontype element is required to define the document type. The response document from a create-sotransaction will contain a ‘key’ element containing the system-generated transactionid.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="create-statglaccount" type="tns:create-statglaccountType"
@@ -1825,7 +1825,7 @@ accounts with account numbers falling in this range will be returned.
 					<xsd:annotation>
 						<xsd:documentation>Amount</xsd:documentation></xsd:annotation></xs:element>
 				<xs:element name="currency" type="xs:string" minOccurs="0" />
-				<xs:element name="trx_amount" type="xs:string" minOccurs="0" />
+				<xs:element name="trx-amount" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:exchratedate" minOccurs="0" />
 				<xs:element ref="tns:exchratetype" minOccurs="0" />
 				<xs:element ref="tns:exchrate" minOccurs="0" />
@@ -1898,8 +1898,8 @@ accounts with account numbers falling in this range will be returned.
 	<xs:element name="expirydate">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="exp_month" type="xs:string" />
-				<xs:element name="exp_year" type="xs:string" />
+				<xs:element name="exp-month" type="xs:string" />
+				<xs:element name="exp-year" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -2090,7 +2090,7 @@ accounts with account numbers falling in this range will be returned.
 				<xs:element ref="tns:locationid" minOccurs="0" />
 				<xs:element ref="tns:departmentid" minOccurs="0" />
 				<xs:element ref="tns:customfields" minOccurs="0" />
-				<xs:element ref="tns:recon_date" minOccurs="0" />
+				<xs:element ref="tns:recon-date" minOccurs="0" />
 				<xs:element name="currency" type="xs:string" minOccurs="0" />
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="tns:exchratedate" />
@@ -2120,7 +2120,7 @@ accounts with account numbers falling in this range will be returned.
 							<xs:element ref="tns:locationid" minOccurs="0" />
 							<xs:element ref="tns:departmentid" minOccurs="0" />
 							<xs:element ref="tns:customfields" minOccurs="0" />
-							<xs:element ref="tns:recon_date" minOccurs="0" />
+							<xs:element ref="tns:recon-date" minOccurs="0" />
 							<xs:element name="currency" type="xs:string"
 								minOccurs="0" />
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -2171,7 +2171,7 @@ accounts with account numbers falling in this range will be returned.
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="init_session" type="tns:init_sessionType"
+	<xs:element name="init-session" type="tns:init-sessionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Inits a session.
@@ -2347,7 +2347,7 @@ accounts with account numbers falling in this range will be returned.
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute name="object" type="xs:string" />
-			<xs:attribute name="logical_operator" type="xs:string"
+			<xs:attribute name="logical-operator" type="xs:string"
 				use="required" />
 		</xs:complexType>
 	</xs:element>
@@ -2641,7 +2641,7 @@ password (password). This is the same information you see when you log onto the 
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="pen_type">
+	<xs:element name="pen-type">
 		<xs:simpleType>
 			<xs:restriction base="xs:string" />
 		</xs:simpleType>
@@ -2654,7 +2654,7 @@ password (password). This is the same information you see when you log onto the 
         <xs:complexType>
 			<xs:sequence>
 				<xs:choice maxOccurs="unbounded">
-					<xs:element ref="tns:pen_type" />
+					<xs:element ref="tns:pen-type" />
 					<xs:element ref="tns:penamount" />
 					<xs:element ref="tns:penpercamn" />
 					<xs:element ref="tns:pengracedays" />
@@ -3004,11 +3004,11 @@ Contains either a contact or a reference to an existing contact via contactname<
 				<xs:element ref="tns:itemid" minOccurs="0" />
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="recon_date">
+	<xs:element name="recon-date">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="year" type="xs:string" />
@@ -3018,25 +3018,25 @@ Contains either a contact or a reference to an existing contact via contactname<
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="reconcile_bank" type="tns:reconcile_bankType"
+	<xs:element name="reconcile-bank" type="tns:reconcile-bankType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Reconciles a bank.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_cctransaction" type="tns:record_cctransactionType"
+	<xs:element name="record-cctransaction" type="tns:record-cctransactionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a cctransaction.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_deposit" type="tns:record_depositType"
+	<xs:element name="record-deposit" type="tns:record-depositType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a deposit.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_otherreceipt" type="tns:record_otherreceiptType"
+	<xs:element name="record-otherreceipt" type="tns:record-otherreceiptType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records an otherreceipt.
@@ -3044,31 +3044,31 @@ Contains either a contact or a reference to an existing contact via contactname<
 </xsd:documentation>
 		</xsd:annotation></xs:element>
 
-	<xs:element name="record_wuadjjournalentries" type="tns:record_wuadjjournalentriesType"
+	<xs:element name="record-wuadjjournalentries" type="tns:record-wuadjjournalentriesType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a wuadjjournalentries.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_wucctransactions" type="tns:record_wucctransactionsType"
+	<xs:element name="record-wucctransactions" type="tns:record-wucctransactionsType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a wucctransactions.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_wudisbursements" type="tns:record_wudisbursementsType"
+	<xs:element name="record-wudisbursements" type="tns:record-wudisbursementsType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a wudisbursements.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_wujournalentries" type="tns:record_wujournalentriesType"
+	<xs:element name="record-wujournalentries" type="tns:record-wujournalentriesType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a wujournalentries.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="record_wureceipts" type="tns:record_wureceiptsType"
+	<xs:element name="record-wureceipts" type="tns:record-wureceiptsType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Records a wureceipts.
@@ -3179,7 +3179,7 @@ item belongs
 In the request there can be more than one function, you can do more than one api call at the same time. You cannot do this using any of the other action</xsd:documentation>
 		</xsd:annotation></xs:element>
 
-	<xs:element name="restricted_depts">
+	<xs:element name="restricted-depts">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:departmentid" maxOccurs="unbounded" />
@@ -3187,7 +3187,7 @@ In the request there can be more than one function, you can do more than one api
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="restricted_locs">
+	<xs:element name="restricted-locs">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="tns:locationid" maxOccurs="unbounded" />
@@ -3226,19 +3226,19 @@ In the request there can be more than one function, you can do more than one api
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="reverse_appayment" type="tns:reverse_appaymentType"
+	<xs:element name="reverse-appayment" type="tns:reverse-appaymentType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Reverses an appayment. An AP Payment represents a payment to a vendor which is applied to outstanding bills. Intacct XML allows developers to extract AP Payment records using the get-list method.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="reverse_bill" type="tns:reverse_billType"
+	<xs:element name="reverse-bill" type="tns:reverse-billType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Reverses a bill. A Bill is a document within the Intacct system. The Bill represents a transaction between the company and a vendor.
 </xsd:documentation></xsd:annotation></xs:element>
 
-	<xs:element name="reverse_cctransaction" type="tns:reverse_cctransactionType"
+	<xs:element name="reverse-cctransaction" type="tns:reverse-cctransactionType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
 			<xsd:documentation>Reverses a cctransaction.
@@ -3603,7 +3603,7 @@ The AP Account Label is used to specify the product being purchased, when creati
 	<xs:element name="update-apadjustment" type="tns:update-apadjustmentType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to edit an existing AP Adjustment. You must know the key of the AP Adjustment. The key is returned in the response of the create_apadjustment API, and is also available through the getlist function. You have the ability to edit the existing AP Adjustment line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
+			<xsd:documentation>This API allows you to edit an existing AP Adjustment. You must know the key of the AP Adjustment. The key is returned in the response of the create-apadjustment API, and is also available through the getlist function. You have the ability to edit the existing AP Adjustment line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update-apterm" type="tns:update-aptermType"
@@ -3623,7 +3623,7 @@ The AR Account Label is used to specify the product being sold, when creating AR
 	<xs:element name="update-aradjustment" type="tns:update-aradjustmentType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to edit an existing AR Adjustment. You must know the key of the AR Adjustment. The key is returned in the response of the create_aradjustment API, and is also available through the getlist function. You have the ability to edit the existing AR Adjustment line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
+			<xsd:documentation>This API allows you to edit an existing AR Adjustment. You must know the key of the AR Adjustment. The key is returned in the response of the create-aradjustment API, and is also available through the getlist function. You have the ability to edit the existing AR Adjustment line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update-arterm" type="tns:update-artermType"
@@ -3635,7 +3635,7 @@ The AR Account Label is used to specify the product being sold, when creating AR
 	<xs:element name="update-bill" type="tns:update-billType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to edit an existing Bill. You must know the key of the Bill. The key is returned in the response of the create_bill API, and is also available through the getlist function. You have the ability to edit the existing bill line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
+			<xsd:documentation>This API allows you to edit an existing Bill. You must know the key of the Bill. The key is returned in the response of the create-bill API, and is also available through the getlist function. You have the ability to edit the existing bill line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
 </xsd:documentation>
 		</xsd:annotation></xs:element>
 
@@ -3704,7 +3704,7 @@ The employee object represents an employee in the Intacct system. The employee l
 	<xs:element name="update-expensereport" type="tns:update-expensereportType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to edit an existing Expense Report. You must know the key of the Expense Report. The key is returned in the response of the create_expensereport API, and is also available through the getlist function. You have the ability to edit the existing expense report line items, and add new line items. In the sample below, line 1 is being edited.
+			<xsd:documentation>This API allows you to edit an existing Expense Report. You must know the key of the Expense Report. The key is returned in the response of the create-expensereport API, and is also available through the getlist function. You have the ability to edit the existing expense report line items, and add new line items. In the sample below, line 1 is being edited.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update-expensetype" type="tns:update-expensetypeType"
@@ -3728,7 +3728,7 @@ The employee object represents an employee in the Intacct system. The employee l
 	<xs:element name="update-invoice" type="tns:update-invoiceType"
 		substitutionGroup="mule:abstract-message-processor" >
 		<xsd:annotation>
-			<xsd:documentation>This API allows you to edit an existing Invoice. You must know the key of the Invoice. The key is returned in the response of the create_invoice API, and is also available through the getlist function. You have the ability to edit the existing invoice line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
+			<xsd:documentation>This API allows you to edit an existing Invoice. You must know the key of the Invoice. The key is returned in the response of the create-invoice API, and is also available through the getlist function. You have the ability to edit the existing invoice line items, and add new line items. In the sample below, line 1 is being edited, and a new line is being added.
 </xsd:documentation></xsd:annotation></xs:element>
 
 	<xs:element name="update-invpricelistentry" type="tns:update-invpricelistentryType"
@@ -3926,7 +3926,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element ref="tns:departmentid" minOccurs="0" />
 				<xs:element ref="tns:locationid" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -3950,7 +3950,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:locationid" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -3963,7 +3963,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				</xs:choice>
 				<xs:element name="amount" type="xs:string" minOccurs="0" />
 				<xs:element name="currency" type="xs:string" minOccurs="0" />
-				<xs:element name="trx_amount" type="xs:string" minOccurs="0" />
+				<xs:element name="trx-amount" type="xs:string" minOccurs="0" />
 				<xs:element ref="tns:exchratedate" minOccurs="0" />
 				<xs:element ref="tns:exchratetype" minOccurs="0" />
 				<xs:element ref="tns:exchrate" minOccurs="0" />
@@ -3982,7 +3982,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -4017,7 +4017,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element ref="tns:employeeid" minOccurs="0" />
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -4105,7 +4105,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -4132,7 +4132,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 				<xs:element name="billable" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -4179,7 +4179,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:element ref="tns:employeeid" minOccurs="0" />
 				<xs:element name="classid" type="xs:string" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="line_num" type="xs:string" use="required" />
+			<xs:attribute name="line-num" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -4253,10 +4253,10 @@ The vendor object represents a business partner from whom goods are purchased in
 	<xs:element name="visibility">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="visibility_type" type="xs:string" />
-				<xs:element ref="tns:restricted_locs" minOccurs="0"
+				<xs:element name="visibility-type" type="xs:string" />
+				<xs:element ref="tns:restricted-locs" minOccurs="0"
 					maxOccurs="unbounded" />
-				<xs:element ref="tns:restricted_depts" minOccurs="0"
+				<xs:element ref="tns:restricted-depts" minOccurs="0"
 					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
@@ -4288,11 +4288,11 @@ The vendor object represents a business partner from whom goods are purchased in
 					minOccurs="0" />
 				<xs:element name="defaultsubsection" type="xs:string"
 					minOccurs="0" />
-				<xs:element name="default_aisle" type="xs:string"
+				<xs:element name="default-aisle" type="xs:string"
 					minOccurs="0" />
-				<xs:element name="default_row" type="xs:string"
+				<xs:element name="default-row" type="xs:string"
 					minOccurs="0" />
-				<xs:element name="default_bin" type="xs:string"
+				<xs:element name="default-bin" type="xs:string"
 					minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
@@ -4597,7 +4597,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						<xs:element ref="tns:get-list" />
 						<xs:element ref="tns:get-trialbalance" />
 						<xs:element ref="tns:get-myclients" />
-						<xs:element ref="tns:init_session" />
+						<xs:element ref="tns:init-session" />
 						<xs:element ref="tns:update-apaccountlabel" />
 						<xs:element ref="tns:update-araccountlabel" />
 						<xs:element ref="tns:update-contact" />
@@ -4631,21 +4631,21 @@ The vendor object represents a business partner from whom goods are purchased in
 						<xs:element ref="tns:update-potransaction" />
 						<xs:element ref="tns:get-salestotals" />
 						<xs:element ref="tns:get-icitemtotals" />
-						<xs:element ref="tns:record_cctransaction" />
-						<xs:element ref="tns:record_wucctransactions" />
-						<xs:element ref="tns:record_wureceipts" />
-						<xs:element ref="tns:record_wudisbursements" />
-						<xs:element ref="tns:record_wuadjjournalentries" />
-						<xs:element ref="tns:record_wujournalentries" />
+						<xs:element ref="tns:record-cctransaction" />
+						<xs:element ref="tns:record-wucctransactions" />
+						<xs:element ref="tns:record-wureceipts" />
+						<xs:element ref="tns:record-wudisbursements" />
+						<xs:element ref="tns:record-wuadjjournalentries" />
+						<xs:element ref="tns:record-wujournalentries" />
 						<xs:element ref="tns:get-companyprefs" />
 						<xs:element ref="tns:set-companyprefs" />
 						<xs:element ref="tns:get-applications" />
-						<xs:element ref="tns:record_otherreceipt" />
-						<xs:element ref="tns:record_deposit" />
+						<xs:element ref="tns:record-otherreceipt" />
+						<xs:element ref="tns:record-deposit" />
 						<xs:element ref="tns:create-territory" />
 						<xs:element ref="tns:delete-territory" />
 						<xs:element ref="tns:update-territory" />
-						<xs:element ref="tns:apply_arpayment" />
+						<xs:element ref="tns:apply-arpayment" />
 						<xs:element ref="tns:delete-sotransaction" />
 						<xs:element ref="tns:delete-potransaction" />
 						<xs:element ref="tns:delete-ictransaction" />
@@ -4694,9 +4694,9 @@ The vendor object represents a business partner from whom goods are purchased in
 						<xs:element ref="tns:create-taxschedulemap" />
 						<xs:element ref="tns:delete-taxschedulemap" />
 						<xs:element ref="tns:describe" />
-						<xs:element ref="tns:reconcile_bank" />
-						<xs:element ref="tns:reverse_bill" />
-						<xs:element ref="tns:reverse_appayment" />
+						<xs:element ref="tns:reconcile-bank" />
+						<xs:element ref="tns:reverse-bill" />
+						<xs:element ref="tns:reverse-appayment" />
 						<xs:element ref="tns:create-apterm" />
 						<xs:element ref="tns:update-apterm" />
 						<xs:element ref="tns:delete-apterm" />
@@ -4713,7 +4713,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						<xs:element ref="tns:update-allocation" />
 						<xs:element ref="tns:delete-allocation" />
 						<xs:element ref="tns:update-cctransaction" />
-						<xs:element ref="tns:reverse_cctransaction" />
+						<xs:element ref="tns:reverse-cctransaction" />
 					</xs:choice>
 				</xs:sequence>
 				<xs:attribute name="controlid" type="xs:string" use="required" />
@@ -4907,7 +4907,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:create-aradjustment" minOccurs="0"
 						maxOccurs="unbounded" >
 						<xsd:annotation>
-							<xsd:documentation>create_adjustment function</xsd:documentation>
+							<xsd:documentation>create-adjustment function</xsd:documentation>
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 			</xsd:extension>
@@ -4997,14 +4997,14 @@ The vendor object represents a business partner from whom goods are purchased in
 </xsd:documentation></xsd:annotation></xs:element>
 					<xs:element ref="tns:create-arpayment" minOccurs="0"
 						maxOccurs="unbounded" />
-					<xs:element ref="tns:apply_arpayment" minOccurs="0"
+					<xs:element ref="tns:apply-arpayment" minOccurs="0"
 						maxOccurs="unbounded" />
 				</xs:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="apply_arpaymentType">
+	<xs:complexType name="apply-arpaymentType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -5149,7 +5149,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:create-bill" minOccurs="0"
 						maxOccurs="unbounded" >
 						<xsd:annotation>
-							<xsd:documentation>create_bill function</xsd:documentation>
+							<xsd:documentation>create-bill function</xsd:documentation>
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 			</xsd:extension>
@@ -5220,7 +5220,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="nextcheck" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="bankaccountid" type="xs:string"
 					use="required" />
 			</xsd:extension>
@@ -5255,7 +5255,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:departmentid" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="bankaccountid" type="xs:string"
 					use="required" />
 			</xsd:extension>
@@ -5992,7 +5992,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:create-invoice" minOccurs="0"
 						maxOccurs="unbounded" >
 						<xsd:annotation>
-							<xsd:documentation>create_invoice function</xsd:documentation>
+							<xsd:documentation>create-invoice function</xsd:documentation>
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 			</xsd:extension>
@@ -6201,7 +6201,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:customfields" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -6753,7 +6753,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="init_sessionType">
+	<xs:complexType name="init-sessionType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -6788,7 +6788,7 @@ The vendor object represents a business partner from whom goods are purchased in
 </xsd:documentation></xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="accountlabel" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Account Label ID
@@ -6824,7 +6824,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="taxcode" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="accountlabel" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Account Label ID
@@ -6911,7 +6911,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="contactname" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the contact
@@ -7018,7 +7018,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:visibility" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="customerid" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the customer
@@ -7052,7 +7052,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="custtitle" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="departmentid" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the department
@@ -7106,7 +7106,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Internally assigned key
@@ -7168,7 +7168,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Internally assigned key
@@ -7197,7 +7197,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:updateapadjustmentitems" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7241,7 +7241,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						</xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Internally assigned key
@@ -7323,7 +7323,7 @@ The vendor object represents a business partner from whom goods are purchased in
 </xsd:documentation></xsd:annotation></xs:element>
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="employeeid" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the employee
@@ -7349,7 +7349,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:updateexpenses" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7409,7 +7409,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="mrccode" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="glaccountno" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7441,7 +7441,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="status" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="glaccountno" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7501,7 +7501,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="custtitle" type="xs:string" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="locationid" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the location
@@ -7624,7 +7624,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:visibility" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="vendorid" type="xs:string" use="required" >
 					<xsd:annotation>
 						<xsd:documentation>Unique ID of the vendor
@@ -7776,7 +7776,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:updatesubtotals" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7852,7 +7852,7 @@ The vendor object represents a business partner from whom goods are purchased in
 				</xs:sequence>
 				<xs:attribute name="disablevalidation" type="xs:string" />
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -7978,7 +7978,7 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:updatesubtotals" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="externalkey" type="xs:string" />
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="key" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -8011,7 +8011,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_cctransactionType">
+	<xs:complexType name="record-cctransactionType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8028,7 +8028,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_wucctransactionsType">
+	<xs:complexType name="record-wucctransactionsType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8038,7 +8038,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_wureceiptsType">
+	<xs:complexType name="record-wureceiptsType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8048,7 +8048,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_wudisbursementsType">
+	<xs:complexType name="record-wudisbursementsType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8058,7 +8058,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_wuadjjournalentriesType">
+	<xs:complexType name="record-wuadjjournalentriesType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8068,7 +8068,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_wujournalentriesType">
+	<xs:complexType name="record-wujournalentriesType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8107,7 +8107,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_otherreceiptType">
+	<xs:complexType name="record-otherreceiptType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8125,7 +8125,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="record_depositType">
+	<xs:complexType name="record-depositType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -8225,57 +8225,57 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element name="name" type="xs:string" />
 					<xs:element name="status" type="xs:string" minOccurs="0" />
 					<xs:element name="itemtype" type="xs:string" />
-					<xs:element name="enable_bins" type="xs:string"
+					<xs:element name="enable-bins" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="extended_description" type="xs:string"
+					<xs:element name="extended-description" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:productlineid" minOccurs="0" />
 					<xs:element name="substituteid" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="ship_weight" type="xs:string"
+					<xs:element name="ship-weight" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:datelastsold" minOccurs="0" />
 					<xs:element ref="tns:datelastrecvd" minOccurs="0" />
 					<xs:element name="taxable" type="xs:string" minOccurs="0" />
-					<xs:element name="cost_method" type="xs:string"
+					<xs:element name="cost-method" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="standard_cost" type="xs:string"
+					<xs:element name="standard-cost" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="average_cost" type="xs:string"
+					<xs:element name="average-cost" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="base_price" type="xs:string"
+					<xs:element name="base-price" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="standard_unit" type="xs:string"
+					<xs:element name="standard-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchase_unit" type="xs:string"
+					<xs:element name="purchase-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchase_unit_factor" type="xs:string"
+					<xs:element name="purchase-unit-factor" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_unit" type="xs:string"
+					<xs:element name="sales-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_unit_factor" type="xs:string"
+					<xs:element name="sales-unit-factor" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="default_warehouse" type="xs:string"
+					<xs:element name="default-warehouse" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="glgroup" type="xs:string" minOccurs="0" />
 					<xs:element name="note" type="xs:string" minOccurs="0" />
-					<xs:element name="inventory_precision" type="xs:string"
+					<xs:element name="inventory-precision" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchasing_precision" type="xs:string"
+					<xs:element name="purchasing-precision" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_precision" type="xs:string"
+					<xs:element name="sales-precision" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="upc" type="xs:string" minOccurs="0" />
 					<xs:element name="hasstartenddates" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="term_period" type="xs:string"
+					<xs:element name="term-period" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="defaultnoofperiods" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="computepriceforshortterm" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:itaxgroup" minOccurs="0" />
-					<xs:element name="revenue_posting" type="xs:string"
+					<xs:element name="revenue-posting" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:vendlineitems" minOccurs="0" />
 					<xs:element ref="tns:whslineitems" minOccurs="0" />
@@ -8311,51 +8311,51 @@ The vendor object represents a business partner from whom goods are purchased in
 				<xs:sequence>
 					<xs:element name="name" type="xs:string" minOccurs="0" />
 					<xs:element name="status" type="xs:string" minOccurs="0" />
-					<xs:element name="enable_bins" type="xs:string"
+					<xs:element name="enable-bins" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="extended_description" type="xs:string"
+					<xs:element name="extended-description" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:productlineid" minOccurs="0" />
 					<xs:element name="substituteid" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="ship_weight" type="xs:string"
+					<xs:element name="ship-weight" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="taxable" type="xs:string" minOccurs="0" />
-					<xs:element name="standard_cost" type="xs:string"
+					<xs:element name="standard-cost" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="base_price" type="xs:string"
+					<xs:element name="base-price" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="standard_unit" type="xs:string"
+					<xs:element name="standard-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchase_unit" type="xs:string"
+					<xs:element name="purchase-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchase_unit_factor" type="xs:string"
+					<xs:element name="purchase-unit-factor" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_unit" type="xs:string"
+					<xs:element name="sales-unit" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_unit_factor" type="xs:string"
+					<xs:element name="sales-unit-factor" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="default_warehouse" type="xs:string"
+					<xs:element name="default-warehouse" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="glgroup" type="xs:string" minOccurs="0" />
 					<xs:element name="note" type="xs:string" minOccurs="0" />
-					<xs:element name="inventory_precision" type="xs:string"
+					<xs:element name="inventory-precision" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="purchasing_precision" type="xs:string"
+					<xs:element name="purchasing-precision" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="sales_precision" type="xs:string"
+					<xs:element name="sales-precision" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="upc" type="xs:string" minOccurs="0" />
 					<xs:element name="hasstartenddates" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="term_period" type="xs:string"
+					<xs:element name="term-period" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="defaultnoofperiods" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="computepriceforshortterm" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:itaxgroup" minOccurs="0" />
-					<xs:element name="revenue_posting" type="xs:string"
+					<xs:element name="revenue-posting" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:vendlineitems" minOccurs="0" />
 					<xs:element ref="tns:whslineitems" minOccurs="0" />
@@ -8556,9 +8556,9 @@ The vendor object represents a business partner from whom goods are purchased in
 					</xs:choice>
 					<xs:element ref="tns:datefrom" />
 					<xs:element ref="tns:dateto" />
-					<xs:element name="minimum_quantity" type="xs:string"
+					<xs:element name="minimum-quantity" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="maximum_quantity" type="xs:string"
+					<xs:element name="maximum-quantity" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:value" />
 					<xs:element name="valuetype" type="xs:string" />
@@ -8589,9 +8589,9 @@ The vendor object represents a business partner from whom goods are purchased in
 					</xs:choice>
 					<xs:element ref="tns:datefrom" minOccurs="0" />
 					<xs:element ref="tns:dateto" minOccurs="0" />
-					<xs:element name="minimum_quantity" type="xs:string"
+					<xs:element name="minimum-quantity" type="xs:string"
 						minOccurs="0" />
-					<xs:element name="maximum_quantity" type="xs:string"
+					<xs:element name="maximum-quantity" type="xs:string"
 						minOccurs="0" />
 					<xs:element ref="tns:value" minOccurs="0" />
 					<xs:element name="valuetype" type="xs:string" minOccurs="0" />
@@ -8706,8 +8706,8 @@ The vendor object represents a business partner from whom goods are purchased in
 					<xs:element ref="tns:customerid" />
 					<xs:element name="cardnum" type="xs:string" />
 					<xs:element name="cardtype" type="xs:string" />
-					<xs:element name="exp_month" type="xs:string" />
-					<xs:element name="exp_year" type="xs:string" />
+					<xs:element name="exp-month" type="xs:string" />
+					<xs:element name="exp-year" type="xs:string" />
 					<xs:element name="description" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="status" type="xs:string" minOccurs="0" />
@@ -8723,8 +8723,8 @@ The vendor object represents a business partner from whom goods are purchased in
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
-					<xs:element name="exp_month" type="xs:string" minOccurs="0" />
-					<xs:element name="exp_year" type="xs:string" minOccurs="0" />
+					<xs:element name="exp-month" type="xs:string" minOccurs="0" />
+					<xs:element name="exp-year" type="xs:string" minOccurs="0" />
 					<xs:element name="description" type="xs:string"
 						minOccurs="0" />
 					<xs:element name="status" type="xs:string" minOccurs="0" />
@@ -8845,7 +8845,7 @@ The vendor object represents a business partner from whom goods are purchased in
 						minOccurs="0" />
 					<xs:element name="status" type="xs:string" minOccurs="0" />
 				</xs:sequence>
-				<xs:attribute name="set_nulls" type="xs:string" />
+				<xs:attribute name="set-nulls" type="xs:string" />
 				<xs:attribute name="detailid" type="xs:string" use="required" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -8994,7 +8994,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="reconcile_bankType">
+	<xs:complexType name="reconcile-bankType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -9009,7 +9009,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="reverse_billType">
+	<xs:complexType name="reverse-billType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -9022,7 +9022,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="reverse_appaymentType">
+	<xs:complexType name="reverse-appaymentType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>
@@ -9282,7 +9282,7 @@ The vendor object represents a business partner from whom goods are purchased in
 		</xsd:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="reverse_cctransactionType">
+	<xs:complexType name="reverse-cctransactionType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractInterceptingMessageProcessorType">
 				<xs:sequence>

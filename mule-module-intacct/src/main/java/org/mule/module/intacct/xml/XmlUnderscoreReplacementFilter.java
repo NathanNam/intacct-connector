@@ -11,6 +11,7 @@
 package org.mule.module.intacct.xml;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.helpers.AttributesImpl;
 
 /**
  * This is the underscore filter Throuout this class methods we use the
@@ -32,7 +33,15 @@ public class XmlUnderscoreReplacementFilter implements XmlFilter
     @Override
     public Attributes getAtts(Attributes atts)
     {
-        return atts;
+        AttributesImpl ai = new AttributesImpl(atts);
+        for (int i = 0; i < ai.getLength(); i++)
+        {
+            String lname = ai.getLocalName(i).replace('-', '_').intern();
+            String qname = ai.getQName(i).replace('-', '_').intern();
+            ai.setLocalName(i, lname);
+            ai.setQName(i, qname);
+        }
+        return ai;
     }
 
     @Override
