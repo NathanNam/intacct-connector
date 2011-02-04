@@ -13,12 +13,38 @@ package org.mule.module.intacct.config;
 import org.mule.config.spring.handlers.AbstractMuleNamespaceHandler;
 import org.mule.config.spring.parsers.generic.OrphanDefinitionParser;
 import org.mule.module.intacct.IntacctCloudConnector;
+import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.response.Response;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.UnhandledException;
 
 /**
  * This namespace handler for spring for intacct
  */
 public class IntacctNamespaceHandler extends AbstractMuleNamespaceHandler
 {
+    
+    public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
+
+    public static final JAXBContext RESPONSE_JAXB_CTX = loadJaxBCtx(Response.class.getPackage().getName());
+
+    /** loads JAXB context */
+    private static JAXBContext loadJaxBCtx(final String pkg)
+    {
+        JAXBContext ctx;
+        try
+        {
+            ctx = JAXBContext.newInstance(pkg);
+        }
+        catch (final JAXBException e)
+        {
+            throw new UnhandledException(e);
+        }
+        return ctx;
+    }
 
     private static final String [] API_FUNCTIONS = {
         "request",

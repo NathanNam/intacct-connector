@@ -14,7 +14,7 @@ import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
 import org.mule.config.spring.parsers.assembly.BeanAssembler;
 import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.xml.JaxBUtils;
 import org.mule.module.intacct.xml.XmlFilterWrapper;
 import org.mule.module.intacct.xml.XmlNamespaceFilter;
 import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
@@ -111,7 +111,7 @@ public class DTOChildDefinitionParserNoAttributes extends ChildDefinitionParser
                     TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
                     
                     InputStream in = new ByteArrayInputStream(outputStream.toByteArray());
-                    um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
+                    um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
                     XMLReader reader;
                     reader = XMLReaderFactory.createXMLReader();
                     

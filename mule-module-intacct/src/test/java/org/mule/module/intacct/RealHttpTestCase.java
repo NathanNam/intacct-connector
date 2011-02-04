@@ -12,15 +12,16 @@ package org.mule.module.intacct;
 
 import org.mule.api.MuleEvent;
 import org.mule.construct.SimpleFlowConstruct;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.util.JaxBUtils;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
 import org.mule.module.intacct.utils.NotFoundResponseHandler;
+import org.mule.module.intacct.xml.JaxBUtils;
 import org.mule.module.intacct.xml.XmlFilterWrapper;
 import org.mule.module.intacct.xml.XmlNamespaceFilter;
 
@@ -86,7 +87,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-        Unmarshaller um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
+        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
         inFilter.setParent(reader);

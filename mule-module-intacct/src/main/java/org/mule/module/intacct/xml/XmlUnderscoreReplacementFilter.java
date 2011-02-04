@@ -61,7 +61,7 @@ public class XmlUnderscoreReplacementFilter implements XmlFilter
     {
         return null;
     }
-
+    
     @Override
     public String getqName(String qName)
     {

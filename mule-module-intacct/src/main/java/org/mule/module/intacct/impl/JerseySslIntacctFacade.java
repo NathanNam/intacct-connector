@@ -11,10 +11,11 @@
 package org.mule.module.intacct.impl;
 
 import org.mule.module.intacct.IntacctFacade;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.xml.JaxBUtils;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -108,7 +109,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
             final MultivaluedMap<String, String> map = new Form();
             //As the xml sent doesn't have the namespace we're removing it here
             Writer writer = JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
-                JaxBUtils.REQUEST_JAXB_CTX);
+                IntacctNamespaceHandler.REQUEST_JAXB_CTX);
             //We must send an attribute xmlrequest with the xml value
             map.add("xmlrequest", writer.toString());
             final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)

@@ -11,9 +11,10 @@
 package org.mule.module.intacct.impl;
 
 import org.mule.module.intacct.IntacctFacade;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.xml.JaxBUtils;
 
 import javax.xml.bind.JAXBException;
 
@@ -23,7 +24,7 @@ import org.apache.commons.lang.UnhandledException;
  * Implementation of {@link IntacctFacade} useful for debugging. Prints the request
  * on System.out.
  */
-public class TestIntacctFacade implements IntacctFacade
+public class MockIntacctFacade implements IntacctFacade
 {
     private Request request;
     private String requestAsString;
@@ -36,7 +37,7 @@ public class TestIntacctFacade implements IntacctFacade
         try
         {
             setRequestAsString(JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
-                JaxBUtils.REQUEST_JAXB_CTX).toString());
+                IntacctNamespaceHandler.REQUEST_JAXB_CTX).toString());
             return new Response();
         }
         catch (final JAXBException e)

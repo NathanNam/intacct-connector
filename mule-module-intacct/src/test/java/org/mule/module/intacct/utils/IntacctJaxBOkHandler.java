@@ -10,7 +10,8 @@
 
 package org.mule.module.intacct.utils;
 
-import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.xml.JaxBUtils;
 
 import javax.xml.bind.JAXBContext;
 
@@ -28,7 +29,7 @@ public class IntacctJaxBOkHandler extends JaxBOkHandler
     @Override
     protected JAXBContext getContext()
     {
-        return JaxBUtils.RESPONSE_JAXB_CTX;
+        return IntacctNamespaceHandler.RESPONSE_JAXB_CTX;
     }
 
 }

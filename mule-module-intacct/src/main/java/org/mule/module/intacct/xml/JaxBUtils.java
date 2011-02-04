@@ -8,13 +8,10 @@
  * LICENSE.txt file.
  */
 
-package org.mule.module.intacct.util;
+package org.mule.module.intacct.xml;
 
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.xml.FilterCollectionFilter;
-import org.mule.module.intacct.xml.XmlNamespaceFilter;
-import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
 
 import java.io.StringWriter;
 import java.io.Writer;
@@ -38,24 +35,7 @@ public final class JaxBUtils
         // nothing to do
     }
 
-    public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
 
-    public static final JAXBContext RESPONSE_JAXB_CTX = loadJaxBCtx(Response.class.getPackage().getName());
-
-    /** loads JAXB context */
-    private static JAXBContext loadJaxBCtx(final String pkg)
-    {
-        JAXBContext ctx;
-        try
-        {
-            ctx = JAXBContext.newInstance(pkg);
-        }
-        catch (final JAXBException e)
-        {
-            throw new UnhandledException(e);
-        }
-        return ctx;
-    }
 
     /**
      * This uses {@link XMLWriter} with a filter to remove the namespace when

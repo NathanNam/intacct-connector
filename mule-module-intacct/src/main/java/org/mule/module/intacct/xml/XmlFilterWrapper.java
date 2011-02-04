@@ -66,7 +66,6 @@ public class XmlFilterWrapper extends XMLFilterImpl
     @Override
     public void startPrefixMapping(String prefix, String url) throws SAXException
     {
-
         if (filter.getUri(url) != null)
         {
             this.startControlledPrefixMapping(url);
@@ -75,7 +74,6 @@ public class XmlFilterWrapper extends XMLFilterImpl
 
     private void startControlledPrefixMapping(String url) throws SAXException
     {
-
         if (filter.getUri(url) != null && !addedNamespace)
         {
             super.startPrefixMapping("", filter.getUri(url));
