@@ -195,4 +195,16 @@ cloud connector this add the steps you need to follow:
 
    8. And we're done! It's easy, right? Now we just need to use it and code a test to check if this
    is working.
+   
+   For example if we want to now use create-allocation we must do:
+   
+   <flow name="exampleFlow">
+   	<intacct:create-allocation xmlns="http://www.mulesoft.org/schema/mule/intacct">
+   		<intacct:allocationid>asdf</intacct:allocationid>
+   		<intacct:description>asdf</intacct:description>
+   		...
+   		...
+   		...
+   	</intacct:create-allocation>
+   </flow>
     
