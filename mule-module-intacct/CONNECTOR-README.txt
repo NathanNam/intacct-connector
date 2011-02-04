@@ -200,8 +200,8 @@ cloud connector this add the steps you need to follow:
    
    <flow name="exampleFlow">
    	<intacct:create-allocation xmlns="http://www.mulesoft.org/schema/mule/intacct">
-   		<intacct:allocationid>asdf</intacct:allocationid>
-   		<intacct:description>asdf</intacct:description>
+   		<allocationid>asdf</allocationid>
+   		<description>asdf</description>
    		...
    		...
    		...
