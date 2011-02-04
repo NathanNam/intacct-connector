@@ -14,6 +14,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
 
+/**
+ * This xml filter wraps an {@link XmlFilter} and implements {@link XMLFilterImpl} so
+ * that it can be used with the JaxB Marshaller
+ */
 public class XmlFilterWrapper extends XMLFilterImpl
 {
 
@@ -43,12 +47,13 @@ public class XmlFilterWrapper extends XMLFilterImpl
         }
         return null;
     }
-    
+
     @Override
     public void startElement(String arg0, String arg1, String arg2, Attributes arg3) throws SAXException
     {
-        super.startElement(getNotNull(filter.getUri(arg0), arg0), getNotNull(filter.getLocalName(arg1), arg1),
-            getNotNull(filter.getqName(arg2), arg2), getNotNull(filter.getAtts(arg3), arg3));
+        super.startElement(getNotNull(filter.getUri(arg0), arg0),
+            getNotNull(filter.getLocalName(arg1), arg1), getNotNull(filter.getqName(arg2), arg2), getNotNull(
+                filter.getAtts(arg3), arg3));
     }
 
     @Override

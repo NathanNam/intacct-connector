@@ -12,6 +12,9 @@ package org.mule.module.intacct.xml;
 
 import org.xml.sax.Attributes;
 
+/**
+ *  This is the namespace filter
+ */
 public class XmlNamespaceFilter implements XmlFilter
 {
 

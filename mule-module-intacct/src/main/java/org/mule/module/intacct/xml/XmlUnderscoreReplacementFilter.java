@@ -10,15 +10,11 @@
 
 package org.mule.module.intacct.xml;
 
-import java.util.Iterator;
-
-import javax.xml.namespace.QName;
-
-import org.apache.commons.beanutils.DynaBean;
-import org.apache.commons.beanutils.WrapDynaBean;
-import org.springframework.beans.DirectFieldAccessor;
 import org.xml.sax.Attributes;
 
+/**
+ * This is the underscore filter
+ */
 public class XmlUnderscoreReplacementFilter implements XmlFilter
 {
 
