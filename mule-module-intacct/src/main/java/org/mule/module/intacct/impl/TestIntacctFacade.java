@@ -10,8 +10,6 @@
 
 package org.mule.module.intacct.impl;
 
-
-
 import org.mule.module.intacct.IntacctFacade;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
@@ -22,21 +20,23 @@ import javax.xml.bind.JAXBException;
 import org.apache.commons.lang.UnhandledException;
 
 /**
- * Implementation of {@link IntacctFacade} useful for debugging.
- * Prints the request on System.out.
+ * Implementation of {@link IntacctFacade} useful for debugging. Prints the request
+ * on System.out.
  */
-public class SystemOutIntacctFacade implements IntacctFacade
+public class TestIntacctFacade implements IntacctFacade
 {
     private Request request;
-    
+    private String requestAsString;
+
     @Override
     public Response executeOperation(final Request request)
     {
         this.request = request;
-        
+
         try
         {
-            System.out.println(JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request, JaxBUtils.REQUEST_JAXB_CTX));
+            setRequestAsString(JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
+                JaxBUtils.REQUEST_JAXB_CTX).toString());
             return new Response();
         }
         catch (final JAXBException e)
@@ -55,6 +55,14 @@ public class SystemOutIntacctFacade implements IntacctFacade
         return request;
     }
 
+    public void setRequestAsString(String requestAsString)
+    {
+        this.requestAsString = requestAsString;
+    }
+
+    public String getRequestAsString()
+    {
+        return requestAsString;
+    }
+
 }
-
-

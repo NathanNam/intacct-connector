@@ -21,7 +21,7 @@
         Mule events directly to this flow.
    -->
    <spring:beans> 
-   	<spring:bean id="sysoIntacct" class="org.mule.module.intacct.impl.SystemOutIntacctFacade" />
+   	<spring:bean id="sysoIntacct" class="org.mule.module.intacct.impl.TestIntacctFacade" />
    </spring:beans>
    
    

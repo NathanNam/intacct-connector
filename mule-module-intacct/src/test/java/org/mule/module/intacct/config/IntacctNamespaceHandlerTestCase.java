@@ -6,7 +6,7 @@ import org.mule.api.MuleMessage;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.module.client.MuleClient;
 import org.mule.module.intacct.BaseIntacctTest;
-import org.mule.module.intacct.impl.SystemOutIntacctFacade;
+import org.mule.module.intacct.impl.TestIntacctFacade;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
@@ -78,7 +78,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
-        SystemOutIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
+        TestIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
         Request requestCreated = intacct.getRequest();
         // Valido las cosas del request segun el XML de prueba
         Assert.assertEquals("12345", requestCreated.getControl().getSenderid());
@@ -110,7 +110,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         SimpleFlowConstruct flow = lookupFlowConstruct("requestFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
-        SystemOutIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
+        TestIntacctFacade intacct = muleContext.getRegistry().get("sysoIntacct");
         Request requestCreated = intacct.getRequest();
         // Now i check that what was sent is NOT what was in config. It must be overriden
            
@@ -143,7 +143,6 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         MuleClient client = new MuleClient(muleContext);
         MuleMessage result = client.send("vm://realFlow", payload, null);
         Assert.assertNotNull(result);
-        System.out.println(result.getPayloadAsString());
      
     }
 
