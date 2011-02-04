@@ -13,13 +13,28 @@ package org.mule.module.intacct.config;
 import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
 import org.mule.config.spring.parsers.assembly.BeanAssembler;
 import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
+import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.util.JaxBUtils;
+import org.mule.module.intacct.xml.XmlFilterWrapper;
+import org.mule.module.intacct.xml.XmlNamespaceFilter;
+import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.lang.UnhandledException;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
@@ -29,6 +44,10 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * <p>
@@ -85,11 +104,42 @@ public class DTOChildDefinitionParserNoAttributes extends ChildDefinitionParser
             {
                 if (um == null)
                 {
+                    
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    Source xmlSource = new DOMSource(element);
+                    StreamResult outputTarget = new StreamResult(outputStream);
+                    TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
+                    
+                    InputStream in = new ByteArrayInputStream(outputStream.toByteArray());
                     um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
+                    XMLReader reader;
+                    reader = XMLReaderFactory.createXMLReader();
+                    
+                    XmlFilterWrapper underscoreFilter = new XmlFilterWrapper(new XmlUnderscoreReplacementFilter());
+                    underscoreFilter.setParent(reader);
+                    InputSource is = new InputSource(in);
+                    SAXSource source = new SAXSource(underscoreFilter, is);
+                    arguments.add(um.unmarshal(source));
                 }
-                arguments.add(um.unmarshal(element));
+                
             }
             catch (JAXBException e)
+            {
+                throw new UnhandledException(e);
+            }
+            catch (TransformerConfigurationException e)
+            {
+                throw new UnhandledException(e);
+            }
+            catch (TransformerException e)
+            {
+                throw new UnhandledException(e);
+            }
+            catch (TransformerFactoryConfigurationError e)
+            {
+                throw new UnhandledException(e);
+            }
+            catch (SAXException e)
             {
                 throw new UnhandledException(e);
             }

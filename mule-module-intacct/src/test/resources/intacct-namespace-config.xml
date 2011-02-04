@@ -29,9 +29,8 @@
    <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="sysoIntacct" />
 
 
-	<flow name="requestFlow">
-		<intacct:execute-request xmlns="http://www.mulesoft.org/schema/mule/intacct">
-			<request>
+	 <flow name="requestFlow">
+			<intacct:request xmlns="http://www.mulesoft.org/schema/mule/intacct">
 				<control>
 					<senderid>intacct_dev</senderid>
 					<password>babbage</password>
@@ -47,7 +46,7 @@
 					</authentication>
 					<content>
 						<function controlid="#[map-payload:controlid]">
-							<get_list object="glaccount">
+							<get-list object="glaccount">
 								<filter>
 									<logical logical_operator="or">
 										<logical logical_operator="and">
@@ -77,18 +76,15 @@
 									<field>title</field>
 									<field>normalbalance</field>
 								</fields>
-							</get_list>
+							</get-list>
 						</function>
 					</content>
 				</operation>
-			</request>
-		</intacct:execute-request>
+			</intacct:request>
 	</flow>
-
 	<flow name="functionFlow">
-		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
-			<function controlid="#[map-payload:controlid]">
-				<get_list object="glaccount">
+			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+				<get-list object="glaccount">
 					<filter>
 						<logical logical_operator="or">
 							<logical logical_operator="and">
@@ -118,9 +114,8 @@
 						<field>title</field>
 						<field>normalbalance</field>
 					</fields>
-				</get_list>
-			</function>
-		</intacct:execute-function>
+				</get-list>
+			</intacct:function>
 	</flow>
 	
  	<flow name="getFlow">
@@ -133,9 +128,8 @@
  	
 </flow>
 	 
-	 
 	 <flow name="getListFlow">
-		<intacct:get_list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:get-list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
 					<filter>
 						<logical logical_operator="or">
 							<logical logical_operator="and">
@@ -165,14 +159,13 @@
 						<field>title</field>
 						<field>normalbalance</field>
 					</fields>
-		</intacct:get_list>
+		</intacct:get-list>
 	</flow> 
 	
 	
 	<flow name="functionFlowWithExHandling">
-		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
-			<function controlid="#[map-payload:controlid]">
-				<get_list object="glaccount">
+			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+				<get-list object="glaccount">
 					<filter>
 						<logical logical_operator="or">
 							<logical logical_operator="and">
@@ -202,16 +195,14 @@
 						<field>title</field>
 						<field>normalbalance</field>
 					</fields>
-				</get_list>
-			</function>
-		</intacct:execute-function>
+				</get-list>
+			</intacct:function>
 	</flow>
 	
 	<flow name="realFunctionFlow">
 		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
-		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
-			<function controlid="#[map-payload:controlid]">
-				<get_list object="glaccount">
+			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+				<get-list object="glaccount">
 					<filter>
 						<logical logical_operator="or">
 							<logical logical_operator="and">
@@ -241,8 +232,8 @@
 						<field>title</field>
 						<field>normalbalance</field>
 					</fields>
-				</get_list>
-			</function>
-		</intacct:execute-function>
+				</get-list>
+			</intacct:function>
 		</flow>
+		 
 </mule>

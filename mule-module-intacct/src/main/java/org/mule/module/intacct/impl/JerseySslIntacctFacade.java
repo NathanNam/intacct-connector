@@ -15,7 +15,6 @@ import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
-import org.mule.module.intacct.util.NamespaceFilter;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -23,7 +22,6 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.representation.Form;
 
-import java.io.StringWriter;
 import java.io.Writer;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -32,13 +30,10 @@ import javax.net.ssl.SSLContext;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
 
 /**
  * Executes an operation using Intacct XML Gateway.
@@ -112,7 +107,8 @@ public class JerseySslIntacctFacade implements IntacctFacade
             //by itself with the MessageBodyWriter
             final MultivaluedMap<String, String> map = new Form();
             //As the xml sent doesn't have the namespace we're removing it here
-            Writer writer = JaxBUtils.marshallWithoutNamespace(request, JaxBUtils.REQUEST_JAXB_CTX);
+            Writer writer = JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
+                JaxBUtils.REQUEST_JAXB_CTX);
             //We must send an attribute xmlrequest with the xml value
             map.add("xmlrequest", writer.toString());
             final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)

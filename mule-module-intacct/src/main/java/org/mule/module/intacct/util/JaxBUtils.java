@@ -12,6 +12,9 @@ package org.mule.module.intacct.util;
 
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.xml.FilterCollectionFilter;
+import org.mule.module.intacct.xml.XmlNamespaceFilter;
+import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
 
 import java.io.StringWriter;
 import java.io.Writer;
@@ -59,18 +62,19 @@ public final class JaxBUtils
      * marshalling and then returns a {@link StringWriter} so that the XML can be
      * gotten
      */
-    public static Writer marshallWithoutNamespace(Object objectToMarshall, JAXBContext c)
+    public static Writer marshallWithoutNamespaceAndUnderscoreReplacement(Object objectToMarshall, JAXBContext c)
         throws JAXBException
     {
-        NamespaceFilter outFilter = new NamespaceFilter(null, false);
+        FilterCollectionFilter coll = new FilterCollectionFilter(new XmlNamespaceFilter(null),
+            new XmlUnderscoreReplacementFilter());
         OutputFormat format = new OutputFormat();
         format.setIndent(true);
         format.setNewlines(true);
         final StringWriter writer = new StringWriter();
         XMLWriter xmlWriter = new XMLWriter(writer, format);
-        outFilter.setContentHandler(xmlWriter);
+        coll.setContentHandler(xmlWriter);
         Marshaller m = c.createMarshaller();
-        m.marshal(objectToMarshall, outFilter);
+        m.marshal(objectToMarshall, coll);
         return writer;
     }
 

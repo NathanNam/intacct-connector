@@ -36,7 +36,7 @@ public class SystemOutIntacctFacade implements IntacctFacade
         
         try
         {
-            System.out.println(JaxBUtils.marshallWithoutNamespace(request, JaxBUtils.REQUEST_JAXB_CTX));
+            System.out.println(JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request, JaxBUtils.REQUEST_JAXB_CTX));
             return new Response();
         }
         catch (final JAXBException e)

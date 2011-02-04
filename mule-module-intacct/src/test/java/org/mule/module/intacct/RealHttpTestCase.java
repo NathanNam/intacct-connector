@@ -17,11 +17,12 @@ import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.util.JaxBUtils;
-import org.mule.module.intacct.util.NamespaceFilter;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
 import org.mule.module.intacct.utils.NotFoundResponseHandler;
+import org.mule.module.intacct.xml.XmlFilterWrapper;
+import org.mule.module.intacct.xml.XmlNamespaceFilter;
 
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
@@ -87,7 +88,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
         Unmarshaller um = JaxBUtils.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
-        NamespaceFilter inFilter = new NamespaceFilter("http://www.mulesoft.org/schema/mule/intacct", true);
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
         inFilter.setParent(reader);
         InputSource is = new InputSource(in);
         SAXSource source = new SAXSource(inFilter, is);

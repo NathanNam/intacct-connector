@@ -27,12 +27,11 @@
    <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="httpIntacct" />
 
 	<flow name="functionFlow">
-		<intacct:execute-function xmlns="http://www.mulesoft.org/schema/mule/intacct">
-			<function controlid="#[map-payload:controlid]">
-				<get_list object="glaccount">
+			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+				<get-list object="glaccount">
 					<filter>
-						<logical logical_operator="or">
-							<logical logical_operator="and">
+						<logical logical-operator="or">
+							<logical logical-operator="and">
 								<expression>
 									<field>accountno</field>
 									<operator>&gt;</operator>
@@ -59,9 +58,8 @@
 						<field>title</field>
 						<field>normalbalance</field>
 					</fields>
-				</get_list>
-			</function>
-		</intacct:execute-function>
+				</get-list>
+			</intacct:function>
 	</flow>
 
 </mule>
