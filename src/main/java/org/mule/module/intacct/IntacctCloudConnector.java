@@ -86,6 +86,7 @@ public class IntacctCloudConnector implements Initialisable
         control.setPassword(controlPassword);
         control.setControlid(controlid);
         control.setUniqueid(uniqueid);
+        control.setDtdversion("2.1");
         request.setControl(control);
         final Operation operation = new Operation();
         request.getOperation().add(operation);
