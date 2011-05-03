@@ -1801,14 +1801,6 @@ public class ObjectFactory
     }
 
     /**
-     * Create an instance of {@link BasePrice }
-     */
-    public BasePrice createBasePrice()
-    {
-        return new BasePrice();
-    }
-
-    /**
      * Create an instance of {@link Revrecschedule }
      */
     public Revrecschedule createRevrecschedule()
@@ -3406,14 +3398,6 @@ public class ObjectFactory
     public Whenlastreceived createWhenlastreceived()
     {
         return new Whenlastreceived();
-    }
-
-    /**
-     * Create an instance of {@link TermPeriod }
-     */
-    public TermPeriod createTermPeriod()
-    {
-        return new TermPeriod();
     }
 
     /**

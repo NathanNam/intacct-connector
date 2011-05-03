@@ -2472,14 +2472,6 @@ public class ObjectFactory
     }
 
     /**
-     * Create an instance of {@link ExchRateDate }
-     */
-    public ExchRateDate createExchRateDate()
-    {
-        return new ExchRateDate();
-    }
-
-    /**
      * Create an instance of {@link Email }
      */
     public Email createEmail()
@@ -3936,14 +3928,6 @@ public class ObjectFactory
     }
 
     /**
-     * Create an instance of {@link LineNo }
-     */
-    public LineNo createLineNo()
-    {
-        return new LineNo();
-    }
-
-    /**
      * Create an instance of {@link Complineitem }
      */
     public Complineitem createComplineitem()
@@ -4421,14 +4405,6 @@ public class ObjectFactory
     public Dochdrno createDochdrno()
     {
         return new Dochdrno();
-    }
-
-    /**
-     * Create an instance of {@link ExchRateTypeId }
-     */
-    public ExchRateTypeId createExchRateTypeId()
-    {
-        return new ExchRateTypeId();
     }
 
     /**

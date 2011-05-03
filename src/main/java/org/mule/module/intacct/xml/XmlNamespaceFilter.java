@@ -80,7 +80,7 @@ public class XmlNamespaceFilter implements XmlFilter
     @Override
     public boolean isUriPresent()
     {
-        return true;
+        return false;
     }
 
 }
