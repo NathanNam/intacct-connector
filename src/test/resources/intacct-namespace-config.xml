@@ -2,15 +2,14 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:spring="http://www.springframework.org/schema/beans"
-      xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
+      xmlns:intacct="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct"
       xmlns:util="http://www.springframework.org/schema/util"
       xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
       xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
-        http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/3.1/mule-intacct.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/3.1/mule-smtp.xsd
         http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd">
 
@@ -26,11 +25,18 @@
    
    
    
-   <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="sysoIntacct" />
-
-	 <flow name="requestFlow">
-			<intacct:request xmlns="http://www.mulesoft.org/schema/mule/intacct">
-				<control>
+   <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" />
+    
+     <flow name="testFlow">
+         <intacct:operation>
+             <intacct:function ref="#[payload]"></intacct:function>
+         </intacct:operation>
+     </flow>
+<!-- 	 <flow name="requestFlow">
+			<intacct:operation>
+			    <intacct:function ref="#[payload]"></intacct:function>-->
+			<!-- esto es request -->
+ <!--				<control>
 					<senderid>intacct-dev</senderid>
 					<password>babbage</password>
 					<controlid>XML Sample</controlid>
@@ -78,11 +84,12 @@
 							</get-list>
 						</function>
 					</content>
-				</operation>
-			</intacct:request>
+				</operation> 
+			</intacct:operation>
 	</flow>
+	
 	<flow name="functionFlow">
-			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+			<intacct:function controlid="#[map-payload:controlid]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
@@ -118,7 +125,7 @@
 	</flow>
 	
  	<flow name="getFlow">
- 	<intacct:get object="glaccount" key="1000" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+ 	<intacct:get object="glaccount" key="1000">
     <fields>
         <field>title</field>
         <field>normalbalance</field>
@@ -127,7 +134,7 @@
  	
 </flow>
 	 <flow name="getListFlow">
-		<intacct:get-list object="glaccount" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+		<intacct:get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
 							<logical logical-operator="and">
@@ -158,10 +165,10 @@
 						<field>normalbalance</field>
 					</fields>
 		</intacct:get-list>
-	</flow> 
+	</flow>
 	
 	<flow name="functionFlowWithExHandling">
-			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+			<intacct:function controlid="#[map-payload:controlid]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
@@ -196,9 +203,9 @@
 			</intacct:function>
 	</flow>
 	
-	<flow name="realFunctionFlow">
+    <flow name="realFunctionFlow">
 		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
-			<intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+			<intacct:function controlid="#[map-payload:controlid]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
@@ -232,5 +239,5 @@
 				</get-list>
 			</intacct:function>
 		</flow>
-		  
+ -->		  
 </mule>

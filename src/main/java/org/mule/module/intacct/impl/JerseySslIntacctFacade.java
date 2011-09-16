@@ -10,19 +10,6 @@
 
 package org.mule.module.intacct.impl;
 
-import org.mule.module.intacct.IntacctFacade;
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
-import org.mule.module.intacct.exception.IntacctException;
-import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.xml.JaxBUtils;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.representation.Form;
-
 import java.io.Writer;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -35,6 +22,18 @@ import javax.xml.bind.JAXBException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
+import org.mule.module.intacct.IntacctFacade;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.exception.IntacctException;
+import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.xml.JaxBUtils;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.representation.Form;
 
 /**
  * Executes an operation using Intacct XML Gateway.

@@ -10,10 +10,9 @@
 
 package org.mule.module.intacct.utils;
 
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
-import org.mule.module.intacct.xml.JaxBUtils;
-
 import javax.xml.bind.JAXBContext;
+
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
 
 /**
  *  A {@link JaxBOkHandler} that uses the response context for intacct

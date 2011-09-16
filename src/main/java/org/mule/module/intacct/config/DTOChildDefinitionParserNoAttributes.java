@@ -10,15 +10,6 @@
 
 package org.mule.module.intacct.config;
 
-import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
-import org.mule.config.spring.parsers.assembly.BeanAssembler;
-import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
-import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.xml.JaxBUtils;
-import org.mule.module.intacct.xml.XmlFilterWrapper;
-import org.mule.module.intacct.xml.XmlNamespaceFilter;
-import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -37,13 +28,16 @@ import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.lang.UnhandledException;
+import org.mule.config.spring.MuleHierarchicalBeanDefinitionParserDelegate;
+import org.mule.config.spring.parsers.assembly.BeanAssembler;
+import org.mule.config.spring.parsers.generic.ChildDefinitionParser;
+import org.mule.module.intacct.xml.XmlFilterWrapper;
+import org.mule.module.intacct.xml.XmlUnderscoreReplacementFilter;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;

@@ -10,25 +10,6 @@
 
 package org.mule.module.intacct;
 
-import org.mule.api.MuleEvent;
-import org.mule.construct.SimpleFlowConstruct;
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
-import org.mule.module.intacct.exception.IntacctException;
-import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.response.Control;
-import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.utils.EmptyResponseHandler;
-import org.mule.module.intacct.utils.HttpTestServer;
-import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
-import org.mule.module.intacct.utils.NotFoundResponseHandler;
-import org.mule.module.intacct.xml.JaxBUtils;
-import org.mule.module.intacct.xml.XmlFilterWrapper;
-import org.mule.module.intacct.xml.XmlNamespaceFilter;
-
-import com.sun.jersey.api.client.ClientHandlerException;
-import com.sun.jersey.api.client.UniformInterfaceException;
-import com.sun.jersey.core.util.ReaderWriter;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.ConnectException;
@@ -43,14 +24,33 @@ import javax.xml.transform.sax.SAXSource;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
+import org.junit.Ignore;
+import org.mule.api.MuleEvent;
+import org.mule.construct.SimpleFlowConstruct;
+import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.exception.IntacctException;
+import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.response.Control;
+import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.utils.EmptyResponseHandler;
+import org.mule.module.intacct.utils.HttpTestServer;
+import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
+import org.mule.module.intacct.utils.NotFoundResponseHandler;
+import org.mule.module.intacct.xml.XmlFilterWrapper;
+import org.mule.module.intacct.xml.XmlNamespaceFilter;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
+
+import com.sun.jersey.api.client.ClientHandlerException;
+import com.sun.jersey.api.client.UniformInterfaceException;
+import com.sun.jersey.core.util.ReaderWriter;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
  * cases, empty response, etc.
  */
+@Ignore
 public class RealHttpTestCase extends BaseIntacctTest
 {
 

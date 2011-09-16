@@ -10,16 +10,16 @@
 
 package org.mule.module.intacct.config;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.UnhandledException;
 import org.mule.config.spring.handlers.AbstractMuleNamespaceHandler;
 import org.mule.config.spring.parsers.generic.OrphanDefinitionParser;
 import org.mule.module.intacct.IntacctCloudConnector;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-
-import org.apache.commons.lang.UnhandledException;
 
 /**
  * This namespace handler for spring for intacct

@@ -1,10 +1,17 @@
 
 package org.mule.module.intacct.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import junit.framework.Assert;
+
+import org.junit.Ignore;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
+import org.mule.api.client.MuleClient;
+import org.mule.client.DefaultLocalMuleClient;
 import org.mule.construct.SimpleFlowConstruct;
-import org.mule.module.client.MuleClient;
 import org.mule.module.intacct.BaseIntacctTest;
 import org.mule.module.intacct.impl.MockIntacctFacade;
 import org.mule.module.intacct.schema.request.Login;
@@ -12,11 +19,7 @@ import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import junit.framework.Assert;
-
+@Ignore
 public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
 {
     @Override
@@ -140,7 +143,7 @@ public class IntacctNamespaceHandlerTestCase extends BaseIntacctTest
         payload.put("key", "1234");
         payload.put("controlid", "controlid!");
         payload.put("accountnoLower", "500");
-        MuleClient client = new MuleClient(muleContext);
+        MuleClient client = new DefaultLocalMuleClient(muleContext);
         MuleMessage result = client.send("vm://realFlow", payload, null);
         Assert.assertNotNull(result);
      

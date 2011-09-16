@@ -10,20 +10,19 @@
 
 package org.mule.module.intacct.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mule.module.intacct.IntacctCloudConnector;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.processor.InvokerMessageProcessor;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import edu.emory.mathcs.backport.java.util.Collections;
-
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.FactoryBeanNotInitializedException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import edu.emory.mathcs.backport.java.util.Collections;
 
 /**
  * Creates a {@link DTOEvaluationInvokerMessageProcessor}
