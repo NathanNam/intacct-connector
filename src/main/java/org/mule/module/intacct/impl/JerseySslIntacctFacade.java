@@ -33,7 +33,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
 
     public JerseySslIntacctFacade(String uri)
     {
-        this(new JesreyIntacctRestClient(uri));
+        this(new JerseyIntacctRestClient(uri));
     }
 
     public JerseySslIntacctFacade(IntacctRestClient client)

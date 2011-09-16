@@ -15,21 +15,21 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.representation.Form;
 
-public class JesreyIntacctRestClient implements IntacctRestClient
+public class JerseyIntacctRestClient implements IntacctRestClient
 {
     private WebResource gateway;
 
-    public JesreyIntacctRestClient(WebResource gateway)
+    public JerseyIntacctRestClient(WebResource gateway)
     {
         this.gateway = gateway;
     }
 
-    public JesreyIntacctRestClient(final Client client, final String gatewayURI)
+    public JerseyIntacctRestClient(final Client client, final String gatewayURI)
     {
         this(createGateway(gatewayURI, client));
     }
 
-    public JesreyIntacctRestClient(final String gatewayURI)
+    public JerseyIntacctRestClient(final String gatewayURI)
     {
         this(createGateway(gatewayURI, createClient(gatewayURI)));
     }
