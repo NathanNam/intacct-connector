@@ -29,17 +29,19 @@ import org.mule.module.intacct.xml.JaxBUtils;
  */
 public class JerseySslIntacctFacade implements IntacctFacade
 {
-   private IntacctRestClient client;
-   
-   public JerseySslIntacctFacade(String uri) {
-	   this(new JesreyIntacctRestClient(uri));
-   }
-   
-	public JerseySslIntacctFacade(IntacctRestClient client) {
-		this.client = client;
-	}
+    private IntacctRestClient client;
 
-	protected void addSslConfiguration() throws NoSuchAlgorithmException, KeyManagementException
+    public JerseySslIntacctFacade(String uri)
+    {
+        this(new JesreyIntacctRestClient(uri));
+    }
+
+    public JerseySslIntacctFacade(IntacctRestClient client)
+    {
+        this.client = client;
+    }
+
+    protected void addSslConfiguration() throws NoSuchAlgorithmException, KeyManagementException
     {
         client.addSslConfiguration();
     }
@@ -49,13 +51,13 @@ public class JerseySslIntacctFacade implements IntacctFacade
     {
         try
         {
-        	//As the xml sent doesn't have the namespace we're removing it here
-        	Writer writer = JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
-        			IntacctNamespaceHandler.REQUEST_JAXB_CTX);
-        	//We must send an attribute xmlrequest with the xml value
-        	String requestString = writer.toString();
-        	Response post = client.postXml(requestString);
-            //If there's no response or it has no control id it must "explode"
+            // As the xml sent doesn't have the namespace we're removing it here
+            Writer writer = JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
+                IntacctNamespaceHandler.REQUEST_JAXB_CTX);
+            // We must send an attribute xmlrequest with the xml value
+            String requestString = writer.toString();
+            Response post = client.postXml(requestString);
+            // If there's no response or it has no control id it must "explode"
             if (post == null || post.getControl() == null
                 || StringUtils.isBlank(post.getControl().getControlid()))
             {
