@@ -39,7 +39,6 @@ import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.request.Subtotals;
-import org.mule.module.intacct.schema.request.Termname;
 import org.mule.module.intacct.schema.response.Response;
 
 import ar.com.zauber.commons.mom.CXFStyle;
@@ -114,7 +113,7 @@ public class IntacctCloudConnector
                                         /*Customerid*/Map<String, Object> customerid, 
                                         @Optional String documentno,
                                         @Optional String referenceno,
-                                        @Optional Termname termname,
+                                        @Optional Map<String, Object>/*Termname*/ termname,
                                         @Optional /*Datedue*/Map<String, Object> datedue,
                                         @Optional String message,
                                         @Optional String shippingmethod,

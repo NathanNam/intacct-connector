@@ -101,6 +101,81 @@ public class RealHttpTestCase extends BaseIntacctTest
         Assert.assertEquals(controlId, resp.getControl().getControlid());
     }
 
+//    /**
+//     */
+//    public void testSendSomethingUsingMaps() throws Exception
+//    {
+//        /*
+//         * <intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
+//                <get-list object="glaccount">
+//                    <filter>
+//                        <logical logical-operator="or">
+//                            <logical logical-operator="and">
+//                                <expression>
+//                                    <field>accountno</field>
+//                                    <operator>&gt;</operator>
+//                                    <value>#[map-payload:accountnoLower]</value>
+//                                </expression>
+//                                <expression>
+//                                    <field>normalbalance</field>
+//                                    <operator>=</operator>
+//                                    <value>debit</value>
+//                                </expression>
+//                            </logical>
+//                            <expression>
+//                                <field>normalbalance</field>
+//                                <operator>=</operator>
+//                                <value>credit</value>
+//                            </expression>
+//                        </logical>
+//                    </filter>
+//                    <sorts>
+//                        <sortfield order="asc">normalbalance</sortfield>
+//                        <sortfield order="asc">title</sortfield>
+//                    </sorts>
+//                    <fields>
+//                        <field>title</field>
+//                        <field>normalbalance</field>
+//                    </fields>
+//                </get-list>
+//            </intacct:function>
+//         */
+//        Response response = new Response();
+//        Control control = new Control();
+//        String controlId = "mi id";
+//        control.setControlid(controlId);
+//        response.setControl(control);
+//        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+//        final int port = 50443;
+//        HttpTestServer server = new HttpTestServer(handler, port);
+//        server.start();
+//        final Map<String, String> payload = new HashMap<String, String>();
+//        payload.put("key", "1234");
+//        payload.put("controlid", controlId);
+//        payload.put("accountnoLower", "500");
+//        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+//        final MuleEvent event = getTestEvent(payload);
+//        final MuleEvent responseEvent = flow.process(event);
+//        server.stop();
+//        String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
+//            "xmlrequest".length() + 1);
+//        final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
+//        String xml = URLDecoder.decode(encodedXml, charsetName);
+//        InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
+//        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+//        XMLReader reader = XMLReaderFactory.createXMLReader();
+//        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
+//        inFilter.setParent(reader);
+//        InputSource is = new InputSource(in);
+//        SAXSource source = new SAXSource(inFilter, is);
+//
+//        Request req = (Request) um.unmarshal(source);
+//        Assert.assertEquals(controlId, req.getControl().getControlid());
+//        Response resp = (Response) responseEvent.getMessage().getPayload();
+//        Assert.assertNotNull(resp);
+//        Assert.assertEquals(controlId, resp.getControl().getControlid());
+//    }
+    
     public void testSendNoResponse() throws Exception
     {
         HttpTestServer server = null;
