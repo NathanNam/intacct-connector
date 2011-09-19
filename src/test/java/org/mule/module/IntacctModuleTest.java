@@ -20,10 +20,12 @@
  */
 package org.mule.module;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.mule.api.MuleEvent;
 import org.mule.construct.SimpleFlowConstruct;
-import org.mule.module.intacct.schema.request.Function;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
 
@@ -39,7 +41,8 @@ public class IntacctModuleTest extends FunctionalTestCase
     public void testFlow() throws Exception
     {
         SimpleFlowConstruct flow = lookupFlowConstruct("testFlow");
-        MuleEvent event = AbstractMuleTestCase.getTestEvent(new Function());
+        Map payload = new HashMap<String, Object>();
+        MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
 
         //assertEquals(expect, responseEvent.getMessage().getPayload());

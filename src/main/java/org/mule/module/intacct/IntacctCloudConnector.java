@@ -20,6 +20,8 @@
  */
 package org.mule.module.intacct;
 
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 
@@ -36,6 +38,8 @@ import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.request.Subtotals;
+import org.mule.module.intacct.schema.request.Termname;
 import org.mule.module.intacct.schema.response.Response;
 
 import ar.com.zauber.commons.mom.CXFStyle;
@@ -71,14 +75,15 @@ public class IntacctCloudConnector
     @Optional
     private IntacctFacade intacctImplementation;
     
-    private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema.request");
+    private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema");
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
     /** Given the function we create the request with the parameters for default given in the config */
     @Processor
-    public Response operation(final Function function) throws JAXBException
+    public Response operation(final Map<String, Object> function) throws JAXBException
     {
+        Function realFunction = mom.fromMap(Function.class, function);
         final Request request = new Request();
         final Control control = new Control();
         control.setSenderid(senderId);
@@ -97,11 +102,60 @@ public class IntacctCloudConnector
         authentication.getLoginOrSessionid().add(login);
         operation.setAuthentication(authentication);
         final Content content = new Content();
-        content.getFunction().add(function);
+        content.getFunction().add(realFunction);
         operation.getContent().add(content);
         return operation(request);
     }
 
+    @Processor
+    public Response createSotransaction(String transactiontype,
+                                        /*Datecreated*/Map<String, Object> datecreated, 
+                                        @Optional String createdfrom,
+                                        /*Customerid*/Map<String, Object> customerid, 
+                                        @Optional String documentno,
+                                        @Optional String referenceno,
+                                        @Optional Termname termname,
+                                        @Optional /*Datedue*/Map<String, Object> datedue,
+                                        @Optional String message,
+                                        @Optional String shippingmethod,
+                                        @Optional /*Shipto*/Map<String, Object> shipto,
+                                        @Optional /*Billto*/Map<String, Object> billto,
+                                        @Optional String externalid,
+                                        @Optional String basecurr,
+                                        @Optional String currency,
+                                        @Optional /*List<Object>*/Map<String, Object> exchratedateOrExchratetypeOrExchrate,
+                                        @Optional String vsoepricelist,
+                                        @Optional /*Customfields*/Map<String, Object> customfields,
+                                        /*Sotransitems*/Map<String, Object> sotransitems,
+                                        @Optional Subtotals subtotals
+                                        ) throws JAXBException
+    {
+        return null;
+    }
+    
+    @Processor
+    public Response getList(String object,
+                            @Optional String start,
+                            @Optional String maxitems, 
+                            @Optional String showprivate, 
+                            @Optional /*Filter*/Map<String, Object> filter,
+                            @Optional /*Sorts*/Map<String, Object> sorts,
+                            @Optional /*Fields*/Map<String, Object> fields
+                            ) throws JAXBException
+    {
+        return null;
+    }
+    
+    @Processor
+    public Response get(String object,
+                        String key, 
+                        @Optional String externalkey,
+                        @Optional /*Fields*/Map<String, Object> fields
+                        ) throws JAXBException
+    {
+        return null;
+    }
+    
     public Response sendRequest(final Request request) throws JAXBException
     {
         try
