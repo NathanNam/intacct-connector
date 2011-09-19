@@ -1,12 +1,22 @@
+
 package org.mule.module.intacct.impl;
 
-import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
-public interface IntacctRestClient {
+/**
+ * IntacctRestClient
+ * @author flbulgarelli
+ */
+public interface IntacctRestClient
+{
+    /**
+     * Sends an xml request
+     * 
+     * @param xml
+     * @return the resposne
+     */
+    Response postXml(String xml);
 
-	Response postXml(String xml);
-
-	void addSslConfiguration();
+    void addSslConfiguration();
 
 }

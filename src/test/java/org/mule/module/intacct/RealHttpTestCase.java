@@ -58,22 +58,24 @@ import com.sun.jersey.core.util.ReaderWriter;
 public class RealHttpTestCase extends BaseIntacctTest
 {
 
-	private HttpTestServer server;
-	private final String controlId = "mi id";
-	
+    private HttpTestServer server;
+    private final String controlId = "mi id";
+
     @Override
     protected String getConfigResources()
     {
         return "intacct-namespace-real-config.xml";
     }
-    
+
     @Override
-    protected void doTearDown() throws Exception {
-    	if(server != null) server.stop();
+    protected void doTearDown() throws Exception
+    {
+        if (server != null) server.stop();
     }
-    
+
     /**
-     * This tests sending some real request and getting some response. This sends a function so all the request values
+     * This tests sending some real request and getting some response. This sends a
+     * function so all the request values
      */
     public void testSendSomething() throws Exception
     {
@@ -82,7 +84,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         control.setControlid(controlId);
         response.setControl(control);
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-		startServer(handler);
+        startServer(handler);
         final Map<String, String> payload = new HashMap<String, String>();
         payload.put("key", "1234");
         payload.put("controlid", controlId);
@@ -90,7 +92,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
-        
+
         String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
             "xmlrequest".length() + 1);
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
@@ -98,7 +100,8 @@ public class RealHttpTestCase extends BaseIntacctTest
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
         Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
-        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
+            "http://www.mulesoft.org/schema/mule/intacct"));
         inFilter.setParent(reader);
         InputSource is = new InputSource(in);
         SAXSource source = new SAXSource(inFilter, is);
@@ -145,7 +148,7 @@ public class RealHttpTestCase extends BaseIntacctTest
             response.setControl(control);
             IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
             startServer(handler);
-            
+
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", controlId);
@@ -177,7 +180,7 @@ public class RealHttpTestCase extends BaseIntacctTest
     {
         try
         {
-        	
+
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", "asdf");
@@ -257,13 +260,11 @@ public class RealHttpTestCase extends BaseIntacctTest
         return (IntacctException) ex;
 
     }
-    
-    private void startServer(AbstractHandler handler) throws Exception {
-		server = new HttpTestServer(handler, 50443);
-		server.start();
-	}
-    
-   
-	
+
+    private void startServer(AbstractHandler handler) throws Exception
+    {
+        server = new HttpTestServer(handler, 50443);
+        server.start();
+    }
 
 }
