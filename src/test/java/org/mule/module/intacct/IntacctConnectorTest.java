@@ -14,7 +14,6 @@ import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.impl.IntacctRestClient;
@@ -106,7 +105,6 @@ public class IntacctConnectorTest
     }
     
     @Test
-    @Ignore
     public void testCreateSotransactionTraductionFromMap() throws Exception
     {
         when(restClient.postXml(anyString()))
@@ -126,11 +124,15 @@ public class IntacctConnectorTest
         
         Sotransitems sotransitems = new Sotransitems();
         Sotransitem sotransitem1 = new Sotransitem();
-        sotransitem1.setItemid(new Itemid());
+        Itemid itemid1 = new Itemid();
+        itemid1.setvalue("item1");
+        sotransitem1.setItemid(itemid1);
         sotransitem1.setQuantity("2");
         sotransitems.getSotransitem().add(sotransitem1);
         Sotransitem sotransitem2 = new Sotransitem();
-        sotransitem2.setItemid(new Itemid());
+        Itemid itemid2 = new Itemid();
+        itemid2.setvalue("item2");
+        sotransitem2.setItemid(itemid2);
         sotransitem2.setQuantity("2");
         sotransitems.getSotransitem().add(sotransitem2);
 
@@ -169,7 +171,30 @@ public class IntacctConnectorTest
                 "      <login></login>\n" + 
                 "    </authentication>\n" + 
                 "    <content>\n" + 
-                "      <function controlid=\"100\"></function>\n" + 
+                "      <function controlid=\"100\">\n" +
+                "        <create_sotransaction>\n" +
+                "          <transactiontype>fooTransactionType</transactiontype>\n" +
+                "          <datecreated>\n" +
+                "            <year>2000</year>\n" +
+                "            <month>1</month>\n" +
+                "            <day>1</day>\n" +
+                "          </datecreated>\n" +
+                "          <customerid>25</customerid>\n" +
+                "          <shipto>\n" +
+                "            <contact xsi:type=\"xs:string\">fooContact</contact>\n" +
+                "          </shipto>\n" +
+                "          <sotransitems>\n" +
+                "            <sotransitem>\n" +
+                "              <itemid>item1</itemid>\n" +
+                "              <quantity>2</quantity>\n" +
+                "            </sotransitem>\n" +
+                "            <sotransitem>\n" +
+                "              <itemid>item2</itemid>\n" +
+                "              <quantity>2</quantity>\n" +
+                "            </sotransitem>\n" +
+                "          </sotransitems>\n" +
+                "        </create_sotransaction>\n" +
+                "      </function>\n" + 
                 "    </content>\n" + 
                 "  </operation>\n" + 
                 "</request>");

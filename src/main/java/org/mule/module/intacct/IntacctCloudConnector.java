@@ -21,7 +21,6 @@
 package org.mule.module.intacct;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,16 +37,13 @@ import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
 import org.mule.module.intacct.schema.request.CreateSotransaction;
-import org.mule.module.intacct.schema.request.Customerid;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.GetList;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.request.Termname;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
-import org.springframework.expression.spel.ast.Ternary;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
@@ -97,56 +93,56 @@ public class IntacctCloudConnector
     }
 
     @Processor
-    public Response createSotransaction(String functionControlid,
-                                        String transactiontype,
-                                        Map<String, Object> datecreated, 
-                                        @Optional String createdfrom,
-                                        String customerid, 
-                                        @Optional String documentno,
-                                        @Optional String referenceno,
-                                        @Optional String termname,
-                                        @Optional Map<String, Object> datedue,
+    public Response createSotransaction(String functionControlId,
+                                        String transactionType,
+                                        Map<String, Object> dateCreated, 
+                                        @Optional String createdFrom,
+                                        String customerId, 
+                                        @Optional String documentNo,
+                                        @Optional String referenceNo,
+                                        @Optional String termName,
+                                        @Optional Map<String, Object> dateDue,
                                         @Optional String message,
-                                        @Optional String shippingmethod,
-                                        @Optional Map<String, Object> shipto,
-                                        @Optional Map<String, Object> billto,
-                                        @Optional String externalid,
-                                        @Optional String basecurr,
+                                        @Optional String shippingMethod,
+                                        @Optional Map<String, Object> shipTo,
+                                        @Optional Map<String, Object> billTo,
+                                        @Optional String externalId,
+                                        @Optional String baseCurr,
                                         @Optional String currency,
-                                        @Optional List<Object> exchratedateOrExchratetypeOrExchrate,
-                                        @Optional String vsoepricelist,
-                                        @Optional Map<String, Object> customfields,
-                                        Map<String, Object> sotransitems,
-                                        @Optional Map<String, Object> subtotals
+                                        @Optional List<Object> exchrateDateOrExchrateTypeOrExchrate,
+                                        @Optional String vsoePriceList,
+                                        @Optional Map<String, Object> customFields,
+                                        Map<String, Object> soTransItems,
+                                        @Optional Map<String, Object> subTotals
                                         ) throws JAXBException
     {
         CreateSotransaction createSotransaction = mom.toObject(CreateSotransaction.class, 
-            new MapBuilder().with("transactiontype", transactiontype)
-                            .with("datecreated", datecreated)
-                            .with("createdfrom", createdfrom)
-                            .with("customerid", fromSingleValue(customerid))
-                            .with("documentno", documentno)
-                            .with("referenceno", referenceno)
-                            .with("termname", fromSingleValue(termname))
-                            .with("datedue", datedue)
+            new MapBuilder().with("transactiontype", transactionType)
+                            .with("datecreated", dateCreated)
+                            .with("createdfrom", createdFrom)
+                            .with("customerid", fromSingleValue(customerId))
+                            .with("documentno", documentNo)
+                            .with("referenceno", referenceNo)
+                            .with("termname", fromSingleValue(termName))
+                            .with("datedue", dateDue)
                             .with("message", message)
-                            .with("shippingmethod", shippingmethod)
-                            .with("shipto", shipto)
-                            .with("billto", billto)
-                            .with("externalid", externalid)
-                            .with("basecurr", basecurr)
+                            .with("shippingmethod", shippingMethod)
+                            .with("shipto", shipTo)
+                            .with("billto", billTo)
+                            .with("externalid", externalId)
+                            .with("basecurr", baseCurr)
                             .with("currency", currency)
-                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchratedateOrExchratetypeOrExchrate))
-                            .with("vsoepricelist", vsoepricelist)
-                            .with("customfields", customfields)
-                            .with("sotransitems", sotransitems)
-                            .with("subtotals", subtotals)
+                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchrateDateOrExchrateTypeOrExchrate))
+                            .with("vsoepricelist", vsoePriceList)
+                            .with("customfields", customFields)
+                            .with("sotransitems", soTransItems)
+                            .with("subtotals", subTotals)
                             .build()
             );
 
         Function function = new Function();
         function.getCmd().add(createSotransaction);
-        function.setControlid(functionControlid);
+        function.setControlid(functionControlId);
         
         return operationWithRequest(inicializeRequest(function));
     }
@@ -157,11 +153,11 @@ public class IntacctCloudConnector
     
     
     @Processor
-    public Response getList(String functionControlid,
+    public Response getList(String functionControlId,
                             String object,
                             @Optional String start,
-                            @Optional String maxitems, 
-                            @Optional String showprivate, 
+                            @Optional String maxItems, 
+                            @Optional String showPrivate, 
                             @Optional Map<String, Object> filter,
                             @Optional Map<String, Object> sorts,
                             @Optional Map<String, Object> fields
@@ -170,7 +166,7 @@ public class IntacctCloudConnector
         GetList getList = mom.toObject(GetList.class, 
             new MapBuilder().with("object", object)
                             .with("start", start)
-                            .with("maxitems", maxitems)
+                            .with("maxitems", maxItems)
                             .with("filter", filter)
                             .with("sorts", sorts)
                             .with("fields", fields)
@@ -179,30 +175,30 @@ public class IntacctCloudConnector
 
         Function function = new Function();
         function.getCmd().add(getList);
-        function.setControlid(functionControlid);
+        function.setControlid(functionControlId);
         
         return operationWithRequest(inicializeRequest(function));
     }
     
     @Processor
-    public Response get(String functionControlid,
+    public Response get(String functionControlId,
                         String object,
                         String key, 
-                        @Optional String externalkey,
+                        @Optional String externalKey,
                         @Optional Map<String, Object> fields
                         ) throws JAXBException
     {
         GetList getList = mom.toObject(GetList.class, 
             new MapBuilder().with("object", object)
                             .with("key", key)
-                            .with("externalkey", externalkey)
+                            .with("externalkey", externalKey)
                             .with("fields", fields)
                             .build()
             );
 
         Function function = new Function();
         function.getCmd().add(getList);
-        function.setControlid(functionControlid);
+        function.setControlid(functionControlId);
         
         return operationWithRequest(inicializeRequest(function));
     }
@@ -224,9 +220,9 @@ public class IntacctCloudConnector
     
     /** Reconoce la operacion con valores default setteados en el config */
     @Processor
-    public Response operationWithRequest(final Request req) throws JAXBException
+    public Response operationWithRequest(final Request request) throws JAXBException
     {
-        return sendRequest(req);
+        return sendRequest(request);
     }
     
     @PostConstruct
