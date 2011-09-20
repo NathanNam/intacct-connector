@@ -21,6 +21,7 @@
 package org.mule.module.intacct;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,10 +47,12 @@ import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.request.Termname;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
+import org.springframework.expression.spel.ast.Ternary;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
 
+@SuppressWarnings("serial")
 @Module(name="intacct",
         namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct",
         schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd")
@@ -117,23 +120,14 @@ public class IntacctCloudConnector
                                         @Optional Map<String, Object> subtotals
                                         ) throws JAXBException
     {
-        Customerid customeridAux =  new Customerid();
-        customeridAux.setvalue(customerid);
-        
-        Termname termnameAux = null;
-        if(termname != null) {
-            termnameAux =  new Termname();
-            termnameAux.setvalue(termname);
-        }
-                
         CreateSotransaction createSotransaction = mom.toObject(CreateSotransaction.class, 
             new MapBuilder().with("transactiontype", transactiontype)
                             .with("datecreated", datecreated)
                             .with("createdfrom", createdfrom)
-                            .with("customerid", customeridAux)
+                            .with("customerid", fromSingleValue(customerid))
                             .with("documentno", documentno)
                             .with("referenceno", referenceno)
-                            .with("termname", termnameAux)
+                            .with("termname", fromSingleValue(termname))
                             .with("datedue", datedue)
                             .with("message", message)
                             .with("shippingmethod", shippingmethod)
@@ -156,6 +150,11 @@ public class IntacctCloudConnector
         
         return operationWithRequest(inicializeRequest(function));
     }
+    
+	protected Map<String,Object> fromSingleValue(final Object value){
+    	return value == null ? null : Collections.singletonMap("value", value);
+    }
+    
     
     @Processor
     public Response getList(String functionControlid,
