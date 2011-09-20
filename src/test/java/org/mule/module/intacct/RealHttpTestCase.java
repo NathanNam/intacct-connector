@@ -64,6 +64,7 @@ import com.sun.jersey.core.util.ReaderWriter;
  * cases, empty response, etc.
  */
 @Ignore
+@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
 public class RealHttpTestCase extends BaseIntacctTest
 {
 
@@ -86,7 +87,7 @@ public class RealHttpTestCase extends BaseIntacctTest
      * This tests sending some real request and getting some response. This sends a
      * function so all the request values
      */
-    public void testSendSomething() throws Exception
+	public void testSendSomething() throws Exception
     {
         Response response = new Response();
         Control control = new Control();
@@ -98,33 +99,33 @@ public class RealHttpTestCase extends BaseIntacctTest
         payload.put("key", "1234");
         payload.put("controlid", controlId);
         payload.put("accountnoLower", "500");
-        payload.put("filter",        
-	        new Filter(){{
-	        	logicalOrExpression = Arrays.<Object>asList(new Logical(){{
-	        		logicalOperator = "or";
-	        		logicalOrExpression = Arrays.asList(new Logical(){{
-	        			logicalOperator = "and";
-	        			logicalOrExpression = Arrays.<Object> asList(new Expression(){{
-	        				field = new Field(){{ value = "accountno"; }} ;
-	        				operator = ">";
-	        				value = new Value() {{ value = "500"; }};
-	        			}}, new Expression(){{
-	        				field = new Field(){{ value = "normalbalance"; }} ;
-	        				operator = "=";
-	        				value = new Value() {{ value = "debit"; }};
-	        			}});
-	        		}}, 
-	    			new Expression(){{
-	    				field = new Field(){{ value = "normalbalance"; }} ;
-	    				operator = "=";
-	    				value = new Value() {{ value = "credit"; }};
-	    			}});
-	        }});
-	        }});
-        payload.put("fields", new Fields(){{
-        	field = Arrays.asList(
-    			new Field(){{ value = "title"; }}, 
-    			new Field(){{ value = "normalbalance"; }});
+        payload.put("filter", new HashMap(){{       
+        	put("logicalOrExpression", Arrays.<Object>asList(new Logical(){{
+		        		logicalOperator = "or";
+		        		logicalOrExpression = Arrays.asList(new Logical(){{
+		        			logicalOperator = "and";
+		        			logicalOrExpression = Arrays.<Object> asList(new Expression(){{
+		        				field = new Field(){{ value = "accountno"; }} ;
+		        				operator = ">";
+		        				value = new Value() {{ value = "500"; }};
+		        			}}, new Expression(){{
+		        				field = new Field(){{ value = "normalbalance"; }} ;
+		        				operator = "=";
+		        				value = new Value() {{ value = "debit"; }};
+		        			}});
+		        		}}, 
+		    			new Expression(){{
+		    				field = new Field(){{ value = "normalbalance"; }} ;
+		    				operator = "=";
+		    				value = new Value() {{ value = "credit"; }};
+		    			}});
+		        }}));
+        }});
+        
+        payload.put("fields", new HashMap(){{
+        	put("field",  Arrays.asList(
+        			new Field(){{ value = "title"; }}, 
+        			new Field(){{ value = "normalbalance"; }}));
         }});
 	        
         SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
@@ -175,7 +176,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-
+    
     public void testSendResponseWithNoControlId() throws Exception
     {
         HttpTestServer server = null;
@@ -213,7 +214,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-
+    
     public void testServerDown() throws Exception
     {
         try
@@ -239,7 +240,6 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-
     public void testNotFoundResponse() throws Exception
     {
         try
@@ -264,7 +264,6 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
 
     }
-    
     public void testControlId() throws Exception {
 		  Response response = new Response();
 		  Control control = new Control();

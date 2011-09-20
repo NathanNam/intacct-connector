@@ -28,7 +28,7 @@
    <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="httpIntacct" />
 
 	<flow name="functionFlow">
-		<intacct:get-list functionControlid="#[map-payload:controlid]" object="glaccount">
+		<intacct:get-list functionControlId="#[map-payload:controlid]" object="glaccount">
 			<intacct:filter ref="#[map-payload:filter]"/>
 			<intacct:fields ref="#[map-payload:fields]"/>
 		</intacct:get-list>
