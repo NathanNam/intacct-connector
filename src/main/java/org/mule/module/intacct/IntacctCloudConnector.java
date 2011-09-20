@@ -20,6 +20,8 @@
  */
 package org.mule.module.intacct;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -34,12 +36,16 @@ import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
+import org.mule.module.intacct.schema.request.CreateSotransaction;
+import org.mule.module.intacct.schema.request.Customerid;
 import org.mule.module.intacct.schema.request.Function;
+import org.mule.module.intacct.schema.request.GetList;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.request.Subtotals;
+import org.mule.module.intacct.schema.request.Termname;
 import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
@@ -82,77 +88,124 @@ public class IntacctCloudConnector
     @Processor
     public Response operation(final Map<String, Object> function) throws JAXBException
     {
-        Function realFunction = mom.fromMap(Function.class, function);
-        final Request request = new Request();
-        final Control control = new Control();
-        control.setSenderid(senderId);
-        control.setPassword(controlPassword);
-        control.setControlid(controlid);
-        control.setUniqueid(uniqueid);
-        control.setDtdversion("2.1");
-        request.setControl(control);
-        final Operation operation = new Operation();
-        request.getOperation().add(operation);
-        final Authentication authentication = new Authentication();
-        final Login login = new Login();
-        login.setUserid(userid);
-        login.setPassword(userPassword);
-        login.setCompanyid(companyid);
-        authentication.getLoginOrSessionid().add(login);
-        operation.setAuthentication(authentication);
-        final Content content = new Content();
-        content.getFunction().add(realFunction);
-        operation.getContent().add(content);
-        return operation(request);
+        Function realFunction = mom.toObject(Function.class, function);
+
+        return operationWithRequest(inicializeRequest(realFunction));
     }
 
     @Processor
-    public Response createSotransaction(String transactiontype,
-                                        /*Datecreated*/Map<String, Object> datecreated, 
+    public Response createSotransaction(String functionControlid,
+                                        String transactiontype,
+                                        Map<String, Object> datecreated, 
                                         @Optional String createdfrom,
-                                        /*Customerid*/Map<String, Object> customerid, 
+                                        String customerid, 
                                         @Optional String documentno,
                                         @Optional String referenceno,
-                                        @Optional Map<String, Object>/*Termname*/ termname,
-                                        @Optional /*Datedue*/Map<String, Object> datedue,
+                                        @Optional String termname,
+                                        @Optional Map<String, Object> datedue,
                                         @Optional String message,
                                         @Optional String shippingmethod,
-                                        @Optional /*Shipto*/Map<String, Object> shipto,
-                                        @Optional /*Billto*/Map<String, Object> billto,
+                                        @Optional Map<String, Object> shipto,
+                                        @Optional Map<String, Object> billto,
                                         @Optional String externalid,
                                         @Optional String basecurr,
                                         @Optional String currency,
-                                        @Optional /*List<Object>*/Map<String, Object> exchratedateOrExchratetypeOrExchrate,
+                                        @Optional List<Object> exchratedateOrExchratetypeOrExchrate,
                                         @Optional String vsoepricelist,
-                                        @Optional /*Customfields*/Map<String, Object> customfields,
-                                        /*Sotransitems*/Map<String, Object> sotransitems,
-                                        @Optional Subtotals subtotals
+                                        @Optional Map<String, Object> customfields,
+                                        Map<String, Object> sotransitems,
+                                        @Optional Map<String, Object> subtotals
                                         ) throws JAXBException
     {
-        return null;
+        Customerid customeridAux =  new Customerid();
+        customeridAux.setvalue(customerid);
+        
+        Termname termnameAux = null;
+        if(termname != null) {
+            termnameAux =  new Termname();
+            termnameAux.setvalue(termname);
+        }
+                
+        CreateSotransaction createSotransaction = mom.toObject(CreateSotransaction.class, 
+            new MapBuilder().with("transactiontype", transactiontype)
+                            .with("datecreated", datecreated)
+                            .with("createdfrom", createdfrom)
+                            .with("customerid", customeridAux)
+                            .with("documentno", documentno)
+                            .with("referenceno", referenceno)
+                            .with("termname", termnameAux)
+                            .with("datedue", datedue)
+                            .with("message", message)
+                            .with("shippingmethod", shippingmethod)
+                            .with("shipto", shipto)
+                            .with("billto", billto)
+                            .with("externalid", externalid)
+                            .with("basecurr", basecurr)
+                            .with("currency", currency)
+                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchratedateOrExchratetypeOrExchrate))
+                            .with("vsoepricelist", vsoepricelist)
+                            .with("customfields", customfields)
+                            .with("sotransitems", sotransitems)
+                            .with("subtotals", subtotals)
+                            .build()
+            );
+
+        Function function = new Function();
+        function.getCmd().add(createSotransaction);
+        function.setControlid(functionControlid);
+        
+        return operationWithRequest(inicializeRequest(function));
     }
     
     @Processor
-    public Response getList(String object,
+    public Response getList(String functionControlid,
+                            String object,
                             @Optional String start,
                             @Optional String maxitems, 
                             @Optional String showprivate, 
-                            @Optional /*Filter*/Map<String, Object> filter,
-                            @Optional /*Sorts*/Map<String, Object> sorts,
-                            @Optional /*Fields*/Map<String, Object> fields
+                            @Optional Map<String, Object> filter,
+                            @Optional Map<String, Object> sorts,
+                            @Optional Map<String, Object> fields
                             ) throws JAXBException
     {
-        return null;
+        GetList getList = mom.toObject(GetList.class, 
+            new MapBuilder().with("object", object)
+                            .with("start", start)
+                            .with("maxitems", maxitems)
+                            .with("filter", filter)
+                            .with("sorts", sorts)
+                            .with("fields", fields)
+                            .build()
+            );
+
+        Function function = new Function();
+        function.getCmd().add(getList);
+        function.setControlid(functionControlid);
+        
+        return operationWithRequest(inicializeRequest(function));
     }
     
     @Processor
-    public Response get(String object,
+    public Response get(String functionControlid,
+                        String object,
                         String key, 
                         @Optional String externalkey,
-                        @Optional /*Fields*/Map<String, Object> fields
+                        @Optional Map<String, Object> fields
                         ) throws JAXBException
     {
-        return null;
+        GetList getList = mom.toObject(GetList.class, 
+            new MapBuilder().with("object", object)
+                            .with("key", key)
+                            .with("externalkey", externalkey)
+                            .with("fields", fields)
+                            .build()
+            );
+
+        Function function = new Function();
+        function.getCmd().add(getList);
+        function.setControlid(functionControlid);
+        
+        return operationWithRequest(inicializeRequest(function));
     }
     
     public Response sendRequest(final Request request) throws JAXBException
@@ -171,7 +224,8 @@ public class IntacctCloudConnector
     }
     
     /** Reconoce la operacion con valores default setteados en el config */
-    public Response operation(final Request req) throws JAXBException
+    @Processor
+    public Response operationWithRequest(final Request req) throws JAXBException
     {
         return sendRequest(req);
     }
@@ -184,6 +238,32 @@ public class IntacctCloudConnector
             intacctImplementation = new JerseySslIntacctFacade(URL);
         }
         mom.setPropertyStyle(CXFStyle.STYLE);
+    }
+    
+    private Request inicializeRequest(Function function)
+    {
+        final Request request = new Request();
+        final Control control = new Control();
+        control.setSenderid(senderId);
+        control.setPassword(controlPassword);
+        control.setControlid(controlid);
+        control.setUniqueid(uniqueid);
+        control.setDtdversion("2.1");
+        request.setControl(control);
+        final Operation operation = new Operation();
+        request.getOperation().add(operation);
+        final Authentication authentication = new Authentication();
+        final Login login = new Login();
+        login.setUserid(userid);
+        login.setPassword(userPassword);
+        login.setCompanyid(companyid);
+        authentication.getLoginOrSessionid().add(login);
+        operation.setAuthentication(authentication);
+        final Content content = new Content();
+        content.getFunction().add(function);
+        operation.getContent().add(content);
+        
+        return request;
     }
     
     /**
@@ -362,4 +442,8 @@ public class IntacctCloudConnector
         this.intacctImplementation = intacctImplementation;
     }
     
+    private <T> List<T> coalesceList(List<T> list )
+    {
+        return (List<T>) ((list == null) ? Collections.emptyList() : list);
+    }
 }
