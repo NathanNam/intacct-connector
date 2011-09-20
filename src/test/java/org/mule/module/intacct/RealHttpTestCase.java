@@ -25,7 +25,11 @@ import javax.xml.transform.sax.SAXSource;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
+import org.mortbay.jetty.handler.AbstractHandler;
 import org.mule.api.MuleEvent;
+import org.mule.api.MuleMessage;
+import org.mule.api.client.MuleClient;
+import org.mule.client.DefaultLocalMuleClient;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
@@ -54,26 +58,33 @@ import com.sun.jersey.core.util.ReaderWriter;
 public class RealHttpTestCase extends BaseIntacctTest
 {
 
+    private HttpTestServer server;
+    private final String controlId = "mi id";
+
     @Override
     protected String getConfigResources()
     {
         return "intacct-namespace-real-config.xml";
     }
 
+    @Override
+    protected void doTearDown() throws Exception
+    {
+        if (server != null) server.stop();
+    }
+
     /**
-     * This tests sending some real request and getting some response. This sends a function so all the request values
+     * This tests sending some real request and getting some response. This sends a
+     * function so all the request values
      */
     public void testSendSomething() throws Exception
     {
         Response response = new Response();
         Control control = new Control();
-        String controlId = "mi id";
         control.setControlid(controlId);
         response.setControl(control);
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-        final int port = 50443;
-        HttpTestServer server = new HttpTestServer(handler, port);
-        server.start();
+        startServer(handler);
         final Map<String, String> payload = new HashMap<String, String>();
         payload.put("key", "1234");
         payload.put("controlid", controlId);
@@ -81,7 +92,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
-        server.stop();
+
         String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
             "xmlrequest".length() + 1);
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
@@ -89,7 +100,8 @@ public class RealHttpTestCase extends BaseIntacctTest
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
         Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
-        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
+            "http://www.mulesoft.org/schema/mule/intacct"));
         inFilter.setParent(reader);
         InputSource is = new InputSource(in);
         SAXSource source = new SAXSource(inFilter, is);
@@ -178,14 +190,9 @@ public class RealHttpTestCase extends BaseIntacctTest
     
     public void testSendNoResponse() throws Exception
     {
-        HttpTestServer server = null;
         try
         {
-            final int port = 50443;
-            String controlId = "mi id";
-            EmptyResponseHandler handler = new EmptyResponseHandler();
-            server = new HttpTestServer(handler, port);
-            server.start();
+            startServer(new EmptyResponseHandler());
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", controlId);
@@ -203,13 +210,6 @@ public class RealHttpTestCase extends BaseIntacctTest
             Assert.assertNotNull(iex.getCause());
             Assert.assertTrue(iex.getCause() instanceof WebApplicationException);
         }
-        finally
-        {
-            if (server != null)
-            {
-                server.stop();
-            }
-        }
 
     }
 
@@ -218,14 +218,12 @@ public class RealHttpTestCase extends BaseIntacctTest
         HttpTestServer server = null;
         try
         {
-            final int port = 50443;
-            String controlId = "mi id";
             Response response = new Response();
             Control control = new Control();
             response.setControl(control);
             IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-            server = new HttpTestServer(handler, port);
-            server.start();
+            startServer(handler);
+
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", controlId);
@@ -255,9 +253,9 @@ public class RealHttpTestCase extends BaseIntacctTest
 
     public void testServerDown() throws Exception
     {
-        HttpTestServer server = null;
         try
         {
+
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", "asdf");
@@ -276,26 +274,14 @@ public class RealHttpTestCase extends BaseIntacctTest
             Assert.assertTrue(iex.getCause() instanceof ClientHandlerException);
             Assert.assertTrue(iex.getCause().getCause() instanceof ConnectException);
         }
-        finally
-        {
-            if (server != null)
-            {
-                server.stop();
-            }
-        }
 
     }
 
     public void testNotFoundResponse() throws Exception
     {
-        HttpTestServer server = null;
         try
         {
-            final int port = 50443;
-            String controlId = "mi id";
-            NotFoundResponseHandler handler = new NotFoundResponseHandler();
-            server = new HttpTestServer(handler, port);
-            server.start();
+            startServer(new NotFoundResponseHandler());
             final Map<String, String> payload = new HashMap<String, String>();
             payload.put("key", "1234");
             payload.put("controlid", controlId);
@@ -313,15 +299,28 @@ public class RealHttpTestCase extends BaseIntacctTest
             Assert.assertNotNull(iex.getCause());
             Assert.assertTrue(iex.getCause() instanceof UniformInterfaceException);
         }
-        finally
-        {
-            if (server != null)
-            {
-                server.stop();
-            }
-        }
 
     }
+    
+    public void testControlId() throws Exception {
+		  Response response = new Response();
+		  Control control = new Control();
+		  control.setControlid(controlId);
+		  response.setControl(control);
+		  IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+		  
+		  startServer(handler);
+  	
+  	
+		MuleClient client = new DefaultLocalMuleClient(muleContext);
+		MuleMessage msg1 = client.send("vm://test-control-id", "Cust-0-01",
+				null);
+		System.out.println("Message1 = " + msg1.getPayloadAsString());
+		MuleMessage msg2 = client.send("vm://test-control-id", "Cust-0-02",
+				null);
+		System.out.println("Message = " + msg2.getPayloadAsString());
+		
+	}
 
     /**
      * Gets the domain exception from the exception or returns null otherwise
@@ -335,6 +334,12 @@ public class RealHttpTestCase extends BaseIntacctTest
         }
         return (IntacctException) ex;
 
+    }
+
+    private void startServer(AbstractHandler handler) throws Exception
+    {
+        server = new HttpTestServer(handler, 50443);
+        server.start();
     }
 
 }

@@ -13,6 +13,7 @@ package org.mule.module.intacct.utils;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
+import org.mule.module.intacct.impl.IntacctRestClient;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 
 /**
@@ -25,6 +26,15 @@ public class JerseyIntacctFacade extends JerseySslIntacctFacade
     {
         super(gatewayURI);
     }
+    
+    
+
+    public JerseyIntacctFacade(IntacctRestClient client)
+    {
+        super(client);
+    }
+
+
 
     @Override
     protected void addSslConfiguration() throws NoSuchAlgorithmException, KeyManagementException
