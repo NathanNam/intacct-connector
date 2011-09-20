@@ -13,20 +13,25 @@ package org.mule.module.intacct;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.impl.IntacctRestClient;
+import org.mule.module.intacct.schema.request.Contactname;
 import org.mule.module.intacct.schema.request.Datecreated;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Itemid;
-import org.mule.module.intacct.schema.request.Shipto;
 import org.mule.module.intacct.schema.request.Sotransitem;
 import org.mule.module.intacct.schema.request.Sotransitems;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
+import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
@@ -121,8 +126,12 @@ public class IntacctConnectorTest
         datecreated.setMonth("1");
         datecreated.setYear("2000");
         
-        Shipto shipto = new Shipto();
-        shipto.getContactOrContactname().add("fooContact");
+        List<Object> list = new ArrayList<Object>();
+        Contactname contactname = new Contactname();
+        contactname.setvalue("fooContact");
+        list.add(contactname);
+        Map<String, Object> mapShipTo = new MapBuilder().with("contactOrContactname", list)
+                                                        .build();
         
         Sotransitems sotransitems = new Sotransitems();
         Sotransitem sotransitem1 = new Sotransitem();
@@ -149,7 +158,7 @@ public class IntacctConnectorTest
                                       null,
                                       null,
                                       null,
-                                      mom.toMap(shipto),
+                                      mapShipTo,
                                       null,
                                       null,
                                       null,
@@ -183,7 +192,7 @@ public class IntacctConnectorTest
                 "          </datecreated>\n" +
                 "          <customerid>25</customerid>\n" +
                 "          <shipto>\n" +
-                "            <contact xsi:type=\"xs:string\">fooContact</contact>\n" +
+                "            <contactname>fooContact</contactname>\n" +
                 "          </shipto>\n" +
                 "          <sotransitems>\n" +
                 "            <sotransitem>\n" +
