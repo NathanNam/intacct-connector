@@ -14,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.ConnectException;
 import java.net.URLDecoder;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,15 @@ import org.mule.client.DefaultLocalMuleClient;
 import org.mule.construct.SimpleFlowConstruct;
 import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
+import org.mule.module.intacct.schema.request.Expression;
+import org.mule.module.intacct.schema.request.Field;
+import org.mule.module.intacct.schema.request.Fields;
+import org.mule.module.intacct.schema.request.Filter;
+import org.mule.module.intacct.schema.request.Logical;
 import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.request.Value;
 import org.mule.module.intacct.schema.response.Control;
+import org.mule.module.intacct.schema.response.Operator;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
@@ -49,6 +57,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
+
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
@@ -85,10 +94,39 @@ public class RealHttpTestCase extends BaseIntacctTest
         response.setControl(control);
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
         startServer(handler);
-        final Map<String, String> payload = new HashMap<String, String>();
+        final Map<String, Object> payload = new HashMap<String, Object>();
         payload.put("key", "1234");
         payload.put("controlid", controlId);
         payload.put("accountnoLower", "500");
+        payload.put("filter",        
+	        new Filter(){{
+	        	logicalOrExpression = Arrays.<Object>asList(new Logical(){{
+	        		logicalOperator = "or";
+	        		logicalOrExpression = Arrays.asList(new Logical(){{
+	        			logicalOperator = "and";
+	        			logicalOrExpression = Arrays.<Object> asList(new Expression(){{
+	        				field = new Field(){{ value = "accountno"; }} ;
+	        				operator = ">";
+	        				value = new Value() {{ value = "500"; }};
+	        			}}, new Expression(){{
+	        				field = new Field(){{ value = "normalbalance"; }} ;
+	        				operator = "=";
+	        				value = new Value() {{ value = "debit"; }};
+	        			}});
+	        		}}, 
+	    			new Expression(){{
+	    				field = new Field(){{ value = "normalbalance"; }} ;
+	    				operator = "=";
+	    				value = new Value() {{ value = "credit"; }};
+	    			}});
+	        }});
+	        }});
+        payload.put("fields", new Fields(){{
+        	field = Arrays.asList(
+    			new Field(){{ value = "title"; }}, 
+    			new Field(){{ value = "normalbalance"; }});
+        }});
+	        
         SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
@@ -113,81 +151,6 @@ public class RealHttpTestCase extends BaseIntacctTest
         Assert.assertEquals(controlId, resp.getControl().getControlid());
     }
 
-//    /**
-//     */
-//    public void testSendSomethingUsingMaps() throws Exception
-//    {
-//        /*
-//         * <intacct:function controlid="#[map-payload:controlid]" xmlns="http://www.mulesoft.org/schema/mule/intacct">
-//                <get-list object="glaccount">
-//                    <filter>
-//                        <logical logical-operator="or">
-//                            <logical logical-operator="and">
-//                                <expression>
-//                                    <field>accountno</field>
-//                                    <operator>&gt;</operator>
-//                                    <value>#[map-payload:accountnoLower]</value>
-//                                </expression>
-//                                <expression>
-//                                    <field>normalbalance</field>
-//                                    <operator>=</operator>
-//                                    <value>debit</value>
-//                                </expression>
-//                            </logical>
-//                            <expression>
-//                                <field>normalbalance</field>
-//                                <operator>=</operator>
-//                                <value>credit</value>
-//                            </expression>
-//                        </logical>
-//                    </filter>
-//                    <sorts>
-//                        <sortfield order="asc">normalbalance</sortfield>
-//                        <sortfield order="asc">title</sortfield>
-//                    </sorts>
-//                    <fields>
-//                        <field>title</field>
-//                        <field>normalbalance</field>
-//                    </fields>
-//                </get-list>
-//            </intacct:function>
-//         */
-//        Response response = new Response();
-//        Control control = new Control();
-//        String controlId = "mi id";
-//        control.setControlid(controlId);
-//        response.setControl(control);
-//        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-//        final int port = 50443;
-//        HttpTestServer server = new HttpTestServer(handler, port);
-//        server.start();
-//        final Map<String, String> payload = new HashMap<String, String>();
-//        payload.put("key", "1234");
-//        payload.put("controlid", controlId);
-//        payload.put("accountnoLower", "500");
-//        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
-//        final MuleEvent event = getTestEvent(payload);
-//        final MuleEvent responseEvent = flow.process(event);
-//        server.stop();
-//        String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
-//            "xmlrequest".length() + 1);
-//        final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
-//        String xml = URLDecoder.decode(encodedXml, charsetName);
-//        InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-//        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
-//        XMLReader reader = XMLReaderFactory.createXMLReader();
-//        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter("http://www.mulesoft.org/schema/mule/intacct"));
-//        inFilter.setParent(reader);
-//        InputSource is = new InputSource(in);
-//        SAXSource source = new SAXSource(inFilter, is);
-//
-//        Request req = (Request) um.unmarshal(source);
-//        Assert.assertEquals(controlId, req.getControl().getControlid());
-//        Response resp = (Response) responseEvent.getMessage().getPayload();
-//        Assert.assertNotNull(resp);
-//        Assert.assertEquals(controlId, resp.getControl().getControlid());
-//    }
-    
     public void testSendNoResponse() throws Exception
     {
         try
