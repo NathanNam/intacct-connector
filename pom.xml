@@ -365,4 +365,12 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+ <scm>
+    <connection>scm:git:git://github.com:mulesoft/intacct-connector.git</connection>
+    <developerConnection>scm:git:git@github.com:mulesoft/intacct-connector.git</developerConnection>
+    <url>http://github.com/mulesoft/intacct-connector</url>
+  </scm>
+
+
 </project>
