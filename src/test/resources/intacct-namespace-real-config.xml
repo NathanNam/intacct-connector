@@ -35,35 +35,16 @@
 	</flow>
 	
 	
-<!--	-->
-<!--	<flow name="test-control-id">-->
-<!--		<inbound-endpoint address="vm://test-control-id"-->
-<!--			exchange-pattern="request-response" />-->
-<!--		<object-to-string-transformer />-->
-<!--		<intacct:function controlid="#[payload]">-->
-<!--			<intacct:create-customer>-->
-<!--				<intacct:customerid>C-CUST-001</intacct:customerid>-->
-<!--				<intacct:name>Dummy Customer 1</intacct:name>-->
-<!--				<intacct:deliveryoptions>-->
-<!--					<intacct:deliveryoption>Print</intacct:deliveryoption>-->
-<!--				</intacct:deliveryoptions>-->
-<!--				<intacct:status>active</intacct:status>-->
-<!--				<intacct:contactinfo>-->
-<!--					<intacct:contact>-->
-<!--						<intacct:contactname>Name</intacct:contactname>-->
-<!--						<intacct:printas>Dummy Customer 1</intacct:printas>-->
-<!--						<intacct:companyname>Dummy Company 1</intacct:companyname>-->
-<!--						<intacct:mailaddress>-->
-<!--							<intacct:address1>Street</intacct:address1>-->
-<!--							<intacct:city>City</intacct:city>-->
-<!--							<intacct:state>CA</intacct:state>-->
-<!--							<intacct:zip>1234</intacct:zip>-->
-<!--							<intacct:country>US</intacct:country>-->
-<!--						</intacct:mailaddress>-->
-<!--					</intacct:contact>-->
-<!--				</intacct:contactinfo>-->
-<!--			</intacct:create-customer>-->
-<!--		</intacct:function>-->
-<!--	</flow>-->
+	
+	<flow name="test-control-id">
+		<inbound-endpoint address="vm://test-control-id"
+			exchange-pattern="request-response" />
+  		<intacct:operation >
+          <intacct:function ref="#[map-payload:function]"/>
+        </intacct:operation>
+	</flow>
+	
+	
+	
 
 </mule>

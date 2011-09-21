@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.impl.IntacctRestClient;
@@ -110,7 +109,6 @@ public class IntacctConnectorTest
             "</request>");
     }
     
-    @Ignore
     @Test
     public void testCreateSotransactionTraductionFromMap() throws Exception
     {
