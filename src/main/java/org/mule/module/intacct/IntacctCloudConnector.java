@@ -38,6 +38,7 @@ import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
 import org.mule.module.intacct.schema.request.CreateSotransaction;
 import org.mule.module.intacct.schema.request.Function;
+import org.mule.module.intacct.schema.request.Get;
 import org.mule.module.intacct.schema.request.GetList;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
@@ -188,7 +189,7 @@ public class IntacctCloudConnector
                         @Optional Map<String, Object> fields
                         ) throws JAXBException
     {
-        GetList getList = mom.toObject(GetList.class, 
+        Get get = mom.toObject(Get.class, 
             new MapBuilder().with("object", object)
                             .with("key", key)
                             .with("externalkey", externalKey)
@@ -197,7 +198,7 @@ public class IntacctCloudConnector
             );
 
         Function function = new Function();
-        function.getCmd().add(getList);
+        function.getCmd().add(get);
         function.setControlid(functionControlId);
         
         return operationWithRequest(inicializeRequest(function));
