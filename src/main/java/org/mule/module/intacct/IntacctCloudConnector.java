@@ -20,6 +20,7 @@
  */
 package org.mule.module.intacct;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -36,10 +37,17 @@ import org.mule.module.intacct.impl.JerseySslIntacctFacade;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
+import org.mule.module.intacct.schema.request.CreateAradjustment;
+import org.mule.module.intacct.schema.request.CreateInvoice;
+import org.mule.module.intacct.schema.request.CreateInvoicebatch;
 import org.mule.module.intacct.schema.request.CreateSotransaction;
+import org.mule.module.intacct.schema.request.Customfield;
+import org.mule.module.intacct.schema.request.Datecreated;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Get;
 import org.mule.module.intacct.schema.request.GetList;
+import org.mule.module.intacct.schema.request.Invoiceitems;
+import org.mule.module.intacct.schema.request.Lineitem;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
@@ -81,10 +89,13 @@ public class IntacctCloudConnector
     private IntacctFacade intacctImplementation;
     
     private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema");
+    
+    private MomNullifyer momNullifyer = new MomNullifyer(mom);
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
     /** Given the function we create the request with the parameters for default given in the config */
+    @Deprecated
     @Processor
     public Response operation(final Map<String, Object> function) throws JAXBException
     {
@@ -92,7 +103,166 @@ public class IntacctCloudConnector
 
         return operationWithRequest(inicializeRequest(realFunction));
     }
+    
+    @Processor
+    public Response execute(CommandType type, final List<Map<String, Object>> commands) throws JAXBException
+    {
+        Function function = new Function();
 
+        for(Map<String, Object> command : commands)
+        {
+            function.getCmd().add(mom.toObject(type.getClass(), command));
+        }
+
+        return operationWithRequest(inicializeRequest(function));
+    }
+    
+
+    @Processor
+    public Response createInvoice(String functionControlId,
+                                  String customerId,
+                                  Map<String, Object> dateCreated,
+                                  @Optional Map<String, Object> datePosted,
+                                  @Optional Map<String, Object> dateDue,
+                                  @Optional String termName,
+                                  @Optional String batchKey,
+                                  @Optional String invoiceNo,
+                                  @Optional String poNumber,
+                                  @Optional String description,
+                                  @Optional String externalId,
+                                  @Optional ContactType billToContactType,
+                                  @Optional List<Map<String, Object>> billTo,
+                                  @Optional ContactType shipToContactType,
+                                  @Optional List<Map<String, Object>> shipTo,
+                                  @Optional String baseCurr,
+                                  @Optional String currency,
+                                  @Optional ExchType exchType,
+                                  @Optional List<Map<String, Object>> exchRateDateOrExchRateTypeOrExchRate,
+                                  @Optional String nogl,
+                                  @Optional List<Map<String, Object>> customFields,
+                                  Invoiceitems invoiceitems) throws JAXBException
+    {      
+        List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
+        for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+        {
+            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getClass(), exch));
+        }
+        
+        CreateInvoice createInvoice = mom.toObject(CreateInvoice.class, 
+            new MapBuilder().with("customerid", fromSingleValue(customerId))
+                            .with("datecreated", dateCreated)
+                            .with("dateposted", datePosted)
+                            .with("datedue", dateDue)
+                            .with("termname", fromSingleValue(termName))
+                            .with("batchkey", fromSingleValue(batchKey))
+                            .with("invoiceno", invoiceNo)
+                            .with("ponumber", poNumber)
+                            .with("description", description)
+                            .with("externalId", externalId)
+                            .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipTo, shipToContactType.getRequestType()))
+                            .with("billto", nullifyEmptyListWrapper("contactOrContactname", billTo, billToContactType.getRequestType()))
+                            .with("basecurr", baseCurr)
+                            .with("currency", currency)
+                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
+                            .with("nogl", nogl)
+                            .with("customfields", nullifyEmptyListWrapper("customfield", customFields, Customfield.class))
+                            .build());
+
+        Function function = new Function();
+        function.getCmd().add(createInvoice);
+        function.setControlid(functionControlId);
+        
+        return operationWithRequest(inicializeRequest(function));
+    }
+    
+    /**
+     * @param propertyName
+     * @param value
+     * @param clazz
+     * @return
+     */
+    private Object nullifyEmptyListWrapper(final String propertyName,
+                                       final List<Map<String, Object>> value,
+                                       final Class<?> clazz)
+    {
+        return momNullifyer.nullifyEmptyListWrapper(propertyName, value, clazz);
+    }
+
+    @Processor
+    public Response createInvoicebatch(String functionControlId,
+                                       String batchTitle,
+                                       @Optional Datecreated dateCreated,
+                                       @Optional List<Map<String, Object>> createInvoiceList
+                                       ) throws JAXBException
+    {
+        List<CreateInvoice> createInvoiceListAux = new ArrayList<CreateInvoice>();
+        
+        for(Map<String, Object> invoice : createInvoiceList)
+        {
+            createInvoiceListAux.add(mom.toObject(CreateInvoice.class, invoice));
+        }
+        
+        CreateInvoicebatch createInvoiceBatch = mom.toObject(CreateInvoicebatch.class, 
+            new MapBuilder()
+                            .with("batchtitle", batchTitle)
+                            .with("datecreated", dateCreated)
+                            .with("createInvoice", coalesceList(createInvoiceList))
+                            .build()
+            );
+
+        Function function = new Function();
+        function.getCmd().add(createInvoiceBatch);
+        function.setControlid(functionControlId);
+        
+        return operationWithRequest(inicializeRequest(function));
+    }
+    
+    @Processor
+    public Response createAradjustment(String functionControlId,
+                                       String customerId,
+                                       Map<String, Object> dateCreated,
+                                       @Optional Map<String, Object> datePosted,
+                                       @Optional String batchKey,
+                                       @Optional String adjustmentNo,
+                                       @Optional String invoiceNo,
+                                       @Optional String description,
+                                       @Optional String externalId,
+                                       @Optional String basecurr,
+                                       @Optional String currency,
+                                       @Optional ExchType exchType,
+                                       @Optional List<Map<String, Object>> exchRateDateOrExchRateTypeOrExchRate,
+                                       @Optional String nogl,
+                                       List<Map<String, Object>> arAdjustmentItems
+                                       ) throws JAXBException
+    {
+        List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
+        for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+        {
+            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getClass(), exch));
+        }
+        
+        CreateAradjustment createArAdjustment = mom.toObject(CreateAradjustment.class, 
+            new MapBuilder().with("customerid", fromSingleValue(customerId))
+                            .with("datecreated", dateCreated)
+                            .with("dateposted", datePosted)
+                            .with("batchkey", fromSingleValue(batchKey))
+                            .with("invoiceno", invoiceNo)
+                            .with("description", description)
+                            .with("externalId", externalId)
+                            .with("currency", currency)
+                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
+                            .with("nogl", nogl)
+                            .with("aradjustmentitems", nullifyEmptyListWrapper("lineitem", arAdjustmentItems, Lineitem.class))
+                            .build()
+            );
+
+        Function function = new Function();
+        function.getCmd().add(createArAdjustment);
+        function.setControlid(functionControlId);
+        
+        return operationWithRequest(inicializeRequest(function));
+    }
+    
     @Processor
     public Response createSotransaction(String functionControlId,
                                         String transactionType,
