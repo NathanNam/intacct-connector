@@ -25,7 +25,7 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.mule.api.MuleEvent;
-import org.mule.construct.SimpleFlowConstruct;
+import org.mule.api.processor.MessageProcessor;
 import org.mule.tck.AbstractMuleTestCase;
 import org.mule.tck.FunctionalTestCase;
 
@@ -40,7 +40,7 @@ public class IntacctModuleTest extends FunctionalTestCase
     @Test
     public void testFlow() throws Exception
     {
-        SimpleFlowConstruct flow = lookupFlowConstruct("testFlow");
+        MessageProcessor flow = lookupFlowConstruct("testFlow");
         Map payload = new HashMap<String, Object>();
         MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
@@ -57,7 +57,7 @@ public class IntacctModuleTest extends FunctionalTestCase
     */
     protected <T> void runFlowAndExpect(String flowName, T expect) throws Exception
     {
-        SimpleFlowConstruct flow = lookupFlowConstruct(flowName);
+        MessageProcessor flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(null);
         MuleEvent responseEvent = flow.process(event);
 
@@ -74,7 +74,7 @@ public class IntacctModuleTest extends FunctionalTestCase
     */
     protected <T, U> void runFlowWithPayloadAndExpect(String flowName, T expect, U payload) throws Exception
     {
-        SimpleFlowConstruct flow = lookupFlowConstruct(flowName);
+        MessageProcessor flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
 
@@ -86,8 +86,8 @@ public class IntacctModuleTest extends FunctionalTestCase
      *
      * @param name Name of the flow to retrieve
      */
-    protected SimpleFlowConstruct lookupFlowConstruct(String name)
+    protected MessageProcessor lookupFlowConstruct(String name)
     {
-        return (SimpleFlowConstruct) AbstractMuleTestCase.muleContext.getRegistry().lookupFlowConstruct(name);
+        return (MessageProcessor) AbstractMuleTestCase.muleContext.getRegistry().lookupFlowConstruct(name);
     }
 }

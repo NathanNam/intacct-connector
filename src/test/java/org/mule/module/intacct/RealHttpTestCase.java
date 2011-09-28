@@ -29,8 +29,8 @@ import org.mortbay.jetty.handler.AbstractHandler;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
 import org.mule.api.client.MuleClient;
+import org.mule.api.processor.MessageProcessor;
 import org.mule.client.DefaultLocalMuleClient;
-import org.mule.construct.SimpleFlowConstruct;
 import org.mule.module.intacct.config.IntacctNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Contact;
@@ -101,7 +101,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         startServer(handler);
         final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
 	        
-        SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+        MessageProcessor flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
 
@@ -132,7 +132,7 @@ public class RealHttpTestCase extends BaseIntacctTest
             startServer(new EmptyResponseHandler());
             final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
             
-            SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+            MessageProcessor flow = lookupFlowConstruct("functionFlow");
             final MuleEvent event = getTestEvent(payload);
             flow.process(event);
             Assert.fail();
@@ -161,7 +161,7 @@ public class RealHttpTestCase extends BaseIntacctTest
 
             final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
             
-            SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+            MessageProcessor flow = lookupFlowConstruct("functionFlow");
             final MuleEvent event = getTestEvent(payload);
             flow.process(event);
             Assert.fail();
@@ -191,7 +191,7 @@ public class RealHttpTestCase extends BaseIntacctTest
 
             final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
             
-            SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+            MessageProcessor flow = lookupFlowConstruct("functionFlow");
             final MuleEvent event = getTestEvent(payload);
             flow.process(event);
             Assert.fail();
@@ -213,7 +213,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         {
             startServer(new NotFoundResponseHandler());
             final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-            SimpleFlowConstruct flow = lookupFlowConstruct("functionFlow");
+            MessageProcessor flow = lookupFlowConstruct("functionFlow");
             final MuleEvent event = getTestEvent(payload);
             flow.process(event);
             Assert.fail();
