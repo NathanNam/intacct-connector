@@ -17,9 +17,11 @@ import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.sax.SAXSource;
 
@@ -61,7 +63,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
-
+import static org.hamcrest.CoreMatchers.*;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
@@ -127,105 +129,51 @@ public class RealHttpTestCase extends BaseIntacctTest
 
     public void testSendNoResponse() throws Exception
     {
-        try
-        {
-            startServer(new EmptyResponseHandler());
-            final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-            
-            MessageProcessor flow = lookupFlowConstruct("functionFlow");
-            final MuleEvent event = getTestEvent(payload);
-            flow.process(event);
-            Assert.fail();
-
-        }
-        catch (Throwable ex)
-        {
-            IntacctException iex = getDomainException(ex);
-            Assert.assertNotNull(iex);
-            Assert.assertNotNull(iex.getCause());
-            Assert.assertTrue(iex.getCause() instanceof WebApplicationException);
-        }
-
+        startServer(new EmptyResponseHandler());
+        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
+        
+        MessageProcessor flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        MuleEvent result = flow.process(event);
+        
+        assertExceptionThrown(result, WebApplicationException.class);
     }
     
     public void testSendResponseWithNoControlId() throws Exception
     {
-        HttpTestServer server = null;
-        try
-        {
-            Response response = new Response();
-            Control control = new Control();
-            response.setControl(control);
-            IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-            startServer(handler);
+        Response response = new Response();
+        Control control = new Control();
+        response.setControl(control);
+        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+        startServer(handler);
 
-            final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-            
-            MessageProcessor flow = lookupFlowConstruct("functionFlow");
-            final MuleEvent event = getTestEvent(payload);
-            flow.process(event);
-            Assert.fail();
-
-        }
-        catch (Throwable ex)
-        {
-            IntacctException iex = getDomainException(ex);
-            Assert.assertNotNull(iex);
-            Assert.assertNotNull(iex.getCause());
-            Assert.assertTrue(iex.getCause() instanceof IntacctException);
-        }
-        finally
-        {
-            if (server != null)
-            {
-                server.stop();
-            }
-        }
-
+        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
+        
+        MessageProcessor flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        MuleEvent result = flow.process(event);
+        assertExceptionThrown(result, IntacctException.class);
     }
     
     public void testServerDown() throws Exception
     {
-        try
-        {
-
-            final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-            
-            MessageProcessor flow = lookupFlowConstruct("functionFlow");
-            final MuleEvent event = getTestEvent(payload);
-            flow.process(event);
-            Assert.fail();
-
-        }
-        catch (Throwable ex)
-        {
-            IntacctException iex = getDomainException(ex);
-            Assert.assertNotNull(iex);
-            Assert.assertNotNull(iex.getCause());
-            Assert.assertTrue(iex.getCause() instanceof ClientHandlerException);
-            Assert.assertTrue(iex.getCause().getCause() instanceof ConnectException);
-        }
-
+        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
+        
+        MessageProcessor flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        MuleEvent result = flow.process(event);
+        assertExceptionThrown(result, ClientHandlerException.class);
     }
+    
     public void testNotFoundResponse() throws Exception
     {
-        try
-        {
-            startServer(new NotFoundResponseHandler());
-            final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-            MessageProcessor flow = lookupFlowConstruct("functionFlow");
-            final MuleEvent event = getTestEvent(payload);
-            flow.process(event);
-            Assert.fail();
-
-        }
-        catch (Throwable ex)
-        {
-            IntacctException iex = getDomainException(ex);
-            Assert.assertNotNull(iex);
-            Assert.assertNotNull(iex.getCause());
-            Assert.assertTrue(iex.getCause() instanceof UniformInterfaceException);
-        }
+        startServer(new NotFoundResponseHandler());
+        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
+        MessageProcessor flow = lookupFlowConstruct("functionFlow");
+        final MuleEvent event = getTestEvent(payload);
+        MuleEvent result = flow.process(event);
+        assertExceptionThrown(result, UniformInterfaceException.class);
+        
 
     }
     public void testControlId() throws Exception {
@@ -341,5 +289,11 @@ public class RealHttpTestCase extends BaseIntacctTest
         }});
         
         return payload;
+    }
+    
+
+    private void assertExceptionThrown(MuleEvent result, Class<? extends Exception> exceptionType)
+    {
+        Assert.assertThat(result.getMessage().getExceptionPayload().getException().getCause().getCause(), instanceOf(exceptionType));
     }
 }
