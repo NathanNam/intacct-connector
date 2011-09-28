@@ -155,7 +155,7 @@ public class IntacctCloudConnector
     
     @Processor
     public Response getList(String functionControlId,
-                            String object,
+                            String obj,
                             @Optional String start,
                             @Optional String maxItems, 
                             @Optional String showPrivate, 
@@ -165,7 +165,7 @@ public class IntacctCloudConnector
                             ) throws JAXBException
     {
         GetList getList = mom.toObject(GetList.class, 
-            new MapBuilder().with("object", object)
+            new MapBuilder().with("object", obj)
                             .with("start", start)
                             .with("maxitems", maxItems)
                             .with("filter", filter)
@@ -183,14 +183,14 @@ public class IntacctCloudConnector
     
     @Processor
     public Response get(String functionControlId,
-                        String object,
+                        String obj,
                         String key, 
                         @Optional String externalKey,
                         @Optional Map<String, Object> fields
                         ) throws JAXBException
     {
         Get get = mom.toObject(Get.class, 
-            new MapBuilder().with("object", object)
+            new MapBuilder().with("object", obj)
                             .with("key", key)
                             .with("externalkey", externalKey)
                             .with("fields", fields)
