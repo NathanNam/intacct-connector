@@ -10,13 +10,12 @@
 
 package org.mule.module.intacct;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.mule.module.intacct.schema.request.Lineitem;
-
-import ar.com.zauber.commons.mom.MapObjectMapper;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,7 +24,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-public class MomNullifyerUnitTest
+public class MapObjectMapperUnitTest
 {
 
     @SuppressWarnings({"serial", "unchecked"})
@@ -51,9 +50,9 @@ public class MomNullifyerUnitTest
         assertNull(map);
     }
 
-    private MomNullifyer nullifyer()
+    private MapObjectMapper nullifyer()
     {
-        return new MomNullifyer(new MapObjectMapper("org.mule.module.intacct.schema"));
+        return (new MapObjectMapper("org.mule.module.intacct.schema"));
     }
 
 }

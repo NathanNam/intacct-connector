@@ -22,7 +22,7 @@ public class CommandTypeUnitTest
     @Test
     public void testNewInstance()
     {
-        assertThat(CommandType.CreateApadjustment.newInstance(), instanceOf(CreateApadjustment.class));
+        assertSame(CommandType.CreateApadjustment.getRequestType(), CreateApadjustment.class);
     }
 
 }

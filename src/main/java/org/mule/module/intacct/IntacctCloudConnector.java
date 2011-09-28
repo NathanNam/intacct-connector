@@ -46,7 +46,6 @@ import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
-import ar.com.zauber.commons.mom.MapObjectMapper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,7 +90,6 @@ public class IntacctCloudConnector
     
     private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema");
     
-    private MomNullifyer momNullifyer = new MomNullifyer(mom);
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
@@ -152,9 +150,7 @@ public class IntacctCloudConnector
     @Processor
     public Response execute(final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
     {
-        return operation(new HashMap<String, Object>() {{
-            put("cmd", Arrays.asList(mom.toArray(type.getRequestType(), commands)));
-        }});
+        return operation(mom.wrapList("cmd", commands, type.getRequestType()));
     }
     
 
@@ -660,7 +656,7 @@ public class IntacctCloudConnector
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
     {
-        return momNullifyer.nullifyEmptyListWrapper(propertyName, value, clazz);
+        return mom.nullifyEmptyListWrapper(propertyName, value, clazz);
     }
 
 }
