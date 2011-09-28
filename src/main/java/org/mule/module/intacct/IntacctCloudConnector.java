@@ -42,7 +42,6 @@ import org.mule.module.intacct.schema.request.CreateInvoice;
 import org.mule.module.intacct.schema.request.CreateInvoicebatch;
 import org.mule.module.intacct.schema.request.CreateSotransaction;
 import org.mule.module.intacct.schema.request.Customfield;
-import org.mule.module.intacct.schema.request.Datecreated;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Get;
 import org.mule.module.intacct.schema.request.GetList;
@@ -191,7 +190,7 @@ public class IntacctCloudConnector
     @Processor
     public Response createInvoicebatch(String functionControlId,
                                        String batchTitle,
-                                       @Optional Datecreated dateCreated,
+                                       @Optional Map<String, Object> dateCreated,
                                        @Optional List<Map<String, Object>> createInvoiceList
                                        ) throws JAXBException
     {
