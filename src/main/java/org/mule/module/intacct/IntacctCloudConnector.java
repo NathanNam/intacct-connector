@@ -20,14 +20,6 @@
  */
 package org.mule.module.intacct;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
@@ -55,6 +47,16 @@ import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
 
 @SuppressWarnings("serial")
 @Module(name="intacct",
@@ -93,7 +95,10 @@ public class IntacctCloudConnector
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
-    /** Given the function we create the request with the parameters for default given in the config */
+    /** 
+     * Given the function we create the request with the parameters for default given in the config 
+     * @deprecated use {@link #execute(CommandType, List)} instead
+     * */
     @Deprecated
     @Processor
     public Response operation(final Map<String, Object> function) throws JAXBException
@@ -103,20 +108,59 @@ public class IntacctCloudConnector
         return operationWithRequest(inicializeRequest(realFunction));
     }
     
+    
+    /**
+     * Batch executes a list of commands of the given CommandType.
+     * 
+     * Example 1:
+     * 
+     * {@code <intacct:execute type="CreateBill">
+     *          <intacct:commands>
+     *              <intacct:command>
+     *                  <externalid>#[variable:aString]</externalid>
+     *                  <description>#[variable:anotherString]</description>
+     *                  <batchkey>#[variable:aBatchkeyOrStringObjectMap]</batchkey>
+     *                  <!-- ...etc... -->
+     *              <intacct:command>
+     *          </intacct:commands>
+     *        </intacct:execute> }
+     *        
+     * Example 2:
+     * 
+     * {@code <intacct:execute type="CreateBill">
+     *          <intacct:commands ref="#[variable:aListOfStringObjectMaps]"/>
+     *        </intacct:execute>}
+     * 
+     * 
+     * Example 3:
+     * 
+     * {@code <intacct:execute type="CreateBill">
+     *          <intacct:commands ref="#[groovy:[
+     *              [ 'externalId' : 'anId',
+     *                'description' : 'aDescription',
+     *                'batchkey' : [ 'value' : 'aBatchkeyValue' ],
+     *                 // ... etc ...
+     *              ]
+     *          ]]"/>
+     *        </intacct:execute>}
+     * 
+     *  
+     * @param type the type of commands to execute
+     * @param commands the commands list
+     * @return the response
+     */
     @Processor
-    public Response execute(CommandType type, final List<Map<String, Object>> commands) throws JAXBException
+    public Response execute(final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
     {
-        Function function = new Function();
-
-        for(Map<String, Object> command : commands)
-        {
-            function.getCmd().add(mom.toObject(type.getClass(), command));
-        }
-
-        return operationWithRequest(inicializeRequest(function));
+        return operation(new HashMap<String, Object>() {{
+            put("cmd", Arrays.asList(mom.toArray(type.getRequestType(), commands)));
+        }});
     }
     
 
+    /**
+     * Creates an {@link org.mule.module.intacct.schema.response.Invoice}
+     */
     @Processor
     public Response createInvoice(String functionControlId,
                                   String customerId,
@@ -144,7 +188,7 @@ public class IntacctCloudConnector
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
         for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
         {
-            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getClass(), exch));
+            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
         }
         
         CreateInvoice createInvoice = mom.toObject(CreateInvoice.class, 
@@ -175,18 +219,8 @@ public class IntacctCloudConnector
     }
     
     /**
-     * @param propertyName
-     * @param value
-     * @param clazz
-     * @return
+     * Creates an {@link org.mule.module.intacct.schema.response.Invoicebatch}
      */
-    private Object nullifyEmptyListWrapper(final String propertyName,
-                                       final List<Map<String, Object>> value,
-                                       final Class<?> clazz)
-    {
-        return momNullifyer.nullifyEmptyListWrapper(propertyName, value, clazz);
-    }
-
     @Processor
     public Response createInvoicebatch(String functionControlId,
                                        String batchTitle,
@@ -216,6 +250,9 @@ public class IntacctCloudConnector
         return operationWithRequest(inicializeRequest(function));
     }
     
+    /**
+     * Creates and adjustement. 
+     */
     @Processor
     public Response createAradjustment(String functionControlId,
                                        String customerId,
@@ -237,7 +274,7 @@ public class IntacctCloudConnector
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
         for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
         {
-            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getClass(), exch));
+            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
         }
         
         CreateAradjustment createArAdjustment = mom.toObject(CreateAradjustment.class, 
@@ -607,8 +644,23 @@ public class IntacctCloudConnector
         this.intacctImplementation = intacctImplementation;
     }
     
+    @SuppressWarnings("unchecked")
     private <T> List<T> coalesceList(List<T> list )
     {
         return (List<T>) ((list == null) ? Collections.emptyList() : list);
     }
+    
+    /**
+     * @param propertyName
+     * @param value
+     * @param clazz
+     * @return
+     */
+    private Object nullifyEmptyListWrapper(final String propertyName,
+                                       final List<Map<String, Object>> value,
+                                       final Class<?> clazz)
+    {
+        return momNullifyer.nullifyEmptyListWrapper(propertyName, value, clazz);
+    }
+
 }

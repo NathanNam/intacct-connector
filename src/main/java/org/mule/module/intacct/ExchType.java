@@ -28,16 +28,9 @@ public enum ExchType
         this.requestType = requestType;
     }
     
-    public Object newInstance() {
-        try
-        {
-            return requestType.newInstance();
-        }
-        catch (Exception e)
-        {
-            // Can never occur
-            throw new AssertionError(e);
-        }
+    public Class<?> getRequestType()
+    {
+        return requestType;
     }
 }
 

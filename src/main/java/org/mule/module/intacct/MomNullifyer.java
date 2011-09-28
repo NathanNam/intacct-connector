@@ -40,14 +40,8 @@ public class MomNullifyer
     }
 
 
-    /**
-     * @param propertyName
-     * @param value
-     * @param clazz
-     * @return
-     */
     @SuppressWarnings("serial")
-    public Object nullifyEmptyListWrapper(final String propertyName,
+    public Map<String,Object> nullifyEmptyListWrapper(final String propertyName,
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
     {
