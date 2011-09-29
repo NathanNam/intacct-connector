@@ -26,6 +26,8 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
+import org.mule.module.intacct.schema.request.Arpaymentitem;
+import org.mule.module.intacct.schema.request.Arpaymentitems;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
@@ -181,10 +183,12 @@ public class IntacctCloudConnector
                                   @Optional List<Map<String, Object>> customFields,
                                   Invoiceitems invoiceitems) throws JAXBException
     {      
-        List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-        for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
-        {
-            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+    	List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
+    	if(exchRateDateOrExchRateTypeOrExchRate != null){
+        	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+        	{
+        		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+        	}
         }
         
         CreateInvoice createInvoice = mom.toObject(CreateInvoice.class, 
@@ -225,10 +229,11 @@ public class IntacctCloudConnector
                                        ) throws JAXBException
     {
         List<CreateInvoice> createInvoiceListAux = new ArrayList<CreateInvoice>();
-        
-        for(Map<String, Object> invoice : createInvoiceList)
-        {
-            createInvoiceListAux.add(mom.toObject(CreateInvoice.class, invoice));
+        if(createInvoiceList != null){
+        	for(Map<String, Object> invoice : createInvoiceList)
+        	{
+        		createInvoiceListAux.add(mom.toObject(CreateInvoice.class, invoice));
+        	}
         }
         
         CreateInvoicebatch createInvoiceBatch = mom.toObject(CreateInvoicebatch.class, 
@@ -268,11 +273,12 @@ public class IntacctCloudConnector
                                        ) throws JAXBException
     {
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-        for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
-        {
-            exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+        if(exchRateDateOrExchRateTypeOrExchRate != null){
+        	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+        	{
+        		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+        	}
         }
-        
         CreateAradjustment createArAdjustment = mom.toObject(CreateAradjustment.class, 
             new MapBuilder().with("customerid", fromSingleValue(customerId))
                             .with("datecreated", dateCreated)
@@ -280,7 +286,7 @@ public class IntacctCloudConnector
                             .with("batchkey", fromSingleValue(batchKey))
                             .with("invoiceno", invoiceNo)
                             .with("description", description)
-                            .with("externalId", externalId)
+                            .with("externalid", externalId)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
