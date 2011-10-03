@@ -16,7 +16,7 @@ import org.mule.module.intacct.schema.request.Contactname;
  * @since Sep 28, 2011
  */
 
-public enum ContactType
+public enum ContactType implements EnumType
 {
      Contact(Contact.class),
      ContacName(Contactname.class);
@@ -44,7 +44,7 @@ public enum ContactType
      * 
      * @return  with the requestType.
      */
-
+    @Override
     public Class<?> getRequestType()
     {
         return requestType;

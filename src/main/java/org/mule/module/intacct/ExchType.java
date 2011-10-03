@@ -16,7 +16,7 @@ import org.mule.module.intacct.schema.request.Exchratetype;
  * @since Sep 28, 2011
  */
 
-public enum ExchType
+public enum ExchType implements EnumType
 {
     ExchRateDate(Exchratedate.class),
     ExchRateType(Exchratetype.class),
@@ -27,7 +27,8 @@ public enum ExchType
     private ExchType(Class<?> requestType){
         this.requestType = requestType;
     }
-    
+
+    @Override
     public Class<?> getRequestType()
     {
         return requestType;

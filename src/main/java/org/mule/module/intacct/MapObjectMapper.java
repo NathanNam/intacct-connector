@@ -29,7 +29,7 @@ public class MapObjectMapper extends ar.com.zauber.commons.mom.MapObjectMapper
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
     {
-        if(value.isEmpty())
+        if(value == null || value.isEmpty())
             return null;
         
         return wrapList(propertyName, value, clazz);         

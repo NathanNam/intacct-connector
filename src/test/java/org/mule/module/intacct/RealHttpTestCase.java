@@ -10,18 +10,17 @@
 
 package org.mule.module.intacct;
 
+import static org.hamcrest.CoreMatchers.*;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.net.ConnectException;
 import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.sax.SAXSource;
 
@@ -42,12 +41,8 @@ import org.mule.module.intacct.schema.request.CreateCustomer;
 import org.mule.module.intacct.schema.request.Customerid;
 import org.mule.module.intacct.schema.request.Deliveryoption;
 import org.mule.module.intacct.schema.request.Deliveryoptions;
-import org.mule.module.intacct.schema.request.Expression;
-import org.mule.module.intacct.schema.request.Field;
-import org.mule.module.intacct.schema.request.Logical;
 import org.mule.module.intacct.schema.request.Mailaddress;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.request.Value;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.EmptyResponseHandler;
@@ -63,7 +58,6 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
-import static org.hamcrest.CoreMatchers.*;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
@@ -101,12 +95,17 @@ public class RealHttpTestCase extends BaseIntacctTest
         response.setControl(control);
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
         startServer(handler);
+        System.out.println("Request antes del payload: " + handler.getRequest());
         final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-	        
+	    System.out.println(payload);
+        System.out.println("Request del handler: "+handler.getRequest());
+
+	    
         MessageProcessor flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
 
+        System.out.println("Request del handler despues del flow: "+handler.getRequest());
         String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
             "xmlrequest".length() + 1);
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
@@ -259,34 +258,34 @@ public class RealHttpTestCase extends BaseIntacctTest
         payload.put("key", "1234");
         payload.put("controlid", controlId);
         payload.put("accountnoLower", "500");
-        payload.put("filter", new HashMap(){{       
-            put("logicalOrExpression", Arrays.<Object>asList(new Logical(){{
-                        logicalOperator = "or";
-                        logicalOrExpression = Arrays.asList(new Logical(){{
-                            logicalOperator = "and";
-                            logicalOrExpression = Arrays.<Object> asList(new Expression(){{
-                                field = new Field(){{ value = "accountno"; }} ;
-                                operator = ">";
-                                value = new Value() {{ value = "500"; }};
-                            }}, new Expression(){{
-                                field = new Field(){{ value = "normalbalance"; }} ;
-                                operator = "=";
-                                value = new Value() {{ value = "debit"; }};
-                            }});
-                        }}, 
-                        new Expression(){{
-                            field = new Field(){{ value = "normalbalance"; }} ;
-                            operator = "=";
-                            value = new Value() {{ value = "credit"; }};
-                        }});
-                }}));
-        }});
+        payload.put("filter", null);
+//        payload.put("filter", Arrays.<Object>asList(new Logical(){{
+//                logicalOperator = "or";
+//                logicalOrExpression = Arrays.asList(new Logical(){{
+//                    logicalOperator = "and";
+//                    logicalOrExpression = Arrays.<Object> asList(new Expression(){{
+//                        field = new Field(){{ value = "accountno"; }} ;
+//                        operator = ">";
+//                        value = new Value() {{ value = "500"; }};
+//                    }}, new Expression(){{
+//                        field = new Field(){{ value = "normalbalance"; }} ;
+//                        operator = "=";
+//                        value = new Value() {{ value = "debit"; }};
+//                    }});
+//                }}, 
+//                new Expression(){{
+//                    field = new Field(){{ value = "normalbalance"; }} ;
+//                    operator = "=";
+//                    value = new Value() {{ value = "credit"; }};
+//                }});
+//        }}));
         
-        payload.put("fields", new HashMap(){{
-            put("field",  Arrays.asList(
-                    new Field(){{ value = "title"; }}, 
-                    new Field(){{ value = "normalbalance"; }}));
-        }});
+        payload.put("fields", null);
+//        payload.put("fields", new HashMap(){{
+//            put("field",  Arrays.<Map<String, Object>>asList(
+//                    new HashMap(){{ put("value", "title"); }}, 
+//                    new HashMap(){{ put("value", "normalbalance"); }}));
+//        }});
         
         return payload;
     }

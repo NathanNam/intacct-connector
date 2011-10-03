@@ -17,7 +17,7 @@ import org.mule.module.intacct.schema.request.*;
  * 
  * @author flbulgarelli
  */
-public enum CommandType
+public enum CommandType implements EnumType
 {
     CreateApaccountlabel(CreateApaccountlabel.class),
     CreateApadjustment(CreateApadjustment.class),
@@ -220,6 +220,7 @@ public enum CommandType
         this.requestType = requestType;
     }
     
+    @Override
     public Class<?> getRequestType()
     {
         return requestType;

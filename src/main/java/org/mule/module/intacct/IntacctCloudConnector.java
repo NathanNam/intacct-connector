@@ -20,14 +20,21 @@
  */
 package org.mule.module.intacct;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.Validate;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
-import org.mule.module.intacct.schema.request.Arpaymentitem;
-import org.mule.module.intacct.schema.request.Arpaymentitems;
 import org.mule.module.intacct.schema.request.Authentication;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
@@ -36,28 +43,22 @@ import org.mule.module.intacct.schema.request.CreateInvoice;
 import org.mule.module.intacct.schema.request.CreateInvoicebatch;
 import org.mule.module.intacct.schema.request.CreateSotransaction;
 import org.mule.module.intacct.schema.request.Customfield;
+import org.mule.module.intacct.schema.request.Field;
+import org.mule.module.intacct.schema.request.Filter;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Get;
 import org.mule.module.intacct.schema.request.GetList;
-import org.mule.module.intacct.schema.request.Invoiceitems;
 import org.mule.module.intacct.schema.request.Lineitem;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
+import org.mule.module.intacct.schema.request.Sortfield;
+import org.mule.module.intacct.schema.request.Sotransitem;
+import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
 
 @SuppressWarnings("serial")
 @Module(name="intacct",
@@ -181,10 +182,14 @@ public class IntacctCloudConnector
                                   @Optional List<Map<String, Object>> exchRateDateOrExchRateTypeOrExchRate,
                                   @Optional String nogl,
                                   @Optional List<Map<String, Object>> customFields,
-                                  Invoiceitems invoiceitems) throws JAXBException
-    {      
+                                  List<Map<String, Object>> invoiceItems) throws JAXBException
+    {   
+        Validate.notEmpty(dateCreated);
+        Object invoiceItemsAux = nullifyEmptyListWrapper("lineitem", invoiceItems, Lineitem.class);
+        Validate.notNull(invoiceItemsAux);
+        
     	List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-    	if(exchRateDateOrExchRateTypeOrExchRate != null){
+    	if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
         	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
         	{
         		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
@@ -202,13 +207,14 @@ public class IntacctCloudConnector
                             .with("ponumber", poNumber)
                             .with("description", description)
                             .with("externalId", externalId)
-                            .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipTo, shipToContactType.getRequestType()))
-                            .with("billto", nullifyEmptyListWrapper("contactOrContactname", billTo, billToContactType.getRequestType()))
+                            .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipTo, nullifyEnumType(shipToContactType)))
+                            .with("billto", nullifyEmptyListWrapper("contactOrContactname", billTo, nullifyEnumType(billToContactType)))
                             .with("basecurr", baseCurr)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
                             .with("customfields", nullifyEmptyListWrapper("customfield", customFields, Customfield.class))
+                            .with("invoiceitems", invoiceItemsAux)
                             .build());
 
         Function function = new Function();
@@ -272,8 +278,12 @@ public class IntacctCloudConnector
                                        List<Map<String, Object>> arAdjustmentItems
                                        ) throws JAXBException
     {
+        Validate.notEmpty(dateCreated);
+        Object arAdjustmentItemsAux = nullifyEmptyListWrapper("lineitem", arAdjustmentItems, Lineitem.class);
+        Validate.notNull(arAdjustmentItemsAux);
+        
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-        if(exchRateDateOrExchRateTypeOrExchRate != null){
+        if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
         	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
         	{
         		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
@@ -290,7 +300,7 @@ public class IntacctCloudConnector
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
-                            .with("aradjustmentitems", nullifyEmptyListWrapper("lineitem", arAdjustmentItems, Lineitem.class))
+                            .with("aradjustmentitems", arAdjustmentItemsAux)
                             .build()
             );
 
@@ -313,18 +323,33 @@ public class IntacctCloudConnector
                                         @Optional Map<String, Object> dateDue,
                                         @Optional String message,
                                         @Optional String shippingMethod,
-                                        @Optional Map<String, Object> shipTo,
-                                        @Optional Map<String, Object> billTo,
+                                        @Optional ContactType billToContactType,
+                                        @Optional List<Map<String, Object>> billTo,
+                                        @Optional ContactType shipToContactType,
+                                        @Optional List<Map<String, Object>> shipTo,
                                         @Optional String externalId,
                                         @Optional String baseCurr,
                                         @Optional String currency,
-                                        @Optional List<Object> exchrateDateOrExchrateTypeOrExchrate,
+                                        @Optional ExchType exchType,
+                                        @Optional List<Map<String, Object>> exchRateDateOrExchRateTypeOrExchRate,
                                         @Optional String vsoePriceList,
-                                        @Optional Map<String, Object> customFields,
-                                        Map<String, Object> soTransItems,
-                                        @Optional Map<String, Object> subTotals
+                                        @Optional List<Map<String, Object>> customFields,
+                                        List<Map<String, Object>> soTransItems,
+                                        @Optional List<Map<String, Object>> subTotals
                                         ) throws JAXBException
     {
+        Validate.notEmpty(dateCreated);
+        Object soTransItemsAux = nullifyEmptyListWrapper("sotransitem", soTransItems, Sotransitem.class);
+        Validate.notNull(soTransItemsAux);
+        
+        List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
+        if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
+            for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+            {
+                exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+            }
+        }
+        
         CreateSotransaction createSotransaction = mom.toObject(CreateSotransaction.class, 
             new MapBuilder().with("transactiontype", transactionType)
                             .with("datecreated", dateCreated)
@@ -336,16 +361,16 @@ public class IntacctCloudConnector
                             .with("datedue", dateDue)
                             .with("message", message)
                             .with("shippingmethod", shippingMethod)
-                            .with("shipto", shipTo)
-                            .with("billto", billTo)
+                            .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipTo, nullifyEnumType(shipToContactType)))
+                            .with("billto", nullifyEmptyListWrapper("contactOrContactname", billTo, nullifyEnumType(billToContactType)))
                             .with("externalid", externalId)
                             .with("basecurr", baseCurr)
                             .with("currency", currency)
-                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchrateDateOrExchrateTypeOrExchrate))
+                            .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("vsoepricelist", vsoePriceList)
-                            .with("customfields", customFields)
-                            .with("sotransitems", soTransItems)
-                            .with("subtotals", subTotals)
+                            .with("customfields", nullifyEmptyListWrapper("customfield", customFields, Customfield.class))
+                            .with("sotransitems", soTransItemsAux)
+                            .with("subtotals", nullifyEmptyListWrapper("subtotal", subTotals, Subtotal.class))
                             .build()
             );
 
@@ -366,19 +391,26 @@ public class IntacctCloudConnector
                             String obj,
                             @Optional String start,
                             @Optional String maxItems, 
-                            @Optional String showPrivate, 
-                            @Optional Map<String, Object> filter,
-                            @Optional Map<String, Object> sorts,
-                            @Optional Map<String, Object> fields
+                            @Optional String showPrivate,
+                            @Optional List<Object> filter,
+                            @Optional List<Map<String, Object>> sorts,
+                            @Optional List<Map<String, Object>> fields
                             ) throws JAXBException
     {
+        Filter filterAux = null;
+        if(coalesceList(filter) != null)
+        {
+            filterAux = new Filter();
+            filterAux.getLogicalOrExpression().addAll(filter);
+        }
+        
         GetList getList = mom.toObject(GetList.class, 
             new MapBuilder().with("object", obj)
                             .with("start", start)
                             .with("maxitems", maxItems)
-                            .with("filter", filter)
-                            .with("sorts", sorts)
-                            .with("fields", fields)
+                            .with("filter", filterAux)
+                            .with("sorts", nullifyEmptyListWrapper("sortfield", sorts, Sortfield.class))
+                            .with("fields", nullifyEmptyListWrapper("field", fields, Field.class))
                             .build()
             );
 
@@ -394,14 +426,14 @@ public class IntacctCloudConnector
                         String obj,
                         String key, 
                         @Optional String externalKey,
-                        @Optional Map<String, Object> fields
+                        @Optional List<Map<String, Object>> fields
                         ) throws JAXBException
     {
         Get get = mom.toObject(Get.class, 
             new MapBuilder().with("object", obj)
                             .with("key", key)
                             .with("externalkey", externalKey)
-                            .with("fields", fields)
+                            .with("fields", nullifyEmptyListWrapper("field", fields, Field.class))
                             .build()
             );
 
@@ -662,7 +694,15 @@ public class IntacctCloudConnector
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
     {
+        if(clazz == null)
+            return null;
         return mom.nullifyEmptyListWrapper(propertyName, value, clazz);
     }
 
+    private Class<?> nullifyEnumType(EnumType enumType)
+    {
+        if(enumType == null)
+            return null;
+        return enumType.getRequestType();
+    }
 }

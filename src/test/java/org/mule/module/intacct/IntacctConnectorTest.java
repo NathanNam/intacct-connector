@@ -26,11 +26,9 @@ import org.mule.module.intacct.schema.request.Datecreated;
 import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Itemid;
 import org.mule.module.intacct.schema.request.Sotransitem;
-import org.mule.module.intacct.schema.request.Sotransitems;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
-import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
@@ -124,26 +122,24 @@ public class IntacctConnectorTest
         datecreated.setMonth("1");
         datecreated.setYear("2000");
         
-        List<Object> list = new ArrayList<Object>();
+        List<Map<String, Object>> mapShipTo = new ArrayList<Map<String, Object>>();
         Contactname contactname = new Contactname();
         contactname.setvalue("fooContact");
-        list.add(contactname);
-        Map<String, Object> mapShipTo = new MapBuilder().with("contactOrContactname", list)
-                                                        .build();
+        mapShipTo.add(mom.toMap(contactname));
         
-        Sotransitems sotransitems = new Sotransitems();
+        List<Map<String, Object>> sotransitems = new ArrayList<Map<String, Object>>();
         Sotransitem sotransitem1 = new Sotransitem();
         Itemid itemid1 = new Itemid();
         itemid1.setvalue("item1");
         sotransitem1.setItemid(itemid1);
         sotransitem1.setQuantity("2");
-        sotransitems.getSotransitem().add(sotransitem1);
+        sotransitems.add(mom.toMap(sotransitem1));
         Sotransitem sotransitem2 = new Sotransitem();
         Itemid itemid2 = new Itemid();
         itemid2.setvalue("item2");
         sotransitem2.setItemid(itemid2);
         sotransitem2.setQuantity("2");
-        sotransitems.getSotransitem().add(sotransitem2);
+        sotransitems.add(mom.toMap(sotransitem2));
 
         connector.createSotransaction("100",
                                       "fooTransactionType",
@@ -156,6 +152,9 @@ public class IntacctConnectorTest
                                       null,
                                       null,
                                       null,
+                                      null,
+                                      null,
+                                      ContactType.ContacName,
                                       mapShipTo,
                                       null,
                                       null,
@@ -164,7 +163,7 @@ public class IntacctConnectorTest
                                       null,
                                       null,
                                       null,
-                                      mom.toMap(sotransitems),
+                                      sotransitems,
                                       null
                                       );
         
