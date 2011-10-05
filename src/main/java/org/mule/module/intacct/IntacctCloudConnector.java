@@ -189,27 +189,27 @@ public class IntacctCloudConnector
      *                          its response for the function that will be created 
      *                          for this operation. This is especially useful during 
      *                          asynchronous requests.
-     * @param  customerId the customerId
-     * @param  dateCreated the dateCreated
-     * @param  datePosted the datePosted
-     * @param  dateDue the dateDue
-     * @param  termName the termName
-     * @param  batchKey the batchKey
-     * @param  invoiceNo the invoiceNo
-     * @param  poNumber the poNumber
-     * @param  description the description
-     * @param  externalId the externalId
-     * @param  billToContactType the billToContactType
-     * @param  billTo the billTo
-     * @param  shipToContactType the shipToContactType
-     * @param  shipTo the shipTo
-     * @param  baseCurr the baseCurr
-     * @param  currency the currency
-     * @param  exchType the exchType
-     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
-     * @param  nogl the nogl
-     * @param  customFields the customFields
-     * @param  invoiceItems the invoiceItems
+     * @param customerId the customerId
+     * @param dateCreated the dateCreated
+     * @param datePosted the datePosted
+     * @param dateDue the dateDue
+     * @param termName the termName
+     * @param batchKey the batchKey
+     * @param invoiceNo the invoiceNo
+     * @param poNumber the poNumber
+     * @param description the description
+     * @param externalId the externalId
+     * @param billToContactType the billToContactType
+     * @param billTo the billTo
+     * @param shipToContactType the shipToContactType
+     * @param shipTo the shipTo
+     * @param baseCurr the baseCurr
+     * @param currency the currency
+     * @param exchType the exchType
+     * @param exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param nogl the nogl
+     * @param customFields the customFields
+     * @param invoiceItems the invoiceItems
      * @return
      * @throws JAXBException
      */
@@ -287,10 +287,10 @@ public class IntacctCloudConnector
      *                          its response for the function that will be created 
      *                          for this operation. This is especially useful during 
      *                          asynchronous requests.
-     * @param  batchTitle the batchTitle
-     * @param  dateCreated the dateCreated
-     * @param  createInvoiceList the createInvoiceList
-     * @return
+     * @param batchTitle the batchTitle
+     * @param dateCreated the dateCreated
+     * @param createInvoiceList the createInvoiceList
+     * @return {@link Response}
      * @throws JAXBException
      */
     @Processor
@@ -333,21 +333,21 @@ public class IntacctCloudConnector
      *                          its response for the function that will be created 
      *                          for this operation. This is especially useful during 
      *                          asynchronous requests.
-     * @param  customerId the customerId
-     * @param  dateCreated the dateCreated
-     * @param  datePosted the datePosted
-     * @param  batchKey the batchKey
-     * @param  adjustmentNo the adjustmentNo
-     * @param  invoiceNo the invoiceNo
-     * @param  description the description
-     * @param  externalId the externalId
-     * @param  basecurr the basecurr
-     * @param  currency the currency
-     * @param  exchType the exchType
-     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
-     * @param  nogl the nogl
-     * @param  arAdjustmentItems the arAdjustmentItems
-     * @return
+     * @param customerId the customerId
+     * @param dateCreated the dateCreated
+     * @param datePosted the datePosted
+     * @param batchKey the batchKey
+     * @param adjustmentNo the adjustmentNo
+     * @param invoiceNo the invoiceNo
+     * @param description the description
+     * @param externalId the externalId
+     * @param basecurr the basecurr
+     * @param currency the currency
+     * @param exchType the exchType
+     * @param exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param nogl the nogl
+     * @param arAdjustmentItems the arAdjustmentItems
+     * @return {@link Response}
      * @throws JAXBException
      */
     @Processor
@@ -411,30 +411,30 @@ public class IntacctCloudConnector
      *                          its response for the function that will be created 
      *                          for this operation. This is especially useful during 
      *                          asynchronous requests.
-     * @param  transactionType the transactionType
-     * @param  dateCreated the dateCreated
-     * @param  createdFrom the createdFrom
-     * @param  customerId the customerId
-     * @param  documentNo the documentNo
-     * @param  referenceNo the referenceNo
-     * @param  termName the termName
-     * @param  dateDue the dateDue
-     * @param  message the message
-     * @param  shippingMethod the shippingMethod
-     * @param  billToContactType the billToContactType
-     * @param  billTo the billTo
-     * @param  shipToContactType the shipToContactType
-     * @param  shipTo the shipTo
-     * @param  externalId the externalId
-     * @param  baseCurr the baseCurr
-     * @param  currency the currency
-     * @param  exchType the exchType
-     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
-     * @param  vsoePriceList the vsoePriceList
-     * @param  customFields the customFields
-     * @param  soTransItems the soTransItems
-     * @param  subTotals the subTotals
-     * @return
+     * @param transactionType the transactionType
+     * @param dateCreated the dateCreated
+     * @param createdFrom the createdFrom
+     * @param customerId the customerId
+     * @param documentNo the documentNo
+     * @param referenceNo the referenceNo
+     * @param termName the termName
+     * @param dateDue the dateDue
+     * @param message the message
+     * @param shippingMethod the shippingMethod
+     * @param billToContactType the billToContactType
+     * @param billTo the billTo
+     * @param shipToContactType the shipToContactType
+     * @param shipTo the shipTo
+     * @param externalId the externalId
+     * @param baseCurr the baseCurr
+     * @param currency the currency
+     * @param exchType the exchType
+     * @param exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param vsoePriceList the vsoePriceList
+     * @param customFields the customFields
+     * @param soTransItems the soTransItems
+     * @param subTotals the subTotals
+     * @return {@link Response}
      * @throws JAXBException
      */
     @Processor
@@ -735,7 +735,6 @@ public class IntacctCloudConnector
      * 
      * @return  with the senderId.
      */
-    
     public String getSenderId()
     {
         return senderId;
@@ -757,7 +756,6 @@ public class IntacctCloudConnector
      * 
      * @return  with the controlPassword.
      */
-    
     public String getControlPassword()
     {
         return controlPassword;
@@ -912,12 +910,6 @@ public class IntacctCloudConnector
         return (List<T>) ((list == null) ? Collections.emptyList() : list);
     }
     
-    /**
-     * @param  propertyName the propertyName
-     * @param  value the value
-     * @param  clazz the clazz
-     * @return
-     */
     private Object nullifyEmptyListWrapper(final String propertyName,
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
@@ -929,12 +921,12 @@ public class IntacctCloudConnector
         return mom.nullifyEmptyListWrapper(propertyName, value, clazz);
     }
 
-    private Class<?> nullifyEnumType(EnumType enumType)
+    private Class<?> nullifyEnumType(Object enumType)
     {
         if (enumType == null)
         {
             return null;
         }
-        return enumType.getRequestType();
+        return ((EnumType)enumType).getRequestType();
     }
 }
