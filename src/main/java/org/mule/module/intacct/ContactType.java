@@ -1,33 +1,36 @@
 
-	
-	/*
-	 * Copyright (c) 2011 Zauber S.A.  -- All rights reserved
-	 */
-	
-	package org.mule.module.intacct;
+package org.mule.module.intacct;
 
 import org.mule.module.intacct.schema.request.Contact;
 import org.mule.module.intacct.schema.request.Contactname;
 
-	
+
 /** 
- * 
+ * Diferents types of saving a contact.
  * @author Gaston Ponti
- * @since Sep 28, 2011
  */
 
 public enum ContactType implements EnumType
 {
+    /**
+     * Type contact with more information.
+     */
      Contact(Contact.class),
+     
+     /**
+      * type contact only with the string of the name.
+      */
      ContacName(Contactname.class);
      
      private Class<?> requestType;
 
-     private ContactType(Class<?> requestType){
+     private ContactType(Class<?> requestType)
+     {
          this.requestType = requestType;
      }
      
-     public Object newInstance() {
+     public Object newInstance()
+     {
          try
          {
              return requestType.newInstance();
@@ -51,4 +54,3 @@ public enum ContactType implements EnumType
     }
 }
 
-	

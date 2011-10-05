@@ -1,22 +1,15 @@
 
-	
-	/*
-	 * Copyright (c) 2011 Zauber S.A.  -- All rights reserved
-	 */
-	
-	package org.mule.module.intacct;
+package org.mule.module.intacct;
 
-	
+
 /**
+ * Interface of Intacct's enumerations type.
  * 
- * 
- * @author Gaston Ponti
- * @since Oct 3, 2011
+ * @author gastonponti
  */
 
 public interface EnumType
 {
-    public Class<?> getRequestType();
+    Class<?> getRequestType();
 }
 
-	

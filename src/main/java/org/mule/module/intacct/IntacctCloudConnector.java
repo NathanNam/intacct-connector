@@ -60,33 +60,74 @@ import org.mule.module.intacct.utils.MapBuilder;
 
 import ar.com.zauber.commons.mom.CXFStyle;
 
+/**
+ * Cloud Connector Facade for <a href="http://us.intacct.com/">Intacct</a> 
+ * @author jcodagnone
+ */
 @SuppressWarnings("serial")
-@Module(name="intacct",
-        namespace="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct",
-        schemaLocation="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd")
+@Module(name = "intacct",
+        namespace = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct",
+        schemaLocation = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd")
 public class IntacctCloudConnector
 {
+    /**
+     * Intacct-registered Web Services username.
+     */
     @Configurable
     private String senderId;
     
+    /**
+     * Registered Web Services password
+     */
     @Configurable
     private String controlPassword;
     
+    /**
+     * Used by the sender to match a request to its response. This is especially 
+     * useful during asynchronous requests. The following illustrates the syntax 
+     * for a request element.
+     */
     @Configurable
     private String controlid;
     
+    /**
+     * The Intacct system guarantees transaction idempotence through the use of the uniqueid. 
+     * The default setting for the uniqueid element is "true" with all lower-case characters.
+     * If the uniqueid element value is set to "true", the designated function will be 
+     * performed only once. Before a function is executed, the controlid attribute of the 
+     * function tag is checked for uniqueness. If a function is submitted twice under the 
+     * same controlid and sender, the function will not be re-executed. However, a failed 
+     * request may be re-submitted under the same controlid and sender.
+
+     */
     @Configurable
     private String uniqueid;
     
+    /**
+     * The login information specifies the user's Intacct identity. 
+     * This is the same information you see when you log onto the Intacct system.
+     */
     @Configurable
     private String userid;
     
+    /**
+     * The login information specifies the user's Intacct password. 
+     * This is the same information you see when you log onto the Intacct system.
+
+     */
     @Configurable
     private String userPassword;
     
+    /**
+     * The login information specifies the user's Intacct company. 
+     * This is the same information you see when you log onto the Intacct system.
+     */
     @Configurable
     private String companyid;
     
+    /**
+     * Intacct Client implementation. By default: {@link JerseySslIntacctFacade}
+     */
     @Configurable
     @Optional
     private IntacctFacade intacctImplementation;
@@ -96,10 +137,16 @@ public class IntacctCloudConnector
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
-    /** 
+    /**
      * Given the function we create the request with the parameters for default given in the config 
      * @deprecated use {@link #execute(CommandType, List)} instead
-     * */
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation}
+     *
+     * @param function function
+     * @return {@Response}
+     * @throws JAXBException
+     */
     @Deprecated
     @Processor
     public Response operation(final Map<String, Object> function) throws JAXBException
@@ -114,41 +161,17 @@ public class IntacctCloudConnector
      * Batch executes a list of commands of the given CommandType.
      * 
      * Example 1:
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:execute1}
      * 
-     * {@code <intacct:execute type="CreateBill">
-     *          <intacct:commands>
-     *              <intacct:command>
-     *                  <externalid>#[variable:aString]</externalid>
-     *                  <description>#[variable:anotherString]</description>
-     *                  <batchkey>#[variable:aBatchkeyOrStringObjectMap]</batchkey>
-     *                  <!-- ...etc... -->
-     *              <intacct:command>
-     *          </intacct:commands>
-     *        </intacct:execute> }
-     *        
      * Example 2:
-     * 
-     * {@code <intacct:execute type="CreateBill">
-     *          <intacct:commands ref="#[variable:aListOfStringObjectMaps]"/>
-     *        </intacct:execute>}
-     * 
-     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
+     *
      * Example 3:
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
      * 
-     * {@code <intacct:execute type="CreateBill">
-     *          <intacct:commands ref="#[groovy:[
-     *              [ 'externalId' : 'anId',
-     *                'description' : 'aDescription',
-     *                'batchkey' : [ 'value' : 'aBatchkeyValue' ],
-     *                 // ... etc ...
-     *              ]
-     *          ]]"/>
-     *        </intacct:execute>}
-     * 
-     *  
      * @param type the type of commands to execute
      * @param commands the commands list
-     * @return the response
+     * @return the {@link Response}
      */
     @Processor
     public Response execute(final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
@@ -159,6 +182,36 @@ public class IntacctCloudConnector
 
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Invoice}
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param  customerId the customerId
+     * @param  dateCreated the dateCreated
+     * @param  datePosted the datePosted
+     * @param  dateDue the dateDue
+     * @param  termName the termName
+     * @param  batchKey the batchKey
+     * @param  invoiceNo the invoiceNo
+     * @param  poNumber the poNumber
+     * @param  description the description
+     * @param  externalId the externalId
+     * @param  billToContactType the billToContactType
+     * @param  billTo the billTo
+     * @param  shipToContactType the shipToContactType
+     * @param  shipTo the shipTo
+     * @param  baseCurr the baseCurr
+     * @param  currency the currency
+     * @param  exchType the exchType
+     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param  nogl the nogl
+     * @param  customFields the customFields
+     * @param  invoiceItems the invoiceItems
+     * @return
+     * @throws JAXBException
      */
     @Processor
     public Response createInvoice(String functionControlId,
@@ -188,12 +241,13 @@ public class IntacctCloudConnector
         Object invoiceItemsAux = nullifyEmptyListWrapper("lineitem", invoiceItems, Lineitem.class);
         Validate.notNull(invoiceItemsAux);
         
-    	List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-    	if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
-        	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
-        	{
-        		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
-        	}
+        List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
+        if (exchRateDateOrExchRateTypeOrExchRate != null && exchType != null)
+        {
+            for (Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+            {
+                exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+            }
         }
         
         CreateInvoice createInvoice = mom.toObject(CreateInvoice.class, 
@@ -226,6 +280,18 @@ public class IntacctCloudConnector
     
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Invoicebatch}
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param  batchTitle the batchTitle
+     * @param  dateCreated the dateCreated
+     * @param  createInvoiceList the createInvoiceList
+     * @return
+     * @throws JAXBException
      */
     @Processor
     public Response createInvoicebatch(String functionControlId,
@@ -235,11 +301,12 @@ public class IntacctCloudConnector
                                        ) throws JAXBException
     {
         List<CreateInvoice> createInvoiceListAux = new ArrayList<CreateInvoice>();
-        if(createInvoiceList != null){
-        	for(Map<String, Object> invoice : createInvoiceList)
-        	{
-        		createInvoiceListAux.add(mom.toObject(CreateInvoice.class, invoice));
-        	}
+        if (createInvoiceList != null)
+        {
+            for (Map<String, Object> invoice : createInvoiceList)
+            {
+                createInvoiceListAux.add(mom.toObject(CreateInvoice.class, invoice));
+            }
         }
         
         CreateInvoicebatch createInvoiceBatch = mom.toObject(CreateInvoicebatch.class, 
@@ -258,7 +325,30 @@ public class IntacctCloudConnector
     }
     
     /**
-     * Creates and adjustement. 
+     * Creates an {@link org.mule.module.intacct.schema.response.Aradjustment}
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-aradjustment}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param  customerId the customerId
+     * @param  dateCreated the dateCreated
+     * @param  datePosted the datePosted
+     * @param  batchKey the batchKey
+     * @param  adjustmentNo the adjustmentNo
+     * @param  invoiceNo the invoiceNo
+     * @param  description the description
+     * @param  externalId the externalId
+     * @param  basecurr the basecurr
+     * @param  currency the currency
+     * @param  exchType the exchType
+     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param  nogl the nogl
+     * @param  arAdjustmentItems the arAdjustmentItems
+     * @return
+     * @throws JAXBException
      */
     @Processor
     public Response createAradjustment(String functionControlId,
@@ -283,11 +373,12 @@ public class IntacctCloudConnector
         Validate.notNull(arAdjustmentItemsAux);
         
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-        if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
-        	for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
-        	{
-        		exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
-        	}
+        if (exchRateDateOrExchRateTypeOrExchRate != null && exchType != null)
+        {
+            for (Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+            {
+                exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
+            }
         }
         CreateAradjustment createArAdjustment = mom.toObject(CreateAradjustment.class, 
             new MapBuilder().with("customerid", fromSingleValue(customerId))
@@ -311,6 +402,41 @@ public class IntacctCloudConnector
         return operationWithRequest(inicializeRequest(function));
     }
     
+    /**
+     * Creates an {@link org.mule.module.intacct.schema.response.Sotransaction}
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-sotransaction}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param  transactionType the transactionType
+     * @param  dateCreated the dateCreated
+     * @param  createdFrom the createdFrom
+     * @param  customerId the customerId
+     * @param  documentNo the documentNo
+     * @param  referenceNo the referenceNo
+     * @param  termName the termName
+     * @param  dateDue the dateDue
+     * @param  message the message
+     * @param  shippingMethod the shippingMethod
+     * @param  billToContactType the billToContactType
+     * @param  billTo the billTo
+     * @param  shipToContactType the shipToContactType
+     * @param  shipTo the shipTo
+     * @param  externalId the externalId
+     * @param  baseCurr the baseCurr
+     * @param  currency the currency
+     * @param  exchType the exchType
+     * @param  exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
+     * @param  vsoePriceList the vsoePriceList
+     * @param  customFields the customFields
+     * @param  soTransItems the soTransItems
+     * @param  subTotals the subTotals
+     * @return
+     * @throws JAXBException
+     */
     @Processor
     public Response createSotransaction(String functionControlId,
                                         String transactionType,
@@ -343,8 +469,9 @@ public class IntacctCloudConnector
         Validate.notNull(soTransItemsAux);
         
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
-        if(exchRateDateOrExchRateTypeOrExchRate != null && exchType != null){
-            for(Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
+        if (exchRateDateOrExchRateTypeOrExchRate != null && exchType != null)
+        {
+            for (Map<String, Object> exch : exchRateDateOrExchRateTypeOrExchRate)
             {
                 exchRateDateOrExchRateTypeOrExchRateAux.add(mom.toObject(exchType.getRequestType(), exch));
             }
@@ -381,11 +508,60 @@ public class IntacctCloudConnector
         return operationWithRequest(inicializeRequest(function));
     }
     
-	protected Map<String,Object> fromSingleValue(final Object value){
-    	return value == null ? null : Collections.singletonMap("value", value);
+    protected Map<String, Object> fromSingleValue(final Object value)
+    {
+        return value == null ? null : Collections.singletonMap("value", value);
     }
     
-    
+    /**
+     * Allows you to retrieve a list object with optional filter and/or sort specifications.
+     * Filters can be simple or complex with logical groupings for AND and OR filtering.
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get-list}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param obj String. The object on which to perform the query. <p>
+     *            A list of valid objects is provided:<p>
+     *            accountgroup, adjjournal, apaccountlabel, apadjustment, apadjustmentbatch,
+     *            appayment, appaymentrequest, apterm, araccountlabel, aradjustment,
+     *            aradjustmentbatch, arpayment, arpaymentbatch, arterm, artransactiondef,
+     *            bankaccount, bill, billbatch, class, company_info, contact, contacttaxgroup,
+     *            csnhistory, custglgroup, customer, customerachinfo, customerbankaccount,
+     *            customerchargecard, customerppackage, department, employee, expensereport,
+     *            expensereportbatch, expensetypes, glaccount, glbudget, glbudgetitem,
+     *            glentry, gltransaction, icitem, ictotal, ictransaction, ictransactiondef,
+     *            invoice, invoicebatch, itemglgroup, itemtaxgroup, journal, location,
+     *            locationentity, locationgroup, popricelist, potransaction, potransactiondef,
+     *            pricelistitem, productline, project, renewalmacro, reportingperiod,
+     *            revrecschedule, revrecscheduleentry, revrectemplate, smarteventlog,
+     *            sopricelist, sotransaction, sotransactiondef, statglaccount, statjournal,
+     *            stkittransaction, subscription, taxdetail, taxschedule, taxscheduledetail,
+     *            taxschedulemap, territory, trxcurrencies, uom, vendglgroup, vendor,
+     *            vsoeitempricelist, vsoepricelist, warehouse.
+     * @param start Optionl. During a list query you can specify the start record of the 
+     *              list of objects to return to increase performance. This attribute defaults 
+     *              to zero.
+     * @param maxItems Optional. During a list query, you can specify the maximum number of 
+     *                 objects to return to increase performance. By combining this with the 
+     *                 Start attribute above you can loop through the objects in groups for 
+     *                 better performance.
+     * @param showPrivate Optional. In Multi-entity Shared implementations, some objects may
+     *                    be owned by a subsidiary entity, but are visible at the root. If 
+     *                    showprivate is set to "true", the getlist method will return all 
+     *                    records visible in the current multi-entity context. If showprivate 
+     *                    is left unset or is "false", getlist will only return those records 
+     *                    owned by the current multi-entity context.
+     * @param filter Optional. A collection of filtering expressions to apply to the query.
+     * @param sorts Optional. A collection of fields to sort by.
+     * @param fields Optional. A collection of fields to retrieve in the query. The fields 
+     *               will be returned in the order requested. If the request does not include 
+     *               a fields element, the web service will return the default set of fields.
+     * @return {@link Response}
+     * @throws JAXBException
+     */
     @Processor
     public Response getList(String functionControlId,
                             String obj,
@@ -398,7 +574,7 @@ public class IntacctCloudConnector
                             ) throws JAXBException
     {
         Filter filterAux = null;
-        if(coalesceList(filter) != null)
+        if (coalesceList(filter) != null)
         {
             filterAux = new Filter();
             filterAux.getLogicalOrExpression().addAll(filter);
@@ -422,6 +598,49 @@ public class IntacctCloudConnector
         return operationWithRequest(inicializeRequest(function));
     }
     
+    /**
+     * Allows you to retrieve all of the information about a single instance of an 
+     * Intacct object.
+     * <p>
+     * Additional options for manipulating the return fields allow you to retrieve 
+     * only the information that you need.
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get}
+     *
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
+     * @param obj String. The object on which to perform the query. <p>
+     *            A list of valid objects is provided:<p>
+     *            accountgroup, apaccountlabel, appaymentrequest, apterm, araccountlabel,
+     *            arterm, bankaccount, bill, class, company_info, contact, csnhistory,
+     *            customer, customerachinfo, customerbankaccount, customerchargecard,
+     *            department, employee, expensetypes, glaccount, icitem, ictransaction,
+     *            invoice, journal, location, locationentity, locationgroup, popricelist,
+     *            potransaction, pricelistitem, productline, project, recurbill, 
+     *            recurinvoice, renewalmacro, reportingperiod, revrecschedule, 
+     *            revrecscheduleentry, sopricelist, sotransaction, statglaccount,
+     *            stkittransaction, subscription, taxdetail, taxschedule, taxscheduledetail,
+     *            taxschedulemap, territory, trxcurrencies, vendor, vsoepricelist, warehouse.
+     * @param key The unique ID or key of the object instance to be retrieved.
+     * @param externalKey Optional. Every object in the Intacct system is allowed to have an 
+     *                    External ID, which allows users to assign a unique ID outside of 
+     *                    the Intacct system. For example, if a partner application has its 
+     *                    own numbering scheme for bills, during bill creation each individual 
+     *                    bill can be assigned an External ID which would identify it in the 
+     *                    partner system. Later on, while using the Get and Delete functions 
+     *                    of the Intacct Gateway, the partner can then specify the External ID 
+     *                    rather than the Intacct ID. This way, the partner is not required to 
+     *                    store the Intacct ID of each object created in the Intacct system.
+     * @param fields Optional. A collection of Maps that represents fields to retrieve in the 
+     *               query. If the request does not include a fields element, the gateway will 
+     *               return the default set of fields, including custom fields for any 
+     *               objects that have them.
+     * @return {@link Response}
+     *
+     * @throws JAXBException
+     */
     @Processor
     public Response get(String functionControlId,
                         String obj,
@@ -459,8 +678,16 @@ public class IntacctCloudConnector
         }
 
     }
-    
-    /** Reconoce la operacion con valores default setteados en el config */
+
+    /**
+     * Reconoce la operacion con valores default setteados en el config
+     * 
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation-with-request}
+     *
+     * @param request request
+     * @return {@link Response}
+     * @throws JAXBException
+     */
     @Processor
     public Response operationWithRequest(final Request request) throws JAXBException
     {
@@ -686,24 +913,28 @@ public class IntacctCloudConnector
     }
     
     /**
-     * @param propertyName
-     * @param value
-     * @param clazz
+     * @param  propertyName the propertyName
+     * @param  value the value
+     * @param  clazz the clazz
      * @return
      */
     private Object nullifyEmptyListWrapper(final String propertyName,
                                        final List<Map<String, Object>> value,
                                        final Class<?> clazz)
     {
-        if(clazz == null)
+        if (clazz == null)
+        {
             return null;
+        }
         return mom.nullifyEmptyListWrapper(propertyName, value, clazz);
     }
 
     private Class<?> nullifyEnumType(EnumType enumType)
     {
-        if(enumType == null)
+        if (enumType == null)
+        {
             return null;
+        }
         return enumType.getRequestType();
     }
 }
