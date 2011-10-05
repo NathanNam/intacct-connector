@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:intacct="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct"
+      xmlns:util="http://www.springframework.org/schema/util"
+      xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+      xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/3.1/mule-smtp.xsd
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd">
+
+    <!--
+        Declare one flow like this one per element you add in your schema.
+
+        See the comment in IntacctNamespaceHandlerTestCase for an example how to send
+        Mule events directly to this flow.
+   -->
+   <spring:beans> 
+   	<spring:bean id="sysoIntacct" class="org.mule.module.intacct.impl.MockIntacctFacade" />
+   </spring:beans>
+   
+   
+   
+   <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" />
+    
+     <flow name="testFlow">
+         <intacct:operation>
+             <intacct:function ref="#[payload]"></intacct:function>
+         </intacct:operation>
+     </flow>
+<!-- 	 <flow name="requestFlow">
+			<intacct:operation>
+			    <intacct:function ref="#[payload]"></intacct:function>-->
+			<!-- esto es request -->
+ <!--				<control>
+					<senderid>intacct-dev</senderid>
+					<password>babbage</password>
+					<controlid>XML Sample</controlid>
+				</control>
+				<operation>
+					<authentication>
+						<login>
+							<userid>xmluser</userid>
+							<companyid>XML Sample</companyid>
+							<password>abc123</password>
+						</login>
+					</authentication>
+					<content>
+						<function controlid="#[map-payload:controlid]">
+							<get-list object="glaccount">
+								<filter>
+									<logical logical-operator="or">
+										<logical logical-operator="and">
+											<expression>
+												<field>accountno</field>
+												<operator>&gt;</operator>
+												<value>#[map-payload:accountnoLower]</value>
+											</expression>
+											<expression>
+												<field>normalbalance</field>
+												<operator>=</operator>
+												<value>debit</value>
+											</expression>
+										</logical>
+										<expression>
+											<field>normalbalance</field>
+											<operator>=</operator>
+											<value>credit</value>
+										</expression>
+									</logical>
+								</filter>
+								<sorts>
+									<sortfield order="asc">normalbalance</sortfield>
+									<sortfield order="asc">title</sortfield>
+								</sorts>
+								<fields>
+									<field>title</field>
+									<field>normalbalance</field>
+								</fields>
+							</get-list>
+						</function>
+					</content>
+				</operation> 
+			</intacct:operation>
+	</flow>
+	
+	<flow name="functionFlow">
+			<intacct:function controlid="#[map-payload:controlid]" >
+				<get-list object="glaccount">
+					<filter>
+						<logical logical-operator="or">
+							<logical logical-operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+				</get-list>
+			</intacct:function>
+	</flow>
+	
+ 	<flow name="getFlow">
+ 	<intacct:get object="glaccount" key="1000">
+    <fields>
+        <field>title</field>
+        <field>normalbalance</field>
+    </fields>
+	</intacct:get>
+ 	
+</flow>
+	 <flow name="getListFlow">
+		<intacct:get-list object="glaccount">
+					<filter>
+						<logical logical-operator="or">
+							<logical logical-operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+		</intacct:get-list>
+	</flow>
+	
+	<flow name="functionFlowWithExHandling">
+			<intacct:function controlid="#[map-payload:controlid]" >
+				<get-list object="glaccount">
+					<filter>
+						<logical logical-operator="or">
+							<logical logical-operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+				</get-list>
+			</intacct:function>
+	</flow>
+	
+    <flow name="realFunctionFlow">
+		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
+			<intacct:function controlid="#[map-payload:controlid]" >
+				<get-list object="glaccount">
+					<filter>
+						<logical logical-operator="or">
+							<logical logical-operator="and">
+								<expression>
+									<field>accountno</field>
+									<operator>&gt;</operator>
+									<value>#[map-payload:accountnoLower]</value>
+								</expression>
+								<expression>
+									<field>normalbalance</field>
+									<operator>=</operator>
+									<value>debit</value>
+								</expression>
+							</logical>
+							<expression>
+								<field>normalbalance</field>
+								<operator>=</operator>
+								<value>credit</value>
+							</expression>
+						</logical>
+					</filter>
+					<sorts>
+						<sortfield order="asc">normalbalance</sortfield>
+						<sortfield order="asc">title</sortfield>
+					</sorts>
+					<fields>
+						<field>title</field>
+						<field>normalbalance</field>
+					</fields>
+				</get-list>
+			</intacct:function>
+		</flow>
+ -->		  
+</mule>
