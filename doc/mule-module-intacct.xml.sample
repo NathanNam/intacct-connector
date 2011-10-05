@@ -30,21 +30,81 @@
 <!-- END_INCLUDE(intacct:execute3) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-invoice) -->
+<intacct:create-invoice functionControlId="#[variable:functionControlId]"
+                        customerId="#[variable:customerId]"
+                        termName="#[variable:termName]"
+                        description="New invoice"
+                        externalId="123456"
+                        billToContactType="ContactName"
+                        shipToContactType="Contact"
+                        currency="#[variable:currency]">
+    <intacct:dateCreated ref="#[variable:dateCreated]" />
+    <intacct:dateDue ref="#[variable:dateDue]" />
+    <intacct:billTo ref="#[variable:billTo]" />
+    <intacct:shipTo ref="#[variable:shipTo]" />
+    <intacct:invoiceItems ref="[variable:invoiceItems]" />
+</intacct:create-invoice>
 <!-- END_INCLUDE(intacct:create-invoice) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-invoicebatch) -->
+<intacct:create-invoicebatch functionControlId="#[variable:functionControlId]"
+                             batchTitle="#[variable:batchTitle]">
+    <intacct:dateCreated ref="#[variable:dateCreated]" />
+    <intacct:createInvoiceList ref="[variable:createInvoiceList]" />
+</intacct:create-invoicebatch>
 <!-- END_INCLUDE(intacct:create-invoicebatch) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
+<intacct:aradjustment functionControlId="#[variable:functionControlId]"
+                      customerId="#[variable:customerId]"
+                      description="#[variable:description]"
+                      externalId="123456"
+                      currency="#[variable:currency]"
+                      exchType="ExchRateDate">
+    <intacct:dateCreated ref="#[variable:dateCreated]" />
+    <intacct:exchRateDateOrExchRateTypeOrExchRate ref="[variable:exchRateDateOrExchRateTypeOrExchRate]" />
+    <intacct:arAdjustmentItems ref="#[variable:arAdjustmentItems]" />
+</intacct:create-aradjustment>
 <!-- END_INCLUDE(intacct:create-aradjustment) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-sotransaction) -->
+<intacct:sotransaction functionControlId="#[variable:functionControlId]"
+                       transactionType="#[variable:transactionType]"
+                       customerId="#[variable:customerId]"
+                       termname="#[variable:termname]"
+                       description="#[variable:description]"
+                       billToContactType="ContactName"
+                       shipToContactType="Contact"
+                       externalId="123456"
+                       currency="#[variable:currency]"
+                       exchType="ExchRateDate">
+    <intacct:dateCreated ref="#[variable:dateCreated]" />
+    <intacct:billTo ref="#[variable:billTo]" />
+    <intacct:shipTo ref="#[variable:shipTo]" />
+    <intacct:exchRateDateOrExchRateTypeOrExchRate ref="[variable:exchRateDateOrExchRateTypeOrExchRate]" />
+    <intacct:arAdjustmentItems ref="#[variable:arAdjustmentItems]" />
+</intacct:create-sotransaction>
 <!-- END_INCLUDE(intacct:create-sotransaction) -->
 
 <!-- BEGIN_INCLUDE(intacct:get-list) -->
+<intacct:get-list functionControlId="#[variable:functionControlId]"
+                  obj="billbatch"
+                  start="#[variable:start]"
+                  maxItems="#[variable:maxItems]"
+                  start="#[variable:showPrivate]" >
+    <intacct:filter ref="#[variable:filter]" />
+    <intacct:sorts ref="#[variable:sorts]" />
+    <intacct:fields ref="#[variable:fields]" />
+</intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list) -->
 
 <!-- BEGIN_INCLUDE(intacct:get) -->
+<intacct:get functionControlId="#[variable:functionControlId]"
+             obj="subscription"
+             key="#[variable:key]" 
+             externalKey="#[variable:externalKey]">
+    <intacct:fields ref="#[variable:fields]" />
+</intacct:get>
 <!-- END_INCLUDE(intacct:get) -->
 
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
