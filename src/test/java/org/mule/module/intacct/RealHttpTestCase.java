@@ -10,18 +10,17 @@
 
 package org.mule.module.intacct;
 
+import static org.hamcrest.CoreMatchers.*;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.net.ConnectException;
 import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.sax.SAXSource;
 
@@ -63,13 +62,11 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
-import static org.hamcrest.CoreMatchers.*;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
  * cases, empty response, etc.
  */
-//@Ignore
 @SuppressWarnings({ "unchecked", "rawtypes", "serial" })
 public class RealHttpTestCase extends BaseIntacctTest
 {
@@ -102,7 +99,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
         startServer(handler);
         final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-	        
+	    
         MessageProcessor flow = lookupFlowConstruct("functionFlow");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
@@ -259,38 +256,34 @@ public class RealHttpTestCase extends BaseIntacctTest
         payload.put("key", "1234");
         payload.put("controlid", controlId);
         payload.put("accountnoLower", "500");
-        payload.put("filter", new HashMap(){{       
-            put("logicalOrExpression", Arrays.<Object>asList(new Logical(){{
-                        logicalOperator = "or";
-                        logicalOrExpression = Arrays.asList(new Logical(){{
-                            logicalOperator = "and";
-                            logicalOrExpression = Arrays.<Object> asList(new Expression(){{
-                                field = new Field(){{ value = "accountno"; }} ;
-                                operator = ">";
-                                value = new Value() {{ value = "500"; }};
-                            }}, new Expression(){{
-                                field = new Field(){{ value = "normalbalance"; }} ;
-                                operator = "=";
-                                value = new Value() {{ value = "debit"; }};
-                            }});
-                        }}, 
-                        new Expression(){{
-                            field = new Field(){{ value = "normalbalance"; }} ;
-                            operator = "=";
-                            value = new Value() {{ value = "credit"; }};
-                        }});
-                }}));
-        }});
+        payload.put("filter", Arrays.<Object>asList(new Logical(){{
+                logicalOperator = "or";
+                logicalOrExpression = Arrays.asList(new Logical(){{
+                    logicalOperator = "and";
+                    logicalOrExpression = Arrays.<Object> asList(new Expression(){{
+                        field = new Field(){{ value = "accountno"; }} ;
+                        operator = ">";
+                        value = new Value() {{ value = "500"; }};
+                    }}, new Expression(){{
+                        field = new Field(){{ value = "normalbalance"; }} ;
+                        operator = "=";
+                        value = new Value() {{ value = "debit"; }};
+                    }});
+                }}, 
+                new Expression(){{
+                    field = new Field(){{ value = "normalbalance"; }} ;
+                    operator = "=";
+                    value = new Value() {{ value = "credit"; }};
+                }});
+        }}));
         
-        payload.put("fields", new HashMap(){{
-            put("field",  Arrays.asList(
-                    new Field(){{ value = "title"; }}, 
-                    new Field(){{ value = "normalbalance"; }}));
-        }});
+        payload.put("fields", Arrays.<Map<String, Object>>asList(
+                new HashMap(){{ put("value", "title"); }}, 
+                new HashMap(){{ put("value", "normalbalance"); }}
+        ));
         
         return payload;
     }
-    
 
     private void assertExceptionThrown(MuleEvent result, Class<? extends Exception> exceptionType)
     {

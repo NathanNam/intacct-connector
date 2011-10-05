@@ -1,13 +1,3 @@
-/*
- * $Id$
- * --------------------------------------------------------------------------------------
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
- */
-
 package org.mule.module.intacct;
 
 import org.mule.module.intacct.schema.request.*;
@@ -17,209 +7,405 @@ import org.mule.module.intacct.schema.request.*;
  * 
  * @author flbulgarelli
  */
-public enum CommandType
+public enum CommandType implements EnumType
 {
-    CreateApaccountlabel(CreateApaccountlabel.class),
-    CreateApadjustment(CreateApadjustment.class),
-    CreateApadjustmentbatch(CreateApadjustmentbatch.class),
-    CreateAraccountlabel(CreateAraccountlabel.class),
-    CreateAradjustment(CreateAradjustment.class),
-    CreateAradjustmentbatch(CreateAradjustmentbatch.class),
-    CreateArpayment(CreateArpayment.class),
-    CreateArpaymentbatch(CreateArpaymentbatch.class),
-    CreateBill(CreateBill.class),
-    CreateRecurringbill(CreateRecurringbill.class),
-    CreateBillbatch(CreateBillbatch.class),
-    CreateCheckingaccount(CreateCheckingaccount.class),
-    CreateSavingsaccount(CreateSavingsaccount.class),
-    UpdateCheckingaccount(UpdateCheckingaccount.class),
-    UpdateSavingsaccount(UpdateSavingsaccount.class),
-    DeleteCheckingaccount(DeleteCheckingaccount.class),
-    DeleteSavingsaccount(DeleteSavingsaccount.class),
-    CreateContact(CreateContact.class),
-    CreateCustomer(CreateCustomer.class),
-    CreateDepartment(CreateDepartment.class),
-    CreateEmployee(CreateEmployee.class),
-    CreateExpensereport(CreateExpensereport.class),
-    CreateExpensereportbatch(CreateExpensereportbatch.class),
-    CreateExpensetype(CreateExpensetype.class),
-    CreateGlaccount(CreateGlaccount.class),
-    CreateStatglaccount(CreateStatglaccount.class),
-    CreateGltransaction(CreateGltransaction.class),
-    DeleteGltransaction(DeleteGltransaction.class),
-    CreateRecurringgltransaction(CreateRecurringgltransaction.class),
-    DeleteRecurringgltransaction(DeleteRecurringgltransaction.class),
-    CreateStatgltransaction(CreateStatgltransaction.class),
-    CreateRecurringstatgltrans(CreateRecurringstatgltrans.class),
-    DeleteRecurringstatgltrans(DeleteRecurringstatgltrans.class),
-    CreateInvoice(CreateInvoice.class),
-    CreateRecurringinvoice(CreateRecurringinvoice.class),
-    CreateInvoicebatch(CreateInvoicebatch.class),
-    CreateJournal(CreateJournal.class),
-    CreateLocation(CreateLocation.class),
-    CreateStatjournal(CreateStatjournal.class),
-    CreateProject(CreateProject.class),
-    UpdateProject(UpdateProject.class),
-    DeleteProject(DeleteProject.class),
-    CreateClass(CreateClass.class),
-    DeleteClass(DeleteClass.class),
-    CreateVendor(CreateVendor.class),
-    DeleteApaccountlabel(DeleteApaccountlabel.class),
-    DeleteApadjustment(DeleteApadjustment.class),
-    CreateLocationgroup(CreateLocationgroup.class),
-    DeleteAraccountlabel(DeleteAraccountlabel.class),
-    DeleteAradjustment(DeleteAradjustment.class),
-    DeleteBill(DeleteBill.class),
-    DeleteRecurringbill(DeleteRecurringbill.class),
-    DeleteContact(DeleteContact.class),
-    DeleteCustomer(DeleteCustomer.class),
-    DeleteDepartment(DeleteDepartment.class),
-    DeleteEmployee(DeleteEmployee.class),
-    DeleteExpensereport(DeleteExpensereport.class),
-    DeleteExpensetype(DeleteExpensetype.class),
-    DeleteGlaccount(DeleteGlaccount.class),
-    DeleteStatglaccount(DeleteStatglaccount.class),
-    DeleteInvoice(DeleteInvoice.class),
-    DeleteRecurringinvoice(DeleteRecurringinvoice.class),
-    DeleteJournal(DeleteJournal.class),
-    DeleteStatjournal(DeleteStatjournal.class),
-    DeleteLocation(DeleteLocation.class),
-    DeleteVendor(DeleteVendor.class),
-    Get(Get.class),
-    GetAccountbalances(GetAccountbalances.class),
-    GetAccountgroupdetails(GetAccountgroupdetails.class),
-    GetApadjustment(GetApadjustment.class),
-    GetAradjustment(GetAradjustment.class),
-    GetBill(GetBill.class),
-    GetExpensereport(GetExpensereport.class),
-    GetInvoice(GetInvoice.class),
-    GetList(GetList.class),
-    GetTrialbalance(GetTrialbalance.class),
-    GetMyclients(GetMyclients.class),
-    InitSession(InitSession.class),
-    UpdateApaccountlabel(UpdateApaccountlabel.class),
-    UpdateAraccountlabel(UpdateAraccountlabel.class),
-    UpdateContact(UpdateContact.class),
-    UpdateCustomer(UpdateCustomer.class),
-    UpdateDepartment(UpdateDepartment.class),
-    UpdateInvoice(UpdateInvoice.class),
-    UpdateBill(UpdateBill.class),
-    UpdateApadjustment(UpdateApadjustment.class),
-    UpdateAradjustment(UpdateAradjustment.class),
-    UpdateEmployee(UpdateEmployee.class),
-    UpdateExpensereport(UpdateExpensereport.class),
-    UpdateExpensetype(UpdateExpensetype.class),
-    UpdateGlaccount(UpdateGlaccount.class),
-    UpdateStatglaccount(UpdateStatglaccount.class),
-    UpdateJournal(UpdateJournal.class),
-    UpdateLocation(UpdateLocation.class),
-    UpdateVendor(UpdateVendor.class),
-    CreatePaymentrequest(CreatePaymentrequest.class),
-    ReclassifyBill(ReclassifyBill.class),
-    ReclassifyInvoice(ReclassifyInvoice.class),
-    DeletePaymentrequest(DeletePaymentrequest.class),
-    CreateAppayment(CreateAppayment.class),
-    CreateStkittransaction(CreateStkittransaction.class),
-    CreateIctransaction(CreateIctransaction.class),
-    UpdateIctransaction(UpdateIctransaction.class),
-    CreateSotransaction(CreateSotransaction.class),
-    UpdateSotransaction(UpdateSotransaction.class),
-    CreateRecursotransaction(CreateRecursotransaction.class),
-    DeleteRecursotransaction(DeleteRecursotransaction.class),
-    CreatePotransaction(CreatePotransaction.class),
-    UpdatePotransaction(UpdatePotransaction.class),
-    GetSalestotals(GetSalestotals.class),
-    GetIcitemtotals(GetIcitemtotals.class),
-    RecordCctransaction(RecordCctransaction.class),
-    RecordWucctransactions(RecordWucctransactions.class),
-    RecordWureceipts(RecordWureceipts.class),
-    RecordWudisbursements(RecordWudisbursements.class),
-    RecordWuadjjournalentries(RecordWuadjjournalentries.class),
-    RecordWujournalentries(RecordWujournalentries.class),
-    GetCompanyprefs(GetCompanyprefs.class),
-    SetCompanyprefs(SetCompanyprefs.class),
-    GetApplications(GetApplications.class),
-    RecordOtherreceipt(RecordOtherreceipt.class),
-    RecordDeposit(RecordDeposit.class),
-    CreateTerritory(CreateTerritory.class),
-    DeleteTerritory(DeleteTerritory.class),
-    UpdateTerritory(UpdateTerritory.class),
-    ApplyArpayment(ApplyArpayment.class),
-    DeleteSotransaction(DeleteSotransaction.class),
-    DeletePotransaction(DeletePotransaction.class),
-    DeleteIctransaction(DeleteIctransaction.class),
-    CreateItem(CreateItem.class),
-    UpdateItem(UpdateItem.class),
-    DeleteItem(DeleteItem.class),
-    CreateSopricelist(CreateSopricelist.class),
-    DeleteSopricelist(DeleteSopricelist.class),
-    UpdateSopricelist(UpdateSopricelist.class),
-    CreatePopricelist(CreatePopricelist.class),
-    DeletePopricelist(DeletePopricelist.class),
-    UpdatePopricelist(UpdatePopricelist.class),
-    CreateVsoepricelist(CreateVsoepricelist.class),
-    UpdateVsoepricelist(UpdateVsoepricelist.class),
-    DeleteVsoepricelist(DeleteVsoepricelist.class),
-    CreateVsoeitempricelist(CreateVsoeitempricelist.class),
-    UpdateVsoeitempricelist(UpdateVsoeitempricelist.class),
-    DeleteVsoeitempricelist(DeleteVsoeitempricelist.class),
-    CreateInvpricelistentry(CreateInvpricelistentry.class),
-    DeleteInvpricelistentry(DeleteInvpricelistentry.class),
-    UpdateInvpricelistentry(UpdateInvpricelistentry.class),
-    GetClosedbooksdate(GetClosedbooksdate.class),
-    GetAraging(GetAraging.class),
-    DeleteArpayment(DeleteArpayment.class),
-    CreateCustomerachinfo(CreateCustomerachinfo.class),
-    UpdateCustomerachinfo(UpdateCustomerachinfo.class),
-    DeleteCustomerachinfo(DeleteCustomerachinfo.class),
-    CreateCustomerchargecard(CreateCustomerchargecard.class),
-    UpdateCustomerchargecard(UpdateCustomerchargecard.class),
-    DeleteCustomerchargecard(DeleteCustomerchargecard.class),
-    CreateCustomerbankaccount(CreateCustomerbankaccount.class),
-    UpdateCustomerbankaccount(UpdateCustomerbankaccount.class),
-    DeleteCustomerbankaccount(DeleteCustomerbankaccount.class),
-    CreateTaxdetail(CreateTaxdetail.class),
-    UpdateTaxdetail(UpdateTaxdetail.class),
-    DeleteTaxdetail(DeleteTaxdetail.class),
-    CreateTaxschedule(CreateTaxschedule.class),
-    UpdateTaxschedule(UpdateTaxschedule.class),
-    DeleteTaxschedule(DeleteTaxschedule.class),
-    CreateTaxscheduledetail(CreateTaxscheduledetail.class),
-    DeleteTaxscheduledetail(DeleteTaxscheduledetail.class),
-    CreateContacttaxgroup(CreateContacttaxgroup.class),
-    DeleteContacttaxgroup(DeleteContacttaxgroup.class),
-    CreateItemtaxgroup(CreateItemtaxgroup.class),
-    DeleteItemtaxgroup(DeleteItemtaxgroup.class),
-    CreateTaxschedulemap(CreateTaxschedulemap.class),
-    DeleteTaxschedulemap(DeleteTaxschedulemap.class),
-    Describe(Describe.class),
-    ReconcileBank(ReconcileBank.class),
-    ReverseBill(ReverseBill.class),
-    ReverseAppayment(ReverseAppayment.class),
-    CreateApterm(CreateApterm.class),
-    UpdateApterm(UpdateApterm.class),
-    DeleteApterm(DeleteApterm.class),
-    CreateArterm(CreateArterm.class),
-    UpdateArterm(UpdateArterm.class),
-    DeleteArterm(DeleteArterm.class),
-    CreateTimesheet(CreateTimesheet.class),
-    UpdateTimesheet(UpdateTimesheet.class),
-    DeleteTimesheet(DeleteTimesheet.class),
-    CreateTask(CreateTask.class),
-    UpdateTask(UpdateTask.class),
-    DeleteTask(DeleteTask.class),
-    CreateAllocation(CreateAllocation.class),
-    UpdateAllocation(UpdateAllocation.class),
-    DeleteAllocation(DeleteAllocation.class),
-    UpdateCctransaction(UpdateCctransaction.class),
+     /**The CreateApaccountlabel command type*/
+    CreateApaccountlabel(CreateApaccountlabel.class), 
+     /**The CreateApadjustment command type*/
+    CreateApadjustment(CreateApadjustment.class), 
+     /**The CreateApadjustmentbatch command type*/
+    CreateApadjustmentbatch(CreateApadjustmentbatch.class), 
+     /**The CreateAraccountlabel command type*/
+    CreateAraccountlabel(CreateAraccountlabel.class), 
+     /**The CreateAradjustment command type*/
+    CreateAradjustment(CreateAradjustment.class), 
+     /**The CreateAradjustmentbatch command type*/
+    CreateAradjustmentbatch(CreateAradjustmentbatch.class), 
+     /**The CreateArpayment command type*/
+    CreateArpayment(CreateArpayment.class), 
+     /**The CreateArpaymentbatch command type*/
+    CreateArpaymentbatch(CreateArpaymentbatch.class), 
+     /**The CreateBill command type*/
+    CreateBill(CreateBill.class), 
+     /**The CreateRecurringbill command type*/
+    CreateRecurringbill(CreateRecurringbill.class), 
+     /**The CreateBillbatch command type*/
+    CreateBillbatch(CreateBillbatch.class), 
+     /**The CreateCheckingaccount command type*/
+    CreateCheckingaccount(CreateCheckingaccount.class), 
+     /**The CreateSavingsaccount command type*/
+    CreateSavingsaccount(CreateSavingsaccount.class), 
+     /**The UpdateCheckingaccount command type*/
+    UpdateCheckingaccount(UpdateCheckingaccount.class), 
+     /**The UpdateSavingsaccount command type*/
+    UpdateSavingsaccount(UpdateSavingsaccount.class), 
+     /**The DeleteCheckingaccount command type*/
+    DeleteCheckingaccount(DeleteCheckingaccount.class), 
+     /**The DeleteSavingsaccount command type*/
+    DeleteSavingsaccount(DeleteSavingsaccount.class), 
+     /**The CreateContact command type*/
+    CreateContact(CreateContact.class), 
+     /**The CreateCustomer command type*/
+    CreateCustomer(CreateCustomer.class), 
+     /**The CreateDepartment command type*/
+    CreateDepartment(CreateDepartment.class), 
+     /**The CreateEmployee command type*/
+    CreateEmployee(CreateEmployee.class), 
+     /**The CreateExpensereport command type*/
+    CreateExpensereport(CreateExpensereport.class), 
+     /**The CreateExpensereportbatch command type*/
+    CreateExpensereportbatch(CreateExpensereportbatch.class), 
+     /**The CreateExpensetype command type*/
+    CreateExpensetype(CreateExpensetype.class), 
+     /**The CreateGlaccount command type*/
+    CreateGlaccount(CreateGlaccount.class), 
+     /**The CreateStatglaccount command type*/
+    CreateStatglaccount(CreateStatglaccount.class), 
+     /**The CreateGltransaction command type*/
+    CreateGltransaction(CreateGltransaction.class), 
+     /**The DeleteGltransaction command type*/
+    DeleteGltransaction(DeleteGltransaction.class), 
+     /**The CreateRecurringgltransaction command type*/
+    CreateRecurringgltransaction(CreateRecurringgltransaction.class), 
+     /**The DeleteRecurringgltransaction command type*/
+    DeleteRecurringgltransaction(DeleteRecurringgltransaction.class), 
+     /**The CreateStatgltransaction command type*/
+    CreateStatgltransaction(CreateStatgltransaction.class), 
+     /**The CreateRecurringstatgltrans command type*/
+    CreateRecurringstatgltrans(CreateRecurringstatgltrans.class), 
+     /**The DeleteRecurringstatgltrans command type*/
+    DeleteRecurringstatgltrans(DeleteRecurringstatgltrans.class), 
+     /**The CreateInvoice command type*/
+    CreateInvoice(CreateInvoice.class), 
+     /**The CreateRecurringinvoice command type*/
+    CreateRecurringinvoice(CreateRecurringinvoice.class), 
+     /**The CreateInvoicebatch command type*/
+    CreateInvoicebatch(CreateInvoicebatch.class), 
+     /**The CreateJournal command type*/
+    CreateJournal(CreateJournal.class), 
+     /**The CreateLocation command type*/
+    CreateLocation(CreateLocation.class), 
+     /**The CreateStatjournal command type*/
+    CreateStatjournal(CreateStatjournal.class), 
+     /**The CreateProject command type*/
+    CreateProject(CreateProject.class), 
+     /**The UpdateProject command type*/
+    UpdateProject(UpdateProject.class), 
+     /**The DeleteProject command type*/
+    DeleteProject(DeleteProject.class), 
+     /**The CreateClass command type*/
+    CreateClass(CreateClass.class), 
+     /**The DeleteClass command type*/
+    DeleteClass(DeleteClass.class), 
+     /**The CreateVendor command type*/
+    CreateVendor(CreateVendor.class), 
+     /**The DeleteApaccountlabel command type*/
+    DeleteApaccountlabel(DeleteApaccountlabel.class), 
+     /**The DeleteApadjustment command type*/
+    DeleteApadjustment(DeleteApadjustment.class), 
+     /**The CreateLocationgroup command type*/
+    CreateLocationgroup(CreateLocationgroup.class), 
+     /**The DeleteAraccountlabel command type*/
+    DeleteAraccountlabel(DeleteAraccountlabel.class), 
+     /**The DeleteAradjustment command type*/
+    DeleteAradjustment(DeleteAradjustment.class), 
+     /**The DeleteBill command type*/
+    DeleteBill(DeleteBill.class), 
+     /**The DeleteRecurringbill command type*/
+    DeleteRecurringbill(DeleteRecurringbill.class), 
+     /**The DeleteContact command type*/
+    DeleteContact(DeleteContact.class), 
+     /**The DeleteCustomer command type*/
+    DeleteCustomer(DeleteCustomer.class), 
+     /**The DeleteDepartment command type*/
+    DeleteDepartment(DeleteDepartment.class), 
+     /**The DeleteEmployee command type*/
+    DeleteEmployee(DeleteEmployee.class), 
+     /**The DeleteExpensereport command type*/
+    DeleteExpensereport(DeleteExpensereport.class), 
+     /**The DeleteExpensetype command type*/
+    DeleteExpensetype(DeleteExpensetype.class), 
+     /**The DeleteGlaccount command type*/
+    DeleteGlaccount(DeleteGlaccount.class), 
+     /**The DeleteStatglaccount command type*/
+    DeleteStatglaccount(DeleteStatglaccount.class), 
+     /**The DeleteInvoice command type*/
+    DeleteInvoice(DeleteInvoice.class), 
+     /**The DeleteRecurringinvoice command type*/
+    DeleteRecurringinvoice(DeleteRecurringinvoice.class), 
+     /**The DeleteJournal command type*/
+    DeleteJournal(DeleteJournal.class), 
+     /**The DeleteStatjournal command type*/
+    DeleteStatjournal(DeleteStatjournal.class), 
+     /**The DeleteLocation command type*/
+    DeleteLocation(DeleteLocation.class), 
+     /**The DeleteVendor command type*/
+    DeleteVendor(DeleteVendor.class), 
+     /**The Get command type*/
+    Get(Get.class), 
+     /**The GetAccountbalances command type*/
+    GetAccountbalances(GetAccountbalances.class), 
+     /**The GetAccountgroupdetails command type*/
+    GetAccountgroupdetails(GetAccountgroupdetails.class), 
+     /**The GetApadjustment command type*/
+    GetApadjustment(GetApadjustment.class), 
+     /**The GetAradjustment command type*/
+    GetAradjustment(GetAradjustment.class), 
+     /**The GetBill command type*/
+    GetBill(GetBill.class), 
+     /**The GetExpensereport command type*/
+    GetExpensereport(GetExpensereport.class), 
+     /**The GetInvoice command type*/
+    GetInvoice(GetInvoice.class), 
+     /**The GetList command type*/
+    GetList(GetList.class), 
+     /**The GetTrialbalance command type*/
+    GetTrialbalance(GetTrialbalance.class), 
+     /**The GetMyclients command type*/
+    GetMyclients(GetMyclients.class), 
+     /**The InitSession command type*/
+    InitSession(InitSession.class), 
+     /**The UpdateApaccountlabel command type*/
+    UpdateApaccountlabel(UpdateApaccountlabel.class), 
+     /**The UpdateAraccountlabel command type*/
+    UpdateAraccountlabel(UpdateAraccountlabel.class), 
+     /**The UpdateContact command type*/
+    UpdateContact(UpdateContact.class), 
+     /**The UpdateCustomer command type*/
+    UpdateCustomer(UpdateCustomer.class), 
+     /**The UpdateDepartment command type*/
+    UpdateDepartment(UpdateDepartment.class), 
+     /**The UpdateInvoice command type*/
+    UpdateInvoice(UpdateInvoice.class), 
+     /**The UpdateBill command type*/
+    UpdateBill(UpdateBill.class), 
+     /**The UpdateApadjustment command type*/
+    UpdateApadjustment(UpdateApadjustment.class), 
+     /**The UpdateAradjustment command type*/
+    UpdateAradjustment(UpdateAradjustment.class), 
+     /**The UpdateEmployee command type*/
+    UpdateEmployee(UpdateEmployee.class), 
+     /**The UpdateExpensereport command type*/
+    UpdateExpensereport(UpdateExpensereport.class), 
+     /**The UpdateExpensetype command type*/
+    UpdateExpensetype(UpdateExpensetype.class), 
+     /**The UpdateGlaccount command type*/
+    UpdateGlaccount(UpdateGlaccount.class), 
+     /**The UpdateStatglaccount command type*/
+    UpdateStatglaccount(UpdateStatglaccount.class), 
+     /**The UpdateJournal command type*/
+    UpdateJournal(UpdateJournal.class), 
+     /**The UpdateLocation command type*/
+    UpdateLocation(UpdateLocation.class), 
+     /**The UpdateVendor command type*/
+    UpdateVendor(UpdateVendor.class), 
+     /**The CreatePaymentrequest command type*/
+    CreatePaymentrequest(CreatePaymentrequest.class), 
+     /**The ReclassifyBill command type*/
+    ReclassifyBill(ReclassifyBill.class), 
+     /**The ReclassifyInvoice command type*/
+    ReclassifyInvoice(ReclassifyInvoice.class), 
+     /**The DeletePaymentrequest command type*/
+    DeletePaymentrequest(DeletePaymentrequest.class), 
+     /**The CreateAppayment command type*/
+    CreateAppayment(CreateAppayment.class), 
+     /**The CreateStkittransaction command type*/
+    CreateStkittransaction(CreateStkittransaction.class), 
+     /**The CreateIctransaction command type*/
+    CreateIctransaction(CreateIctransaction.class), 
+     /**The UpdateIctransaction command type*/
+    UpdateIctransaction(UpdateIctransaction.class), 
+     /**The CreateSotransaction command type*/
+    CreateSotransaction(CreateSotransaction.class), 
+     /**The UpdateSotransaction command type*/
+    UpdateSotransaction(UpdateSotransaction.class), 
+     /**The CreateRecursotransaction command type*/
+    CreateRecursotransaction(CreateRecursotransaction.class), 
+     /**The DeleteRecursotransaction command type*/
+    DeleteRecursotransaction(DeleteRecursotransaction.class), 
+     /**The CreatePotransaction command type*/
+    CreatePotransaction(CreatePotransaction.class), 
+     /**The UpdatePotransaction command type*/
+    UpdatePotransaction(UpdatePotransaction.class), 
+     /**The GetSalestotals command type*/
+    GetSalestotals(GetSalestotals.class), 
+     /**The GetIcitemtotals command type*/
+    GetIcitemtotals(GetIcitemtotals.class), 
+     /**The RecordCctransaction command type*/
+    RecordCctransaction(RecordCctransaction.class), 
+     /**The RecordWucctransactions command type*/
+    RecordWucctransactions(RecordWucctransactions.class), 
+     /**The RecordWureceipts command type*/
+    RecordWureceipts(RecordWureceipts.class), 
+     /**The RecordWudisbursements command type*/
+    RecordWudisbursements(RecordWudisbursements.class), 
+     /**The RecordWuadjjournalentries command type*/
+    RecordWuadjjournalentries(RecordWuadjjournalentries.class), 
+     /**The RecordWujournalentries command type*/
+    RecordWujournalentries(RecordWujournalentries.class), 
+     /**The GetCompanyprefs command type*/
+    GetCompanyprefs(GetCompanyprefs.class), 
+     /**The SetCompanyprefs command type*/
+    SetCompanyprefs(SetCompanyprefs.class), 
+     /**The GetApplications command type*/
+    GetApplications(GetApplications.class), 
+     /**The RecordOtherreceipt command type*/
+    RecordOtherreceipt(RecordOtherreceipt.class), 
+     /**The RecordDeposit command type*/
+    RecordDeposit(RecordDeposit.class), 
+     /**The CreateTerritory command type*/
+    CreateTerritory(CreateTerritory.class), 
+     /**The DeleteTerritory command type*/
+    DeleteTerritory(DeleteTerritory.class), 
+     /**The UpdateTerritory command type*/
+    UpdateTerritory(UpdateTerritory.class), 
+     /**The ApplyArpayment command type*/
+    ApplyArpayment(ApplyArpayment.class), 
+     /**The DeleteSotransaction command type*/
+    DeleteSotransaction(DeleteSotransaction.class), 
+     /**The DeletePotransaction command type*/
+    DeletePotransaction(DeletePotransaction.class), 
+     /**The DeleteIctransaction command type*/
+    DeleteIctransaction(DeleteIctransaction.class), 
+     /**The CreateItem command type*/
+    CreateItem(CreateItem.class), 
+     /**The UpdateItem command type*/
+    UpdateItem(UpdateItem.class), 
+     /**The DeleteItem command type*/
+    DeleteItem(DeleteItem.class), 
+     /**The CreateSopricelist command type*/
+    CreateSopricelist(CreateSopricelist.class), 
+     /**The DeleteSopricelist command type*/
+    DeleteSopricelist(DeleteSopricelist.class), 
+     /**The UpdateSopricelist command type*/
+    UpdateSopricelist(UpdateSopricelist.class), 
+     /**The CreatePopricelist command type*/
+    CreatePopricelist(CreatePopricelist.class), 
+     /**The DeletePopricelist command type*/
+    DeletePopricelist(DeletePopricelist.class), 
+     /**The UpdatePopricelist command type*/
+    UpdatePopricelist(UpdatePopricelist.class), 
+     /**The CreateVsoepricelist command type*/
+    CreateVsoepricelist(CreateVsoepricelist.class), 
+     /**The UpdateVsoepricelist command type*/
+    UpdateVsoepricelist(UpdateVsoepricelist.class), 
+     /**The DeleteVsoepricelist command type*/
+    DeleteVsoepricelist(DeleteVsoepricelist.class), 
+     /**The CreateVsoeitempricelist command type*/
+    CreateVsoeitempricelist(CreateVsoeitempricelist.class), 
+     /**The UpdateVsoeitempricelist command type*/
+    UpdateVsoeitempricelist(UpdateVsoeitempricelist.class), 
+     /**The DeleteVsoeitempricelist command type*/
+    DeleteVsoeitempricelist(DeleteVsoeitempricelist.class), 
+     /**The CreateInvpricelistentry command type*/
+    CreateInvpricelistentry(CreateInvpricelistentry.class), 
+     /**The DeleteInvpricelistentry command type*/
+    DeleteInvpricelistentry(DeleteInvpricelistentry.class), 
+     /**The UpdateInvpricelistentry command type*/
+    UpdateInvpricelistentry(UpdateInvpricelistentry.class), 
+     /**The GetClosedbooksdate command type*/
+    GetClosedbooksdate(GetClosedbooksdate.class), 
+     /**The GetAraging command type*/
+    GetAraging(GetAraging.class), 
+     /**The DeleteArpayment command type*/
+    DeleteArpayment(DeleteArpayment.class), 
+     /**The CreateCustomerachinfo command type*/
+    CreateCustomerachinfo(CreateCustomerachinfo.class), 
+     /**The UpdateCustomerachinfo command type*/
+    UpdateCustomerachinfo(UpdateCustomerachinfo.class), 
+     /**The DeleteCustomerachinfo command type*/
+    DeleteCustomerachinfo(DeleteCustomerachinfo.class), 
+     /**The CreateCustomerchargecard command type*/
+    CreateCustomerchargecard(CreateCustomerchargecard.class), 
+     /**The UpdateCustomerchargecard command type*/
+    UpdateCustomerchargecard(UpdateCustomerchargecard.class), 
+     /**The DeleteCustomerchargecard command type*/
+    DeleteCustomerchargecard(DeleteCustomerchargecard.class), 
+     /**The CreateCustomerbankaccount command type*/
+    CreateCustomerbankaccount(CreateCustomerbankaccount.class), 
+     /**The UpdateCustomerbankaccount command type*/
+    UpdateCustomerbankaccount(UpdateCustomerbankaccount.class), 
+     /**The DeleteCustomerbankaccount command type*/
+    DeleteCustomerbankaccount(DeleteCustomerbankaccount.class), 
+     /**The CreateTaxdetail command type*/
+    CreateTaxdetail(CreateTaxdetail.class), 
+     /**The UpdateTaxdetail command type*/
+    UpdateTaxdetail(UpdateTaxdetail.class), 
+     /**The DeleteTaxdetail command type*/
+    DeleteTaxdetail(DeleteTaxdetail.class), 
+     /**The CreateTaxschedule command type*/
+    CreateTaxschedule(CreateTaxschedule.class), 
+     /**The UpdateTaxschedule command type*/
+    UpdateTaxschedule(UpdateTaxschedule.class), 
+     /**The DeleteTaxschedule command type*/
+    DeleteTaxschedule(DeleteTaxschedule.class), 
+     /**The CreateTaxscheduledetail command type*/
+    CreateTaxscheduledetail(CreateTaxscheduledetail.class), 
+     /**The DeleteTaxscheduledetail command type*/
+    DeleteTaxscheduledetail(DeleteTaxscheduledetail.class), 
+     /**The CreateContacttaxgroup command type*/
+    CreateContacttaxgroup(CreateContacttaxgroup.class), 
+     /**The DeleteContacttaxgroup command type*/
+    DeleteContacttaxgroup(DeleteContacttaxgroup.class), 
+     /**The CreateItemtaxgroup command type*/
+    CreateItemtaxgroup(CreateItemtaxgroup.class), 
+     /**The DeleteItemtaxgroup command type*/
+    DeleteItemtaxgroup(DeleteItemtaxgroup.class), 
+     /**The CreateTaxschedulemap command type*/
+    CreateTaxschedulemap(CreateTaxschedulemap.class), 
+     /**The DeleteTaxschedulemap command type*/
+    DeleteTaxschedulemap(DeleteTaxschedulemap.class), 
+     /**The Describe command type*/
+    Describe(Describe.class), 
+     /**The ReconcileBank command type*/
+    ReconcileBank(ReconcileBank.class), 
+     /**The ReverseBill command type*/
+    ReverseBill(ReverseBill.class), 
+     /**The ReverseAppayment command type*/
+    ReverseAppayment(ReverseAppayment.class), 
+     /**The CreateApterm command type*/
+    CreateApterm(CreateApterm.class), 
+     /**The UpdateApterm command type*/
+    UpdateApterm(UpdateApterm.class), 
+     /**The DeleteApterm command type*/
+    DeleteApterm(DeleteApterm.class), 
+     /**The CreateArterm command type*/
+    CreateArterm(CreateArterm.class), 
+     /**The UpdateArterm command type*/
+    UpdateArterm(UpdateArterm.class), 
+     /**The DeleteArterm command type*/
+    DeleteArterm(DeleteArterm.class), 
+     /**The CreateTimesheet command type*/
+    CreateTimesheet(CreateTimesheet.class), 
+     /**The UpdateTimesheet command type*/
+    UpdateTimesheet(UpdateTimesheet.class), 
+     /**The DeleteTimesheet command type*/
+    DeleteTimesheet(DeleteTimesheet.class), 
+     /**The CreateTask command type*/
+    CreateTask(CreateTask.class), 
+     /**The UpdateTask command type*/
+    UpdateTask(UpdateTask.class), 
+     /**The DeleteTask command type*/
+    DeleteTask(DeleteTask.class), 
+     /**The CreateAllocation command type*/
+    CreateAllocation(CreateAllocation.class), 
+     /**The UpdateAllocation command type*/
+    UpdateAllocation(UpdateAllocation.class), 
+     /**The DeleteAllocation command type*/
+    DeleteAllocation(DeleteAllocation.class), 
+     /**The UpdateCctransaction command type*/
+    UpdateCctransaction(UpdateCctransaction.class), 
+    /**The ReverseCctransaction command type*/
     ReverseCctransaction(ReverseCctransaction.class);
     
     private Class<?> requestType;
 
-    private CommandType(Class<?> requestType){
+    private CommandType(Class<?> requestType)
+    {
         this.requestType = requestType;
     }
     
+    @Override
     public Class<?> getRequestType()
     {
         return requestType;

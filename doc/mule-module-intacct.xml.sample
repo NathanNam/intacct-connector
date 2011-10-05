@@ -1,0 +1,51 @@
+<!-- BEGIN_INCLUDE(intacct:execute1) -->
+<intacct:execute type="CreateBill">
+    <intacct:commands>
+        <intacct:command>
+            <externalid>#[variable:aString]</externalid>
+            <description>#[variable:anotherString]</description>
+            <batchkey>#[variable:aBatchkeyOrStringObjectMap]</batchkey>
+            <!-- ...etc... -->
+        </intacct:command>
+    </intacct:commands>
+</intacct:execute>
+<!-- END_INCLUDE(intacct:execute1) -->
+
+<!-- BEGIN_INCLUDE(intacct:execute2) -->
+<intacct:execute type="CreateBill">
+    <intacct:commands ref="#[variable:aListOfStringObjectMaps]"/>
+</intacct:execute>
+<!-- END_INCLUDE(intacct:execute2) -->
+
+<!-- BEGIN_INCLUDE(intacct:execute3) -->
+<intacct:execute type="CreateBill">
+    <intacct:commands ref="#[groovy:[
+        [ 'externalId' : 'anId',
+          'description' : 'aDescription',
+          'batchkey' : [ 'value' : 'aBatchkeyValue' ],
+          // ... etc ...
+        ]
+    ]]"/>
+</intacct:execute>
+<!-- END_INCLUDE(intacct:execute3) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-invoice) -->
+<!-- END_INCLUDE(intacct:create-invoice) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-invoicebatch) -->
+<!-- END_INCLUDE(intacct:create-invoicebatch) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
+<!-- END_INCLUDE(intacct:create-aradjustment) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-sotransaction) -->
+<!-- END_INCLUDE(intacct:create-sotransaction) -->
+
+<!-- BEGIN_INCLUDE(intacct:get-list) -->
+<!-- END_INCLUDE(intacct:get-list) -->
+
+<!-- BEGIN_INCLUDE(intacct:get) -->
+<!-- END_INCLUDE(intacct:get) -->
+
+<!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
+<!-- END_INCLUDE(intacct:operation-with-request) -->
