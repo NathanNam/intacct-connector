@@ -210,7 +210,7 @@ public class IntacctCloudConnector
      * @param nogl the nogl
      * @param customFields the customFields
      * @param invoiceItems the invoiceItems
-     * @return
+     * @return {@link Response}
      * @throws JAXBException
      */
     @Processor
