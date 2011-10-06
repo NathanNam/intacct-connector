@@ -39,6 +39,12 @@
                     <artifactId>mule-devkit-maven-plugin</artifactId>
                     <version>${mule.devkit.version}</version>
                     <extensions>true</extensions>
+						<configuration>
+							<excludes>
+								<exclude>**/current.xml</exclude>
+								<exclude>**/ObjectFactory.html</exclude>
+							</excludes>
+						</configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
