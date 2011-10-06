@@ -18,8 +18,8 @@ import javax.xml.bind.annotation.XmlValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {"value"})
-@XmlRootElement(name = "base_price")
-public class BasePrice
+@XmlRootElement(name = "baseprice")
+public class Baseprice
 {
 
     @XmlValue
