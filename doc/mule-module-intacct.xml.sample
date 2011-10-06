@@ -108,4 +108,7 @@
 <!-- END_INCLUDE(intacct:get) -->
 
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
+<intacct:operation-with-request>
+    <intacct:request ref="#[variable:request] />
+</intacct:operation-with-request>
 <!-- END_INCLUDE(intacct:operation-with-request) -->
