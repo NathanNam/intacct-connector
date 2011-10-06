@@ -9,84 +9,40 @@ package org.mule.module.intacct.schema.request;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"year", "month", "day"})
-@XmlRootElement(name = "exchratedate")
-public class Exchratedate
+@XmlType(name = "", propOrder = {"value"})
+@XmlRootElement(name = "exch_rate_date")
+public class ExchRateDate
 {
 
-    @XmlElement(required = true)
-    protected String year;
-    @XmlElement(required = true)
-    protected String month;
-    @XmlElement(required = true)
-    protected String day;
+    @XmlValue
+    protected String value;
 
     /**
-     * Gets the value of the year property.
+     * Gets the value of the value property.
      * 
      * @return possible object is {@link String }
      */
-    public String getYear()
+    public String getvalue()
     {
-        return year;
+        return value;
     }
 
     /**
-     * Sets the value of the year property.
+     * Sets the value of the value property.
      * 
      * @param value allowed object is {@link String }
      */
-    public void setYear(String value)
+    public void setvalue(String value)
     {
-        this.year = value;
-    }
-
-    /**
-     * Gets the value of the month property.
-     * 
-     * @return possible object is {@link String }
-     */
-    public String getMonth()
-    {
-        return month;
-    }
-
-    /**
-     * Sets the value of the month property.
-     * 
-     * @param value allowed object is {@link String }
-     */
-    public void setMonth(String value)
-    {
-        this.month = value;
-    }
-
-    /**
-     * Gets the value of the day property.
-     * 
-     * @return possible object is {@link String }
-     */
-    public String getDay()
-    {
-        return day;
-    }
-
-    /**
-     * Sets the value of the day property.
-     * 
-     * @param value allowed object is {@link String }
-     */
-    public void setDay(String value)
-    {
-        this.day = value;
+        this.value = value;
     }
 
 }
