@@ -1,0 +1,3449 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Intacct Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  IntacctCloudConnector
+
+
+| Mule Intacct Connector
+
+</title>
+<link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Intacct Connector</span>
+    
+    <ul id="header-tabs" class="">
+    	<li id="guide"><a href="../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    	<li id="java"><a href="../../../../../java/packages.html">
+	    	<span class="en">Java API</span>
+    	</a></li>
+    	<li id="mule"><a href="../../../../../mule/modules.html">
+	    	<span class="en">Mule API</span>
+    	</a></li>
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../java/classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="selected api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/package-summary.html">org.mule.module.intacct</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/config/package-summary.html">org.mule.module.intacct.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/config/spring/package-summary.html">org.mule.module.intacct.config.spring</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/exception/package-summary.html">org.mule.module.intacct.exception</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/impl/package-summary.html">org.mule.module.intacct.impl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/schema/request/package-summary.html">org.mule.module.intacct.schema.request</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/schema/response/package-summary.html">org.mule.module.intacct.schema.response</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/utils/package-summary.html">org.mule.module.intacct.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/intacct/xml/package-summary.html">org.mule.module.intacct.xml</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/EnumType.html">EnumType</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/MapObjectMapper.html">MapObjectMapper</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/CommandType.html">CommandType</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/FilterType.html">FilterType</a></li>
+      </ul>
+    </li>
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+  <a href="#constants">Constants</a>
+  
+
+
+
+  &#124; <a href="#lfields">Fields</a>
+  
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>IntacctCloudConnector</h1>
+
+
+
+  
+    extends <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.intacct.IntacctCloudConnector</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorCapabilitiesAdapter.html">IntacctCloudConnectorCapabilitiesAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorCapabilitiesAdapter.html">IntacctCloudConnectorCapabilitiesAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>Cloud Connector Facade for <a href="http://us.intacct.com/">Intacct</a> </p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#URL">URL</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#companyid">companyid</a></td>
+          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct company.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#controlPassword">controlPassword</a></td>
+          <td class="jd-descrcol" width="100%">Registered Web Services password
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#controlid">controlid</a></td>
+          <td class="jd-descrcol" width="100%">Used by the sender to match a request to its response.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#intacctImplementation">intacctImplementation</a></td>
+          <td class="jd-descrcol" width="100%">Intacct Client implementation.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../java/org/mule/module/intacct/MapObjectMapper.html">MapObjectMapper</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#mom">mom</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#senderId">senderId</a></td>
+          <td class="jd-descrcol" width="100%">Intacct-registered Web Services username.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#uniqueid">uniqueid</a></td>
+          <td class="jd-descrcol" width="100%">The Intacct system guarantees transaction idempotence through the use of the uniqueid.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#userPassword">userPassword</a></td>
+          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct password.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#userid">userid</a></td>
+          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct identity.</td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#IntacctCloudConnector()">IntacctCloudConnector</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#createAradjustment(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createAradjustment</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; datePosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> adjustmentNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> invoiceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> description, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> basecurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> nogl, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; arAdjustmentItems)</nobr>
+        
+        <div class="jd-descrdiv">Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#createInvoice(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoice</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; datePosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateDue, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> termName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> invoiceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> poNumber, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> description, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> billToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; billTo, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> shipToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; shipTo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> baseCurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> nogl, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; customFields, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; invoiceItems)</nobr>
+        
+        <div class="jd-descrdiv">Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#createInvoicebatch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoicebatch</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchTitle, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; createInvoiceList)</nobr>
+        
+        <div class="jd-descrdiv">Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#createSotransaction(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createSotransaction</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transactionType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> createdFrom, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> documentNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> referenceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> termName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateDue, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> shippingMethod, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> billToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; billTo, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> shipToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; shipTo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> baseCurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> vsoePriceList, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; customFields, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; soTransItems, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; subTotals)</nobr>
+        
+        <div class="jd-descrdiv">Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute</a></span>(<a href="../../../../../java/org/mule/module/intacct/CommandType.html">CommandType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; commands)</nobr>
+        
+        <div class="jd-descrdiv">Batch executes a list of commands of the given CommandType.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">get</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> obj, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> key, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; fields)</nobr>
+        
+        <div class="jd-descrdiv">Allows you to retrieve all of the information about a single instance of an 
+ Intacct object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getCompanyid()">getCompanyid</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the companyid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getControlPassword()">getControlPassword</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the controlPassword.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getControlid()">getControlid</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the controlid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getIntacctImplementation()">getIntacctImplementation</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the intacctImplementation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getList(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">getList</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> obj, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> start, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> maxItems, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> showPrivate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; filter, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; sorts, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; fields)</nobr>
+        
+        <div class="jd-descrdiv">Allows you to retrieve a list object with optional filter and/or sort specifications.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getSenderId()">getSenderId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the senderId.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getUniqueid()">getUniqueid</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the uniqueid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getUserPassword()">getUserPassword</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the userPassword.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#getUserid()">getUserid</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the userid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#init()">init</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#operation(java.util.Map<java.lang.String, java.lang.Object>)">operation</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; function)</nobr>
+        
+        <div class="jd-descrdiv">
+      <em>
+  This method is deprecated.
+      use <code><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(CommandType, List)</a></code> instead
+ 
+ </em></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#operationWithRequest(org.mule.module.intacct.schema.request.Request)">operationWithRequest</a></span>(<a href="../../../../../java/org/mule/module/intacct/schema/request/Request.html">Request</a> request)</nobr>
+        
+        <div class="jd-descrdiv">Reconoce la operacion con valores default setteados en el config
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#sendRequest(org.mule.module.intacct.schema.request.Request)">sendRequest</a></span>(<a href="../../../../../java/org/mule/module/intacct/schema/request/Request.html">Request</a> request)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setCompanyid(java.lang.String)">setCompanyid</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> companyid)</nobr>
+        
+        <div class="jd-descrdiv">Sets the companyid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setControlPassword(java.lang.String)">setControlPassword</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> controlPassword)</nobr>
+        
+        <div class="jd-descrdiv">Sets the controlPassword.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setControlid(java.lang.String)">setControlid</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> controlid)</nobr>
+        
+        <div class="jd-descrdiv">Sets the controlid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setIntacctImplementation(org.mule.module.intacct.IntacctFacade)">setIntacctImplementation</a></span>(<a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a> intacctImplementation)</nobr>
+        
+        <div class="jd-descrdiv">Sets the intacctImplementation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setSenderId(java.lang.String)">setSenderId</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> senderId)</nobr>
+        
+        <div class="jd-descrdiv">Sets the senderId.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setUniqueid(java.lang.String)">setUniqueid</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> uniqueid)</nobr>
+        
+        <div class="jd-descrdiv">Sets the uniqueid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setUserPassword(java.lang.String)">setUserPassword</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> userPassword)</nobr>
+        
+        <div class="jd-descrdiv">Sets the userPassword.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#setUserid(java.lang.String)">setUserid</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> userid)</nobr>
+        
+        <div class="jd-descrdiv">Sets the userid.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#fromSingleValue(java.lang.Object)">fromSingleValue</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> value)</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="URL"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        URL
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "https://www.intacct.com/ia/xml/xmlgw.phtml"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="companyid"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        companyid
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The login information specifies the user's Intacct company. 
+ This is the same information you see when you log onto the Intacct system.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="controlPassword"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        controlPassword
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Registered Web Services password
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="controlid"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        controlid
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used by the sender to match a request to its response. This is especially 
+ useful during asynchronous requests. The following illustrates the syntax 
+ for a request element.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="intacctImplementation"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a>
+      </span>
+        intacctImplementation
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Intacct Client implementation. By default: <code><a href="../../../../../java/org/mule/module/intacct/impl/JerseySslIntacctFacade.html">JerseySslIntacctFacade</a></code>
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="mom"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/MapObjectMapper.html">MapObjectMapper</a>
+      </span>
+        mom
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="senderId"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        senderId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Intacct-registered Web Services username.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="uniqueid"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        uniqueid
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The Intacct system guarantees transaction idempotence through the use of the uniqueid. 
+ The default setting for the uniqueid element is "true" with all lower-case characters.
+ If the uniqueid element value is set to "true", the designated function will be 
+ performed only once. Before a function is executed, the controlid attribute of the 
+ function tag is checked for uniqueness. If a function is submitted twice under the 
+ same controlid and sender, the function will not be re-executed. However, a failed 
+ request may be re-submitted under the same controlid and sender.
+
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="userPassword"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        userPassword
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The login information specifies the user's Intacct password. 
+ This is the same information you see when you log onto the Intacct system.
+
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="userid"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        userid
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The login information specifies the user's Intacct identity. 
+ This is the same information you see when you log onto the Intacct system.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="IntacctCloudConnector()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">IntacctCloudConnector</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="createAradjustment(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">createAradjustment</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; datePosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> adjustmentNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> invoiceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> description, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> basecurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> nogl, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; arAdjustmentItems)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>customerId</td>
+          <td>the customerId</td>
+        </tr>
+        <tr>
+          <th>dateCreated</td>
+          <td>the dateCreated</td>
+        </tr>
+        <tr>
+          <th>datePosted</td>
+          <td>the datePosted</td>
+        </tr>
+        <tr>
+          <th>batchKey</td>
+          <td>the batchKey</td>
+        </tr>
+        <tr>
+          <th>adjustmentNo</td>
+          <td>the adjustmentNo</td>
+        </tr>
+        <tr>
+          <th>invoiceNo</td>
+          <td>the invoiceNo</td>
+        </tr>
+        <tr>
+          <th>description</td>
+          <td>the description</td>
+        </tr>
+        <tr>
+          <th>externalId</td>
+          <td>the externalId</td>
+        </tr>
+        <tr>
+          <th>basecurr</td>
+          <td>the basecurr</td>
+        </tr>
+        <tr>
+          <th>currency</td>
+          <td>the currency</td>
+        </tr>
+        <tr>
+          <th>exchType</td>
+          <td>the exchType</td>
+        </tr>
+        <tr>
+          <th>exchRateDateOrExchRateTypeOrExchRate</td>
+          <td>the exchRateDateOrExchRateTypeOrExchRate</td>
+        </tr>
+        <tr>
+          <th>nogl</td>
+          <td>the nogl</td>
+        </tr>
+        <tr>
+          <th>arAdjustmentItems</td>
+          <td>the arAdjustmentItems</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createInvoice(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">createInvoice</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; datePosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateDue, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> termName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> invoiceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> poNumber, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> description, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> billToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; billTo, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> shipToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; shipTo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> baseCurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> nogl, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; customFields, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; invoiceItems)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>customerId</td>
+          <td>the customerId</td>
+        </tr>
+        <tr>
+          <th>dateCreated</td>
+          <td>the dateCreated</td>
+        </tr>
+        <tr>
+          <th>datePosted</td>
+          <td>the datePosted</td>
+        </tr>
+        <tr>
+          <th>dateDue</td>
+          <td>the dateDue</td>
+        </tr>
+        <tr>
+          <th>termName</td>
+          <td>the termName</td>
+        </tr>
+        <tr>
+          <th>batchKey</td>
+          <td>the batchKey</td>
+        </tr>
+        <tr>
+          <th>invoiceNo</td>
+          <td>the invoiceNo</td>
+        </tr>
+        <tr>
+          <th>poNumber</td>
+          <td>the poNumber</td>
+        </tr>
+        <tr>
+          <th>description</td>
+          <td>the description</td>
+        </tr>
+        <tr>
+          <th>externalId</td>
+          <td>the externalId</td>
+        </tr>
+        <tr>
+          <th>billToContactType</td>
+          <td>the billToContactType</td>
+        </tr>
+        <tr>
+          <th>billTo</td>
+          <td>the billTo</td>
+        </tr>
+        <tr>
+          <th>shipToContactType</td>
+          <td>the shipToContactType</td>
+        </tr>
+        <tr>
+          <th>shipTo</td>
+          <td>the shipTo</td>
+        </tr>
+        <tr>
+          <th>baseCurr</td>
+          <td>the baseCurr</td>
+        </tr>
+        <tr>
+          <th>currency</td>
+          <td>the currency</td>
+        </tr>
+        <tr>
+          <th>exchType</td>
+          <td>the exchType</td>
+        </tr>
+        <tr>
+          <th>exchRateDateOrExchRateTypeOrExchRate</td>
+          <td>the exchRateDateOrExchRateTypeOrExchRate</td>
+        </tr>
+        <tr>
+          <th>nogl</td>
+          <td>the nogl</td>
+        </tr>
+        <tr>
+          <th>customFields</td>
+          <td>the customFields</td>
+        </tr>
+        <tr>
+          <th>invoiceItems</td>
+          <td>the invoiceItems</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createInvoicebatch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">createInvoicebatch</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> batchTitle, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; createInvoiceList)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>batchTitle</td>
+          <td>the batchTitle</td>
+        </tr>
+        <tr>
+          <th>dateCreated</td>
+          <td>the dateCreated</td>
+        </tr>
+        <tr>
+          <th>createInvoiceList</td>
+          <td>the createInvoiceList</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createSotransaction(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">createSotransaction</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transactionType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateCreated, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> createdFrom, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> customerId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> documentNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> referenceNo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> termName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; dateDue, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> shippingMethod, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> billToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; billTo, <a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a> shipToContactType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; shipTo, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> baseCurr, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> currency, <a href="../../../../../java/org/mule/module/intacct/ExchType.html">ExchType</a> exchType, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; exchRateDateOrExchRateTypeOrExchRate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> vsoePriceList, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; customFields, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; soTransItems, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; subTotals)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>transactionType</td>
+          <td>the transactionType</td>
+        </tr>
+        <tr>
+          <th>dateCreated</td>
+          <td>the dateCreated</td>
+        </tr>
+        <tr>
+          <th>createdFrom</td>
+          <td>the createdFrom</td>
+        </tr>
+        <tr>
+          <th>customerId</td>
+          <td>the customerId</td>
+        </tr>
+        <tr>
+          <th>documentNo</td>
+          <td>the documentNo</td>
+        </tr>
+        <tr>
+          <th>referenceNo</td>
+          <td>the referenceNo</td>
+        </tr>
+        <tr>
+          <th>termName</td>
+          <td>the termName</td>
+        </tr>
+        <tr>
+          <th>dateDue</td>
+          <td>the dateDue</td>
+        </tr>
+        <tr>
+          <th>message</td>
+          <td>the message</td>
+        </tr>
+        <tr>
+          <th>shippingMethod</td>
+          <td>the shippingMethod</td>
+        </tr>
+        <tr>
+          <th>billToContactType</td>
+          <td>the billToContactType</td>
+        </tr>
+        <tr>
+          <th>billTo</td>
+          <td>the billTo</td>
+        </tr>
+        <tr>
+          <th>shipToContactType</td>
+          <td>the shipToContactType</td>
+        </tr>
+        <tr>
+          <th>shipTo</td>
+          <td>the shipTo</td>
+        </tr>
+        <tr>
+          <th>externalId</td>
+          <td>the externalId</td>
+        </tr>
+        <tr>
+          <th>baseCurr</td>
+          <td>the baseCurr</td>
+        </tr>
+        <tr>
+          <th>currency</td>
+          <td>the currency</td>
+        </tr>
+        <tr>
+          <th>exchType</td>
+          <td>the exchType</td>
+        </tr>
+        <tr>
+          <th>exchRateDateOrExchRateTypeOrExchRate</td>
+          <td>the exchRateDateOrExchRateTypeOrExchRate</td>
+        </tr>
+        <tr>
+          <th>vsoePriceList</td>
+          <td>the vsoePriceList</td>
+        </tr>
+        <tr>
+          <th>customFields</td>
+          <td>the customFields</td>
+        </tr>
+        <tr>
+          <th>soTransItems</td>
+          <td>the soTransItems</td>
+        </tr>
+        <tr>
+          <th>subTotals</td>
+          <td>the subTotals</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">execute</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/module/intacct/CommandType.html">CommandType</a> type, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; commands)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Batch executes a list of commands of the given CommandType.
+ 
+ Example 1:
+ 
+ 
+ Example 2:
+ 
+
+ Example 3:
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>type</td>
+          <td>the type of commands to execute</td>
+        </tr>
+        <tr>
+          <th>commands</td>
+          <td>the commands list</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the <code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code>
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">get</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> obj, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> key, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> externalKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; fields)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Allows you to retrieve all of the information about a single instance of an 
+ Intacct object.
+ <p>
+ Additional options for manipulating the return fields allow you to retrieve 
+ only the information that you need.
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>obj</td>
+          <td>String. The object on which to perform the query. <p>
+            A list of valid objects is provided:<p>
+            accountgroup, apaccountlabel, appaymentrequest, apterm, araccountlabel,
+            arterm, bankaccount, bill, class, company_info, contact, csnhistory,
+            customer, customerachinfo, customerbankaccount, customerchargecard,
+            department, employee, expensetypes, glaccount, icitem, ictransaction,
+            invoice, journal, location, locationentity, locationgroup, popricelist,
+            potransaction, pricelistitem, productline, project, recurbill, 
+            recurinvoice, renewalmacro, reportingperiod, revrecschedule, 
+            revrecscheduleentry, sopricelist, sotransaction, statglaccount,
+            stkittransaction, subscription, taxdetail, taxschedule, taxscheduledetail,
+            taxschedulemap, territory, trxcurrencies, vendor, vsoepricelist, warehouse.</td>
+        </tr>
+        <tr>
+          <th>key</td>
+          <td>The unique ID or key of the object instance to be retrieved.</td>
+        </tr>
+        <tr>
+          <th>externalKey</td>
+          <td>Optional. Every object in the Intacct system is allowed to have an 
+                    External ID, which allows users to assign a unique ID outside of 
+                    the Intacct system. For example, if a partner application has its 
+                    own numbering scheme for bills, during bill creation each individual 
+                    bill can be assigned an External ID which would identify it in the 
+                    partner system. Later on, while using the Get and Delete functions 
+                    of the Intacct Gateway, the partner can then specify the External ID 
+                    rather than the Intacct ID. This way, the partner is not required to 
+                    store the Intacct ID of each object created in the Intacct system.</td>
+        </tr>
+        <tr>
+          <th>fields</td>
+          <td>Optional. A collection of Maps that represents fields to retrieve in the 
+               query. If the request does not include a fields element, the gateway will 
+               return the default set of fields, including custom fields for any 
+               objects that have them.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getCompanyid()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getCompanyid</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the companyid.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the companyid.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getControlPassword()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getControlPassword</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the controlPassword.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the controlPassword.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getControlid()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getControlid</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the controlid.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the controlid.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIntacctImplementation()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a>
+      </span>
+      <span class="sympad">getIntacctImplementation</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the intacctImplementation.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the intacctImplementation.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getList(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">getList</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> functionControlId, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> obj, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> start, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> maxItems, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> showPrivate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; filter, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; sorts, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt; fields)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Allows you to retrieve a list object with optional filter and/or sort specifications.
+ Filters can be simple or complex with logical groupings for AND and OR filtering.
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>functionControlId</td>
+          <td>String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.</td>
+        </tr>
+        <tr>
+          <th>obj</td>
+          <td>String. The object on which to perform the query. <p>
+            A list of valid objects is provided:<p>
+            accountgroup, adjjournal, apaccountlabel, apadjustment, apadjustmentbatch,
+            appayment, appaymentrequest, apterm, araccountlabel, aradjustment,
+            aradjustmentbatch, arpayment, arpaymentbatch, arterm, artransactiondef,
+            bankaccount, bill, billbatch, class, company_info, contact, contacttaxgroup,
+            csnhistory, custglgroup, customer, customerachinfo, customerbankaccount,
+            customerchargecard, customerppackage, department, employee, expensereport,
+            expensereportbatch, expensetypes, glaccount, glbudget, glbudgetitem,
+            glentry, gltransaction, icitem, ictotal, ictransaction, ictransactiondef,
+            invoice, invoicebatch, itemglgroup, itemtaxgroup, journal, location,
+            locationentity, locationgroup, popricelist, potransaction, potransactiondef,
+            pricelistitem, productline, project, renewalmacro, reportingperiod,
+            revrecschedule, revrecscheduleentry, revrectemplate, smarteventlog,
+            sopricelist, sotransaction, sotransactiondef, statglaccount, statjournal,
+            stkittransaction, subscription, taxdetail, taxschedule, taxscheduledetail,
+            taxschedulemap, territory, trxcurrencies, uom, vendglgroup, vendor,
+            vsoeitempricelist, vsoepricelist, warehouse.</td>
+        </tr>
+        <tr>
+          <th>start</td>
+          <td>Optionl. During a list query you can specify the start record of the 
+              list of objects to return to increase performance. This attribute defaults 
+              to zero.</td>
+        </tr>
+        <tr>
+          <th>maxItems</td>
+          <td>Optional. During a list query, you can specify the maximum number of 
+                 objects to return to increase performance. By combining this with the 
+                 Start attribute above you can loop through the objects in groups for 
+                 better performance.</td>
+        </tr>
+        <tr>
+          <th>showPrivate</td>
+          <td>Optional. In Multi-entity Shared implementations, some objects may
+                    be owned by a subsidiary entity, but are visible at the root. If 
+                    showprivate is set to "true", the getlist method will return all 
+                    records visible in the current multi-entity context. If showprivate 
+                    is left unset or is "false", getlist will only return those records 
+                    owned by the current multi-entity context.</td>
+        </tr>
+        <tr>
+          <th>filter</td>
+          <td>Optional. A collection of filtering expressions to apply to the query.</td>
+        </tr>
+        <tr>
+          <th>sorts</td>
+          <td>Optional. A collection of fields to sort by.</td>
+        </tr>
+        <tr>
+          <th>fields</td>
+          <td>Optional. A collection of fields to retrieve in the query. The fields 
+               will be returned in the order requested. If the request does not include 
+               a fields element, the web service will return the default set of fields.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSenderId()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getSenderId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the senderId.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the senderId.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUniqueid()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getUniqueid</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the uniqueid.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the uniqueid.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUserPassword()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getUserPassword</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the userPassword.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the userPassword.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUserid()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getUserid</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the userid.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>with the userid.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="init()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">init</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="operation(java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">operation</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt; function)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      <p>
+  <p class="caution">
+      <strong>
+  This method is deprecated.</strong><br/> use <code><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(CommandType, List)</a></code> instead
+ 
+ 
+  </p>
+  <div class="jd-tagdata jd-tagdescr"><p>Given the function we create the request with the parameters for default given in the config </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>function</td>
+          <td>function</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>{@Response }</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="operationWithRequest(org.mule.module.intacct.schema.request.Request)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">operationWithRequest</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/module/intacct/schema/request/Request.html">Request</a> request)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Reconoce la operacion con valores default setteados en el config
+ 
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>request</td>
+          <td>request</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code><a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendRequest(org.mule.module.intacct.schema.request.Request)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
+      </span>
+      <span class="sympad">sendRequest</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/module/intacct/schema/request/Request.html">Request</a> request)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>request</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>JAXBException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCompanyid(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCompanyid</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> companyid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the companyid. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>companyid</td>
+          <td>with the companyid.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setControlPassword(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setControlPassword</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> controlPassword)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the controlPassword. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>controlPassword</td>
+          <td>with the controlPassword.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setControlid(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setControlid</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> controlid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the controlid. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>controlid</td>
+          <td>with the controlid.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setIntacctImplementation(org.mule.module.intacct.IntacctFacade)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setIntacctImplementation</span>
+      <span class="normal">(<a href="../../../../../java/org/mule/module/intacct/IntacctFacade.html">IntacctFacade</a> intacctImplementation)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the intacctImplementation. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>intacctImplementation</td>
+          <td>with the intacctImplementation.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setSenderId(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setSenderId</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> senderId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the senderId. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>senderId</td>
+          <td>with the senderId.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setUniqueid(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setUniqueid</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> uniqueid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the uniqueid. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>uniqueid</td>
+          <td>with the uniqueid.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setUserPassword(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setUserPassword</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> userPassword)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the userPassword. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>userPassword</td>
+          <td>with the userPassword.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setUserid(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setUserid</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> userid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the userid. </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>userid</td>
+          <td>with the userid.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="fromSingleValue(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;
+      </span>
+      <span class="sympad">fromSingleValue</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Intacct Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico" />
+<title>
+
+  Updateentry
+
+
+| Mule Intacct Connector
+
+</title>
+<link href="../../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../../", "../../../../../../../assets/");
+</script>
+<script src="../../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Intacct Connector</span>
+    
+    <ul id="header-tabs" class="">
+    	<li id="guide"><a href="../../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    	<li id="java"><a href="../../../../../../../java/packages.html">
+	    	<span class="en">Java API</span>
+    	</a></li>
+    	<li id="mule"><a href="../../../../../../../mule/modules.html">
+	    	<span class="en">Mule API</span>
+    	</a></li>
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../../java/classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/package-summary.html">org.mule.module.intacct</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/config/package-summary.html">org.mule.module.intacct.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/config/spring/package-summary.html">org.mule.module.intacct.config.spring</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/exception/package-summary.html">org.mule.module.intacct.exception</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/impl/package-summary.html">org.mule.module.intacct.impl</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/schema/request/package-summary.html">org.mule.module.intacct.schema.request</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/schema/response/package-summary.html">org.mule.module.intacct.schema.response</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/utils/package-summary.html">org.mule.module.intacct.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/intacct/xml/package-summary.html">org.mule.module.intacct.xml</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Accountgroup.html">Accountgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Accountgroupname.html">Accountgroupname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Accountkey.html">Accountkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Accountlabel.html">Accountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Actiontime.html">Actiontime</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Age.html">Age</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Agingdate.html">Agingdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Agingperiod.html">Agingperiod</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Aislekey.html">Aislekey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Allocationentry.html">Allocationentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/AllowBackorder.html">AllowBackorder</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Apadjustmentitems.html">Apadjustmentitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ApplyArpayment.html">ApplyArpayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Approverid.html">Approverid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Aradjustmentitems.html">Aradjustmentitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Arpaymentitem.html">Arpaymentitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Arpaymentitemdetail.html">Arpaymentitemdetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Arpaymentitemdetails.html">Arpaymentitemdetails</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Arpaymentitemkey.html">Arpaymentitemkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Arpaymentitems.html">Arpaymentitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Asofdate.html">Asofdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Authentication.html">Authentication</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Author.html">Author</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Averagecost.html">Averagecost</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Bankaccountid.html">Bankaccountid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Banktxn.html">Banktxn</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Banktxns.html">Banktxns</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Baseprice.html">Baseprice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Batchkey.html">Batchkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Batchno.html">Batchno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Begindate.html">Begindate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Billitems.html">Billitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Billkey.html">Billkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Billto.html">Billto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Binkey.html">Binkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Birthdate.html">Birthdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Bookcontact.html">Bookcontact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Bookentityjournal.html">Bookentityjournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Bookstatjournal.html">Bookstatjournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Budgetable.html">Budgetable</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Budgetdefault.html">Budgetdefault</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Budgetheader.html">Budgetheader</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Category.html">Category</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Categorykey.html">Categorykey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ccpayitem.html">Ccpayitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ccpayitems.html">Ccpayitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Check.html">Check</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Checkdate.html">Checkdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Checkinfocontact.html">Checkinfocontact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Checklayout.html">Checklayout</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Client.html">Client</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Clientid.html">Clientid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Clientstatus.html">Clientstatus</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Closedbooksdate.html">Closedbooksdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Code.html">Code</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Companypref.html">Companypref</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Companyprefs.html">Companyprefs</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Complineitem.html">Complineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Complineitems.html">Complineitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contact.html">Contact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contactinfo.html">Contactinfo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contactitem.html">Contactitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contactlist.html">Contactlist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contactname.html">Contactname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Contacttaxgroup.html">Contacttaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Content.html">Content</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Control.html">Control</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Correction.html">Correction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Costmethod.html">Costmethod</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateAllocation.html">CreateAllocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateApaccountlabel.html">CreateApaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateApadjustment.html">CreateApadjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateApadjustmentbatch.html">CreateApadjustmentbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateAppayment.html">CreateAppayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateApterm.html">CreateApterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateAraccountlabel.html">CreateAraccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateAradjustment.html">CreateAradjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateAradjustmentbatch.html">CreateAradjustmentbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateArpayment.html">CreateArpayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateArpaymentbatch.html">CreateArpaymentbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateArterm.html">CreateArterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateBill.html">CreateBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateBillbatch.html">CreateBillbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateCheckingaccount.html">CreateCheckingaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateClass.html">CreateClass</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateConsolidation.html">CreateConsolidation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateContact.html">CreateContact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateContacttaxgroup.html">CreateContacttaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateCustomer.html">CreateCustomer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateCustomerachinfo.html">CreateCustomerachinfo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateCustomerbankaccount.html">CreateCustomerbankaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateCustomerchargecard.html">CreateCustomerchargecard</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateDepartment.html">CreateDepartment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateEmployee.html">CreateEmployee</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateExpensereport.html">CreateExpensereport</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateExpensereportbatch.html">CreateExpensereportbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateExpensetype.html">CreateExpensetype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGlaccount.html">CreateGlaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGlbook.html">CreateGlbook</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGlbookacctgroups.html">CreateGlbookacctgroups</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGlbookacctratetypes.html">CreateGlbookacctratetypes</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGlbooklocations.html">CreateGlbooklocations</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateGltransaction.html">CreateGltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateIctransaction.html">CreateIctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateInvoice.html">CreateInvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateInvoicebatch.html">CreateInvoicebatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateInvpricelistentry.html">CreateInvpricelistentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateItem.html">CreateItem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateItemtaxgroup.html">CreateItemtaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateJournal.html">CreateJournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateLocation.html">CreateLocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateLocationgroup.html">CreateLocationgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreatePaymentrequest.html">CreatePaymentrequest</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreatePopricelist.html">CreatePopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreatePotransaction.html">CreatePotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateProject.html">CreateProject</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateRecurringbill.html">CreateRecurringbill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateRecurringgltransaction.html">CreateRecurringgltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateRecurringinvoice.html">CreateRecurringinvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateRecurringstatgltrans.html">CreateRecurringstatgltrans</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateRecursotransaction.html">CreateRecursotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateSavingsaccount.html">CreateSavingsaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateSopricelist.html">CreateSopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateSotransaction.html">CreateSotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateStatglaccount.html">CreateStatglaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateStatgltransaction.html">CreateStatgltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateStatjournal.html">CreateStatjournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateStkittransaction.html">CreateStkittransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTask.html">CreateTask</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTaxdetail.html">CreateTaxdetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTaxschedule.html">CreateTaxschedule</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTaxscheduledetail.html">CreateTaxscheduledetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTaxschedulemap.html">CreateTaxschedulemap</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTerritory.html">CreateTerritory</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateTimesheet.html">CreateTimesheet</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateVendor.html">CreateVendor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateVsoeitempricelist.html">CreateVsoeitempricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/CreateVsoepricelist.html">CreateVsoepricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Creditcard.html">Creditcard</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Credits.html">Credits</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ctanetassetacct.html">Ctanetassetacct</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ctanetincomeacct.html">Ctanetincomeacct</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Customerdata.html">Customerdata</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Customerid.html">Customerid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Customername.html">Customername</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Customfield.html">Customfield</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Customfields.html">Customfields</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Cutoffdate.html">Cutoffdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datecreated.html">Datecreated</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datedue.html">Datedue</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datefrom.html">Datefrom</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datelastrecvd.html">Datelastrecvd</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datelastsold.html">Datelastsold</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datemodified.html">Datemodified</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datepaid.html">Datepaid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Dateposted.html">Dateposted</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datereceived.html">Datereceived</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Datereversed.html">Datereversed</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Dateto.html">Dateto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Dayofmonth.html">Dayofmonth</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Daysforward.html">Daysforward</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Debits.html">Debits</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Defaultwhse.html">Defaultwhse</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteAllocation.html">DeleteAllocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteApaccountlabel.html">DeleteApaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteApadjustment.html">DeleteApadjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteApterm.html">DeleteApterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteAraccountlabel.html">DeleteAraccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteAradjustment.html">DeleteAradjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteArpayment.html">DeleteArpayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteArterm.html">DeleteArterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteBill.html">DeleteBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteCheckingaccount.html">DeleteCheckingaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteClass.html">DeleteClass</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteContact.html">DeleteContact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteContacttaxgroup.html">DeleteContacttaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteCustomer.html">DeleteCustomer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteCustomerachinfo.html">DeleteCustomerachinfo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteCustomerbankaccount.html">DeleteCustomerbankaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteCustomerchargecard.html">DeleteCustomerchargecard</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteDepartment.html">DeleteDepartment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteEmployee.html">DeleteEmployee</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteExpensereport.html">DeleteExpensereport</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteExpensetype.html">DeleteExpensetype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGlaccount.html">DeleteGlaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGlbook.html">DeleteGlbook</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGlbookacctgroups.html">DeleteGlbookacctgroups</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGlbookacctratetypes.html">DeleteGlbookacctratetypes</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGlbooklocations.html">DeleteGlbooklocations</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteGltransaction.html">DeleteGltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteIctransaction.html">DeleteIctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteInvoice.html">DeleteInvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteInvpricelistentry.html">DeleteInvpricelistentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteItem.html">DeleteItem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteItemtaxgroup.html">DeleteItemtaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteJournal.html">DeleteJournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteLocation.html">DeleteLocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeletePaymentrequest.html">DeletePaymentrequest</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeletePopricelist.html">DeletePopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeletePotransaction.html">DeletePotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteProject.html">DeleteProject</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteRecurringbill.html">DeleteRecurringbill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteRecurringgltransaction.html">DeleteRecurringgltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteRecurringinvoice.html">DeleteRecurringinvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteRecurringstatgltrans.html">DeleteRecurringstatgltrans</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteRecursotransaction.html">DeleteRecursotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteSavingsaccount.html">DeleteSavingsaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteSopricelist.html">DeleteSopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteSotransaction.html">DeleteSotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteStatglaccount.html">DeleteStatglaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteStatjournal.html">DeleteStatjournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTask.html">DeleteTask</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTaxdetail.html">DeleteTaxdetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTaxschedule.html">DeleteTaxschedule</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTaxscheduledetail.html">DeleteTaxscheduledetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTaxschedulemap.html">DeleteTaxschedulemap</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTerritory.html">DeleteTerritory</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteTimesheet.html">DeleteTimesheet</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteVendor.html">DeleteVendor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteVsoeitempricelist.html">DeleteVsoeitempricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/DeleteVsoepricelist.html">DeleteVsoepricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Deliveryoption.html">Deliveryoption</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Deliveryoptions.html">Deliveryoptions</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Department.html">Department</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Departmentid.html">Departmentid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Departmentname.html">Departmentname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Depositdate.html">Depositdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Describe.html">Describe</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Description2.html">Description2</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Detail.html">Detail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discamount.html">Discamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discday.html">Discday</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discfrom.html">Discfrom</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discgracedays.html">Discgracedays</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discount.html">Discount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discountamount.html">Discountamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Discpercamn.html">Discpercamn</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Dochdrno.html">Dochdrno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Docid.html">Docid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Doctype.html">Doctype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Doctypes.html">Doctypes</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Documentnumber.html">Documentnumber</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Due.html">Due</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Dueday.html">Dueday</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Duefrom.html">Duefrom</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Eft.html">Eft</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Email.html">Email</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Employeeid.html">Employeeid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Endaccountno.html">Endaccountno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Endbalance.html">Endbalance</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Enddate.html">Enddate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ending.html">Ending</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Entity.html">Entity</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Entry.html">Entry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Entrydate.html">Entrydate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Entrydescription.html">Entrydescription</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Errorno.html">Errorno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ExchangeRate.html">ExchangeRate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Exchrate.html">Exchrate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Exchratedate.html">Exchratedate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ExchRateDate.html">ExchRateDate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Exchratetype.html">Exchratetype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Exchratetypeid.html">Exchratetypeid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ExchRateTypeId.html">ExchRateTypeId</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expense.html">Expense</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expensedate.html">Expensedate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expenses.html">Expenses</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expensetype.html">Expensetype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expires.html">Expires</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expirydate.html">Expirydate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Expression.html">Expression</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Extdescription.html">Extdescription</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Externalurl.html">Externalurl</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Field.html">Field</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Fields.html">Fields</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Filter.html">Filter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Financialdata.html">Financialdata</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Financialentity.html">Financialentity</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Finentacctno.html">Finentacctno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Finentid.html">Finentid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Finentname.html">Finentname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Finenttype.html">Finenttype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Function.html">Function</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Get.html">Get</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetAccountbalances.html">GetAccountbalances</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetAccountgroupdetails.html">GetAccountgroupdetails</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetApadjustment.html">GetApadjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetApplications.html">GetApplications</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetAradjustment.html">GetAradjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetAraging.html">GetAraging</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetBill.html">GetBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetClosedbooksdate.html">GetClosedbooksdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetCompanyprefs.html">GetCompanyprefs</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetExpensereport.html">GetExpensereport</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetIcitemtotals.html">GetIcitemtotals</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetInvoice.html">GetInvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetList.html">GetList</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetMyclients.html">GetMyclients</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetSalestotals.html">GetSalestotals</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/GetTrialbalance.html">GetTrialbalance</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Glaccountkey.html">Glaccountkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Glaccountno.html">Glaccountno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Glaccounttitle.html">Glaccounttitle</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Glentry.html">Glentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Glgroupname.html">Glgroupname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Gltransaction.html">Gltransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Gltransactionentries.html">Gltransactionentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Gmtoffset.html">Gmtoffset</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Gracedays.html">Gracedays</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Headingtitle.html">Headingtitle</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Headingtitle2.html">Headingtitle2</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Hour.html">Hour</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ictransitem.html">Ictransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ictransitems.html">Ictransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/InitSession.html">InitSession</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Intacctid.html">Intacctid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Interestearnedaccountlabel.html">Interestearnedaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Interestearnedglaccount.html">Interestearnedglaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Invoiceitems.html">Invoiceitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Iskpi.html">Iskpi</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itaxgroup.html">Itaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemdetail.html">Itemdetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemdetails.html">Itemdetails</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemexpiration.html">Itemexpiration</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemid.html">Itemid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ItemLine.html">ItemLine</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemname.html">Itemname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Itemtaxgroup.html">Itemtaxgroup</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Label.html">Label</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lastreconciledbalance.html">Lastreconciledbalance</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lastreconcileddate.html">Lastreconcileddate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lineitem.html">Lineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lineitemkey.html">Lineitemkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/LineNo.html">LineNo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lineno.html">Lineno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/LineNum.html">LineNum</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Listtype.html">Listtype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Locationid.html">Locationid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Locationkey.html">Locationkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Locationname.html">Locationname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Logical.html">Logical</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Login.html">Login</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Lotno.html">Lotno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Mailaddress.html">Mailaddress</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Maskcardnum.html">Maskcardnum</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Megadepartmentid.html">Megadepartmentid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Megalocationid.html">Megalocationid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Memberstype.html">Memberstype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Minute.html">Minute</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Modulepref.html">Modulepref</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Moduleprefs.html">Moduleprefs</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Monthsforward.html">Monthsforward</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Numdecimals.html">Numdecimals</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ObjectFactory.html">ObjectFactory</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Objectkey.html">Objectkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Occur.html">Occur</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Offset.html">Offset</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Onhand.html">Onhand</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Online.html">Online</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Onlineachpayment.html">Onlineachpayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Onlinecardpayment.html">Onlinecardpayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Onorder.html">Onorder</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Open.html">Open</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Operation.html">Operation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Ownerobject.html">Ownerobject</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paidto.html">Paidto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Parentname.html">Parentname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paydate.html">Paydate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Payee.html">Payee</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Payer.html">Payer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Payitem.html">Payitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Payitems.html">Payitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paylabel.html">Paylabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentamount.html">Paymentamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentapplied.html">Paymentapplied</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentdate.html">Paymentdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentrequestitem.html">Paymentrequestitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentrequestitems.html">Paymentrequestitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymenttrxamount.html">Paymenttrxamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paymentunapplied.html">Paymentunapplied</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Paypriority.html">Paypriority</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Payto.html">Payto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Pbegindate.html">Pbegindate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Penalty.html">Penalty</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Penaltycycle.html">Penaltycycle</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Penamount.html">Penamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Penddate.html">Penddate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Pengracedays.html">Pengracedays</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Penpercamn.html">Penpercamn</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/PenType.html">PenType</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Percentamount.html">Percentamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Percentbase.html">Percentbase</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Periodend.html">Periodend</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Periodname.html">Periodname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Personalinfo.html">Personalinfo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Postingdate.html">Postingdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Potransitem.html">Potransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Potransitems.html">Potransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Prbatch.html">Prbatch</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Prbatchkey.html">Prbatchkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Preferences.html">Preferences</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Priceentries.html">Priceentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Priceentry.html">Priceentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Pricelistname.html">Pricelistname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Primary.html">Primary</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Prmodulekey.html">Prmodulekey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Productlinedesc.html">Productlinedesc</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Productlineid.html">Productlineid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Producttype.html">Producttype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Projectresource.html">Projectresource</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Projectresources.html">Projectresources</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Purchasingunit.html">Purchasingunit</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Purchasingunitfactor.html">Purchasingunitfactor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Qtylimitmax.html">Qtylimitmax</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Qtylimitmin.html">Qtylimitmin</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receipt.html">Receipt</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receiptitems.html">Receiptitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receiptkey.html">Receiptkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receiptkeys.html">Receiptkeys</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receipts.html">Receipts</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receiptvalue.html">Receiptvalue</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Receiveddate.html">Receiveddate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReclassifyBill.html">ReclassifyBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReclassifyInvoice.html">ReclassifyInvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Reclassifyitems.html">Reclassifyitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Reclasslineitem.html">Reclasslineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReconcileBank.html">ReconcileBank</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReconDate.html">ReconDate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordCctransaction.html">RecordCctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordDeposit.html">RecordDeposit</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recordkey.html">Recordkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recordno.html">Recordno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordOtherreceipt.html">RecordOtherreceipt</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recordtype.html">Recordtype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordWuadjjournalentries.html">RecordWuadjjournalentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordWucctransactions.html">RecordWucctransactions</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordWudisbursements.html">RecordWudisbursements</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordWujournalentries.html">RecordWujournalentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RecordWureceipts.html">RecordWureceipts</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recpaydate.html">Recpaydate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recurbillitems.html">Recurbillitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recurinvoiceitems.html">Recurinvoiceitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recurlineitem.html">Recurlineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recursotransitem.html">Recursotransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Recursotransitems.html">Recursotransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Repeatby.html">Repeatby</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Repeatcount.html">Repeatcount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Reportingperiodname.html">Reportingperiodname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Request.html">Request</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RestrictedDepts.html">RestrictedDepts</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/RestrictedLocs.html">RestrictedLocs</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Retailprice.html">Retailprice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Returnto.html">Returnto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Revending.html">Revending</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReverseAppayment.html">ReverseAppayment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReverseBill.html">ReverseBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/ReverseCctransaction.html">ReverseCctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Revrecenddate.html">Revrecenddate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Revrecstartdate.html">Revrecstartdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Revstartdate.html">Revstartdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Rowkey.html">Rowkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sale.html">Sale</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Salesunit.html">Salesunit</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Salesunitfactor.html">Salesunitfactor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Schopkey.html">Schopkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Second.html">Second</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Serialno.html">Serialno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Servicechargeaccountlabel.html">Servicechargeaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Servicechargeglaccount.html">Servicechargeglaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sessionid.html">Sessionid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sessiontimestamp.html">Sessiontimestamp</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/SetCompanyprefs.html">SetCompanyprefs</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Shipto.html">Shipto</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Shipweight.html">Shipweight</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Signatureimage1.html">Signatureimage1</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Signatureimage2.html">Signatureimage2</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Signaturesrequired.html">Signaturesrequired</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Signed.html">Signed</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Smartlinkid.html">Smartlinkid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sortfield.html">Sortfield</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sorts.html">Sorts</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sotransitem.html">Sotransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Sotransitems.html">Sotransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Source.html">Source</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Standardcost.html">Standardcost</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Standardunit.html">Standardunit</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Startaccountno.html">Startaccountno</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Startbalance.html">Startbalance</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Startdate.html">Startdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Startedby.html">Startedby</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Statementendingdate.html">Statementendingdate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Statgltransactionentries.html">Statgltransactionentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Statjournalsymbol.html">Statjournalsymbol</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Stkittransitem.html">Stkittransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Stkittransitems.html">Stkittransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Subtotal.html">Subtotal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Subtotals.html">Subtotals</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Taskresources.html">Taskresources</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Termkey.html">Termkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Termname.html">Termname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Timesheetitem.html">Timesheetitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Timesheetitems.html">Timesheetitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Timestamp.html">Timestamp</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Topic.html">Topic</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Totalamount.html">Totalamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Totalentered.html">Totalentered</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Totalname.html">Totalname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Totalselected.html">Totalselected</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Totaltitle.html">Totaltitle</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Transactionid.html">Transactionid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Transactionstate.html">Transactionstate</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Transclass.html">Transclass</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Transdefid.html">Transdefid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxPrice.html">TrxPrice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxTotalamount.html">TrxTotalamount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxTotaldue.html">TrxTotaldue</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxTotalpaid.html">TrxTotalpaid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxTotalselected.html">TrxTotalselected</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/TrxValue.html">TrxValue</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Undepaccountlabel.html">Undepaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Undepfundsacct.html">Undepfundsacct</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Undeposited.html">Undeposited</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateAllocation.html">UpdateAllocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateallocationentry.html">Updateallocationentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateApaccountlabel.html">UpdateApaccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateApadjustment.html">UpdateApadjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateapadjustmentitems.html">Updateapadjustmentitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateApterm.html">UpdateApterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateAraccountlabel.html">UpdateAraccountlabel</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateAradjustment.html">UpdateAradjustment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatearadjustmentitems.html">Updatearadjustmentitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateArterm.html">UpdateArterm</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateBill.html">UpdateBill</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatebillitems.html">Updatebillitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateccpayitem.html">Updateccpayitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateccpayitems.html">Updateccpayitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCctransaction.html">UpdateCctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCheckingaccount.html">UpdateCheckingaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateClass.html">UpdateClass</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateContact.html">UpdateContact</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCustomer.html">UpdateCustomer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCustomerachinfo.html">UpdateCustomerachinfo</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCustomerbankaccount.html">UpdateCustomerbankaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateCustomerchargecard.html">UpdateCustomerchargecard</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateDepartment.html">UpdateDepartment</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateEmployee.html">UpdateEmployee</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateentry.html">Updateentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateexpense.html">Updateexpense</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateExpensereport.html">UpdateExpensereport</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateexpenses.html">Updateexpenses</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateExpensetype.html">UpdateExpensetype</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateGlaccount.html">UpdateGlaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateGlbook.html">UpdateGlbook</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateIctransaction.html">UpdateIctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateictransitem.html">Updateictransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateictransitems.html">Updateictransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateInvoice.html">UpdateInvoice</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updateinvoiceitems.html">Updateinvoiceitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateInvpricelistentry.html">UpdateInvpricelistentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateItem.html">UpdateItem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateJournal.html">UpdateJournal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatelineitem.html">Updatelineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateLocation.html">UpdateLocation</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdatePopricelist.html">UpdatePopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdatePotransaction.html">UpdatePotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatepotransitem.html">Updatepotransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatepotransitems.html">Updatepotransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateProject.html">UpdateProject</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateSavingsaccount.html">UpdateSavingsaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateSopricelist.html">UpdateSopricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateSotransaction.html">UpdateSotransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatesotransitem.html">Updatesotransitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatesotransitems.html">Updatesotransitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateStatglaccount.html">UpdateStatglaccount</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatesubtotal.html">Updatesubtotal</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Updatesubtotals.html">Updatesubtotals</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateTask.html">UpdateTask</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateTaxdetail.html">UpdateTaxdetail</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateTaxschedule.html">UpdateTaxschedule</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateTerritory.html">UpdateTerritory</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateTimesheet.html">UpdateTimesheet</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateVendor.html">UpdateVendor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateVsoeitempricelist.html">UpdateVsoeitempricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/UpdateVsoepricelist.html">UpdateVsoepricelist</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Url.html">Url</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Usedingl.html">Usedingl</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Userkey.html">Userkey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Username.html">Username</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Usesig1Belowamt.html">Usesig1Belowamt</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Usesig2Belowamt.html">Usesig2Belowamt</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Value.html">Value</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Vendlineitem.html">Vendlineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Vendlineitems.html">Vendlineitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Vendordata.html">Vendordata</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Vendorid.html">Vendorid</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Vendorname.html">Vendorname</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Visibility.html">Visibility</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Webpage.html">Webpage</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whencreated.html">Whencreated</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whenlastreceived.html">Whenlastreceived</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whenlastsold.html">Whenlastsold</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whenmodified.html">Whenmodified</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whslineitem.html">Whslineitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Whslineitems.html">Whslineitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wuccpayitem.html">Wuccpayitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wuccpayitems.html">Wuccpayitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wucctransaction.html">Wucctransaction</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wucctransactions.html">Wucctransactions</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wudisbursement.html">Wudisbursement</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wudisbursementitem.html">Wudisbursementitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wudisbursementitems.html">Wudisbursementitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wudisbursements.html">Wudisbursements</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wuentryitem.html">Wuentryitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wuentryitems.html">Wuentryitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wujournalentries.html">Wujournalentries</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wujournalentry.html">Wujournalentry</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wureceipt.html">Wureceipt</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wureceiptitem.html">Wureceiptitem</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wureceiptitems.html">Wureceiptitems</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Wureceipts.html">Wureceipts</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+  <a href="#lfields">Fields</a>
+  
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>Updateentry</h1>
+
+
+
+  
+    extends <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.intacct.schema.request.Updateentry</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#lineNum">lineNum</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#valueOrDepartmentidOrLocationid">valueOrDepartmentidOrLocationid</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#Updateentry()">Updateentry</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#getLineNum()">getLineNum</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the lineNum property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#getValueOrDepartmentidOrLocationid()">getValueOrDepartmentidOrLocationid</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the value of the valueOrDepartmentidOrLocationid property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/intacct/schema/request/Updateentry.html#setLineNum(java.lang.String)">setLineNum</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the value of the lineNum property.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="lineNum"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        lineNum
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="valueOrDepartmentidOrLocationid"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;
+      </span>
+        valueOrDepartmentidOrLocationid
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="Updateentry()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">Updateentry</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="getLineNum()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getLineNum</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the lineNum property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>possible object is <code><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></code>
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getValueOrDepartmentidOrLocationid()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/List.html">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;
+      </span>
+      <span class="sympad">getValueOrDepartmentidOrLocationid</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the value of the valueOrDepartmentidOrLocationid property.
+ <p>
+ This accessor method returns a reference to the live list, not a snapshot.
+ Therefore any modification you make to the returned list will be present
+ inside the JAXB object. This is why there is not a <CODE>set</CODE> method for
+ the valueOrDepartmentidOrLocationid property.
+ <p>
+ For example, to add a new item, do as follows:
+ 
+ <pre>
+ getValueOrDepartmentidOrLocationid().add(newItem);
+ </pre>
+ <p>
+ Objects of the following type(s) are allowed in the list <code><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Value.html">Value</a></code>
+ <code><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Departmentid.html">Departmentid</a></code> <code><a href="../../../../../../../java/org/mule/module/intacct/schema/request/Locationid.html">Locationid</a></code>
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setLineNum(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setLineNum</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the value of the lineNum property.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>allowed object is <code><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></code>
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
