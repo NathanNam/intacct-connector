@@ -182,7 +182,12 @@ public class IntacctCloudConnector
 
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Invoice}
-     * 
+     * <p>
+     * An invoice is a document within the Intacct system. The invoice represents a 
+     * transaction between the company and a customer.
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/invoice">Invoice<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -280,7 +285,12 @@ public class IntacctCloudConnector
     
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Invoicebatch}
-     * 
+     * <p>
+     * An invoice batch is an entity that groups invoices. Every invoice in the Intacct 
+     * system must be assigned to a batch.
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/invoice-batch">Invoicebatch<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -326,7 +336,14 @@ public class IntacctCloudConnector
     
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Aradjustment}
-     * 
+     * <p>
+     * An AR Adjustment is a document within the Intacct system. The AR Adjustment represents 
+     * an adjustment to the customer's account, with or without reference to an existing 
+     * invoice. Generally, the AR Adjustment is an internal document, not an invoice, and 
+     * therefore does not have a due date.
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/ar-adjustment">Aradjustment<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-aradjustment}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -404,7 +421,14 @@ public class IntacctCloudConnector
     
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Sotransaction}
-     * 
+     * <p>
+     * An SOTransaction represents any transactional document created in the Order 
+     * Entry application. Each document in the Order Entry application is user definable; 
+     * there are no statically defined document types. When querying SOTransactions, it 
+     * may be useful to filter the query by the transactiontype field. 
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/sotransaction">Sotransaction<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-sotransaction}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -516,7 +540,9 @@ public class IntacctCloudConnector
     /**
      * Allows you to retrieve a list object with optional filter and/or sort specifications.
      * Filters can be simple or complex with logical groupings for AND and OR filtering.
-     * 
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/get-list">getList<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get-list}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -604,7 +630,9 @@ public class IntacctCloudConnector
      * <p>
      * Additional options for manipulating the return fields allow you to retrieve 
      * only the information that you need.
-     * 
+     * <p>
+     * Documentation: <a href="http://developer.intacct.com/wiki/get">get<a>
+     * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -684,7 +712,7 @@ public class IntacctCloudConnector
      * 
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation-with-request}
      *
-     * @param request request
+     * @param request {@link Request}
      * @return {@link Response}
      * @throws JAXBException
      */
