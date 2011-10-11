@@ -159,6 +159,9 @@ public class IntacctCloudConnector
     
     /**
      * Batch executes a list of commands of the given CommandType.
+     * <p>
+     * This processor, it's the equivalent of making an {@link #operation(Map)} (deprecated)
+     * of a function with all its elements of the same Commandtype.
      * 
      * Example 1:
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:execute1}
@@ -169,14 +172,21 @@ public class IntacctCloudConnector
      * Example 3:
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
      * 
+     * @param functionControlId String. Is used by the sender to match a request to 
+     *                          its response for the function that will be created 
+     *                          for this operation. This is especially useful during 
+     *                          asynchronous requests.
      * @param type the type of commands to execute
      * @param commands the commands list
      * @return the {@link Response}
      */
     @Processor
-    public Response execute(final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
+    public Response execute(String functionControlId, final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
     {
-        return operation(mom.wrapList("cmd", commands, type.getRequestType()));
+        Map<String, Object> function = mom.wrapList("cmd", commands, type.getRequestType());
+        function.put("controlid", functionControlId);
+        
+        return operation(function);
     }
     
 
@@ -358,7 +368,7 @@ public class IntacctCloudConnector
      * @param invoiceNo the invoiceNo
      * @param description the description
      * @param externalId the externalId
-     * @param basecurr the basecurr
+     * @param baseCurr the basecurr
      * @param currency the currency
      * @param exchType the exchType
      * @param exchRateDateOrExchRateTypeOrExchRate the exchRateDateOrExchRateTypeOrExchRate
@@ -377,7 +387,7 @@ public class IntacctCloudConnector
                                        @Optional String invoiceNo,
                                        @Optional String description,
                                        @Optional String externalId,
-                                       @Optional String basecurr,
+                                       @Optional String baseCurr,
                                        @Optional String currency,
                                        @Optional ExchType exchType,
                                        @Optional List<Map<String, Object>> exchRateDateOrExchRateTypeOrExchRate,
@@ -405,6 +415,7 @@ public class IntacctCloudConnector
                             .with("invoiceno", invoiceNo)
                             .with("description", description)
                             .with("externalid", externalId)
+                            .with("baseCurr", baseCurr)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
@@ -712,7 +723,7 @@ public class IntacctCloudConnector
      * 
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation-with-request}
      *
-     * @param request {@link Request}
+     * @param request The {@link Request}
      * @return {@link Response}
      * @throws JAXBException
      */

@@ -15,8 +15,10 @@ import static org.hamcrest.CoreMatchers.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.WebApplicationException;
@@ -124,6 +126,177 @@ public class RealHttpTestCase extends BaseIntacctTest
         Assert.assertEquals(controlId, resp.getControl().getControlid());
     }
 
+    /**
+     * This test creates a customer using the execute processor.
+     */
+    public void testCreateCustomerWithExecute() throws Exception
+    {
+        Response response = new Response();
+        Control control = new Control();
+        control.setControlid(controlId);
+        response.setControl(control);
+        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+        startServer(handler);
+
+        Map<String, Object> payload = new HashMap<String, Object>();
+        payload.put("Intacct_Seed_Number__c1", "Intacct_Seed_Number__c1");
+        payload.put("Name1", "Richard");
+        Contact contact1 = new Contact();
+        contact1.setContactname(new Contactname() { { value = "Richard"; } });
+        contact1.setPrintas("Richard");
+        contact1.setCompanyname("Richard");
+        contact1.setMailaddress(new Mailaddress() { { 
+            address1 = "Any Street";
+            city = "Any City";
+            state = "Any State";
+            zip = "Zip";
+            country = "Country";
+        } });
+        
+        List<Object> contactInfo = new ArrayList<Object>();
+        contactInfo.add(contact1);
+        
+        payload.put("ContactInfo1", contactInfo);
+
+        payload.put("Intacct_Seed_Number__c2", "Intacct_Seed_Number__c2");
+        payload.put("Name2", "Susan");
+        Contact contact2 = new Contact();
+        contact2.setContactname(new Contactname() { { value = "Susan"; } });
+        contact2.setPrintas("Susan");
+        contact2.setCompanyname("Susan");
+        contact2.setMailaddress(new Mailaddress() { { 
+            address1 = "Other Street";
+            city = "Other City";
+            state = "Other State";
+            zip = "Zip Other";
+            country = "Other Country";
+        } });
+        
+        List<Object> contactInfo2 = new ArrayList<Object>();
+        contactInfo.add(contact2);
+        
+        payload.put("ContactInfo2", contactInfo2);
+        
+        MessageProcessor flow = lookupFlowConstruct("createCustomers");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+
+        String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
+            "xmlrequest".length() + 1);
+        final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
+        String xml = URLDecoder.decode(encodedXml, charsetName);
+        InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
+        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        XMLReader reader = XMLReaderFactory.createXMLReader();
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
+            "http://www.mulesoft.org/schema/mule/intacct"));
+        inFilter.setParent(reader);
+        InputSource is = new InputSource(in);
+        SAXSource source = new SAXSource(inFilter, is);
+
+        Request req = (Request) um.unmarshal(source);
+        Assert.assertEquals(controlId, req.getControl().getControlid());
+        Response resp = (Response) responseEvent.getMessage().getPayload();
+        Assert.assertNotNull(resp);
+        Assert.assertEquals(controlId, resp.getControl().getControlid());
+    }
+    
+    /**
+     * This test creates a customer using the execute processor.
+     */
+    public void testCreateCustomerWithExecuteUsingOneListOfCommands() throws Exception
+    {
+        Response response = new Response();
+        Control control = new Control();
+        control.setControlid(controlId);
+        response.setControl(control);
+        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+        startServer(handler);
+
+        Map<String, Object> customer1 = new HashMap<String, Object>();
+        customer1.put("customerid", new Customerid() { {
+            value = "Intacct_Seed_Number__c1";
+        } });
+        customer1.put("name", "Richard");
+        customer1.put("deliveryoptions", new HashMap<String, Object>() { {
+            put("deliveryoption", Arrays.<Map<String, Object>>asList(new HashMap<String, Object>() { {
+                put("value", "Print");
+            } }));
+        } });
+        customer1.put("status", "active");
+        Contact contact1 = new Contact();
+        contact1.setContactname(new Contactname() { { value = "Richard"; } });
+        contact1.setPrintas("Richard");
+        contact1.setCompanyname("Richard");
+        contact1.setMailaddress(new Mailaddress() { { 
+            address1 = "Any Street";
+            city = "Any City";
+            state = "Any State";
+            zip = "Zip";
+            country = "Country";
+        } });
+        
+        Map<String, Object> contactInfo1 = new HashMap<String, Object>();
+        contactInfo1.put("contactOrContactname", Arrays.<Object>asList(contact1));
+        
+        customer1.put("contactinfo", contactInfo1);
+
+        Map<String, Object> customer2 = new HashMap<String, Object>();
+        customer2.put("customerid", new Customerid() { {
+            value = "Intacct_Seed_Number__c2";
+        } });
+        customer2.put("name", "Susan");
+        customer2.put("deliveryoptions", new HashMap<String, Object>() { {
+            put("deliveryoption", Arrays.<Map<String, Object>>asList(new HashMap<String, Object>() {{
+                put("value", "Print");
+            } }));
+        } });
+        customer2.put("status", "active");
+        Contact contact2 = new Contact();
+        contact2.setContactname(new Contactname() { { value = "Susan"; } });
+        contact2.setPrintas("Susan");
+        contact2.setCompanyname("Susan");
+        contact2.setMailaddress(new Mailaddress() { { 
+            address1 = "Other Street";
+            city = "Other City";
+            state = "Other State";
+            zip = "Zip Other";
+            country = "Other Country";
+        } });
+        
+        Map<String, Object> contactInfo2 = new HashMap<String, Object>();
+        contactInfo2.put("contactOrContactname", Arrays.<Object>asList(contact2));
+        
+        customer2.put("contactinfo", contactInfo2);
+        
+        Map<String, Object> payload = new HashMap<String, Object>();
+        
+        payload.put("commands", Arrays.<Map<String, Object>>asList(customer1, customer2));
+        
+        MessageProcessor flow = lookupFlowConstruct("createCustomersSecondVersion");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+
+        String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
+            "xmlrequest".length() + 1);
+        final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
+        String xml = URLDecoder.decode(encodedXml, charsetName);
+        InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
+        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        XMLReader reader = XMLReaderFactory.createXMLReader();
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
+            "http://www.mulesoft.org/schema/mule/intacct"));
+        inFilter.setParent(reader);
+        InputSource is = new InputSource(in);
+        SAXSource source = new SAXSource(inFilter, is);
+
+        Request req = (Request) um.unmarshal(source);
+        Assert.assertEquals(controlId, req.getControl().getControlid());
+        Response resp = (Response) responseEvent.getMessage().getPayload();
+        Assert.assertNotNull(resp);
+        Assert.assertEquals(controlId, resp.getControl().getControlid());
+    }
+	
     public void testSendNoResponse() throws Exception
     {
         startServer(new EmptyResponseHandler());

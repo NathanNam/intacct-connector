@@ -44,7 +44,40 @@
         </intacct:operation>
 	</flow>
 	
-	
+	     <flow name="createCustomers">
+        <intacct:execute functionControlId="#[string:invoice- #[mule:message.id]]"
+                         type="CreateCustomer">
+            <intacct:commands>
+                <intacct:create-customer>
+                    <intacct:customerid>#[map-payload:Intacct_Seed_Number__c1]</intacct:customerid>
+    
+                    <intacct:name>#[map-payload:Name1]</intacct:name>
+                    <intacct:deliveryoptions>
+                        <intacct:deliveryoption>Print</intacct:deliveryoption>
+                    </intacct:deliveryoptions>
+                    <intacct:status>active</intacct:status>
+                    <intacct:contactinfo ref="#[map-payload:ContacInfo1]" />
+                </intacct:create-customer>
+                <intacct:create-customer>
+                    <intacct:customerid>#[map-payload:Intacct_Seed_Number__c2]</intacct:customerid>
+    
+                    <intacct:name>#[map-payload:Name2]</intacct:name>
+                    <intacct:deliveryoptions>
+                        <intacct:deliveryoption>Print</intacct:deliveryoption>
+                    </intacct:deliveryoptions>
+                    <intacct:status>active</intacct:status>
+                    <intacct:contactinfo ref="#[map-payload:ContacInfo2]" />
+                </intacct:create-customer>
+            </intacct:commands>
+        </intacct:execute>
+     </flow>
+     
+     <flow name="createCustomersSecondVersion">
+        <intacct:execute functionControlId="#[string:invoice- #[mule:message.id]]"
+                         type="CreateCustomer">
+            <intacct:commands ref="#[map-payload:commands]" />
+        </intacct:execute>
+     </flow>
 	
 
 </mule>
