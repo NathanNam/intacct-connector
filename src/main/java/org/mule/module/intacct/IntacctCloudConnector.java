@@ -88,27 +88,27 @@ public class IntacctCloudConnector
      * for a request element.
      */
     @Configurable
-    private String controlid;
+    private String controlId;
     
     /**
-     * The Intacct system guarantees transaction idempotence through the use of the uniqueid. 
-     * The default setting for the uniqueid element is "true" with all lower-case characters.
-     * If the uniqueid element value is set to "true", the designated function will be 
-     * performed only once. Before a function is executed, the controlid attribute of the 
+     * The Intacct system guarantees transaction idempotence through the use of the uniqueId.
+     * The default setting for the uniqueId element is "true" with all lower-case characters.
+     * If the uniqueId element value is set to "true", the designated function will be
+     * performed only once. Before a function is executed, the controlId attribute of the
      * function tag is checked for uniqueness. If a function is submitted twice under the 
-     * same controlid and sender, the function will not be re-executed. However, a failed 
-     * request may be re-submitted under the same controlid and sender.
+     * same controlId and sender, the function will not be re-executed. However, a failed
+     * request may be re-submitted under the same controlId and sender.
 
      */
     @Configurable
-    private String uniqueid;
+    private String uniqueId;
     
     /**
      * The login information specifies the user's Intacct identity. 
      * This is the same information you see when you log onto the Intacct system.
      */
     @Configurable
-    private String userid;
+    private String userId;
     
     /**
      * The login information specifies the user's Intacct password. 
@@ -123,7 +123,7 @@ public class IntacctCloudConnector
      * This is the same information you see when you log onto the Intacct system.
      */
     @Configurable
-    private String companyid;
+    private String companyId;
     
     /**
      * Intacct Client implementation. By default: {@link JerseySslIntacctFacade}
@@ -710,17 +710,17 @@ public class IntacctCloudConnector
         final Control control = new Control();
         control.setSenderid(senderId);
         control.setPassword(controlPassword);
-        control.setControlid(controlid);
-        control.setUniqueid(uniqueid);
+        control.setControlid(controlId);
+        control.setUniqueid(uniqueId);
         control.setDtdversion("2.1");
         request.setControl(control);
         final Operation operation = new Operation();
         request.getOperation().add(operation);
         final Authentication authentication = new Authentication();
         final Login login = new Login();
-        login.setUserid(userid);
+        login.setUserid(userId);
         login.setPassword(userPassword);
-        login.setCompanyid(companyid);
+        login.setCompanyid(companyId);
         authentication.getLoginOrSessionid().add(login);
         operation.setAuthentication(authentication);
         final Content content = new Content();
@@ -773,69 +773,69 @@ public class IntacctCloudConnector
     }
 
     /**
-     * Returns the controlid.
+     * Returns the controlId.
      * 
-     * @return  with the controlid.
+     * @return  with the controlId.
      */
     
-    public String getControlid()
+    public String getControlId()
     {
-        return controlid;
+        return controlId;
     }
 
     /**
-     * Sets the controlid. 
+     * Sets the controlId.
      *
-     * @param controlid  with the controlid.
+     * @param controlId  with the controlId.
      */
     
-    public void setControlid(String controlid)
+    public void setControlId(String controlId)
     {
-        this.controlid = controlid;
+        this.controlId = controlId;
     }
 
     /**
-     * Returns the uniqueid.
+     * Returns the uniqueId.
      * 
-     * @return  with the uniqueid.
+     * @return  with the uniqueId.
      */
     
-    public String getUniqueid()
+    public String getUniqueId()
     {
-        return uniqueid;
+        return uniqueId;
     }
 
     /**
-     * Sets the uniqueid. 
+     * Sets the uniqueId.
      *
-     * @param uniqueid  with the uniqueid.
+     * @param uniqueId  with the uniqueId.
      */
     
-    public void setUniqueid(String uniqueid)
+    public void setUniqueId(String uniqueId)
     {
-        this.uniqueid = uniqueid;
+        this.uniqueId = uniqueId;
     }
 
     /**
-     * Returns the userid.
+     * Returns the userId.
      * 
-     * @return  with the userid.
+     * @return  with the userId.
      */
     
-    public String getUserid()
+    public String getUserId()
     {
-        return userid;
+        return userId;
     }
 
     /**
-     * Sets the userid. 
+     * Sets the userId.
      *
-     * @param userid  with the userid.
+     * @param userId  with the userId.
      */
     
-    public void setUserid(String userid)
+    public void setUserId(String userId)
     {
-        this.userid = userid;
+        this.userId = userId;
     }
 
     /**
@@ -861,25 +861,25 @@ public class IntacctCloudConnector
     }
 
     /**
-     * Returns the companyid.
+     * Returns the companyId.
      * 
-     * @return  with the companyid.
+     * @return  with the companyId.
      */
     
-    public String getCompanyid()
+    public String getCompanyId()
     {
-        return companyid;
+        return companyId;
     }
 
     /**
-     * Sets the companyid. 
+     * Sets the companyId.
      *
-     * @param companyid  with the companyid.
+     * @param companyId  with the companyId.
      */
     
-    public void setCompanyid(String companyid)
+    public void setCompanyId(String companyId)
     {
-        this.companyid = companyid;
+        this.companyId = companyId;
     }
 
     /**

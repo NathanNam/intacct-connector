@@ -25,7 +25,7 @@
    	</spring:bean>
    </spring:beans>
    
-   <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" intacctImplementation-ref="httpIntacct" />
+   <intacct:config senderId="12345" controlPassword="password Control" controlId="mi id" uniqueId="false" userId="usuario" userPassword="miPass" companyId="compId" intacctImplementation-ref="httpIntacct" />
 
 	<flow name="functionFlow">
 		<intacct:get-list functionControlId="#[map-payload:controlid]" obj="glaccount">

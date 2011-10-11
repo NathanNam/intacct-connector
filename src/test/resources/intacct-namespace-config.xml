@@ -25,7 +25,7 @@
    
    
    
-   <intacct:config senderId="12345" controlPassword="password Control" controlid="mi id" uniqueid="false" userid="usuario" userPassword="miPass" companyid="compId" />
+   <intacct:config senderId="12345" controlPassword="password Control" controlId="mi id" uniqueId="false" userId="usuario" userPassword="miPass" companyId="compId" />
     
      <flow name="testFlow">
          <intacct:operation>
@@ -39,18 +39,18 @@
  <!--				<control>
 					<senderid>intacct-dev</senderid>
 					<password>babbage</password>
-					<controlid>XML Sample</controlid>
+					<controlId>XML Sample</controlId>
 				</control>
 				<operation>
 					<authentication>
 						<login>
-							<userid>xmluser</userid>
-							<companyid>XML Sample</companyid>
+							<userId>xmluser</userId>
+							<companyId>XML Sample</companyId>
 							<password>abc123</password>
 						</login>
 					</authentication>
 					<content>
-						<function controlid="#[map-payload:controlid]">
+						<function controlId="#[map-payload:controlId]">
 							<get-list object="glaccount">
 								<filter>
 									<logical logical-operator="or">
@@ -89,7 +89,7 @@
 	</flow>
 	
 	<flow name="functionFlow">
-			<intacct:function controlid="#[map-payload:controlid]" >
+			<intacct:function controlId="#[map-payload:controlId]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
@@ -168,7 +168,7 @@
 	</flow>
 	
 	<flow name="functionFlowWithExHandling">
-			<intacct:function controlid="#[map-payload:controlid]" >
+			<intacct:function controlId="#[map-payload:controlId]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">
@@ -205,7 +205,7 @@
 	
     <flow name="realFunctionFlow">
 		<vm:inbound-endpoint path="realFlow" exchange-pattern="request-response"/>
-			<intacct:function controlid="#[map-payload:controlid]" >
+			<intacct:function controlId="#[map-payload:controlId]" >
 				<get-list object="glaccount">
 					<filter>
 						<logical logical-operator="or">

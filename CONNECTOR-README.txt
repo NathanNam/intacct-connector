@@ -11,18 +11,18 @@ the API call for the get_invoice function looks like this:
       <control>
        <senderid>intacct_dev</senderid>
        <password>babbage</password>
-       <controlid>XML Sample</controlid>
+       <controlId>XML Sample</controlId>
       </control>
       <operation>
        <authentication>
         <login>
-         <userid>xmluser</userid>
-         <companyid>XML Sample</companyid>
+         <userId>xmluser</userId>
+         <companyId>XML Sample</companyId>
          <password>abc123</password>
         </login>
        </authentication>
        <content>
-         <function controlid="testControlId">
+         <function controlId="testControlId">
             <get_invoice key="XXXX"/>
          </function>
        </content>
@@ -42,7 +42,7 @@ following example of the get_list function:
 ---------------8<---------------------8<----------------------
      ...
      <content>
-      <function controlid="f4">
+      <function controlId="f4">
        <get_list object="glaccount">
         <filter>
          <logical logical_operator="or">
