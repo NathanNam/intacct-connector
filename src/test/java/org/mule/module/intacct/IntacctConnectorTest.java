@@ -154,7 +154,7 @@ public class IntacctConnectorTest
                                       null,
                                       null,
                                       null,
-                                      ContactType.ContacName,
+                                      ContactType.ContactName,
                                       mapShipTo,
                                       null,
                                       null,

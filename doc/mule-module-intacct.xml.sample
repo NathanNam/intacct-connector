@@ -1,5 +1,10 @@
+<!-- BEGIN_INCLUDE(intacct:operation) -->
+    Please, never use this processor. Thanks.
+<!-- END_INCLUDE(intacct:operation) -->
+
 <!-- BEGIN_INCLUDE(intacct:execute1) -->
-<intacct:execute type="CreateBill">
+<intacct:execute functionControlId="some function control id"
+                 type="CreateBill">
     <intacct:commands>
         <intacct:command>
             <externalid>#[variable:aString]</externalid>
@@ -12,13 +17,15 @@
 <!-- END_INCLUDE(intacct:execute1) -->
 
 <!-- BEGIN_INCLUDE(intacct:execute2) -->
-<intacct:execute type="CreateBill">
+<intacct:execute functionControlId="some function control id"
+                 type="CreateBill">
     <intacct:commands ref="#[variable:aListOfStringObjectMaps]"/>
 </intacct:execute>
 <!-- END_INCLUDE(intacct:execute2) -->
 
 <!-- BEGIN_INCLUDE(intacct:execute3) -->
-<intacct:execute type="CreateBill">
+<intacct:execute functionControlId="some function control id"
+                 type="CreateBill">
     <intacct:commands ref="#[groovy:[
         [ 'externalId' : 'anId',
           'description' : 'aDescription',
@@ -30,85 +37,662 @@
 <!-- END_INCLUDE(intacct:execute3) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-invoice) -->
-<intacct:create-invoice functionControlId="#[variable:functionControlId]"
-                        customerId="#[variable:customerId]"
-                        termName="#[variable:termName]"
+<intacct:create-invoice functionControlId="some function control id"
+                        customerId="some customer id"
+                        termName="some term name"
+                        batchKey="some batch key"
+                        invoiceNo="invoice number"
+                        poNumber="po number"
                         description="New invoice"
                         externalId="123456"
                         billToContactType="ContactName"
                         shipToContactType="Contact"
-                        currency="#[variable:currency]">
-    <intacct:dateCreated ref="#[variable:dateCreated]" />
-    <intacct:dateDue ref="#[variable:dateDue]" />
-    <intacct:billTo ref="#[variable:billTo]" />
-    <intacct:shipTo ref="#[variable:shipTo]" />
-    <intacct:invoiceItems ref="[variable:invoiceItems]" />
+                        baseCurr="base currency"
+                        currency="currency"
+                        exchType="ExchRateDate"
+                        nogl="some nogl">
+    <intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" />
+    <intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code'] ]
+    ] ]" />
+    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" />
+    <intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" />
+    <intacct:invoice-items ref="#[groovy: [ [
+        'accountlabelOrGlaccountno' : [ 
+            new Accountlabel(value : 'some account value'), 
+            new Accountlabel(value : 'other account value') ] ,
+        'amount' : 'some amount' ,
+        'allocationid' : 'some allocation id' ,
+        'memo' : 'some memo' ,
+        'locationid' : 
+            [ 'value' : 'some location id' ] ,
+        'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+        'item1099' : 'some item 1099' ,
+        'key' : 'some key' ,
+        'totalpaid' : 'total paid' ,
+        'totaldue' : 'total due' ,
+        'customfields' : 
+            [ 'customfield' : 
+                [ [ 'customfieldname' : 'some custom field' ,
+                    'customfieldvalue' : 'some custom field value' ] ,
+                  [ 'customfieldname' : 'other custom field' ,
+                    'customfieldvalue' : 'other custom field value' ] ] ] ,
+        'revrectemplate' : 'some recvrec template' ,
+        'defrevaccount' : 'some defrev account' ,
+        'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'projectid' : 'some proyect id' ,
+        'customerid' :
+            [ 'value' : 'customer id value' ] ,
+        'vendorid' :
+            [ 'value' : 'vendor id value' ] ,
+        'employeeid' :
+            [ 'value' : 'employee id value' ] ,
+        'itemid' : 
+            [ 'value' : 'item id value' ],
+        'classid' : 'some class id' ,
+        'billable' : 'some billable'
+    ] ] ]" />
 </intacct:create-invoice>
 <!-- END_INCLUDE(intacct:create-invoice) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-invoicebatch) -->
-<intacct:create-invoicebatch functionControlId="#[variable:functionControlId]"
-                             batchTitle="#[variable:batchTitle]">
-    <intacct:dateCreated ref="#[variable:dateCreated]" />
-    <intacct:createInvoiceList ref="[variable:createInvoiceList]" />
+<intacct:create-invoicebatch functionControlId="some function control id"
+                             batchTitle="some batch title">
+    <intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:create-invoice-list ref="#[groovy: [
+    [ 'customerid' : 'some customer id' ,
+      'datecreated' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'dateposted' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'datedue' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'termName' : 
+        [ 'value' : 'some term name value' ] ,
+      'batchKey' : 
+        [ 'value' : 'some batch key value' ] ,
+      'invoiceNo' : 'invoice number' ,
+      'poNumber' : 'po number' ,
+      'description' : 'New invoice' ,
+      'externalId' : 123456' ,
+      'billTo' : 
+        [ new Contactname(value : 'Richard') , 
+          new Contact(
+            contactname : new Contactname(value : 'Michael') ,
+            printas : 'some printas' ,
+            taxable : 'some taxable' ,
+            companyname : 'some company name' ,
+            taxgroup : 'some tax group' ,
+            prefix : 'some prefix' ,
+            firstname : 'some first name' ,
+            lastname : 'some last name' ,
+            initial : 'some initial' ,
+            phone1 : '1231231231' ,
+            phone2 : 'other phone' ,
+            cellphone : 'some cellphone' ,
+            pager : 'some pager' ,
+            fax : 'some fax' ,
+            email1 : 'some email' ,
+            email2 : 'other email' ,
+            url1 : 'some url' ,
+            url2 : 'other url' ,
+            status : 'some status' ,
+            mailaddress : new Mailaddress(
+               address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code')
+          ) ] ,
+      'shipTo' : 
+        [ new Contact(
+            contactname = new Contactname(
+                value = 'John') ,
+            printas : 'some printas' ,
+            taxable : 'some taxable' ,
+            companyname : 'some company name' ,
+            taxgroup : 'some tax group' ,
+            prefix : 'some prefix' ,
+            firstname : 'some first name' ,
+            lastname : 'some last name' ,
+            initial : 'some initial' ,
+            phone1 : '1231231231' ,
+            phone2 : 'other phone' ,
+            cellphone : 'some cellphone' ,
+            pager : 'some pager' ,
+            fax : 'some fax' ,
+            email1 : 'some email' ,
+            email2 : 'other email' ,
+            url1 : 'some url' ,
+            url2 : 'other url' ,
+            status : 'some status' ,
+            mailaddress : new Mailaddress( 
+               address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code'
+            )
+          ) ,
+          new Contactname(
+            value = 'Vito') ] ,
+      'baseCurr' : 'some base currency' ,
+      'currency' : 'some currency' ,
+      'nogl' : 'some nogl' ,
+      'exchratedateOrExchratetypeOrExchrate' : [
+        new Exchratedate(
+          year : '2011' ,
+          month : '10' ,
+          day : '12') , 
+        new Exchratetype(
+          value : 'some value'),
+        new Exchrate(
+          value : 'some value') ] ,
+      'customFields' : [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+      'invoiceItems' : [ 
+        [ 'accountlabelOrGlaccountno' : [ 
+              new Accountlabel(
+                value : 'some account value') , 
+              new Accountlabel(
+                value : 'other account value') ] ,
+          'amount' : 'some amount' ,
+          'allocationid' : 'some allocation id' ,
+          'memo' : 'some memo' ,
+          'locationid' : 
+            [ 'value' : 'some location id' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+          'item1099' : 'some item 1099' ,
+          'key' : 'some key' ,
+          'totalpaid' : 'total paid' ,
+          'totaldue' : 'total due' ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some recvrec template' ,
+          'defrevaccount' : 'some defrev account' ,
+          'revrecstartdate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'revrecenddate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'projectid' : 'some proyect id' ,
+          'customerid' :
+              [ 'value' : 'customer id value' ] ,
+          'vendorid' :
+              [ 'value' : 'vendor id value' ] ,
+          'employeeid' :
+              [ 'value' : 'employee id value' ] ,
+          'itemid' : 
+              [ 'value' : 'item id value' ],
+          'classid' : 'some class id' ,
+          'billable' : 'some billable' ] ]
+    ] ] ]" />
 </intacct:create-invoicebatch>
 <!-- END_INCLUDE(intacct:create-invoicebatch) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
-<intacct:aradjustment functionControlId="#[variable:functionControlId]"
-                      customerId="#[variable:customerId]"
-                      description="#[variable:description]"
+<intacct:create-aradjustment functionControlId="some function control id"
+                      customerId="some customer id"
+                      batchKey="some batch key"
+                      adjustmentNo="some adjustment number"
+                      invoiceNo="some invoice number"
+                      description="some description"
                       externalId="123456"
-                      currency="#[variable:currency]"
-                      exchType="ExchRateDate">
-    <intacct:dateCreated ref="#[variable:dateCreated]" />
-    <intacct:exchRateDateOrExchRateTypeOrExchRate ref="[variable:exchRateDateOrExchRateTypeOrExchRate]" />
-    <intacct:arAdjustmentItems ref="#[variable:arAdjustmentItems]" />
+                      baseCurr="some base currency"
+                      currency="some currency"
+                      exchType="ExchRateDate"
+                      nogl="some nogl">
+    <intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" />
+    <intacct:ar-adjustment-items ref="#[groovy : [ 
+        [ 'accountlabelOrGlaccountno' : [ 
+              new Accountlabel(
+                value = 'some account value') , 
+              new Accountlabel(
+                value = 'other account value') ] ,
+          'amount' : 'some amount' ,
+          'allocationid' : 'some allocation id' ,
+          'memo' : 'some memo' ,
+          'locationid' : 
+            [ 'value' : 'some location id' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+          'item1099' : 'some item 1099' ,
+          'key' : 'some key' ,
+          'totalpaid' : 'total paid' ,
+          'totaldue' : 'total due' ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some recvrec template' ,
+          'defrevaccount' : 'some defrev account' ,
+          'revrecstartdate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'revrecenddate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'projectid' : 'some proyect id' ,
+          'customerid' :
+              [ 'value' : 'customer id value' ] ,
+          'vendorid' :
+              [ 'value' : 'vendor id value' ] ,
+          'employeeid' :
+              [ 'value' : 'employee id value' ] ,
+          'itemid' : 
+              [ 'value' : 'item id value' ],
+          'classid' : 'some class id' ,
+          'billable' : 'some billable' ] 
+    ] ]" />
 </intacct:create-aradjustment>
 <!-- END_INCLUDE(intacct:create-aradjustment) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-sotransaction) -->
-<intacct:sotransaction functionControlId="#[variable:functionControlId]"
-                       transactionType="#[variable:transactionType]"
-                       customerId="#[variable:customerId]"
-                       termname="#[variable:termname]"
-                       description="#[variable:description]"
+<intacct:create-sotransaction functionControlId="some function control id"
+                       transactionType="some transaction type"
+                       createdFrom="created from"
+                       customerId="some customer id"
+                       documentNo="some document number"
+                       referenceNo="some reference number"
+                       termName="some term name"
+                       message="some message"
+                       shippingMethod="some shipping method"
                        billToContactType="ContactName"
                        shipToContactType="Contact"
                        externalId="123456"
-                       currency="#[variable:currency]"
-                       exchType="ExchRateDate">
-    <intacct:dateCreated ref="#[variable:dateCreated]" />
-    <intacct:billTo ref="#[variable:billTo]" />
-    <intacct:shipTo ref="#[variable:shipTo]" />
-    <intacct:exchRateDateOrExchRateTypeOrExchRate ref="[variable:exchRateDateOrExchRateTypeOrExchRate]" />
-    <intacct:arAdjustmentItems ref="#[variable:arAdjustmentItems]" />
+                       baseCurr="some base currency"
+                       currency="some currency"
+                       exchType="ExchRateDate"
+                       vsoePriceList="some vsow price list">
+    <intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" />
+    <intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" />
+    <intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : 
+             ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']]
+    ] ]" />
+    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" />
+    <intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" />
+    <intacct:so-trans-items ref="#[groovy :[
+        [ 'bundlenumber' : 'some bundle number' ,
+          'itemid' : 
+            [ 'value' : 'some item id value' ] ,
+          'itemdesc' : 'some item description' ,
+          'taxable' : 'some taxable' ,
+          'warehouseid' : 'some warehouse id' ,
+          'quantity' : 'some quantity' ,
+          'unit' : 'some unit' ,
+          'price' : 'some price' ,
+          'discsurchargememo' : 'some discsurcharge memo'
+          'locationid' : 
+            [ 'value' : 'some location id value' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id value' ] ,
+          'memo' : 'some memo' ,
+          'itemdetails' : [
+             'itemdetail' : [ 
+                [ 'quantity' : 'some quantity' ,
+                  'serialnoOrLotno' : [
+                    new Serialno(
+                        value = 'some serial number') ,
+                    new Lotno(
+                        value = 'some lot number') ],
+                  'aisle' : 'some aisle' ,
+                  'row' : 'some row' ,
+                  'bin' : 'some bin' ,
+                  'itemexpiration' : 
+                    [ 'year' : '2011' ,
+                      'month' : '10' ,
+                      'day' : '12' ]
+                ] ] 
+             ] ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some revrect template' ,
+          'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ] ,
+          'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ] ,
+          'renewalmacro' : 'some renew al macro' ,
+          'projectid' : 'some project id' ,
+          'customerid' : 
+            [ 'value' : 'some customer id value' ] ,
+          'vendorid' : 
+            [ 'value' : 'some vendor id value' ] ,
+          'employeeid' : 
+            [ 'value' : 'some employee id value' ] ,
+          'classid' : 'some class id' ]
+    ] ]" />
+    <intacct:sub-totals ref="#[groovy: [
+        [ 'description' : 'some description' ,
+          'total' : 'some total' ,
+          'absval' : 'some abs value' ,
+          'percentval' : 'some precent value' ,
+          'locationid' : 
+            [ 'value' : 'some location id value' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id value' ] ]
+    ] ]" />
 </intacct:create-sotransaction>
 <!-- END_INCLUDE(intacct:create-sotransaction) -->
 
 <!-- BEGIN_INCLUDE(intacct:get-list) -->
-<intacct:get-list functionControlId="#[variable:functionControlId]"
+<intacct:get-list functionControlId="some function control id"
                   obj="billbatch"
-                  start="#[variable:start]"
-                  maxItems="#[variable:maxItems]"
-                  start="#[variable:showPrivate]" >
-    <intacct:filter ref="#[variable:filter]" />
-    <intacct:sorts ref="#[variable:sorts]" />
-    <intacct:fields ref="#[variable:fields]" />
+                  start="some start"
+                  maxItems="some maxItems"
+                  showPrivate="some show private" >
+    <intacct:filter ref="#[groovy : [
+        new Logical(
+            logicalOperator : 'or' ,
+            logicalOrExpression : [
+                new Logical(
+                    logicalOperator : 'and' ,
+                    logicalOrExpression : [
+                        new Expression(
+                            field : new Field( value : 'accountno') ,
+                            operator : '>' ,
+                            value = new Value(value : '500' ) 
+                        ), 
+                        new Expression(
+                            field : new Field(value : 'normalbalance' ) ,
+                            operator : '=' ,
+                            value = new Value(value : 'debit' )
+                        )
+                    ]
+                ) , 
+                new Expression(
+                    field : new Field(value : 'normalbalance' ) ,
+                    operator : '=' ,
+                    value : new Value(value : 'credit' )
+                )
+            ]
+        ) ] ]" />
+    <intacct:sorts ref="#[groovy : [
+        [ 'order' : 'some order' ,
+          'value' : 'some value' ] ,
+        [ 'order' : 'other order' ,
+          'value' : 'other value' ]
+    ] ]" />
+    <intacct:fields ref="#[groovy : [
+        [ 'value' :  'title' ] , 
+        [ 'value' :  'normalbalance' ]
+    ] ]" />
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list) -->
 
 <!-- BEGIN_INCLUDE(intacct:get) -->
-<intacct:get functionControlId="#[variable:functionControlId]"
+<intacct:get functionControlId="some function control id"
              obj="subscription"
-             key="#[variable:key]" 
-             externalKey="#[variable:externalKey]">
-    <intacct:fields ref="#[variable:fields]" />
+             key="some key" 
+             externalKey="some external key">
+    <intacct:fields ref="#[groovy : [
+        [ 'value' :  'title' ] , 
+        [ 'value' :  'normalbalance' ]
+    ] ]" />
 </intacct:get>
 <!-- END_INCLUDE(intacct:get) -->
 
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
 <intacct:operation-with-request>
-    <intacct:request ref="#[variable:request] />
+    <intacct:request ref="#[groovy :[ 
+        'control' : 
+            [ 'senderid' : 'some sender id' ,
+              'password' : 'some password' ,
+              'controlid' : 'some control id' ,
+              'uniqueid' : 'some unique id' ,
+              'dtdversion' : 'some dtd version' ,
+              'policyid' : 'some policy id' ,
+              'debug' : 'some debug' ] ,
+        'operation' : [
+            [ 'transaction' : 'some transaction' ,
+              'authentication' : 
+                 [ new Sessionid(
+                     value : 'some session id value') ],
+              'preferences' : [ 
+                 [ 'companyprefs' : [
+                      [ 'companypref' : 
+                           [ 'application' : 'some application' ,
+                             'preference' : 'some preference' ,
+                             'prefvalue' : 'some preference value' ] ] ] ,
+                   'moduleprefs' :[
+                      [ 'modulepref' : 
+                           [ 'application' : 'some application' ,
+                             'preference' : 'some preference' ,
+                             'prefvalue' : 'some preference value' ] ] ] 
+                 ] ],
+              'content' : [
+                 [ 'function' : 
+                     [ 'controlid' : 'some control id' ,
+                       'cmd' : [
+                          new CreateCustomer(
+                              //etc (field of the function)
+                          ) ,
+                          new CreateSotransaction(
+                              //etc (field of the function)
+                          )
+                       ] ] 
+                 ] ]
+            ] ]
+    ] ]" />
 </intacct:operation-with-request>
 <!-- END_INCLUDE(intacct:operation-with-request) -->

@@ -20,7 +20,7 @@ public enum ContactType implements EnumType
      /**
       * type contact only with the string of the name.
       */
-     ContacName(Contactname.class);
+     ContactName(Contactname.class);
      
      private Class<?> requestType;
 
