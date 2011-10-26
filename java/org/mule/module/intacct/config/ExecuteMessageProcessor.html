@@ -168,9 +168,9 @@
         <div id="nav-panels">
           <div id="resize-packages-nav">
             <div id="packages-nav">
-              <div id="index-links"><nobr>
+              <div id="index-links">
                 <a href="../../../../../../java/packages.html"  >Package Index</a> |
-                <a href="../../../../../../java/classes.html" >Class Index</a></nobr>
+                <a href="../../../../../../java/classes.html" >Class Index</a>
               </div>
               <ul>
                 
@@ -230,9 +230,9 @@
           </div><!-- end classes -->
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
-          <div id="index-links"><nobr>
+          <div id="index-links">
             <a href="../../../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../../../classes.html" >Class Index</a></nobr>
+            <a href="../../../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -447,7 +447,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>ExecuteMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(org.mule.module.intacct.CommandType, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>ExecuteMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(java.lang.String, org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(java.lang.String, org.mule.module.intacct.CommandType, java.util.List)</a></code> method in <code><a href="../../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -655,13 +655,24 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/intacct/config/ExecuteMessageProcessor.html#_functionControlIdType">_functionControlIdType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           <a href="../../../../../../java/org/mule/module/intacct/CommandType.html">CommandType</a></nobr></td>
           <td class="jd-linkcol"><a href="../../../../../../org/mule/module/intacct/config/ExecuteMessageProcessor.html#_typeType">_typeType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -672,7 +683,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -685,7 +696,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -695,6 +706,17 @@ org.mule.api.lifecycle.Stoppable
           <td class="jd-descrcol" width="100%">Flow construct
  
 </td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/intacct/config/ExecuteMessageProcessor.html#functionControlId">functionControlId</a></td>
+          <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
@@ -890,6 +912,24 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/intacct/config/ExecuteMessageProcessor.html#setFunctionControlId(java.lang.Object)">setFunctionControlId</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets functionControlId</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/intacct/config/ExecuteMessageProcessor.html#setModuleObject(org.mule.module.intacct.config.IntacctCloudConnectorLifecycleAdapter)">setModuleObject</a></span>(<a href="../../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a> moduleObject)</nobr>
         
         <div class="jd-descrdiv">Sets the instance of the object under which the processor will execute</div>
@@ -898,7 +938,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -916,7 +956,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -934,7 +974,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -950,7 +990,7 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1537,6 +1577,36 @@ From interface
 
 
 
+<A NAME="_functionControlIdType"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        _functionControlIdType
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="_typeType"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1654,6 +1724,36 @@ From interface
   <div class="jd-tagdata jd-tagdescr"><p>Flow construct
  
 </p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="functionControlId"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>
+      </span>
+        functionControlId
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -2035,6 +2135,47 @@ From interface
         <tr>
           <th>flowConstruct</td>
           <td>Flow construct to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setFunctionControlId(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setFunctionControlId</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets functionControlId</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
 </td>
         </tr>
       </table>

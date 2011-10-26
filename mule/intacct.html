@@ -268,8 +268,8 @@ Summary:
         <span class="sympad"><a href="../mule/intacct.html#create-aradjustment">&lt;intacct:create-aradjustment&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
- 
- <br/></div>
+ <p>
+ An AR Adjustment is a document within the Intacct system.<br/></div>
         
   </td></tr>
 
@@ -280,8 +280,8 @@ Summary:
         <span class="sympad"><a href="../mule/intacct.html#create-invoice">&lt;intacct:create-invoice&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
- 
- <br/></div>
+ <p>
+ An invoice is a document within the Intacct system.<br/></div>
         
   </td></tr>
 
@@ -292,8 +292,8 @@ Summary:
         <span class="sympad"><a href="../mule/intacct.html#create-invoicebatch">&lt;intacct:create-invoicebatch&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
- 
- <br/></div>
+ <p>
+ An invoice batch is an entity that groups invoices.<br/></div>
         
   </td></tr>
 
@@ -304,8 +304,9 @@ Summary:
         <span class="sympad"><a href="../mule/intacct.html#create-sotransaction">&lt;intacct:create-sotransaction&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
- 
- <br/></div>
+ <p>
+ An SOTransaction represents any transactional document created in the Order 
+ Entry application.<br/></div>
         
   </td></tr>
 
@@ -349,7 +350,7 @@ Summary:
         <div class="jd-descrdiv">
       <em>
   This method is deprecated.
-      use <br/><code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(CommandType, List)</a></code> instead
+      use <br/>#execute(CommandType, List) instead
  
  <br/></em></div>
         
@@ -418,7 +419,7 @@ specify which configuration to use.</p>
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>companyid</nobr></td>
+          <td class="jd-linkcol"><nobr>companyId</nobr></td>
           <td class="jd-descrcol"></td>
           <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct company.</td>
       </tr>
@@ -427,19 +428,19 @@ specify which configuration to use.</p>
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>controlPassword</nobr></td>
+          <td class="jd-linkcol"><nobr>controlId</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">Registered Web Services password
-</td>
+          <td class="jd-descrcol" width="100%">Used by the sender to match a request to its response.</td>
       </tr>
       
     
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>controlid</nobr></td>
+          <td class="jd-linkcol"><nobr>controlPassword</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">Used by the sender to match a request to its response.</td>
+          <td class="jd-descrcol" width="100%">Registered Web Services password
+</td>
       </tr>
       
     
@@ -464,27 +465,27 @@ specify which configuration to use.</p>
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>uniqueid</nobr></td>
+          <td class="jd-linkcol"><nobr>uniqueId</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">The Intacct system guarantees transaction idempotence through the use of the uniqueid.</td>
+          <td class="jd-descrcol" width="100%">The Intacct system guarantees transaction idempotence through the use of the uniqueId.</td>
       </tr>
       
     
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>userPassword</nobr></td>
+          <td class="jd-linkcol"><nobr>userId</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct password.</td>
+          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct identity.</td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           xs:string</nobr></td>
-          <td class="jd-linkcol"><nobr>userid</nobr></td>
+          <td class="jd-linkcol"><nobr>userPassword</nobr></td>
           <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct identity.</td>
+          <td class="jd-descrcol" width="100%">The login information specifies the user's Intacct password.</td>
       </tr>
       
     
@@ -517,8 +518,89 @@ specify which configuration to use.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ An AR Adjustment is a document within the Intacct system. The AR Adjustment represents 
+ an adjustment to the customer's account, with or without reference to an existing 
+ invoice. Generally, the AR Adjustment is an internal document, not an invoice, and 
+ therefore does not have a due date.
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/ar-adjustment">Aradjustment<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-aradjustment functionControlId="some function control id"
+                      customerId="some customer id"
+                      batchKey="some batch key"
+                      adjustmentNo="some adjustment number"
+                      invoiceNo="some invoice number"
+                      description="some description"
+                      externalId="123456"
+                      baseCurr="some base currency"
+                      currency="some currency"
+                      exchType="ExchRateDate"
+                      nogl="some nogl"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" /&gt;
+    &lt;intacct:ar-adjustment-items ref="#[groovy : [ 
+        [ 'accountlabelOrGlaccountno' : [ 
+              new Accountlabel(
+                value = 'some account value') , 
+              new Accountlabel(
+                value = 'other account value') ] ,
+          'amount' : 'some amount' ,
+          'allocationid' : 'some allocation id' ,
+          'memo' : 'some memo' ,
+          'locationid' : 
+            [ 'value' : 'some location id' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+          'item1099' : 'some item 1099' ,
+          'key' : 'some key' ,
+          'totalpaid' : 'total paid' ,
+          'totaldue' : 'total due' ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some recvrec template' ,
+          'defrevaccount' : 'some defrev account' ,
+          'revrecstartdate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'revrecenddate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'projectid' : 'some proyect id' ,
+          'customerid' :
+              [ 'value' : 'customer id value' ] ,
+          'vendorid' :
+              [ 'value' : 'vendor id value' ] ,
+          'employeeid' :
+              [ 'value' : 'employee id value' ] ,
+          'itemid' : 
+              [ 'value' : 'item id value' ],
+          'classid' : 'some class id' ,
+          'billable' : 'some billable' ] 
+    ] ]" /&gt;
+&lt;/intacct:create-aradjustment&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -528,7 +610,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -540,162 +621,134 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>customerId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the customerId<br/></td>
+                    <td class="jd-descrcol" width="100%">The customerId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateCreated</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the dateCreated<br/></td>
+                    <td class="jd-descrcol" width="100%">The dateCreated<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>datePosted</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the datePosted<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The datePosted<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>batchKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the batchKey<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The batchKey<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>adjustmentNo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the adjustmentNo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The adjustmentNo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>invoiceNo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the invoiceNo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The invoiceNo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>description</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the description<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The description<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>externalId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the externalId<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The externalId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>basecurr</nobr></td>
+                    <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the basecurr<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The basecurr<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>currency</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the currency<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The currency<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchRateDateOrExchRateTypeOrExchRate</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchRateDateOrExchRateTypeOrExchRate<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchRateDateOrExchRateTypeOrExchRate<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>nogl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the nogl<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The nogl<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>arAdjustmentItems</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the arAdjustmentItems<br/></td>
+                    <td class="jd-descrcol" width="100%">The arAdjustmentItems<br/></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -769,8 +822,158 @@ specify which configuration to use.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ An invoice is a document within the Intacct system. The invoice represents a 
+ transaction between the company and a customer.
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/invoice">Invoice<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice functionControlId="some function control id"
+                        customerId="some customer id"
+                        termName="some term name"
+                        batchKey="some batch key"
+                        invoiceNo="invoice number"
+                        poNumber="po number"
+                        description="New invoice"
+                        externalId="123456"
+                        billToContactType="ContactName"
+                        shipToContactType="Contact"
+                        baseCurr="base currency"
+                        currency="currency"
+                        exchType="ExchRateDate"
+                        nogl="some nogl"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" /&gt;
+    &lt;intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code'] ]
+    ] ]" /&gt;
+    &lt;intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" /&gt;
+    &lt;intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" /&gt;
+    &lt;intacct:invoice-items ref="#[groovy: [ [
+        'accountlabelOrGlaccountno' : [ 
+            new Accountlabel(value : 'some account value'), 
+            new Accountlabel(value : 'other account value') ] ,
+        'amount' : 'some amount' ,
+        'allocationid' : 'some allocation id' ,
+        'memo' : 'some memo' ,
+        'locationid' : 
+            [ 'value' : 'some location id' ] ,
+        'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+        'item1099' : 'some item 1099' ,
+        'key' : 'some key' ,
+        'totalpaid' : 'total paid' ,
+        'totaldue' : 'total due' ,
+        'customfields' : 
+            [ 'customfield' : 
+                [ [ 'customfieldname' : 'some custom field' ,
+                    'customfieldvalue' : 'some custom field value' ] ,
+                  [ 'customfieldname' : 'other custom field' ,
+                    'customfieldvalue' : 'other custom field value' ] ] ] ,
+        'revrectemplate' : 'some recvrec template' ,
+        'defrevaccount' : 'some defrev account' ,
+        'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'projectid' : 'some proyect id' ,
+        'customerid' :
+            [ 'value' : 'customer id value' ] ,
+        'vendorid' :
+            [ 'value' : 'vendor id value' ] ,
+        'employeeid' :
+            [ 'value' : 'employee id value' ] ,
+        'itemid' : 
+            [ 'value' : 'item id value' ],
+        'classid' : 'some class id' ,
+        'billable' : 'some billable'
+    ] ] ]" /&gt;
+&lt;/intacct:create-invoice&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -780,7 +983,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -792,239 +994,197 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>customerId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the customerId<br/></td>
+                    <td class="jd-descrcol" width="100%">The customerId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateCreated</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the dateCreated<br/></td>
+                    <td class="jd-descrcol" width="100%">The dateCreated<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>datePosted</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the datePosted<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The datePosted<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateDue</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the dateDue<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The dateDue<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>termName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the termName<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The termName<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>batchKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the batchKey<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The batchKey<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>invoiceNo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the invoiceNo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The invoiceNo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>poNumber</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the poNumber<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The poNumber<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>description</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the description<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The description<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>externalId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the externalId<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The externalId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>billToContactType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the billToContactType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The billToContactType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>billTo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the billTo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The billTo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>shipToContactType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the shipToContactType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The shipToContactType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>shipTo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the shipTo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The shipTo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the baseCurr<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The baseCurr<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>currency</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the currency<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The currency<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchRateDateOrExchRateTypeOrExchRate</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchRateDateOrExchRateTypeOrExchRate<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchRateDateOrExchRateTypeOrExchRate<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>nogl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the nogl<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The nogl<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>customFields</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the customFields<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The customFields<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>invoiceItems</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the invoiceItems<br/></td>
+                    <td class="jd-descrcol" width="100%">The invoiceItems<br/></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1112,8 +1272,169 @@ specify which configuration to use.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ An invoice batch is an entity that groups invoices. Every invoice in the Intacct 
+ system must be assigned to a batch.
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/invoice-batch">Invoicebatch<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoicebatch functionControlId="some function control id"
+                             batchTitle="some batch title"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:create-invoice-list ref="#[groovy: [
+    [ 'customerid' : 'some customer id' ,
+      'datecreated' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'dateposted' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'datedue' : 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] ,
+      'termName' : 
+        [ 'value' : 'some term name value' ] ,
+      'batchKey' : 
+        [ 'value' : 'some batch key value' ] ,
+      'invoiceNo' : 'invoice number' ,
+      'poNumber' : 'po number' ,
+      'description' : 'New invoice' ,
+      'externalId' : 123456' ,
+      'billTo' : 
+        [ new Contactname(value : 'Richard') , 
+          new Contact(
+            contactname : new Contactname(value : 'Michael') ,
+            printas : 'some printas' ,
+            taxable : 'some taxable' ,
+            companyname : 'some company name' ,
+            taxgroup : 'some tax group' ,
+            prefix : 'some prefix' ,
+            firstname : 'some first name' ,
+            lastname : 'some last name' ,
+            initial : 'some initial' ,
+            phone1 : '1231231231' ,
+            phone2 : 'other phone' ,
+            cellphone : 'some cellphone' ,
+            pager : 'some pager' ,
+            fax : 'some fax' ,
+            email1 : 'some email' ,
+            email2 : 'other email' ,
+            url1 : 'some url' ,
+            url2 : 'other url' ,
+            status : 'some status' ,
+            mailaddress : new Mailaddress(
+               address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code')
+          ) ] ,
+      'shipTo' : 
+        [ new Contact(
+            contactname = new Contactname(
+                value = 'John') ,
+            printas : 'some printas' ,
+            taxable : 'some taxable' ,
+            companyname : 'some company name' ,
+            taxgroup : 'some tax group' ,
+            prefix : 'some prefix' ,
+            firstname : 'some first name' ,
+            lastname : 'some last name' ,
+            initial : 'some initial' ,
+            phone1 : '1231231231' ,
+            phone2 : 'other phone' ,
+            cellphone : 'some cellphone' ,
+            pager : 'some pager' ,
+            fax : 'some fax' ,
+            email1 : 'some email' ,
+            email2 : 'other email' ,
+            url1 : 'some url' ,
+            url2 : 'other url' ,
+            status : 'some status' ,
+            mailaddress : new Mailaddress( 
+               address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code'
+            )
+          ) ,
+          new Contactname(
+            value = 'Vito') ] ,
+      'baseCurr' : 'some base currency' ,
+      'currency' : 'some currency' ,
+      'nogl' : 'some nogl' ,
+      'exchratedateOrExchratetypeOrExchrate' : [
+        new Exchratedate(
+          year : '2011' ,
+          month : '10' ,
+          day : '12') , 
+        new Exchratetype(
+          value : 'some value'),
+        new Exchrate(
+          value : 'some value') ] ,
+      'customFields' : [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+      'invoiceItems' : [ 
+        [ 'accountlabelOrGlaccountno' : [ 
+              new Accountlabel(
+                value : 'some account value') , 
+              new Accountlabel(
+                value : 'other account value') ] ,
+          'amount' : 'some amount' ,
+          'allocationid' : 'some allocation id' ,
+          'memo' : 'some memo' ,
+          'locationid' : 
+            [ 'value' : 'some location id' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+          'item1099' : 'some item 1099' ,
+          'key' : 'some key' ,
+          'totalpaid' : 'total paid' ,
+          'totaldue' : 'total due' ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some recvrec template' ,
+          'defrevaccount' : 'some defrev account' ,
+          'revrecstartdate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'revrecenddate' : 
+              [ 'year' : '2011' ,
+                'month' : '10' ,
+                'day' : '12' ],
+          'projectid' : 'some proyect id' ,
+          'customerid' :
+              [ 'value' : 'customer id value' ] ,
+          'vendorid' :
+              [ 'value' : 'vendor id value' ] ,
+          'employeeid' :
+              [ 'value' : 'employee id value' ] ,
+          'itemid' : 
+              [ 'value' : 'item id value' ],
+          'classid' : 'some class id' ,
+          'billable' : 'some billable' ] ]
+    ] ] ]" /&gt;
+&lt;/intacct:create-invoicebatch&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1123,7 +1444,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -1135,41 +1455,35 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>batchTitle</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the batchTitle<br/></td>
+                    <td class="jd-descrcol" width="100%">The batchTitle<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateCreated</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the dateCreated<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The dateCreated<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>createInvoiceList</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the createInvoiceList<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The createInvoiceList<br/></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1221,8 +1535,183 @@ specify which configuration to use.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ An SOTransaction represents any transactional document created in the Order 
+ Entry application. Each document in the Order Entry application is user definable; 
+ there are no statically defined document types. When querying SOTransactions, it 
+ may be useful to filter the query by the transactiontype field. 
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/sotransaction">Sotransaction<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-sotransaction functionControlId="some function control id"
+                       transactionType="some transaction type"
+                       createdFrom="created from"
+                       customerId="some customer id"
+                       documentNo="some document number"
+                       referenceNo="some reference number"
+                       termName="some term name"
+                       message="some message"
+                       shippingMethod="some shipping method"
+                       billToContactType="ContactName"
+                       shipToContactType="Contact"
+                       externalId="123456"
+                       baseCurr="some base currency"
+                       currency="some currency"
+                       exchType="ExchRateDate"
+                       vsoePriceList="some vsow price list"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" /&gt;
+    &lt;intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : 
+             ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']]
+    ] ]" /&gt;
+    &lt;intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" /&gt;
+    &lt;intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" /&gt;
+    &lt;intacct:so-trans-items ref="#[groovy :[
+        [ 'bundlenumber' : 'some bundle number' ,
+          'itemid' : 
+            [ 'value' : 'some item id value' ] ,
+          'itemdesc' : 'some item description' ,
+          'taxable' : 'some taxable' ,
+          'warehouseid' : 'some warehouse id' ,
+          'quantity' : 'some quantity' ,
+          'unit' : 'some unit' ,
+          'price' : 'some price' ,
+          'discsurchargememo' : 'some discsurcharge memo'
+          'locationid' : 
+            [ 'value' : 'some location id value' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id value' ] ,
+          'memo' : 'some memo' ,
+          'itemdetails' : [
+             'itemdetail' : [ 
+                [ 'quantity' : 'some quantity' ,
+                  'serialnoOrLotno' : [
+                    new Serialno(
+                        value = 'some serial number') ,
+                    new Lotno(
+                        value = 'some lot number') ],
+                  'aisle' : 'some aisle' ,
+                  'row' : 'some row' ,
+                  'bin' : 'some bin' ,
+                  'itemexpiration' : 
+                    [ 'year' : '2011' ,
+                      'month' : '10' ,
+                      'day' : '12' ]
+                ] ] 
+             ] ,
+          'customfields' : 
+              [ 'customfield' : 
+                  [ [ 'customfieldname' : 'some custom field' ,
+                      'customfieldvalue' : 'some custom field value' ] ,
+                    [ 'customfieldname' : 'other custom field' ,
+                      'customfieldvalue' : 'other custom field value' ] ] ] ,
+          'revrectemplate' : 'some revrect template' ,
+          'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ] ,
+          'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ] ,
+          'renewalmacro' : 'some renew al macro' ,
+          'projectid' : 'some project id' ,
+          'customerid' : 
+            [ 'value' : 'some customer id value' ] ,
+          'vendorid' : 
+            [ 'value' : 'some vendor id value' ] ,
+          'employeeid' : 
+            [ 'value' : 'some employee id value' ] ,
+          'classid' : 'some class id' ]
+    ] ]" /&gt;
+    &lt;intacct:sub-totals ref="#[groovy: [
+        [ 'description' : 'some description' ,
+          'total' : 'some total' ,
+          'absval' : 'some abs value' ,
+          'percentval' : 'some precent value' ,
+          'locationid' : 
+            [ 'value' : 'some location id value' ] ,
+          'departmentid' : 
+            [ 'value' : 'some department id value' ] ]
+    ] ]" /&gt;
+&lt;/intacct:create-sotransaction&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1232,7 +1721,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -1244,261 +1732,215 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>transactionType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the transactionType<br/></td>
+                    <td class="jd-descrcol" width="100%">The transactionType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateCreated</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the dateCreated<br/></td>
+                    <td class="jd-descrcol" width="100%">The dateCreated<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>createdFrom</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the createdFrom<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The createdFrom<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>customerId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the customerId<br/></td>
+                    <td class="jd-descrcol" width="100%">The customerId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>documentNo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the documentNo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The documentNo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>referenceNo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the referenceNo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The referenceNo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>termName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the termName<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The termName<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>dateDue</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the dateDue<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The dateDue<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>message</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the message<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The message<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>shippingMethod</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the shippingMethod<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The shippingMethod<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>billToContactType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the billToContactType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The billToContactType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>billTo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the billTo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The billTo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>shipToContactType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the shipToContactType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The shipToContactType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>shipTo</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the shipTo<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The shipTo<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>externalId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the externalId<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The externalId<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the baseCurr<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The baseCurr<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>currency</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the currency<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The currency<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchType<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchType<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>exchRateDateOrExchRateTypeOrExchRate</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the exchRateDateOrExchRateTypeOrExchRate<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The exchRateDateOrExchRateTypeOrExchRate<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>vsoePriceList</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the vsoePriceList<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The vsoePriceList<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>customFields</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the customFields<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The customFields<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>soTransItems</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the soTransItems<br/></td>
+                    <td class="jd-descrcol" width="100%">The soTransItems<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>subTotals</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the subTotals<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The subTotals<br/></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1590,9 +2032,13 @@ specify which configuration to use.</p>
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>Batch executes a list of commands of the given CommandType.
+ <p>
+ This processor, it's the equivalent of making an <br/><code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operation(java.util.Map<java.lang.String, java.lang.Object>)">operation(Map)</a></code> (deprecated)
+ of a function with all its elements of the same Commandtype.
  
  Example 1:
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:execute type="CreateBill"&gt;
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:execute functionControlId="some function control id"
+                 type="CreateBill"&gt;
     &lt;intacct:commands&gt;
         &lt;intacct:command&gt;
             &lt;externalid&gt;#[variable:aString]&lt;/externalid&gt;
@@ -1604,10 +2050,300 @@ specify which configuration to use.</p>
 &lt;/intacct:execute&gt;</pre></div>
  
  Example 2:
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice functionControlId="some function control id"
+                        customerId="some customer id"
+                        termName="some term name"
+                        batchKey="some batch key"
+                        invoiceNo="invoice number"
+                        poNumber="po number"
+                        description="New invoice"
+                        externalId="123456"
+                        billToContactType="ContactName"
+                        shipToContactType="Contact"
+                        baseCurr="base currency"
+                        currency="currency"
+                        exchType="ExchRateDate"
+                        nogl="some nogl"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" /&gt;
+    &lt;intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code'] ]
+    ] ]" /&gt;
+    &lt;intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" /&gt;
+    &lt;intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" /&gt;
+    &lt;intacct:invoice-items ref="#[groovy: [ [
+        'accountlabelOrGlaccountno' : [ 
+            new Accountlabel(value : 'some account value'), 
+            new Accountlabel(value : 'other account value') ] ,
+        'amount' : 'some amount' ,
+        'allocationid' : 'some allocation id' ,
+        'memo' : 'some memo' ,
+        'locationid' : 
+            [ 'value' : 'some location id' ] ,
+        'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+        'item1099' : 'some item 1099' ,
+        'key' : 'some key' ,
+        'totalpaid' : 'total paid' ,
+        'totaldue' : 'total due' ,
+        'customfields' : 
+            [ 'customfield' : 
+                [ [ 'customfieldname' : 'some custom field' ,
+                    'customfieldvalue' : 'some custom field value' ] ,
+                  [ 'customfieldname' : 'other custom field' ,
+                    'customfieldvalue' : 'other custom field value' ] ] ] ,
+        'revrectemplate' : 'some recvrec template' ,
+        'defrevaccount' : 'some defrev account' ,
+        'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'projectid' : 'some proyect id' ,
+        'customerid' :
+            [ 'value' : 'customer id value' ] ,
+        'vendorid' :
+            [ 'value' : 'vendor id value' ] ,
+        'employeeid' :
+            [ 'value' : 'employee id value' ] ,
+        'itemid' : 
+            [ 'value' : 'item id value' ],
+        'classid' : 'some class id' ,
+        'billable' : 'some billable'
+    ] ] ]" /&gt;
+&lt;/intacct:create-invoice&gt;</pre></div>
 
  Example 3:
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice functionControlId="some function control id"
+                        customerId="some customer id"
+                        termName="some term name"
+                        batchKey="some batch key"
+                        invoiceNo="invoice number"
+                        poNumber="po number"
+                        description="New invoice"
+                        externalId="123456"
+                        billToContactType="ContactName"
+                        shipToContactType="Contact"
+                        baseCurr="base currency"
+                        currency="currency"
+                        exchType="ExchRateDate"
+                        nogl="some nogl"&gt;
+    &lt;intacct:date-created ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-posted ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:date-due ref="#[groovy:[
+        'year' : '2011' ,
+        'month' : '10' ,
+        'day' : '12'
+    ] ]" /&gt;
+    &lt;intacct:bill-to ref="#[groovy:[
+        ['value' : 'Richard'] , ['value' : 'Steve']
+    ] ]" /&gt;
+    &lt;intacct:ship-to ref="#[groovy:[
+        [ 'contactname' : ['value' : 'Michael'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code']] , 
+        [ 'contactname' : ['value' : 'John'] ,
+          'printas' : 'some printas' ,
+          'taxable' : 'some taxable' ,
+          'companyname' : 'some company name' ,
+          'taxgroup' : 'some tax group' ,
+          'prefix' : 'some prefix' ,
+          'firstname' : 'some first name' ,
+          'lastname' : 'some last name' ,
+          'initial' : 'some initial' ,
+          'phone1' : '1231231231' ,
+          'phone2' : 'other phone' ,
+          'cellphone' : 'some cellphone',
+          'pager' : 'some pager' ,
+          'fax' : 'some fax' ,
+          'email1' : 'some email' ,
+          'email2' : 'other email' ,
+          'url1' : 'some url' ,
+          'url2' : 'other url' ,
+          'status' : 'some status' ,
+          'mailaddress' : 
+             [ 'address1' : 'some address' ,
+               'address2' : 'other address' ,
+               'city' : 'some city' ,
+               'state' : 'some state' ,
+               'zip' : 'some zip' ,
+               'country' : 'some country' ,
+               'isocountrycode' : 'some iso country code'] ]
+    ] ]" /&gt;
+    &lt;intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" /&gt;
+    &lt;intacct:custom-fields ref="#[groovy: [
+        [ 'customfieldname' : 'some custom field' ,
+          'customfieldvalue' : 'some custom field value' ] ,
+        [ 'customfieldname' : 'other custom field' ,
+          'customfieldvalue' : 'other custom field value' ] 
+    ]]" /&gt;
+    &lt;intacct:invoice-items ref="#[groovy: [ [
+        'accountlabelOrGlaccountno' : [ 
+            new Accountlabel(value : 'some account value'), 
+            new Accountlabel(value : 'other account value') ] ,
+        'amount' : 'some amount' ,
+        'allocationid' : 'some allocation id' ,
+        'memo' : 'some memo' ,
+        'locationid' : 
+            [ 'value' : 'some location id' ] ,
+        'departmentid' : 
+            [ 'value' : 'some department id' ] ,
+        'item1099' : 'some item 1099' ,
+        'key' : 'some key' ,
+        'totalpaid' : 'total paid' ,
+        'totaldue' : 'total due' ,
+        'customfields' : 
+            [ 'customfield' : 
+                [ [ 'customfieldname' : 'some custom field' ,
+                    'customfieldvalue' : 'some custom field value' ] ,
+                  [ 'customfieldname' : 'other custom field' ,
+                    'customfieldvalue' : 'other custom field value' ] ] ] ,
+        'revrectemplate' : 'some recvrec template' ,
+        'defrevaccount' : 'some defrev account' ,
+        'revrecstartdate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'revrecenddate' : 
+            [ 'year' : '2011' ,
+              'month' : '10' ,
+              'day' : '12' ],
+        'projectid' : 'some proyect id' ,
+        'customerid' :
+            [ 'value' : 'customer id value' ] ,
+        'vendorid' :
+            [ 'value' : 'vendor id value' ] ,
+        'employeeid' :
+            [ 'value' : 'employee id value' ] ,
+        'itemid' : 
+            [ 'value' : 'item id value' ],
+        'classid' : 'some class id' ,
+        'billable' : 'some billable'
+    ] ] ]" /&gt;
+&lt;/intacct:create-invoice&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1617,28 +2353,37 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>type</nobr></td>
+                    <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the type of commands to execute<br/></td>
+                    <td class="jd-descrcol" width="100%">String. Is used by the sender to match a request to 
+                          its response for the function that will be created 
+                          for this operation. This is especially useful during 
+                          asynchronous requests.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>commands</nobr></td>
+                    <td class="jd-linkcol"><nobr>type</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the commands list<br/></td>
+                    <td class="jd-descrcol" width="100%">The type of commands to execute<br/></td>
                 </tr>
                 
                 
-            
           
+                
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>commands</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%">The commands list<br/></td>
+                </tr>
+                
+                
+          
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1646,6 +2391,8 @@ specify which configuration to use.</p>
 
       <table class="jd-tagtable">
           
+          
+            
           
             
           
@@ -1691,8 +2438,18 @@ specify which configuration to use.</p>
  <p>
  Additional options for manipulating the return fields allow you to retrieve 
  only the information that you need.
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/get">get<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:get functionControlId="some function control id"
+             obj="subscription"
+             key="some key" 
+             externalKey="some external key"&gt;
+    &lt;intacct:fields ref="#[groovy : [
+        [ 'value' :  'title' ] , 
+        [ 'value' :  'normalbalance' ]
+    ] ]" /&gt;
+&lt;/intacct:get&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1702,7 +2459,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -1714,9 +2470,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>obj</nobr></td>
@@ -1736,9 +2490,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
@@ -1747,9 +2499,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>externalKey</nobr></td>
@@ -1766,9 +2516,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>fields</nobr></td>
@@ -1780,8 +2528,8 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1836,8 +2584,51 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Allows you to retrieve a list object with optional filter and/or sort specifications.
  Filters can be simple or complex with logical groupings for AND and OR filtering.
- 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <p>
+ Documentation: <a href="http://developer.intacct.com/wiki/get-list">getList<a>
+ <p>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:get-list functionControlId="some function control id"
+                  obj="billbatch"
+                  start="some start"
+                  maxItems="some maxItems"
+                  showPrivate="some show private" &gt;
+    &lt;intacct:filter ref="#[groovy : [
+        new Logical(
+            logicalOperator : 'or' ,
+            logicalOrExpression : [
+                new Logical(
+                    logicalOperator : 'and' ,
+                    logicalOrExpression : [
+                        new Expression(
+                            field : new Field( value : 'accountno') ,
+                            operator : '&gt;' ,
+                            value = new Value(value : '500' ) 
+                        ), 
+                        new Expression(
+                            field : new Field(value : 'normalbalance' ) ,
+                            operator : '=' ,
+                            value = new Value(value : 'debit' )
+                        )
+                    ]
+                ) , 
+                new Expression(
+                    field : new Field(value : 'normalbalance' ) ,
+                    operator : '=' ,
+                    value : new Value(value : 'credit' )
+                )
+            ]
+        ) ] ]" /&gt;
+    &lt;intacct:sorts ref="#[groovy : [
+        [ 'order' : 'some order' ,
+          'value' : 'some value' ] ,
+        [ 'order' : 'other order' ,
+          'value' : 'other value' ]
+    ] ]" /&gt;
+    &lt;intacct:fields ref="#[groovy : [
+        [ 'value' :  'title' ] , 
+        [ 'value' :  'normalbalance' ]
+    ] ]" /&gt;
+&lt;/intacct:get-list&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1847,7 +2638,6 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>functionControlId</nobr></td>
@@ -1859,9 +2649,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>obj</nobr></td>
@@ -1887,9 +2675,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>start</nobr></td>
@@ -1900,9 +2686,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>maxItems</nobr></td>
@@ -1914,9 +2698,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>showPrivate</nobr></td>
@@ -1930,9 +2712,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>filter</nobr></td>
@@ -1941,9 +2721,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>sorts</nobr></td>
@@ -1952,9 +2730,7 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>fields</nobr></td>
@@ -1965,8 +2741,8 @@ specify which configuration to use.</p>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2027,7 +2803,7 @@ specify which configuration to use.</p>
       <p>
   <p class="caution">
       <strong>
-  This method is deprecated.</strong><br/> use <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(CommandType, List)</a></code> instead
+  This method is deprecated.</strong><br/> use #execute(CommandType, List) instead
  
  
   </p>
@@ -2041,17 +2817,16 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>function</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">function<br/></td>
+                    <td class="jd-descrcol" width="100%">Function<br/></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2098,7 +2873,48 @@ specify which configuration to use.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Reconoce la operacion con valores default setteados en el config
  
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre></pre></div></p></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:operation-with-request&gt;
+    &lt;intacct:request ref="#[groovy :[ 
+        'control' : 
+            [ 'senderid' : 'some sender id' ,
+              'password' : 'some password' ,
+              'controlid' : 'some control id' ,
+              'uniqueid' : 'some unique id' ,
+              'dtdversion' : 'some dtd version' ,
+              'policyid' : 'some policy id' ,
+              'debug' : 'some debug' ] ,
+        'operation' : [
+            [ 'transaction' : 'some transaction' ,
+              'authentication' : 
+                 [ new Sessionid(
+                     value : 'some session id value') ],
+              'preferences' : [ 
+                 [ 'companyprefs' : [
+                      [ 'companypref' : 
+                           [ 'application' : 'some application' ,
+                             'preference' : 'some preference' ,
+                             'prefvalue' : 'some preference value' ] ] ] ,
+                   'moduleprefs' :[
+                      [ 'modulepref' : 
+                           [ 'application' : 'some application' ,
+                             'preference' : 'some preference' ,
+                             'prefvalue' : 'some preference value' ] ] ] 
+                 ] ],
+              'content' : [
+                 [ 'function' : 
+                     [ 'controlid' : 'some control id' ,
+                       'cmd' : [
+                          new CreateCustomer(
+                              //etc (field of the function)
+                          ) ,
+                          new CreateSotransaction(
+                              //etc (field of the function)
+                          )
+                       ] ] 
+                 ] ]
+            ] ]
+    ] ]" /&gt;
+&lt;/intacct:operation-with-request&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2108,17 +2924,16 @@ specify which configuration to use.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>request</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">request<br/></td>
+                    <td class="jd-descrcol" width="100%">The <br/><code><a href="../java/org/mule/module/intacct/schema/request/Request.html">Request</a></code></td>
                 </tr>
                 
                 
-            
           
+        
       </table>
   </div>
   <div class="jd-tagdata">
