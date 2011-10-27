@@ -2,7 +2,7 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:spring="http://www.springframework.org/schema/beans"
-      xmlns:intacct="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct"
+      xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
       xmlns:util="http://www.springframework.org/schema/util"
       xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
       xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
@@ -11,7 +11,8 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
         http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/3.1/mule-smtp.xsd
-        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd">
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd
+        http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/1.0/mule-intacct.xsd">
 
     <!--
         Declare one flow like this one per element you add in your schema.

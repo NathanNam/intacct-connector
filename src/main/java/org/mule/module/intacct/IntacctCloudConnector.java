@@ -20,14 +20,7 @@
  */
 package org.mule.module.intacct;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-
+import ar.com.zauber.commons.mom.CXFStyle;
 import org.apache.commons.lang.Validate;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
@@ -58,16 +51,19 @@ import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
 
-import ar.com.zauber.commons.mom.CXFStyle;
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Cloud Connector Facade for <a href="http://us.intacct.com/">Intacct</a> 
  * @author jcodagnone
  */
 @SuppressWarnings("serial")
-@Module(name = "intacct",
-        namespace = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct",
-        schemaLocation = "http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd")
+@Module(name = "intacct")
 public class IntacctCloudConnector
 {
     /**

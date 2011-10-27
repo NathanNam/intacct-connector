@@ -2,15 +2,10 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:spring="http://www.springframework.org/schema/beans"
-      xmlns:intacct="http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct"
-      xmlns:util="http://www.springframework.org/schema/util"
-      xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
-    xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
-        http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct http://repository.mulesoft.org/releases/org/mule/modules/mule-module-intacct/1.0-SNAPSHOT/mule-intacct.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd">
+        http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/1.0/mule-intacct.xsd">
 
 
     <!--
@@ -19,65 +14,64 @@
         See the comment in IntacctNamespaceHandlerTestCase for an example how to send
         Mule events directly to this flow.
    -->
-   <spring:beans> 
-   	<spring:bean id="httpIntacct" class="org.mule.module.intacct.utils.JerseyIntacctFacade">
-   		<spring:constructor-arg index="0" value="http://localhost:50443/" ></spring:constructor-arg>
-   	</spring:bean>
-   </spring:beans>
-   
-   <intacct:config senderId="12345" controlPassword="password Control" controlId="mi id" uniqueId="false" userId="usuario" userPassword="miPass" companyId="compId" intacctImplementation-ref="httpIntacct" />
+    <spring:beans>
+        <spring:bean id="httpIntacct" class="org.mule.module.intacct.utils.JerseyIntacctFacade">
+            <spring:constructor-arg index="0" value="http://localhost:50443/"></spring:constructor-arg>
+        </spring:bean>
+    </spring:beans>
 
-	<flow name="functionFlow">
-		<intacct:get-list functionControlId="#[map-payload:controlid]" obj="glaccount">
-			<intacct:filter ref="#[map-payload:filter]"/>
-			<intacct:fields ref="#[map-payload:fields]"/>
-		</intacct:get-list>
-	</flow>
-	
-	
-	
-	<flow name="test-control-id">
-		<inbound-endpoint address="vm://test-control-id"
-			exchange-pattern="request-response" />
-  		<intacct:operation >
-          <intacct:function ref="#[map-payload:function]"/>
+    <intacct:config senderId="12345" controlPassword="password Control" controlId="mi id" uniqueId="false"
+                    userId="usuario" userPassword="miPass" companyId="compId" intacctImplementation-ref="httpIntacct"/>
+
+    <flow name="functionFlow">
+        <intacct:get-list functionControlId="#[map-payload:controlid]" obj="glaccount">
+            <intacct:filter ref="#[map-payload:filter]"/>
+            <intacct:fields ref="#[map-payload:fields]"/>
+        </intacct:get-list>
+    </flow>
+
+
+    <flow name="test-control-id">
+        <inbound-endpoint address="vm://test-control-id"
+                          exchange-pattern="request-response"/>
+        <intacct:operation>
+            <intacct:function ref="#[map-payload:function]"/>
         </intacct:operation>
-	</flow>
-	
-	     <flow name="createCustomers">
+    </flow>
+
+    <flow name="createCustomers">
         <intacct:execute functionControlId="#[string:invoice- #[mule:message.id]]"
                          type="CreateCustomer">
             <intacct:commands>
-                <intacct:create-customer>
+                <intacct:command>
                     <intacct:customerid>#[map-payload:Intacct_Seed_Number__c1]</intacct:customerid>
-    
+
                     <intacct:name>#[map-payload:Name1]</intacct:name>
                     <intacct:deliveryoptions>
                         <intacct:deliveryoption>Print</intacct:deliveryoption>
                     </intacct:deliveryoptions>
                     <intacct:status>active</intacct:status>
-                    <intacct:contactinfo ref="#[map-payload:ContacInfo1]" />
-                </intacct:create-customer>
-                <intacct:create-customer>
+                    <intacct:contactinfo ref="#[map-payload:ContacInfo1]"/>
+                </intacct:command>
+                <intacct:command>
                     <intacct:customerid>#[map-payload:Intacct_Seed_Number__c2]</intacct:customerid>
-    
+
                     <intacct:name>#[map-payload:Name2]</intacct:name>
                     <intacct:deliveryoptions>
                         <intacct:deliveryoption>Print</intacct:deliveryoption>
                     </intacct:deliveryoptions>
                     <intacct:status>active</intacct:status>
-                    <intacct:contactinfo ref="#[map-payload:ContacInfo2]" />
-                </intacct:create-customer>
+                    <intacct:contactinfo ref="#[map-payload:ContacInfo2]"/>
+                </intacct:command>
             </intacct:commands>
         </intacct:execute>
-     </flow>
-     
-     <flow name="createCustomersSecondVersion">
+    </flow>
+
+    <flow name="createCustomersSecondVersion">
         <intacct:execute functionControlId="#[string:invoice- #[mule:message.id]]"
                          type="CreateCustomer">
-            <intacct:commands ref="#[map-payload:commands]" />
+            <intacct:commands ref="#[map-payload:commands]"/>
         </intacct:execute>
-     </flow>
-
+    </flow>
 
 </mule>
