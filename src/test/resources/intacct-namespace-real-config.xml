@@ -25,7 +25,7 @@
 
     <flow name="functionFlow">
         <intacct:get-list functionControlId="#[map-payload:controlid]" obj="glaccount">
-            <intacct:filter ref="#[map-payload:filter]"/>
+            <intacct:filters ref="#[map-payload:filter]"/>
             <intacct:fields ref="#[map-payload:fields]"/>
         </intacct:get-list>
     </flow>
@@ -44,24 +44,18 @@
                          type="CreateCustomer">
             <intacct:commands>
                 <intacct:command>
-                    <intacct:customerid>#[map-payload:Intacct_Seed_Number__c1]</intacct:customerid>
-
-                    <intacct:name>#[map-payload:Name1]</intacct:name>
-                    <intacct:deliveryoptions>
-                        <intacct:deliveryoption>Print</intacct:deliveryoption>
-                    </intacct:deliveryoptions>
-                    <intacct:status>active</intacct:status>
-                    <intacct:contactinfo ref="#[map-payload:ContacInfo1]"/>
+                    <customerid>#[groovy: ['value' : map-payload.get('Intacct_Seed_Number__c1') ] ]</customerid>
+                    <name>#[map-payload:Name1]</name>
+                    <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'Print'] ]]]</deliveryoptions>
+                    <status>active</status>
+                    <contactinfo>#[groovy: ['contactOrContactname' : map-payload.get('ContactInfo1')] ]</contactinfo>
                 </intacct:command>
                 <intacct:command>
-                    <intacct:customerid>#[map-payload:Intacct_Seed_Number__c2]</intacct:customerid>
-
-                    <intacct:name>#[map-payload:Name2]</intacct:name>
-                    <intacct:deliveryoptions>
-                        <intacct:deliveryoption>Print</intacct:deliveryoption>
-                    </intacct:deliveryoptions>
-                    <intacct:status>active</intacct:status>
-                    <intacct:contactinfo ref="#[map-payload:ContacInfo2]"/>
+                    <customerid>#[groovy: ['value' : map-payload.get('Intacct_Seed_Number__c2') ] ]</customerid>
+                    <name>#[map-payload:Name2]</name>
+                    <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'Print'] ]]]</deliveryoptions>
+                    <status>active</status>
+                    <contactinfo>#[groovy: ['contactOrContactname' : map-payload.get('ContactInfo2')] ]</contactinfo>
                 </intacct:command>
             </intacct:commands>
         </intacct:execute>

@@ -66,10 +66,10 @@
         'month' : '10' ,
         'day' : '12'
     ] ]" />
-    <intacct:bill-to ref="#[groovy:[
+    <intacct:bill-to-contacts ref="#[groovy:[
         ['value' : 'Richard'] , ['value' : 'Steve']
     ] ]" />
-    <intacct:ship-to ref="#[groovy:[
+    <intacct:ship-to-contacts ref="#[groovy:[
         [ 'contactname' : ['value' : 'Michael'] ,
           'printas' : 'some printas' ,
           'taxable' : 'some taxable' ,
@@ -125,7 +125,7 @@
                'country' : 'some country' ,
                'isocountrycode' : 'some iso country code'] ]
     ] ]" />
-    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+    <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
         [ 'year' : '2011' ,
           'month' : '10' ,
           'day' : '12' ] , 
@@ -185,6 +185,38 @@
 </intacct:create-invoice>
 <!-- END_INCLUDE(intacct:create-invoice) -->
 
+<!-- BEGIN_INCLUDE(intacct:create-invoice) -->
+<intacct:create-invoice functionControlId="f5"
+                        customerId="101"
+                        invoiceNo="TM124"
+                        poNumber="PO2021"
+                        description="Invoice creation without currency setting" >
+    <intacct:date-created>
+        <year>2009</year>
+        <month>10</month>
+        <day>05</day>
+    </intacct:date-created>
+    <intacct:date-due>
+        <year>2009</year>
+        <month>11</month>
+        <day>05</day>
+    </intacct:date-due>
+    <intacct:custom-fields>
+        <intacct:custom-field>
+            <customfieldname>MY_CUSTOM_FIELD</customfieldname>
+            <customfieldvalue>Value for Custom Field</customfieldvalue>
+        </intacct:custom-field>
+    </intacct:custom-fields>
+    <intacct:invoice-items>
+        <intacct:invoice-item>
+            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : "Sales" ) ] ]</accountlabelOrGlaccountno>
+            <amount>1234.56</amount>
+            <memo> This is a sample of creating an invoice</memo>
+        </intacct:invoice-item>
+    </intacct:invoice-items>
+</intacct:create-invoice>
+<!-- END_INCLUDE(intacct:create-invoice) -->
+
 <!-- BEGIN_INCLUDE(intacct:create-invoicebatch) -->
 <intacct:create-invoicebatch functionControlId="some function control id"
                              batchTitle="some batch title">
@@ -193,7 +225,7 @@
         'month' : '10' ,
         'day' : '12'
     ] ]" />
-    <intacct:create-invoice-list ref="#[groovy: [
+    <intacct:create-invoices ref="#[groovy: [
     [ 'customerid' : 'some customer id' ,
       'datecreated' : 
         [ 'year' : '2011' ,
@@ -345,18 +377,52 @@
 </intacct:create-invoicebatch>
 <!-- END_INCLUDE(intacct:create-invoicebatch) -->
 
+<!-- BEGIN_INCLUDE(intacct:create-invoicebatch2) -->
+<intacct:create-invoicebatch functionControlId="41235-412312312-124123-223223"
+                             batchTitle="XML Test Batch 1">
+    <intacct:date-created>
+        <year>2010</year>
+        <month>8</month>
+        <day>18</day>
+    </intacct:date-created>
+    <intacct:create-invoices>
+        <intacct:create-invoice>
+            <customerid>C-00001</customerid>
+            <datecreated>#[groovy : [
+                'year' : '2010' ,
+                'month' : '02' ,
+                'day' : '2' ] ]
+            </datecreated>
+            <datedue>#[groovy : [
+                'year' : '2010' ,
+                'month' : '12' ,
+                'day' : '1' ] ]
+            </datedue>
+            <basecurr>USD</basecurr>
+            <currency>USD</currency>
+            <exchratetype>Intacct Daily Rate</exchratetype>
+            <invoiceitems>#[groovy: [
+                'lineitem' : [ [
+                    'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
+                    'amount' : -332 ] ] ]
+            </invoiceitems> 
+        </intacct:create-invoice>
+    </intacct:create-invoices>
+</intacct:create-invoicebatch>
+<!-- END_INCLUDE(intacct:create-invoicebatch2) -->
+
 <!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
 <intacct:create-aradjustment functionControlId="some function control id"
-                      customerId="some customer id"
-                      batchKey="some batch key"
-                      adjustmentNo="some adjustment number"
-                      invoiceNo="some invoice number"
-                      description="some description"
-                      externalId="123456"
-                      baseCurr="some base currency"
-                      currency="some currency"
-                      exchType="ExchRateDate"
-                      nogl="some nogl">
+                             customerId="some customer id"
+                             batchKey="some batch key"
+                             adjustmentNo="some adjustment number"
+                             invoiceNo="some invoice number"
+                             description="some description"
+                             externalId="123456"
+                             baseCurr="some base currency"
+                             currency="some currency"
+                             exchType="ExchRateDate"
+                             nogl="some nogl">
     <intacct:date-created ref="#[groovy:[
         'year' : '2011' ,
         'month' : '10' ,
@@ -367,7 +433,7 @@
         'month' : '10' ,
         'day' : '12'
     ] ]" />
-    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+    <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
         [ 'year' : '2011' ,
           'month' : '10' ,
           'day' : '12' ] , 
@@ -423,23 +489,44 @@
 </intacct:create-aradjustment>
 <!-- END_INCLUDE(intacct:create-aradjustment) -->
 
+<!-- BEGIN_INCLUDE(intacct:create-aradjustment2) -->
+<intacct:create-aradjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
+                             customerId="C-00001"
+                             invoiceNo="TM126"
+                             baseCurr="USD"
+                             currency="USD">
+    <intacct:date-created>
+        <year>2009</year>
+        <month>11</month>
+        <day>19</day>
+    </intacct:date-created>
+    <intacct:ar-adjustment-items>
+        <intacct:ar-adjustment-item>
+            <accountlabelOrGlaccountno>#[groovy: [new Glaccountno(value : "7787" ) ] ]</accountlabelOrGlaccountno>
+            <amount>-200</amount>
+            <memo>This is a sample of creating an ar adjustment</memo>
+        </intacct:ar-adjustment-item>
+    </intacct:ar-adjustment-items>
+</intacct:create-aradjustment>
+<!-- END_INCLUDE(intacct:create-aradjustment2) -->
+
 <!-- BEGIN_INCLUDE(intacct:create-sotransaction) -->
 <intacct:create-sotransaction functionControlId="some function control id"
-                       transactionType="some transaction type"
-                       createdFrom="created from"
-                       customerId="some customer id"
-                       documentNo="some document number"
-                       referenceNo="some reference number"
-                       termName="some term name"
-                       message="some message"
-                       shippingMethod="some shipping method"
-                       billToContactType="ContactName"
-                       shipToContactType="Contact"
-                       externalId="123456"
-                       baseCurr="some base currency"
-                       currency="some currency"
-                       exchType="ExchRateDate"
-                       vsoePriceList="some vsow price list">
+                              transactionType="some transaction type"
+                              createdFrom="created from"
+                              customerId="some customer id"
+                              documentNo="some document number"
+                              referenceNo="some reference number"
+                              termName="some term name"
+                              message="some message"
+                              shippingMethod="some shipping method"
+                              billToContactType="ContactName"
+                              shipToContactType="Contact"
+                              externalId="123456"
+                              baseCurr="some base currency"
+                              currency="some currency"
+                              exchType="ExchRateDate"
+                              vsoePriceList="some vsow price list">
     <intacct:date-created ref="#[groovy:[
         'year' : '2011' ,
         'month' : '10' ,
@@ -450,10 +537,10 @@
         'month' : '10' ,
         'day' : '12'
     ] ]" />
-    <intacct:bill-to ref="#[groovy:[
+    <intacct:bill-to-contacts ref="#[groovy:[
         ['value' : 'Richard'] , ['value' : 'Steve']
     ] ]" />
-    <intacct:ship-to ref="#[groovy:[
+    <intacct:ship-to-contacts ref="#[groovy:[
         [ 'contactname' : ['value' : 'Michael'] ,
           'printas' : 'some printas' ,
           'taxable' : 'some taxable' ,
@@ -510,7 +597,7 @@
                'country' : 'some country' ,
                'isocountrycode' : 'some iso country code']]
     ] ]" />
-    <intacct:exch-rate-date-or-exch-rate-type-or-exch-rate ref="#[groovy: [
+    <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
         [ 'year' : '2011' ,
           'month' : '10' ,
           'day' : '12' ] , 
@@ -595,13 +682,44 @@
 </intacct:create-sotransaction>
 <!-- END_INCLUDE(intacct:create-sotransaction) -->
 
+<!-- BEGIN_INCLUDE(intacct:create-sotransaction2) -->
+<intacct:create-sotransaction functionControlId="414EB0F1-3CD4-4aa3-917F-3A15BF326F13"
+                              transactionType="Sales Order"
+                              customerId="ACME"
+                              externalId="FOOFOO" >
+    <intacct:date-created>
+        <year>2002</year>
+        <month>6</month>
+        <day>12</day>
+    </intacct:date-created>
+    <intacct:so-trans-items>
+        <intacct:so-trans-item>
+            <itemid>BP-100</itemid>
+            <itemdesc>Super Widget 100</itemdesc>
+            <warehouseid>SFO</warehouseid>
+            <quantity>1</quantity>
+            <unit>Each</unit>
+        </intacct:so-trans-item>
+        <intacct:so-trans-item>
+            <itemid>BP-101</itemid>
+            <itemdesc>Super Widget 101</itemdesc>
+            <warehouseid>SFO</warehouseid>
+            <quantity>3</quantity>
+            <unit>Each</unit>
+            <discountpercent>10</dicountpercent>
+            <discount_memo>This is a discount memo</discount_memo>
+        </intacct:so-trans-item>
+    </intacct:so-trans-items>
+</intacct:create-sotransaction>
+<!-- END_INCLUDE(intacct:create-sotransaction2) -->
+
 <!-- BEGIN_INCLUDE(intacct:get-list) -->
 <intacct:get-list functionControlId="some function control id"
                   obj="billbatch"
                   start="some start"
                   maxItems="some maxItems"
                   showPrivate="some show private" >
-    <intacct:filter ref="#[groovy : [
+    <intacct:filters ref="#[groovy : [
         new Logical(
             logicalOperator : 'or' ,
             logicalOrExpression : [
@@ -640,6 +758,91 @@
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list) -->
 
+<!-- BEGIN_INCLUDE(intacct:intacct:get-list2) -->
+<!-- This filter gets a list of GL accounts where the account number is greater 
+than 5000 and which also have a normal credit balance. Additionally, the returned 
+list is sorted by account title and then by balance. The only fields returned are
+account title and balance. -->
+<intacct:get-list functionControlId="f4"
+                  obj="glaccount" >
+    <intacct:filters ref="#[groovy : [
+        new Logical(
+            logicalOperator : 'or' ,
+            logicalOrExpression : [
+                new Logical(
+                    logicalOperator : 'and' ,
+                    logicalOrExpression : [
+                        new Expression(
+                            field : new Field( value : 'accountno') ,
+                            operator : '>' ,
+                            value = new Value(value : '5000' ) 
+                        ), 
+                        new Expression(
+                            field : new Field(value : 'normalbalance' ) ,
+                            operator : '=' ,
+                            value = new Value(value : 'debit' )
+                        )
+                    ]
+                ) , 
+                new Expression(
+                    field : new Field(value : 'normalbalance' ) ,
+                    operator : '=' ,
+                    value : new Value(value : 'credit' )
+                )
+            ]
+        ) ] ]" />
+    <intacct:sorts ref="#[groovy : [
+        [ 'order' : 'asc' ,
+          'value' : 'normalbalance' ] ,
+        [ 'order' : 'asc' ,
+          'value' : 'title' ]
+    ] ]" />
+    <intacct:fields ref="#[groovy : [
+        [ 'value' :  'title' ] , 
+        [ 'value' :  'normalbalance' ]
+    ] ]" />
+</intacct:get-list>
+<!-- END_INCLUDE(intacct:get-list2) -->
+
+<!-- BEGIN_INCLUDE(intacct:get-list3) -->
+<!-- To retrieve all invoices where the amount is greater than $2,500, you include 
+a single expression where the field is totalamount, operator is >, and value is 2500. -->
+<intacct:get-list functionControlId="f1"
+                  obj="invoice" >
+    <intacct:filters ref="#[groovy : [
+        new Expression(
+            field : new Field(value : 'totalamount' ) ,
+            operator : '>' ,
+            value : new Value(value : '2500' )
+    ) ] ]" />
+</intacct:get-list>
+<!-- END_INCLUDE(intacct:get-list3) -->
+
+<!-- BEGIN_INCLUDE(intacct:get-list4) -->
+<!-- In this example, there are two expressions with the logical operator AND: 
+Retrieve all invoices where the amount is greater than $2,500, AND where the 
+customer ID is defined as "DO" -->
+<intacct:get-list functionControlId="f2"
+                  obj="invoice" >
+    <intacct:filters ref="#[groovy : [
+        new Logical(
+            logicalOperator : 'and' ,
+            logicalOrExpression : [
+                new Expression(
+                    field : new Field( value : 'totalamount') ,
+                    operator : '>' ,
+                    value = new Value(value : '2500' ) 
+                ) , 
+                new Expression(
+                    field : new Field(value : 'customerid' ) ,
+                    operator : '=' ,
+                    value : new Value(value : 'DO' )
+                )
+            ]
+        ) ] ]" />
+</intacct:get-list>
+<!-- END_INCLUDE(intacct:get-list4) -->
+
 <!-- BEGIN_INCLUDE(intacct:get) -->
 <intacct:get functionControlId="some function control id"
              obj="subscription"
@@ -651,6 +854,21 @@
     ] ]" />
 </intacct:get>
 <!-- END_INCLUDE(intacct:get) -->
+
+<!-- BEGIN_INCLUDE(intacct:get2) -->
+<intacct:get functionControlId="f4"
+             obj="glaccount"
+             key="1000" > 
+    <intacct:fields>
+        <intacct:field>
+            <value>title</value>
+        <intacct:field>
+        <intacct:field>
+            <value>normalbalance</value>
+        <intacct:field>
+    </intacct:fields>
+</intacct:get>
+<!-- END_INCLUDE(intacct:get2) -->
 
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
 <intacct:operation-with-request>

@@ -173,10 +173,9 @@ public class RealHttpTestCase extends BaseIntacctTest
         } });
         
         List<Object> contactInfo2 = new ArrayList<Object>();
-        contactInfo.add(contact2);
+        contactInfo2.add(contact2);
         
         payload.put("ContactInfo2", contactInfo2);
-        
         MessageProcessor flow = lookupFlowConstruct("createCustomers");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);

@@ -6,19 +6,24 @@ import org.mule.module.intacct.schema.request.Contactname;
 
 
 /** 
- * Diferents types of saving a contact.
+ * Diferents types of reference to a contact.
  * @author Gaston Ponti
  */
 
 public enum ContactType implements EnumType
 {
     /**
-     * Type contact with more information.
+     * Type contact use it when you want to create a new contact. You can provide 
+     * the details for the contact, and a new contact will be created with this data.
+     * When updating an employee, if updates to the employee's contact information 
+     * are to be made, the changes can be specified in the contact object.
      */
      Contact(Contact.class),
      
      /**
-      * type contact only with the string of the name.
+      * Type contact only with the string of the name, that refers to a contact 
+      * that already exists. You can link the employee to the existing contact 
+      * using this.
       */
      ContactName(Contactname.class);
      
