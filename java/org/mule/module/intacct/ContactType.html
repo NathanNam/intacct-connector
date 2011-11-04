@@ -417,7 +417,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>Diferents types of saving a contact.</p>
+<p>Diferents types of reference to a contact.</p>
 
 
 
@@ -462,14 +462,15 @@ Summary:
     <tr class="alt-color api apilevel-" >
         <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a>&nbsp;</td>
         <td class="jd-linkcol">Contact&nbsp;</td>
-        <td class="jd-descrcol" width="100%">Type contact with more information.&nbsp;</td>
+        <td class="jd-descrcol" width="100%">Type contact use it when you want to create a new contact.&nbsp;</td>
     </tr>
     
     
     <tr class=" api apilevel-" >
         <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/intacct/ContactType.html">ContactType</a>&nbsp;</td>
         <td class="jd-linkcol">ContactName&nbsp;</td>
-        <td class="jd-descrcol" width="100%">type contact only with the string of the name.&nbsp;</td>
+        <td class="jd-descrcol" width="100%">Type contact only with the string of the name, that refers to a contact 
+ that already exists.&nbsp;</td>
     </tr>
     
     
@@ -1196,7 +1197,10 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Type contact with more information.
+  <div class="jd-tagdata jd-tagdescr"><p>Type contact use it when you want to create a new contact. You can provide 
+ the details for the contact, and a new contact will be created with this data.
+ When updating an employee, if updates to the employee's contact information 
+ are to be made, the changes can be specified in the contact object.
 </p></div>
 
     
@@ -1227,7 +1231,9 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>type contact only with the string of the name.
+  <div class="jd-tagdata jd-tagdescr"><p>Type contact only with the string of the name, that refers to a contact 
+ that already exists. You can link the employee to the existing contact 
+ using this.
 </p></div>
 
     
