@@ -209,7 +209,7 @@
     </intacct:custom-fields>
     <intacct:invoice-items>
         <intacct:invoice-item>
-            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : "Sales" ) ] ]</accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : 'Sales' ) ] ]</accountlabelOrGlaccountno>
             <amount>1234.56</amount>
             <memo> This is a sample of creating an invoice</memo>
         </intacct:invoice-item>
@@ -379,7 +379,7 @@
 
 <!-- BEGIN_INCLUDE(intacct:create-invoicebatch2) -->
 <intacct:create-invoicebatch functionControlId="41235-412312312-124123-223223"
-                             batchTitle="XML Test Batch 1">
+                             batchTitle="XML Test Batch 2">
     <intacct:date-created>
         <year>2010</year>
         <month>8</month>
@@ -410,6 +410,67 @@
     </intacct:create-invoices>
 </intacct:create-invoicebatch>
 <!-- END_INCLUDE(intacct:create-invoicebatch2) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-invoicebatch3) -->
+<intacct:create-invoicebatch functionControlId="57235-412312312-124123-223223"
+                             batchTitle="XML Test Batch 3">
+    <intacct:date-created>
+        <year>2011</year>
+        <month>11</month>
+        <day>1</day>
+    </intacct:date-created>
+    <intacct:create-invoices>
+        <intacct:create-invoice>
+            <customerid>C-00027</customerid>
+            <datecreated>#[groovy : [
+                'year' : '2011' ,
+                'month' : '02' ,
+                'day' : '2' ] ]
+            </datecreated>
+            <datedue>#[groovy : [
+                'year' : '2013' ,
+                'month' : '12' ,
+                'day' : '1' ] ]
+            </datedue>
+            <basecurr>USD</basecurr>
+            <currency>USD</currency>
+            <exchratetype>Intacct Daily Rate</exchratetype>
+            <invoiceitems>#[groovy: [
+                'lineitem' : [ 
+                  [ 'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
+                    'amount' : 275 ] ,
+                  [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : "Sales" ) ] ,
+                    'amount' : -130 ] ] ]
+            </invoiceitems> 
+        </intacct:create-invoice>
+        <intacct:create-invoice>
+            <customerid>C-101</customerid>
+            <invoiceno>TM125</invoiceno>
+            <ponumber>PO2021</ponumber>
+            <description>Invoice creation without currency setting</description>
+            <datecreated>#[grovy: [
+                'year' : '2009' ,
+                'month' : '10' ,
+                'day' : '05' ] ]
+            </datecreated>
+            <datedue>#[grovy: [
+                'year' : '2014' ,
+                'month' : '10' ,
+                'day' : '05' ] ]
+            </:datedue>
+            <customfields>#[groovy: [
+                [ 'customfieldname' : 'MY_CUSTOM_FIELD' ,
+                  'customfieldvalue' : 'Value for Custom Field'] ]
+            </customfields>
+            <invoiceitems>#[groovy: [ 
+                [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : 'Sales' ) ] ,
+                   'amount' : 1234.56 ,
+                   'memo' : 'This is a sample of creating an invoice' ] ]
+            </invoiceitems>
+        </intacct:create-invoice>
+    </intacct:create-invoices>
+</intacct:create-invoicebatch>
+<!-- END_INCLUDE(intacct:create-invoicebatch3) -->
 
 <!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
 <intacct:create-aradjustment functionControlId="some function control id"

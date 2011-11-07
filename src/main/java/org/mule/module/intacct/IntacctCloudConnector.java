@@ -306,6 +306,7 @@ public class IntacctCloudConnector
      * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch}
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
