@@ -265,7 +265,7 @@ Summary:
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/intacct.html#create-aradjustment">&lt;intacct:create-aradjustment&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/intacct.html#create-a-r-adjustment">&lt;intacct:create-a-r-adjustment&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
  <p>
@@ -289,7 +289,7 @@ Summary:
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/intacct.html#create-invoicebatch">&lt;intacct:create-invoicebatch&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/intacct.html#create-invoice-batch">&lt;intacct:create-invoice-batch&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
  <p>
@@ -301,7 +301,7 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/intacct.html#create-sotransaction">&lt;intacct:create-sotransaction&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/intacct.html#create-s-o-transaction">&lt;intacct:create-s-o-transaction&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
  <p>
@@ -504,11 +504,11 @@ specify which configuration to use.</p>
 
 
 
-<A NAME="create-aradjustment"></A>
+<A NAME="create-a-r-adjustment"></A>
 
 <div class="jd-details api apilevel-">
     <h4 class="jd-details-title">
-      <span class="sympad">&lt;intacct:create-aradjustment&gt;</span>
+      <span class="sympad">&lt;intacct:create-a-r-adjustment&gt;</span>
     </h4>
       <div class="api-level">
         <div>
@@ -526,14 +526,14 @@ specify which configuration to use.</p>
  <p>
  Documentation: <a href="http://developer.intacct.com/wiki/ar-adjustment">Aradjustment<a>
  <p>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-aradjustment functionControlId="some function control id"
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-a-r-adjustment functionControlId="some function control id"
                              customerId="some customer id"
                              batchKey="some batch key"
                              adjustmentNo="some adjustment number"
                              invoiceNo="some invoice number"
                              description="some description"
                              externalId="123456"
-                             baseCurr="some base currency"
+                             basecurr="some base currency"
                              currency="some currency"
                              exchType="ExchRateDate"
                              nogl="some nogl"&gt;
@@ -555,7 +555,7 @@ specify which configuration to use.</p>
           'month' : '10' ,
           'day' : '12' ]
     ] ]" /&gt;
-    &lt;intacct:ar-adjustment-items ref="#[groovy : [ 
+    &lt;intacct:a-r-adjustment-items ref="#[groovy : [ 
         [ 'accountlabelOrGlaccountno' : [ 
               new Accountlabel(
                 value = 'some account value') , 
@@ -600,25 +600,56 @@ specify which configuration to use.</p>
           'classid' : 'some class id' ,
           'billable' : 'some billable' ] 
     ] ]" /&gt;
-&lt;/intacct:create-aradjustment&gt;</pre></div>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-aradjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
+&lt;/intacct:create-a-r-adjustment&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-a-r-adjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
                              customerId="C-00001"
                              invoiceNo="TM126"
-                             baseCurr="USD"
+                             basecurr="USD"
                              currency="USD"&gt;
     &lt;intacct:date-created&gt;
         &lt;year&gt;2009&lt;/year&gt;
         &lt;month&gt;11&lt;/month&gt;
         &lt;day&gt;19&lt;/day&gt;
     &lt;/intacct:date-created&gt;
-    &lt;intacct:ar-adjustment-items&gt;
-        &lt;intacct:ar-adjustment-item&gt;
+    &lt;intacct:a-r-adjustment-items&gt;
+        &lt;intacct:a-r-adjustment-item&gt;
             &lt;accountlabelOrGlaccountno&gt;#[groovy: [new Glaccountno(value : "7787" ) ] ]&lt;/accountlabelOrGlaccountno&gt;
             &lt;amount&gt;-200&lt;/amount&gt;
             &lt;memo&gt;This is a sample of creating an ar adjustment&lt;/memo&gt;
-        &lt;/intacct:ar-adjustment-item&gt;
-    &lt;/intacct:ar-adjustment-items&gt;
-&lt;/intacct:create-aradjustment&gt;</pre></div></p></div>
+        &lt;/intacct:a-r-adjustment-item&gt;
+    &lt;/intacct:a-r-adjustment-items&gt;
+&lt;/intacct:create-a-r-adjustment&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-a-r-adjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
+                               customerId="C-00001"
+                               invoiceNo="TM126"
+                               basecurr="USD"
+                               currency="USD"
+                               exchType="ExchRateDate"&gt;
+    &lt;intacct:date-created&gt;
+        &lt;year&gt;2009&lt;/year&gt;
+        &lt;month&gt;11&lt;/month&gt;
+        &lt;day&gt;19&lt;/day&gt;
+    &lt;/intacct:date-created&gt;
+    &lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;
+        &lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate&gt;
+            &lt;year&gt;2011&lt;/year&gt;
+            &lt;month&gt;10&lt;/month&gt;
+            &lt;day&gt;12&lt;/day&gt;
+        &lt;/intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate&gt;
+        &lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate&gt;
+            &lt;year&gt;2011&lt;/year&gt;
+            &lt;month&gt;9&lt;/month&gt;
+            &lt;day&gt;12&lt;/day&gt;
+        &lt;/intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate&gt;
+    &lt;/intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;
+    &lt;intacct:a-r-adjustment-items&gt;
+        &lt;intacct:a-r-adjustment-item&gt;
+            &lt;accountlabelOrGlaccountno&gt;#[groovy: [new Glaccountno(value : "7787" ) ] ]&lt;/accountlabelOrGlaccountno&gt;
+            &lt;amount&gt;-200&lt;/amount&gt;
+            &lt;memo&gt;This is a sample of creating an ar adjustment&lt;/memo&gt;
+        &lt;/intacct:a-r-adjustment-item&gt;
+    &lt;/intacct:a-r-adjustment-items&gt;
+&lt;/intacct:create-a-r-adjustment&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -717,7 +748,7 @@ specify which configuration to use.</p>
           
                 
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
+                    <td class="jd-linkcol"><nobr>basecurr</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Base currency.<br/></td>
                 </tr>
@@ -757,14 +788,14 @@ specify which configuration to use.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>nogl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The GL number.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The General Ledger number.<br/></td>
                 </tr>
                 
                 
           
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>arAdjustmentItems</nobr></td>
+                    <td class="jd-linkcol"><nobr>aRAdjustmentItems</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">List of AR adjustment items.<br/></td>
                 </tr>
@@ -869,7 +900,7 @@ specify which configuration to use.</p>
                         externalId="123456"
                         billToContactType="ContactName"
                         shipToContactType="Contact"
-                        baseCurr="base currency"
+                        basecurr="base currency"
                         currency="currency"
                         exchType="ExchRateDate"
                         nogl="some nogl"&gt;
@@ -1005,7 +1036,35 @@ specify which configuration to use.</p>
         'billable' : 'some billable'
     ] ] ]" /&gt;
 &lt;/intacct:create-invoice&gt;</pre></div>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>INCLUDE_ERROR</pre></div></p></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice functionControlId="f5"
+                        customerId="101"
+                        invoiceNo="TM124"
+                        poNumber="PO2021"
+                        description="Invoice creation without currency setting" &gt;
+    &lt;intacct:date-created&gt;
+        &lt;year&gt;2009&lt;/year&gt;
+        &lt;month&gt;10&lt;/month&gt;
+        &lt;day&gt;05&lt;/day&gt;
+    &lt;/intacct:date-created&gt;
+    &lt;intacct:date-due&gt;
+        &lt;year&gt;2009&lt;/year&gt;
+        &lt;month&gt;11&lt;/month&gt;
+        &lt;day&gt;05&lt;/day&gt;
+    &lt;/intacct:date-due&gt;
+    &lt;intacct:custom-fields&gt;
+        &lt;intacct:custom-field&gt;
+            &lt;customfieldname&gt;MY_CUSTOM_FIELD&lt;/customfieldname&gt;
+            &lt;customfieldvalue&gt;Value for Custom Field&lt;/customfieldvalue&gt;
+        &lt;/intacct:custom-field&gt;
+    &lt;/intacct:custom-fields&gt;
+    &lt;intacct:invoice-items&gt;
+        &lt;intacct:invoice-item&gt;
+            &lt;accountlabelOrGlaccountno&gt;#[groovy: [new Accountlabel(value : 'Sales' ) ] ]&lt;/accountlabelOrGlaccountno&gt;
+            &lt;amount&gt;1234.56&lt;/amount&gt;
+            &lt;memo&gt; This is a sample of creating an invoice&lt;/memo&gt;
+        &lt;/intacct:invoice-item&gt;
+    &lt;/intacct:invoice-items&gt;
+&lt;/intacct:create-invoice&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1157,7 +1216,7 @@ specify which configuration to use.</p>
           
                 
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
+                    <td class="jd-linkcol"><nobr>basecurr</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Base currency.<br/></td>
                 </tr>
@@ -1197,7 +1256,7 @@ specify which configuration to use.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>nogl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The GL number.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The General Ledger number.<br/></td>
                 </tr>
                 
                 
@@ -1302,11 +1361,11 @@ specify which configuration to use.</p>
 </div>
 
 
-<A NAME="create-invoicebatch"></A>
+<A NAME="create-invoice-batch"></A>
 
 <div class="jd-details api apilevel-">
     <h4 class="jd-details-title">
-      <span class="sympad">&lt;intacct:create-invoicebatch&gt;</span>
+      <span class="sympad">&lt;intacct:create-invoice-batch&gt;</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1322,7 +1381,7 @@ specify which configuration to use.</p>
  <p>
  Documentation: <a href="http://developer.intacct.com/wiki/invoice-batch">Invoicebatch<a>
  <p>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoicebatch functionControlId="some function control id"
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice-batch functionControlId="some function control id"
                              batchTitle="some batch title"&gt;
     &lt;intacct:date-created ref="#[groovy:[
         'year' : '2011' ,
@@ -1343,15 +1402,15 @@ specify which configuration to use.</p>
         [ 'year' : '2011' ,
           'month' : '10' ,
           'day' : '12' ] ,
-      'termName' : 
+      'termname' : 
         [ 'value' : 'some term name value' ] ,
-      'batchKey' : 
+      'batchkey' : 
         [ 'value' : 'some batch key value' ] ,
-      'invoiceNo' : 'invoice number' ,
-      'poNumber' : 'po number' ,
+      'invoiceno' : 'invoice number' ,
+      'ponumber' : 'po number' ,
       'description' : 'New invoice' ,
-      'externalId' : 123456' ,
-      'billTo' : 
+      'externalid' : 123456' ,
+      'billto' : 
         [ new Contactname(value : 'Richard') , 
           new Contact(
             contactname : new Contactname(value : 'Michael') ,
@@ -1382,10 +1441,10 @@ specify which configuration to use.</p>
                country : 'some country' ,
                isocountrycode : 'some iso country code')
           ) ] ,
-      'shipTo' : 
+      'shipto' : 
         [ new Contact(
-            contactname = new Contactname(
-                value = 'John') ,
+            contactname : new Contactname(
+                value : 'John') ,
             printas : 'some printas' ,
             taxable : 'some taxable' ,
             companyname : 'some company name' ,
@@ -1416,7 +1475,7 @@ specify which configuration to use.</p>
           ) ,
           new Contactname(
             value = 'Vito') ] ,
-      'baseCurr' : 'some base currency' ,
+      'basecurr' : 'some base currency' ,
       'currency' : 'some currency' ,
       'nogl' : 'some nogl' ,
       'exchratedateOrExchratetypeOrExchrate' : [
@@ -1428,12 +1487,12 @@ specify which configuration to use.</p>
           value : 'some value'),
         new Exchrate(
           value : 'some value') ] ,
-      'customFields' : [
+      'customfields' : [
         [ 'customfieldname' : 'some custom field' ,
           'customfieldvalue' : 'some custom field value' ] ,
         [ 'customfieldname' : 'other custom field' ,
           'customfieldvalue' : 'other custom field value' ] 
-      'invoiceItems' : [ 
+      'invoiceitems' : [ 
         [ 'accountlabelOrGlaccountno' : [ 
               new Accountlabel(
                 value : 'some account value') , 
@@ -1478,9 +1537,9 @@ specify which configuration to use.</p>
           'classid' : 'some class id' ,
           'billable' : 'some billable' ] ]
     ] ] ]" /&gt;
-&lt;/intacct:create-invoicebatch&gt;</pre></div>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoicebatch functionControlId="41235-412312312-124123-223223"
-                             batchTitle="XML Test Batch 1"&gt;
+&lt;/intacct:create-invoice-batch&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice-batch functionControlId="41235-412312312-124123-223223"
+                              batchTitle="XML Test Batch 2"&gt;
     &lt;intacct:date-created&gt;
         &lt;year&gt;2010&lt;/year&gt;
         &lt;month&gt;8&lt;/month&gt;
@@ -1509,7 +1568,83 @@ specify which configuration to use.</p>
             &lt;/invoiceitems&gt; 
         &lt;/intacct:create-invoice&gt;
     &lt;/intacct:create-invoices&gt;
-&lt;/intacct:create-invoicebatch&gt;</pre></div></p></div>
+&lt;/intacct:create-invoice-batch&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-invoice-batch functionControlId="59235-412312312-124123-223223"
+                              batchTitle="XML Test Batch 3"&gt;
+    &lt;intacct:date-created&gt;
+        &lt;year&gt;2011&lt;/year&gt;
+        &lt;month&gt;11&lt;/month&gt;
+        &lt;day&gt;1&lt;/day&gt;
+    &lt;/intacct:date-created&gt;
+    &lt;intacct:create-invoices&gt;
+        &lt;intacct:create-invoice&gt;
+            &lt;customerid&gt;C-00027&lt;/customerid&gt;
+            &lt;datecreated&gt;#[groovy : [
+                'year' : '2011' ,
+                'month' : '02' ,
+                'day' : '2' ] ]
+            &lt;/datecreated&gt;
+            &lt;datedue&gt;#[groovy : [
+                'year' : '2013' ,
+                'month' : '12' ,
+                'day' : '1' ] ]
+            &lt;/datedue&gt;
+            &lt;basecurr&gt;USD&lt;/basecurr&gt;
+            &lt;currency&gt;USD&lt;/currency&gt;
+            &lt;exchratetype&gt;Intacct Daily Rate&lt;/exchratetype&gt;
+            &lt;invoiceitems&gt;#[groovy: [
+                'lineitem' : [ 
+                  [ 'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
+                    'amount' : 275 ] ,
+                  [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : "Sales" ) ] ,
+                    'amount' : -130 ] ] ]
+            &lt;/invoiceitems&gt; 
+        &lt;/intacct:create-invoice&gt;
+        &lt;intacct:create-invoice&gt;
+            &lt;customerid&gt;C-101&lt;/customerid&gt;
+            &lt;invoiceno&gt;TM125&lt;/invoiceno&gt;
+            &lt;ponumber&gt;PO2021&lt;/ponumber&gt;
+            &lt;description&gt;Invoice creation without currency setting&lt;/description&gt;
+            &lt;datecreated&gt;#[grovy: [
+                'year' : '2009' ,
+                'month' : '10' ,
+                'day' : '05' ] ]
+            &lt;/datecreated&gt;
+            &lt;datedue&gt;#[grovy: [
+                'year' : '2014' ,
+                'month' : '10' ,
+                'day' : '05' ] ]
+            &lt;/datedue&gt;
+            &lt;billto&gt;#[groovy: [ 
+                new Contactname(value : 'Richard') , 
+                new Contact(
+                    contactname : new Contactname(value : 'Michael') ,
+                    companyname : 'MuleSoft' ,
+                    firstname : 'Michael' ,
+                    lastname : 'Richarson' ,,
+                    phone1 : '1231231231' ,
+                    mailaddress : new Mailaddress(
+                       address1 : 'some address' ,
+                       city : 'some city' ,
+                       state : 'some state' ,
+                       zip : 'some zip' ,
+                       country : 'some country' )
+                  ) ] ]
+            &lt;/billto&gt;
+            &lt;basecurr&gt;USD&lt;/basecurr&gt;
+            &lt;currency&gt;USD&lt;/currency&gt;
+            &lt;customfields&gt;#[groovy: [
+                [ 'customfieldname' : 'MY_CUSTOM_FIELD' ,
+                  'customfieldvalue' : 'Value for Custom Field'] ]
+            &lt;/customfields&gt;
+            &lt;invoiceitems&gt;#[groovy: [ 
+                [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : 'Sales' ) ] ,
+                   'amount' : 1234.56 ,
+                   'memo' : 'This is a sample of creating an invoice' ] ]
+            &lt;/invoiceitems&gt;
+        &lt;/intacct:create-invoice&gt;
+    &lt;/intacct:create-invoices&gt;
+&lt;/intacct:create-invoice-batch&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1604,11 +1739,11 @@ specify which configuration to use.</p>
 </div>
 
 
-<A NAME="create-sotransaction"></A>
+<A NAME="create-s-o-transaction"></A>
 
 <div class="jd-details api apilevel-">
     <h4 class="jd-details-title">
-      <span class="sympad">&lt;intacct:create-sotransaction&gt;</span>
+      <span class="sympad">&lt;intacct:create-s-o-transaction&gt;</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1626,7 +1761,7 @@ specify which configuration to use.</p>
  <p>
  Documentation: <a href="http://developer.intacct.com/wiki/sotransaction">Sotransaction<a>
  <p>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-sotransaction functionControlId="some function control id"
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-s-o-transaction functionControlId="some function control id"
                               transactionType="some transaction type"
                               createdFrom="created from"
                               customerId="some customer id"
@@ -1638,7 +1773,7 @@ specify which configuration to use.</p>
                               billToContactType="ContactName"
                               shipToContactType="Contact"
                               externalId="123456"
-                              baseCurr="some base currency"
+                              basecurr="some base currency"
                               currency="some currency"
                               exchType="ExchRateDate"
                               vsoePriceList="some vsow price list"&gt;
@@ -1726,7 +1861,7 @@ specify which configuration to use.</p>
         [ 'customfieldname' : 'other custom field' ,
           'customfieldvalue' : 'other custom field value' ] 
     ]]" /&gt;
-    &lt;intacct:so-trans-items ref="#[groovy :[
+    &lt;intacct:s-o-trans-items ref="#[groovy :[
         [ 'bundlenumber' : 'some bundle number' ,
           'itemid' : 
             [ 'value' : 'some item id value' ] ,
@@ -1794,8 +1929,8 @@ specify which configuration to use.</p>
           'departmentid' : 
             [ 'value' : 'some department id value' ] ]
     ] ]" /&gt;
-&lt;/intacct:create-sotransaction&gt;</pre></div>
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-sotransaction functionControlId="414EB0F1-3CD4-4aa3-917F-3A15BF326F13"
+&lt;/intacct:create-s-o-transaction&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-s-o-transaction functionControlId="414EB0F1-3CD4-4aa3-917F-3A15BF326F13"
                               transactionType="Sales Order"
                               customerId="ACME"
                               externalId="FOOFOO" &gt;
@@ -1804,25 +1939,74 @@ specify which configuration to use.</p>
         &lt;month&gt;6&lt;/month&gt;
         &lt;day&gt;12&lt;/day&gt;
     &lt;/intacct:date-created&gt;
-    &lt;intacct:so-trans-items&gt;
-        &lt;intacct:so-trans-item&gt;
+    &lt;intacct:s-o-trans-items&gt;
+        &lt;intacct:s-o-trans-item&gt;
             &lt;itemid&gt;BP-100&lt;/itemid&gt;
             &lt;itemdesc&gt;Super Widget 100&lt;/itemdesc&gt;
             &lt;warehouseid&gt;SFO&lt;/warehouseid&gt;
             &lt;quantity&gt;1&lt;/quantity&gt;
             &lt;unit&gt;Each&lt;/unit&gt;
-        &lt;/intacct:so-trans-item&gt;
-        &lt;intacct:so-trans-item&gt;
+        &lt;/intacct:s-o-trans-item&gt;
+        &lt;intacct:s-o-trans-item&gt;
             &lt;itemid&gt;BP-101&lt;/itemid&gt;
             &lt;itemdesc&gt;Super Widget 101&lt;/itemdesc&gt;
             &lt;warehouseid&gt;SFO&lt;/warehouseid&gt;
             &lt;quantity&gt;3&lt;/quantity&gt;
             &lt;unit&gt;Each&lt;/unit&gt;
-            &lt;discountpercent&gt;10&lt;/dicountpercent&gt;
-            &lt;discount_memo&gt;This is a discount memo&lt;/discount_memo&gt;
-        &lt;/intacct:so-trans-item&gt;
-    &lt;/intacct:so-trans-items&gt;
-&lt;/intacct:create-sotransaction&gt;</pre></div></p></div>
+            &lt;discsurchargememo&gt;This is a discount memo&lt;/discsurchargememo&gt;
+        &lt;/intacct:s-o-trans-item&gt;
+    &lt;/intacct:s-o-trans-items&gt;
+&lt;/intacct:create-s-o-transaction&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:create-s-o-transaction functionControlId="454EB0F1-3CD4-4aa3-917F-3A15BF326F13"
+                                transactionType="Sales Order"
+                                customerId="ACME"
+                                documentNo="4167834"
+                                billToContactType="ContactName"
+                                externalId="FOOFOO"
+                                basecurr="USD"
+                                currency="USD" &gt;
+    &lt;intacct:date-created&gt;
+        &lt;year&gt;2009&lt;/year&gt;
+        &lt;month&gt;6&lt;/month&gt;
+        &lt;day&gt;12&lt;/day&gt;
+    &lt;/intacct:date-created&gt;
+    &lt;intacct:date-due&gt;
+        &lt;year&gt;2012&lt;/year&gt;
+        &lt;month&gt;6&lt;/month&gt;
+        &lt;day&gt;12&lt;/day&gt;
+    &lt;/intacct:date-due&gt;
+    &lt;intacct:bill-to-contacts&gt;
+        &lt;intacct:bill-to-contact&gt;
+            &lt;value&gt;Richard&lt;/value&gt;
+        &lt;/intacct:bill-to-contact&gt;
+        &lt;intacct:bill-to-contact&gt;
+            &lt;value&gt;Steve&lt;/value&gt;
+        &lt;/intacct:bill-to-contact&gt;
+    &lt;/intacct:bill-to-contacts&gt;
+    &lt;intacct:s-o-trans-items&gt;
+        &lt;intacct:s-o-trans-item&gt;
+            &lt;itemid&gt;BP-100&lt;/itemid&gt;
+            &lt;itemdesc&gt;Super Widget 100&lt;/itemdesc&gt;
+            &lt;warehouseid&gt;SFO&lt;/warehouseid&gt;
+            &lt;quantity&gt;1&lt;/quantity&gt;
+            &lt;unit&gt;Each&lt;/unit&gt;
+        &lt;/intacct:s-o-trans-item&gt;
+        &lt;intacct:s-o-trans-item&gt;
+            &lt;itemid&gt;BP-101&lt;/itemid&gt;
+            &lt;itemdesc&gt;Super Widget 101&lt;/itemdesc&gt;
+            &lt;warehouseid&gt;SFO&lt;/warehouseid&gt;
+            &lt;quantity&gt;3&lt;/quantity&gt;
+            &lt;unit&gt;Each&lt;/unit&gt;
+            &lt;discsurchargememo&gt;This is a discount memo&lt;/discsurchargememo&gt;
+        &lt;/intacct:s-o-trans-item&gt;
+    &lt;/intacct:s-o-trans-items&gt;
+    &lt;intacct:sub-totals&gt;
+        &lt;intacct:sub-total&gt;
+            &lt;description&gt;some description&lt;/description&gt;
+            &lt;total&gt;564&lt;/total&gt;
+        &lt;/intacct:sub-total&gt;
+   &lt;intacct:sub-totals&gt;
+&lt;/intacct:create-s-o-transaction&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1983,7 +2167,7 @@ specify which configuration to use.</p>
           
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>baseCurr</nobr></td>
+                    <td class="jd-linkcol"><nobr>basecurr</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Base currency.<br/></td>
                 </tr>
@@ -2023,7 +2207,7 @@ specify which configuration to use.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>vsoePriceList</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The vsoe price list.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The vsoe (Vendor Specific Objective Evidence) price list.<br/></td>
                 </tr>
                 
                 
@@ -2039,7 +2223,7 @@ specify which configuration to use.</p>
           
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>soTransItems</nobr></td>
+                    <td class="jd-linkcol"><nobr>sOTransItems</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">List of SO transactions items.<br/></td>
                 </tr>
@@ -2309,10 +2493,10 @@ specify which configuration to use.</p>
     &lt;intacct:fields&gt;
         &lt;intacct:field&gt;
             &lt;value&gt;title&lt;/value&gt;
-        &lt;intacct:field&gt;
+        &lt;/intacct:field&gt;
         &lt;intacct:field&gt;
             &lt;value&gt;normalbalance&lt;/value&gt;
-        &lt;intacct:field&gt;
+        &lt;/intacct:field&gt;
     &lt;/intacct:fields&gt;
 &lt;/intacct:get&gt;</pre></div></p></div>
   <div class="jd-tagdata">
