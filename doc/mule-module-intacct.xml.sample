@@ -47,7 +47,7 @@
                         externalId="123456"
                         billToContactType="ContactName"
                         shipToContactType="Contact"
-                        baseCurr="base currency"
+                        basecurr="base currency"
                         currency="currency"
                         exchType="ExchRateDate"
                         nogl="some nogl">
@@ -185,7 +185,7 @@
 </intacct:create-invoice>
 <!-- END_INCLUDE(intacct:create-invoice) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-invoice) -->
+<!-- BEGIN_INCLUDE(intacct:create-invoice2) -->
 <intacct:create-invoice functionControlId="f5"
                         customerId="101"
                         invoiceNo="TM124"
@@ -215,10 +215,42 @@
         </intacct:invoice-item>
     </intacct:invoice-items>
 </intacct:create-invoice>
-<!-- END_INCLUDE(intacct:create-invoice) -->
+<!-- END_INCLUDE(intacct:create-invoice2) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-invoicebatch) -->
-<intacct:create-invoicebatch functionControlId="some function control id"
+<!-- BEGIN_INCLUDE(intact:crete-intoice3) -->
+<intacct:create-invoice functionControlId="f5"
+                        customerId="101"
+                        invoiceNo="TM124"
+                        poNumber="PO2021"
+                        description="Invoice creation without currency setting" >
+    <intacct:date-created>
+        <year>2009</year>
+        <month>10</month>
+        <day>05</day>
+    </intacct:date-created>
+    <intacct:date-due>
+        <year>2012</year>
+        <month>11</month>
+        <day>05</day>
+    </intacct:date-due>
+    <intacct:custom-fields>
+        <intacct:custom-field>
+            <customfieldname>MY_CUSTOM_FIELD</customfieldname>
+            <customfieldvalue>Value for Custom Field</customfieldvalue>
+        </intacct:custom-field>
+    </intacct:custom-fields>
+    <intacct:invoice-items>
+        <intacct:invoice-item>
+            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : 'Sales' ) ] ]</accountlabelOrGlaccountno>
+            <amount>1234.56</amount>
+            <memo> This is a sample of creating an invoice</memo>
+        </intacct:invoice-item>
+    </intacct:invoice-items>
+</intacct:create-invoice>
+<!-- END_INCLUDE(intacct:create-invoice3) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-invoice-batch) -->
+<intacct:create-invoice-batch functionControlId="some function control id"
                              batchTitle="some batch title">
     <intacct:date-created ref="#[groovy:[
         'year' : '2011' ,
@@ -239,15 +271,15 @@
         [ 'year' : '2011' ,
           'month' : '10' ,
           'day' : '12' ] ,
-      'termName' : 
+      'termname' : 
         [ 'value' : 'some term name value' ] ,
-      'batchKey' : 
+      'batchkey' : 
         [ 'value' : 'some batch key value' ] ,
-      'invoiceNo' : 'invoice number' ,
-      'poNumber' : 'po number' ,
+      'invoiceno' : 'invoice number' ,
+      'ponumber' : 'po number' ,
       'description' : 'New invoice' ,
-      'externalId' : 123456' ,
-      'billTo' : 
+      'externalid' : 123456' ,
+      'billto' : 
         [ new Contactname(value : 'Richard') , 
           new Contact(
             contactname : new Contactname(value : 'Michael') ,
@@ -278,10 +310,10 @@
                country : 'some country' ,
                isocountrycode : 'some iso country code')
           ) ] ,
-      'shipTo' : 
+      'shipto' : 
         [ new Contact(
-            contactname = new Contactname(
-                value = 'John') ,
+            contactname : new Contactname(
+                value : 'John') ,
             printas : 'some printas' ,
             taxable : 'some taxable' ,
             companyname : 'some company name' ,
@@ -312,7 +344,7 @@
           ) ,
           new Contactname(
             value = 'Vito') ] ,
-      'baseCurr' : 'some base currency' ,
+      'basecurr' : 'some base currency' ,
       'currency' : 'some currency' ,
       'nogl' : 'some nogl' ,
       'exchratedateOrExchratetypeOrExchrate' : [
@@ -324,12 +356,12 @@
           value : 'some value'),
         new Exchrate(
           value : 'some value') ] ,
-      'customFields' : [
+      'customfields' : [
         [ 'customfieldname' : 'some custom field' ,
           'customfieldvalue' : 'some custom field value' ] ,
         [ 'customfieldname' : 'other custom field' ,
           'customfieldvalue' : 'other custom field value' ] 
-      'invoiceItems' : [ 
+      'invoiceitems' : [ 
         [ 'accountlabelOrGlaccountno' : [ 
               new Accountlabel(
                 value : 'some account value') , 
@@ -374,12 +406,12 @@
           'classid' : 'some class id' ,
           'billable' : 'some billable' ] ]
     ] ] ]" />
-</intacct:create-invoicebatch>
-<!-- END_INCLUDE(intacct:create-invoicebatch) -->
+</intacct:create-invoice-batch>
+<!-- END_INCLUDE(intacct:create-invoice-batch) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-invoicebatch2) -->
-<intacct:create-invoicebatch functionControlId="41235-412312312-124123-223223"
-                             batchTitle="XML Test Batch 2">
+<!-- BEGIN_INCLUDE(intacct:create-invoice-batch2) -->
+<intacct:create-invoice-batch functionControlId="41235-412312312-124123-223223"
+                              batchTitle="XML Test Batch 2">
     <intacct:date-created>
         <year>2010</year>
         <month>8</month>
@@ -408,12 +440,12 @@
             </invoiceitems> 
         </intacct:create-invoice>
     </intacct:create-invoices>
-</intacct:create-invoicebatch>
-<!-- END_INCLUDE(intacct:create-invoicebatch2) -->
+</intacct:create-invoice-batch>
+<!-- END_INCLUDE(intacct:create-invoice-batch2) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-invoicebatch3) -->
-<intacct:create-invoicebatch functionControlId="57235-412312312-124123-223223"
-                             batchTitle="XML Test Batch 3">
+<!-- BEGIN_INCLUDE(intacct:create-invoice-batch3) -->
+<intacct:create-invoice-batch functionControlId="59235-412312312-124123-223223"
+                              batchTitle="XML Test Batch 3">
     <intacct:date-created>
         <year>2011</year>
         <month>11</month>
@@ -457,7 +489,25 @@
                 'year' : '2014' ,
                 'month' : '10' ,
                 'day' : '05' ] ]
-            </:datedue>
+            </datedue>
+            <billto>#[groovy: [ 
+                new Contactname(value : 'Richard') , 
+                new Contact(
+                    contactname : new Contactname(value : 'Michael') ,
+                    companyname : 'MuleSoft' ,
+                    firstname : 'Michael' ,
+                    lastname : 'Richarson' ,,
+                    phone1 : '1231231231' ,
+                    mailaddress : new Mailaddress(
+                       address1 : 'some address' ,
+                       city : 'some city' ,
+                       state : 'some state' ,
+                       zip : 'some zip' ,
+                       country : 'some country' )
+                  ) ] ]
+            </billto>
+            <basecurr>USD</basecurr>
+            <currency>USD</currency>
             <customfields>#[groovy: [
                 [ 'customfieldname' : 'MY_CUSTOM_FIELD' ,
                   'customfieldvalue' : 'Value for Custom Field'] ]
@@ -469,18 +519,18 @@
             </invoiceitems>
         </intacct:create-invoice>
     </intacct:create-invoices>
-</intacct:create-invoicebatch>
-<!-- END_INCLUDE(intacct:create-invoicebatch3) -->
+</intacct:create-invoice-batch>
+<!-- END_INCLUDE(intacct:create-invoice-batch3) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-aradjustment) -->
-<intacct:create-aradjustment functionControlId="some function control id"
+<!-- BEGIN_INCLUDE(intacct:create-a-r-adjustment) -->
+<intacct:create-a-r-adjustment functionControlId="some function control id"
                              customerId="some customer id"
                              batchKey="some batch key"
                              adjustmentNo="some adjustment number"
                              invoiceNo="some invoice number"
                              description="some description"
                              externalId="123456"
-                             baseCurr="some base currency"
+                             basecurr="some base currency"
                              currency="some currency"
                              exchType="ExchRateDate"
                              nogl="some nogl">
@@ -502,7 +552,7 @@
           'month' : '10' ,
           'day' : '12' ]
     ] ]" />
-    <intacct:ar-adjustment-items ref="#[groovy : [ 
+    <intacct:a-r-adjustment-items ref="#[groovy : [ 
         [ 'accountlabelOrGlaccountno' : [ 
               new Accountlabel(
                 value = 'some account value') , 
@@ -547,32 +597,66 @@
           'classid' : 'some class id' ,
           'billable' : 'some billable' ] 
     ] ]" />
-</intacct:create-aradjustment>
-<!-- END_INCLUDE(intacct:create-aradjustment) -->
+</intacct:create-a-r-adjustment>
+<!-- END_INCLUDE(intacct:create-a-r-adjustment) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-aradjustment2) -->
-<intacct:create-aradjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
+<!-- BEGIN_INCLUDE(intacct:create-a-r-adjustment2) -->
+<intacct:create-a-r-adjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
                              customerId="C-00001"
                              invoiceNo="TM126"
-                             baseCurr="USD"
+                             basecurr="USD"
                              currency="USD">
     <intacct:date-created>
         <year>2009</year>
         <month>11</month>
         <day>19</day>
     </intacct:date-created>
-    <intacct:ar-adjustment-items>
-        <intacct:ar-adjustment-item>
+    <intacct:a-r-adjustment-items>
+        <intacct:a-r-adjustment-item>
             <accountlabelOrGlaccountno>#[groovy: [new Glaccountno(value : "7787" ) ] ]</accountlabelOrGlaccountno>
             <amount>-200</amount>
             <memo>This is a sample of creating an ar adjustment</memo>
-        </intacct:ar-adjustment-item>
-    </intacct:ar-adjustment-items>
-</intacct:create-aradjustment>
-<!-- END_INCLUDE(intacct:create-aradjustment2) -->
+        </intacct:a-r-adjustment-item>
+    </intacct:a-r-adjustment-items>
+</intacct:create-a-r-adjustment>
+<!-- END_INCLUDE(intacct:create-a-r-adjustment2) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-sotransaction) -->
-<intacct:create-sotransaction functionControlId="some function control id"
+<!-- BEGIN_INCLUDE(intacct:create-a-r-adjustment3) -->
+<intacct:create-a-r-adjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
+                               customerId="C-00001"
+                               invoiceNo="TM126"
+                               basecurr="USD"
+                               currency="USD"
+                               exchType="ExchRateDate">
+    <intacct:date-created>
+        <year>2009</year>
+        <month>11</month>
+        <day>19</day>
+    </intacct:date-created>
+    <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates>
+        <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate>
+            <year>2011</year>
+            <month>10</month>
+            <day>12</day>
+        </intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate>
+        <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate>
+            <year>2011</year>
+            <month>9</month>
+            <day>12</day>
+        </intacct:exch-rate-dates-or-exch-rate-types-or-exch-rate>
+    </intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates>
+    <intacct:a-r-adjustment-items>
+        <intacct:a-r-adjustment-item>
+            <accountlabelOrGlaccountno>#[groovy: [new Glaccountno(value : "7787" ) ] ]</accountlabelOrGlaccountno>
+            <amount>-200</amount>
+            <memo>This is a sample of creating an ar adjustment</memo>
+        </intacct:a-r-adjustment-item>
+    </intacct:a-r-adjustment-items>
+</intacct:create-a-r-adjustment>
+<!-- END_INCLUDE(intacct:create-a-r-adjustment3) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-s-o-transaction) -->
+<intacct:create-s-o-transaction functionControlId="some function control id"
                               transactionType="some transaction type"
                               createdFrom="created from"
                               customerId="some customer id"
@@ -584,7 +668,7 @@
                               billToContactType="ContactName"
                               shipToContactType="Contact"
                               externalId="123456"
-                              baseCurr="some base currency"
+                              basecurr="some base currency"
                               currency="some currency"
                               exchType="ExchRateDate"
                               vsoePriceList="some vsow price list">
@@ -672,7 +756,7 @@
         [ 'customfieldname' : 'other custom field' ,
           'customfieldvalue' : 'other custom field value' ] 
     ]]" />
-    <intacct:so-trans-items ref="#[groovy :[
+    <intacct:s-o-trans-items ref="#[groovy :[
         [ 'bundlenumber' : 'some bundle number' ,
           'itemid' : 
             [ 'value' : 'some item id value' ] ,
@@ -740,11 +824,11 @@
           'departmentid' : 
             [ 'value' : 'some department id value' ] ]
     ] ]" />
-</intacct:create-sotransaction>
-<!-- END_INCLUDE(intacct:create-sotransaction) -->
+</intacct:create-s-o-transaction>
+<!-- END_INCLUDE(intacct:create-s-o-transaction) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-sotransaction2) -->
-<intacct:create-sotransaction functionControlId="414EB0F1-3CD4-4aa3-917F-3A15BF326F13"
+<!-- BEGIN_INCLUDE(intacct:create-s-o-transaction2) -->
+<intacct:create-s-o-transaction functionControlId="414EB0F1-3CD4-4aa3-917F-3A15BF326F13"
                               transactionType="Sales Order"
                               customerId="ACME"
                               externalId="FOOFOO" >
@@ -753,26 +837,78 @@
         <month>6</month>
         <day>12</day>
     </intacct:date-created>
-    <intacct:so-trans-items>
-        <intacct:so-trans-item>
+    <intacct:s-o-trans-items>
+        <intacct:s-o-trans-item>
             <itemid>BP-100</itemid>
             <itemdesc>Super Widget 100</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>1</quantity>
             <unit>Each</unit>
-        </intacct:so-trans-item>
-        <intacct:so-trans-item>
+        </intacct:s-o-trans-item>
+        <intacct:s-o-trans-item>
             <itemid>BP-101</itemid>
             <itemdesc>Super Widget 101</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>3</quantity>
             <unit>Each</unit>
-            <discountpercent>10</dicountpercent>
-            <discount_memo>This is a discount memo</discount_memo>
-        </intacct:so-trans-item>
-    </intacct:so-trans-items>
-</intacct:create-sotransaction>
-<!-- END_INCLUDE(intacct:create-sotransaction2) -->
+            <discsurchargememo>This is a discount memo</discsurchargememo>
+        </intacct:s-o-trans-item>
+    </intacct:s-o-trans-items>
+</intacct:create-s-o-transaction>
+<!-- END_INCLUDE(intacct:create-s-o-transaction2) -->
+
+<!-- BEGIN_INCLUDE(intacct:create-s-o-transaction3) -->
+<intacct:create-s-o-transaction functionControlId="454EB0F1-3CD4-4aa3-917F-3A15BF326F13"
+                                transactionType="Sales Order"
+                                customerId="ACME"
+                                documentNo="4167834"
+                                billToContactType="ContactName"
+                                externalId="FOOFOO"
+                                basecurr="USD"
+                                currency="USD" >
+    <intacct:date-created>
+        <year>2009</year>
+        <month>6</month>
+        <day>12</day>
+    </intacct:date-created>
+    <intacct:date-due>
+        <year>2012</year>
+        <month>6</month>
+        <day>12</day>
+    </intacct:date-due>
+    <intacct:bill-to-contacts>
+        <intacct:bill-to-contact>
+            <value>Richard</value>
+        </intacct:bill-to-contact>
+        <intacct:bill-to-contact>
+            <value>Steve</value>
+        </intacct:bill-to-contact>
+    </intacct:bill-to-contacts>
+    <intacct:s-o-trans-items>
+        <intacct:s-o-trans-item>
+            <itemid>BP-100</itemid>
+            <itemdesc>Super Widget 100</itemdesc>
+            <warehouseid>SFO</warehouseid>
+            <quantity>1</quantity>
+            <unit>Each</unit>
+        </intacct:s-o-trans-item>
+        <intacct:s-o-trans-item>
+            <itemid>BP-101</itemid>
+            <itemdesc>Super Widget 101</itemdesc>
+            <warehouseid>SFO</warehouseid>
+            <quantity>3</quantity>
+            <unit>Each</unit>
+            <discsurchargememo>This is a discount memo</discsurchargememo>
+        </intacct:s-o-trans-item>
+    </intacct:s-o-trans-items>
+    <intacct:sub-totals>
+        <intacct:sub-total>
+            <description>some description</description>
+            <total>564</total>
+        </intacct:sub-total>
+   <intacct:sub-totals>
+</intacct:create-s-o-transaction>
+<!-- END_INCLUDE(intacct:create-s-o-transaction3) -->
 
 <!-- BEGIN_INCLUDE(intacct:get-list) -->
 <intacct:get-list functionControlId="some function control id"
@@ -923,10 +1059,10 @@ customer ID is defined as "DO" -->
     <intacct:fields>
         <intacct:field>
             <value>title</value>
-        <intacct:field>
+        </intacct:field>
         <intacct:field>
             <value>normalbalance</value>
-        <intacct:field>
+        </intacct:field>
     </intacct:fields>
 </intacct:get>
 <!-- END_INCLUDE(intacct:get2) -->

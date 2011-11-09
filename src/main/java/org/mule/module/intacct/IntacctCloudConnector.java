@@ -219,13 +219,13 @@ public class IntacctCloudConnector
      * @param shipToContactType The only kind of element that will be listed in the shipTo 
      *                          parameter. Contact or ContactName.
      * @param shipToContacts List of contacts to ship.
-     * @param baseCurr Base currency.
+     * @param basecurr Base currency.
      * @param currency The currency.
      * @param exchType The only kind of element that will be listed in the 
      *                 exchRateDateOrExchRateTypeOrExchRate parameter. ExchRateDate, 
      *                 ExchRateType or ExchRate.
      * @param exchRateDatesOrExchRateTypesOrExchRates List of exchanges.
-     * @param nogl The GL number.
+     * @param nogl The General Ledger number.
      * @param customFields List of custom fields.
      * @param invoiceItems List of invoice items.
      * @return A {@link Response}
@@ -247,7 +247,7 @@ public class IntacctCloudConnector
                                   @Optional List<Map<String, Object>> billToContacts,
                                   @Optional ContactType shipToContactType,
                                   @Optional List<Map<String, Object>> shipToContacts,
-                                  @Optional String baseCurr,
+                                  @Optional String basecurr,
                                   @Optional String currency,
                                   @Optional ExchType exchType,
                                   @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
@@ -281,7 +281,7 @@ public class IntacctCloudConnector
                             .with("externalid", externalId)
                             .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipToContacts, nullifyEnumType(shipToContactType)))
                             .with("billto", nullifyEmptyListWrapper("contactOrContactname", billToContacts, nullifyEnumType(billToContactType)))
-                            .with("basecurr", baseCurr)
+                            .with("basecurr", basecurr)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
@@ -304,9 +304,9 @@ public class IntacctCloudConnector
      * <p>
      * Documentation: <a href="http://developer.intacct.com/wiki/invoice-batch">Invoicebatch<a>
      * <p>
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch}
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch2}
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoicebatch3}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice-batch}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice-batch2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice-batch3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
@@ -319,7 +319,7 @@ public class IntacctCloudConnector
      * @throws JAXBException
      */
     @Processor
-    public Response createInvoicebatch(String functionControlId,
+    public Response createInvoiceBatch(String functionControlId,
                                        String batchTitle,
                                        @Optional Map<String, Object> dateCreated,
                                        @Optional List<Map<String, Object>> createInvoices
@@ -359,8 +359,9 @@ public class IntacctCloudConnector
      * <p>
      * Documentation: <a href="http://developer.intacct.com/wiki/ar-adjustment">Aradjustment<a>
      * <p>
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-aradjustment}
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-aradjustment2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-a-r-adjustment}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-a-r-adjustment2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-a-r-adjustment3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
@@ -377,19 +378,19 @@ public class IntacctCloudConnector
      * @param invoiceNo Invoice number.
      * @param description A description of the adjustment.
      * @param externalId The external Id.
-     * @param baseCurr Base currency.
+     * @param basecurr Base currency.
      * @param currency The currency.
      * @param exchType The kind of elements that will be listed in the 
      *                 exchRateDateOrExchRateTypeOrExchRate parameter. ExchRateDate, 
      *                 ExchRateType or ExchRate.
      * @param exchRateDatesOrExchRateTypesOrExchRates List of exchanges.
-     * @param nogl The GL number.
-     * @param arAdjustmentItems List of AR adjustment items.
+     * @param nogl The General Ledger number.
+     * @param aRAdjustmentItems List of AR adjustment items.
      * @return A{@link Response}.
      * @throws JAXBException
      */
     @Processor
-    public Response createAradjustment(String functionControlId,
+    public Response createARAdjustment(String functionControlId,
                                        String customerId,
                                        Map<String, Object> dateCreated,
                                        @Optional Map<String, Object> datePosted,
@@ -398,16 +399,16 @@ public class IntacctCloudConnector
                                        @Optional String invoiceNo,
                                        @Optional String description,
                                        @Optional String externalId,
-                                       @Optional String baseCurr,
+                                       @Optional String basecurr,
                                        @Optional String currency,
                                        @Optional ExchType exchType,
                                        @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
                                        @Optional String nogl,
-                                       List<Map<String, Object>> arAdjustmentItems
+                                       List<Map<String, Object>> aRAdjustmentItems
                                        ) throws JAXBException
     {
         Validate.notEmpty(dateCreated);
-        Object arAdjustmentItemsAux = nullifyEmptyListWrapper("lineitem", arAdjustmentItems, Lineitem.class);
+        Object arAdjustmentItemsAux = nullifyEmptyListWrapper("lineitem", aRAdjustmentItems, Lineitem.class);
         Validate.notNull(arAdjustmentItemsAux);
         
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
@@ -426,7 +427,7 @@ public class IntacctCloudConnector
                             .with("invoiceno", invoiceNo)
                             .with("description", description)
                             .with("externalid", externalId)
-                            .with("baseCurr", baseCurr)
+                            .with("basecurr", basecurr)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
@@ -451,8 +452,9 @@ public class IntacctCloudConnector
      * <p>
      * Documentation: <a href="http://developer.intacct.com/wiki/sotransaction">Sotransaction<a>
      * <p>
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-sotransaction}
-     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-sotransaction2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-s-o-transaction}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-s-o-transaction2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-s-o-transaction3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
@@ -475,21 +477,21 @@ public class IntacctCloudConnector
      *                          the shipTo parameter. Contact or ContactName.
      * @param shipToContacts List of contacts to ship.
      * @param externalId The external Id.
-     * @param baseCurr Base currency.
+     * @param basecurr Base currency.
      * @param currency The currency.
      * @param exchType The only kind of element that will be listed in the 
      *                 exchRateDateOrExchRateTypeOrExchRate parameter. ExchRateDate, 
      *                 ExchRateType or ExchRate.
      * @param exchRateDatesOrExchRateTypesOrExchRates List of exchanges.
-     * @param vsoePriceList The vsoe price list.
+     * @param vsoePriceList The vsoe (Vendor Specific Objective Evidence) price list.
      * @param customFields List of custom fields.
-     * @param soTransItems List of SO transactions items.
+     * @param sOTransItems List of SO transactions items.
      * @param subTotals List of sub-totals.
      * @return A {@link Response}.
      * @throws JAXBException
      */
     @Processor
-    public Response createSotransaction(String functionControlId,
+    public Response createSOTransaction(String functionControlId,
                                         String transactionType,
                                         Map<String, Object> dateCreated, 
                                         @Optional String createdFrom,
@@ -505,18 +507,18 @@ public class IntacctCloudConnector
                                         @Optional ContactType shipToContactType,
                                         @Optional List<Map<String, Object>> shipToContacts,
                                         @Optional String externalId,
-                                        @Optional String baseCurr,
+                                        @Optional String basecurr,
                                         @Optional String currency,
                                         @Optional ExchType exchType,
                                         @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
                                         @Optional String vsoePriceList,
                                         @Optional List<Map<String, Object>> customFields,
-                                        List<Map<String, Object>> soTransItems,
+                                        List<Map<String, Object>> sOTransItems,
                                         @Optional List<Map<String, Object>> subTotals
                                         ) throws JAXBException
     {
         Validate.notEmpty(dateCreated);
-        Object soTransItemsAux = nullifyEmptyListWrapper("sotransitem", soTransItems, Sotransitem.class);
+        Object soTransItemsAux = nullifyEmptyListWrapper("sotransitem", sOTransItems, Sotransitem.class);
         Validate.notNull(soTransItemsAux);
         
         List<Object> exchRateDateOrExchRateTypeOrExchRateAux = new ArrayList<Object>();
@@ -542,7 +544,7 @@ public class IntacctCloudConnector
                             .with("shipto", nullifyEmptyListWrapper("contactOrContactname", shipToContacts, nullifyEnumType(shipToContactType)))
                             .with("billto", nullifyEmptyListWrapper("contactOrContactname", billToContacts, nullifyEnumType(billToContactType)))
                             .with("externalid", externalId)
-                            .with("basecurr", baseCurr)
+                            .with("basecurr", basecurr)
                             .with("currency", currency)
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("vsoepricelist", vsoePriceList)

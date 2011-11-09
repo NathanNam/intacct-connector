@@ -141,7 +141,7 @@ public class IntacctConnectorTest
         sotransitem2.setQuantity("2");
         sotransitems.add(mom.toMap(sotransitem2));
 
-        connector.createSotransaction("100",
+        connector.createSOTransaction("100",
                                       "fooTransactionType",
                                       mom.toMap(datecreated), 
                                       null,
