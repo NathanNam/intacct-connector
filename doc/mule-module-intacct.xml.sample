@@ -647,7 +647,10 @@
     </intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates>
     <intacct:a-r-adjustment-items>
         <intacct:a-r-adjustment-item>
-            <accountlabelOrGlaccountno>#[groovy: [new Glaccountno(value : "7787" ) ] ]</accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: [
+                new Glaccountno(value : "7787" ), 
+                new Glaccountno(value : "3397" ) ] ]
+            </accountlabelOrGlaccountno>
             <amount>-200</amount>
             <memo>This is a sample of creating an ar adjustment</memo>
         </intacct:a-r-adjustment-item>
@@ -906,7 +909,7 @@
             <description>some description</description>
             <total>564</total>
         </intacct:sub-total>
-   <intacct:sub-totals>
+   </intacct:sub-totals>
 </intacct:create-s-o-transaction>
 <!-- END_INCLUDE(intacct:create-s-o-transaction3) -->
 
@@ -1067,6 +1070,13 @@ customer ID is defined as "DO" -->
 </intacct:get>
 <!-- END_INCLUDE(intacct:get2) -->
 
+<!-- BEGIN_INCLUDE(intacct:get3) -->
+<intacct:get functionControlId="f7"
+             obj="project"
+             key="6537" >
+</intacct:get>
+<!-- END_INCLUDE(intacct:get3) -->
+
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
 <intacct:operation-with-request>
     <intacct:request ref="#[groovy :[ 
@@ -1081,8 +1091,8 @@ customer ID is defined as "DO" -->
         'operation' : [
             [ 'transaction' : 'some transaction' ,
               'authentication' : 
-                 [ new Sessionid(
-                     value : 'some session id value') ],
+                 [ 'loginOrSessionid' : [ 
+                        new Sessionid(value : 'some session id value') ] ],
               'preferences' : [ 
                  [ 'companyprefs' : [
                       [ 'companypref' : 
@@ -1100,10 +1110,10 @@ customer ID is defined as "DO" -->
                      [ 'controlid' : 'some control id' ,
                        'cmd' : [
                           new CreateCustomer(
-                              //etc (field of the function)
+                              //etc (fields of CreateCustomer)
                           ) ,
                           new CreateSotransaction(
-                              //etc (field of the function)
+                              //etc (fields of CreateSotransaction)
                           )
                        ] ] 
                  ] ]
@@ -1111,3 +1121,57 @@ customer ID is defined as "DO" -->
     ] ]" />
 </intacct:operation-with-request>
 <!-- END_INCLUDE(intacct:operation-with-request) -->
+
+<!-- BEGIN_INCLUDE(intacct:operation-with-request2) -->
+<intacct:operation-with-request>
+    <intacct:request> 
+        <control>#[groovy: [ 
+              'senderid' : '65' ,
+              'password' : 'pass1234' ,
+              'controlid' : '16572' ,
+              'uniqueid' : 'true' ,
+              'dtdversion' : '2.1' ] ]
+        </control>
+        <operation>#[groovy: [
+            [ 'authentication' : 
+                 [ 'loginOrSessionid' : [ 
+                        new Login(
+                            userid : '86732235', 
+                            companyid : '6433578',
+                            password : '4325passW) ] ],
+              'content' : [
+                 [ 'function' : 
+                     [ 'controlid' : 'C-003-T8' ,
+                       'cmd' : [
+                             new CreateContact(
+                                'contactname': [ 'value' : 'van Buuren, Armin' ],
+                                'printas' : 'Armin Buuren',
+                                'companyname' : 'Trance Co.',
+                                'prefix' : 'Mr.',
+                                'firstname' : 'Armin',
+                                'lastname' : 'Buuren',
+                                'initial' : 'V.',
+                                'phone1' : '(212) 445-4554',
+                                'phone2' : '(212) 632-7151',
+                                'cellphone' : '(212) 734-1612',
+                                'pager' : '(212) 632-7151',
+                                'fax' : '(212) 641-7937',
+                                'email1' : 'AVB@illustrate.com',
+                                'email2' : 'AVB@illustrate.org',
+                                'url1' : 'http://www.illustrate.com',
+                                'url2' : 'http://www.illustrate.org',
+                                'mailaddress' : [
+                                    'address1' : '368 Outskirts Rd',
+                                    'address2' : ', Apt 19',
+                                    'city' : 'Bronx',
+                                    'state' : 'NY',
+                                    'zip' : 10400,
+                                    'country' : 'US' ]
+                            )
+                       ] ] 
+                 ] ]
+            ] ] ]
+        </operation>
+    </intacct:request>
+</intacct:operation-with-request>
+<!-- END_INCLUDE(intacct:operation-with-request2) -->

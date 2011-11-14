@@ -161,13 +161,8 @@ public class IntacctCloudConnector
      * This processor, it's the equivalent of making an {@link #operation(Map)} (deprecated)
      * of a function with all its elements of the same Commandtype.
      * 
-     * Example 1:
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:execute1}
-     * 
-     * Example 2:
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:execute2}
-     *
-     * Example 3:
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:execute3}
      * 
      * @param functionControlId String. Is used by the sender to match a request to 
@@ -198,6 +193,7 @@ public class IntacctCloudConnector
      * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice}
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:create-invoice3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
@@ -667,6 +663,7 @@ public class IntacctCloudConnector
      * <p>
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get}
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get2}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:get3}
      *
      * @param functionControlId String. Is used by the sender to match a request to 
      *                          its response for the function that will be created 
@@ -744,6 +741,7 @@ public class IntacctCloudConnector
      * Reconoce la operacion con valores default setteados en el config
      * 
      * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation-with-request}
+     * {@sample.xml ../../../doc/mule-module-intacct.xml.sample intacct:operation-with-request2}
      *
      * @param request The {@link Request}
      * @return {@link Response}
