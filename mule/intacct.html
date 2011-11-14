@@ -364,6 +364,7 @@ Summary:
         
         <div class="jd-descrdiv">Reconoce la operacion con valores default setteados en el config
  
+ <br/>
  <br/></div>
         
   </td></tr>
@@ -644,7 +645,10 @@ specify which configuration to use.</p>
     &lt;/intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;
     &lt;intacct:a-r-adjustment-items&gt;
         &lt;intacct:a-r-adjustment-item&gt;
-            &lt;accountlabelOrGlaccountno&gt;#[groovy: [new Glaccountno(value : "7787" ) ] ]&lt;/accountlabelOrGlaccountno&gt;
+            &lt;accountlabelOrGlaccountno&gt;#[groovy: [
+                new Glaccountno(value : "7787" ), 
+                new Glaccountno(value : "3397" ) ] ]
+            &lt;/accountlabelOrGlaccountno&gt;
             &lt;amount&gt;-200&lt;/amount&gt;
             &lt;memo&gt;This is a sample of creating an ar adjustment&lt;/memo&gt;
         &lt;/intacct:a-r-adjustment-item&gt;
@@ -1064,7 +1068,8 @@ specify which configuration to use.</p>
             &lt;memo&gt; This is a sample of creating an invoice&lt;/memo&gt;
         &lt;/intacct:invoice-item&gt;
     &lt;/intacct:invoice-items&gt;
-&lt;/intacct:create-invoice&gt;</pre></div></p></div>
+&lt;/intacct:create-invoice&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>INCLUDE_ERROR</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2005,7 +2010,7 @@ specify which configuration to use.</p>
             &lt;description&gt;some description&lt;/description&gt;
             &lt;total&gt;564&lt;/total&gt;
         &lt;/intacct:sub-total&gt;
-   &lt;intacct:sub-totals&gt;
+   &lt;/intacct:sub-totals&gt;
 &lt;/intacct:create-s-o-transaction&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -2343,7 +2348,6 @@ specify which configuration to use.</p>
  This processor, it's the equivalent of making an <br/><code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operation(java.util.Map<java.lang.String, java.lang.Object>)">operation(Map)</a></code> (deprecated)
  of a function with all its elements of the same Commandtype.
  
- Example 1:
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:execute functionControlId="some function control id"
                  type="CreateBill"&gt;
     &lt;intacct:commands&gt;
@@ -2355,14 +2359,10 @@ specify which configuration to use.</p>
         &lt;/intacct:command&gt;
     &lt;/intacct:commands&gt;
 &lt;/intacct:execute&gt;</pre></div>
- 
- Example 2:
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:execute functionControlId="some function control id"
                  type="CreateBill"&gt;
     &lt;intacct:commands ref="#[variable:aListOfStringObjectMaps]"/&gt;
 &lt;/intacct:execute&gt;</pre></div>
-
- Example 3:
  <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:execute functionControlId="some function control id"
                  type="CreateBill"&gt;
     &lt;intacct:commands ref="#[groovy:[
@@ -2498,6 +2498,10 @@ specify which configuration to use.</p>
             &lt;value&gt;normalbalance&lt;/value&gt;
         &lt;/intacct:field&gt;
     &lt;/intacct:fields&gt;
+&lt;/intacct:get&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:get functionControlId="f7"
+             obj="project"
+             key="6537" &gt;
 &lt;/intacct:get&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
@@ -2993,8 +2997,8 @@ customer ID is defined as "DO" --&gt;
         'operation' : [
             [ 'transaction' : 'some transaction' ,
               'authentication' : 
-                 [ new Sessionid(
-                     value : 'some session id value') ],
+                 [ 'loginOrSessionid' : [ 
+                        new Sessionid(value : 'some session id value') ] ],
               'preferences' : [ 
                  [ 'companyprefs' : [
                       [ 'companypref' : 
@@ -3012,15 +3016,66 @@ customer ID is defined as "DO" --&gt;
                      [ 'controlid' : 'some control id' ,
                        'cmd' : [
                           new CreateCustomer(
-                              //etc (field of the function)
+                              //etc (fields of CreateCustomer)
                           ) ,
                           new CreateSotransaction(
-                              //etc (field of the function)
+                              //etc (fields of CreateSotransaction)
                           )
                        ] ] 
                  ] ]
             ] ]
     ] ]" /&gt;
+&lt;/intacct:operation-with-request&gt;</pre></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;intacct:operation-with-request&gt;
+    &lt;intacct:request&gt; 
+        &lt;control&gt;#[groovy: [ 
+              'senderid' : '65' ,
+              'password' : 'pass1234' ,
+              'controlid' : '16572' ,
+              'uniqueid' : 'true' ,
+              'dtdversion' : '2.1' ] ]
+        &lt;/control&gt;
+        &lt;operation&gt;#[groovy: [
+            [ 'authentication' : 
+                 [ 'loginOrSessionid' : [ 
+                        new Login(
+                            userid : '86732235', 
+                            companyid : '6433578',
+                            password : '4325passW) ] ],
+              'content' : [
+                 [ 'function' : 
+                     [ 'controlid' : 'C-003-T8' ,
+                       'cmd' : [
+                             new CreateContact(
+                                'contactname': [ 'value' : 'van Buuren, Armin' ],
+                                'printas' : 'Armin Buuren',
+                                'companyname' : 'Trance Co.',
+                                'prefix' : 'Mr.',
+                                'firstname' : 'Armin',
+                                'lastname' : 'Buuren',
+                                'initial' : 'V.',
+                                'phone1' : '(212) 445-4554',
+                                'phone2' : '(212) 632-7151',
+                                'cellphone' : '(212) 734-1612',
+                                'pager' : '(212) 632-7151',
+                                'fax' : '(212) 641-7937',
+                                'email1' : 'AVB@illustrate.com',
+                                'email2' : 'AVB@illustrate.org',
+                                'url1' : 'http://www.illustrate.com',
+                                'url2' : 'http://www.illustrate.org',
+                                'mailaddress' : [
+                                    'address1' : '368 Outskirts Rd',
+                                    'address2' : ', Apt 19',
+                                    'city' : 'Bronx',
+                                    'state' : 'NY',
+                                    'zip' : 10400,
+                                    'country' : 'US' ]
+                            )
+                       ] ] 
+                 ] ]
+            ] ] ]
+        &lt;/operation&gt;
+    &lt;/intacct:request&gt;
 &lt;/intacct:operation-with-request&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
