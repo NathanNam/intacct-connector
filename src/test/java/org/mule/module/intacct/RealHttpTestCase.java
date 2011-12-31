@@ -10,22 +10,9 @@
 
 package org.mule.module.intacct;
 
-import static org.hamcrest.CoreMatchers.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.sax.SAXSource;
-
+import com.sun.jersey.api.client.ClientHandlerException;
+import com.sun.jersey.api.client.UniformInterfaceException;
+import com.sun.jersey.core.util.ReaderWriter;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.mortbay.jetty.handler.AbstractHandler;
@@ -61,9 +48,20 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import com.sun.jersey.api.client.ClientHandlerException;
-import com.sun.jersey.api.client.UniformInterfaceException;
-import com.sun.jersey.core.util.ReaderWriter;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.sax.SAXSource;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.*;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
@@ -430,23 +428,40 @@ public class RealHttpTestCase extends BaseIntacctTest
         payload.put("accountnoLower", "500");
         payload.put("filter", Arrays.<Object>asList(new Logical(){{
                 logicalOperator = "or";
-                logicalOrExpression = Arrays.asList(new Logical(){{
-                    logicalOperator = "and";
-                    logicalOrExpression = Arrays.<Object> asList(new Expression(){{
-                        field = new Field(){{ value = "accountno"; }} ;
-                        operator = ">";
-                        value = new Value() {{ value = "500"; }};
-                    }}, new Expression(){{
-                        field = new Field(){{ value = "normalbalance"; }} ;
-                        operator = "=";
-                        value = new Value() {{ value = "debit"; }};
-                    }});
-                }}, 
-                new Expression(){{
-                    field = new Field(){{ value = "normalbalance"; }} ;
+            Logical logical = new Logical() {{
+                logicalOperator = "and";
+                logicalOrExpression = Arrays.<Object>asList(new Expression() {{
+                            field = new Field() {{
+                                value = "accountno";
+                            }};
+                            operator = ">";
+                            value = new Value() {{
+                                value = "500";
+                            }};
+                        }}, new Expression() {{
+                    field = new Field() {{
+                        value = "normalbalance";
+                    }};
                     operator = "=";
-                    value = new Value() {{ value = "credit"; }};
-                }});
+                    value = new Value() {{
+                        value = "debit";
+                    }};
+                }}
+                );
+            }};
+            Expression expression = new Expression() {{
+                field = new Field() {{
+                    value = "normalbalance";
+                }};
+                operator = "=";
+                value = new Value() {{
+                    value = "credit";
+                }};
+            }};
+            List<Object> objects = new ArrayList<Object>(2);
+            objects.add(logical);
+            objects.add(expression);
+            logicalOrExpression = objects;
         }}));
         
         payload.put("fields", Arrays.<Map<String, Object>>asList(
