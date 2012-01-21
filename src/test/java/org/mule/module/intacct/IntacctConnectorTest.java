@@ -10,8 +10,11 @@
 
 package org.mule.module.intacct;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,6 @@ import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
 
-import ar.com.zauber.commons.mom.CXFStyle;
 import ar.com.zauber.commons.mom.MapObjectMapper;
 
 /**
@@ -42,7 +44,7 @@ public class IntacctConnectorTest
     private IntacctCloudConnector connector;
     private IntacctRestClient restClient;
     
-    private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema");
+    private IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
     
     @Before
     public void setUp() throws InitialisationException
@@ -51,7 +53,6 @@ public class IntacctConnectorTest
         restClient = mock(IntacctRestClient.class);
         connector.setIntacctImplementation(new JerseyIntacctFacade(restClient));
         connector.init();
-        mom.setPropertyStyle(CXFStyle.STYLE);
     }
 
     @Test

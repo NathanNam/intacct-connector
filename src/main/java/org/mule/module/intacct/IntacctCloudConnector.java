@@ -51,7 +51,6 @@ import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
 
-import ar.com.zauber.commons.mom.CXFStyle;
 
 /**
  * Cloud Connector Facade for <a href="http://us.intacct.com/">Intacct</a> 
@@ -123,7 +122,7 @@ public class IntacctCloudConnector
     @Optional
     private IntacctFacade intacctImplementation;
     
-    private MapObjectMapper mom =  new MapObjectMapper("org.mule.module.intacct.schema");
+    private IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
     
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
@@ -753,7 +752,6 @@ public class IntacctCloudConnector
         {
             intacctImplementation = new JerseySslIntacctFacade(URL);
         }
-        mom.setPropertyStyle(CXFStyle.STYLE);
     }
     
     private Request inicializeRequest(Function function)

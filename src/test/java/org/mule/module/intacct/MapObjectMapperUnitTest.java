@@ -50,9 +50,9 @@ public class MapObjectMapperUnitTest
         assertNull(map);
     }
 
-    private MapObjectMapper nullifyer()
+    private IntacctMapObjectMapper nullifyer()
     {
-        return (new MapObjectMapper("org.mule.module.intacct.schema"));
+        return new IntacctMapObjectMapper();
     }
 
 }

@@ -16,19 +16,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.mule.module.intacct.schema.request.Function;
+import org.mule.modules.utils.mom.CxfMapObjectMappers;
+
+import ar.com.zauber.commons.mom.MapObjectMapper;
+
 /**
  * TODO: Description of the class, Comments in english by default
  * 
  * @author Gaston Ponti
  * @since Sep 28, 2011
  */
-public class MapObjectMapper extends ar.com.zauber.commons.mom.MapObjectMapper
-{
-
-    public MapObjectMapper(String packageName)
-    {
-        super(packageName);
-    }
+public class IntacctMapObjectMapper
+{   
+    private MapObjectMapper mom = CxfMapObjectMappers.default_("org.mule.module.intacct.schema");
 
 
     public Map<String,Object> nullifyEmptyListWrapper(final String propertyName,
@@ -54,7 +55,18 @@ public class MapObjectMapper extends ar.com.zauber.commons.mom.MapObjectMapper
     @SuppressWarnings("unchecked")
     public List<Object> toList(final Class<?> componentType, final List<Map<String, Object>> value)
     {
-        return (List<Object>) Arrays.asList(toArray(componentType, value));
+        return (List<Object>) mom.unmap(value, componentType);
+    }
+
+
+    public <T> T toObject(Class<T> type, Map<String, Object> value)
+    {
+        return (T) mom.unmap(value, type);
+    }
+
+    public Map<String, Object> toMap(Object function)
+    {
+        return (Map<String, Object>) mom.map(function);
     }
 
 }
