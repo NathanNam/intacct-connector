@@ -358,7 +358,7 @@ public class RealHttpTestCase extends BaseIntacctTest
 	    createCustomer.setCustomerid(new Customerid(){{value = "C-Cust-001";}});
 	    createCustomer.setName("Dummy Customer 1");
 	    Deliveryoption deliveryOption = new Deliveryoption();
-	    deliveryOption.setvalue("Print");
+	    deliveryOption.setValue("Print");
 	    Deliveryoptions deliveryOptions = new Deliveryoptions();
 	    deliveryOptions.getDeliveryoption().add(deliveryOption);
 	    createCustomer.setDeliveryoptions(deliveryOptions);

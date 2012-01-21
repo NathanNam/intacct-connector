@@ -124,19 +124,19 @@ public class IntacctConnectorTest
         
         List<Map<String, Object>> mapShipTo = new ArrayList<Map<String, Object>>();
         Contactname contactname = new Contactname();
-        contactname.setvalue("fooContact");
+        contactname.setValue("fooContact");
         mapShipTo.add(mom.toMap(contactname));
         
         List<Map<String, Object>> sotransitems = new ArrayList<Map<String, Object>>();
         Sotransitem sotransitem1 = new Sotransitem();
         Itemid itemid1 = new Itemid();
-        itemid1.setvalue("item1");
+        itemid1.setValue("item1");
         sotransitem1.setItemid(itemid1);
         sotransitem1.setQuantity("2");
         sotransitems.add(mom.toMap(sotransitem1));
         Sotransitem sotransitem2 = new Sotransitem();
         Itemid itemid2 = new Itemid();
-        itemid2.setvalue("item2");
+        itemid2.setValue("item2");
         sotransitem2.setItemid(itemid2);
         sotransitem2.setQuantity("2");
         sotransitems.add(mom.toMap(sotransitem2));

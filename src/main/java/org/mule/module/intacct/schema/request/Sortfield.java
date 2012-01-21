@@ -66,7 +66,7 @@ public class Sortfield
      * 
      * @return possible object is {@link String }
      */
-    public String getvalue()
+    public String getValue()
     {
         return value;
     }
@@ -76,7 +76,7 @@ public class Sortfield
      * 
      * @param value allowed object is {@link String }
      */
-    public void setvalue(String value)
+    public void setValue(String value)
     {
         this.value = value;
     }
