@@ -16,7 +16,7 @@ var DATA = [
       { id:14, label:"org.mule.module.intacct.FilterType", link:"java/org/mule/module/intacct/FilterType.html", type:"class" },
       { id:15, label:"org.mule.module.intacct.IntacctCloudConnector", link:"java/org/mule/module/intacct/IntacctCloudConnector.html", type:"class" },
       { id:16, label:"org.mule.module.intacct.IntacctFacade", link:"java/org/mule/module/intacct/IntacctFacade.html", type:"class" },
-      { id:17, label:"org.mule.module.intacct.MapObjectMapper", link:"java/org/mule/module/intacct/MapObjectMapper.html", type:"class" },
+      { id:17, label:"org.mule.module.intacct.IntacctMapObjectMapper", link:"java/org/mule/module/intacct/IntacctMapObjectMapper.html", type:"class" },
       { id:18, label:"org.mule.module.intacct.config", link:"java/org/mule/module/intacct/config/package-summary.html", type:"package" },
       { id:19, label:"org.mule.module.intacct.config.CommandTypeEnumTransformer", link:"java/org/mule/module/intacct/config/CommandTypeEnumTransformer.html", type:"class" },
       { id:20, label:"org.mule.module.intacct.config.ContactTypeEnumTransformer", link:"java/org/mule/module/intacct/config/ContactTypeEnumTransformer.html", type:"class" },
