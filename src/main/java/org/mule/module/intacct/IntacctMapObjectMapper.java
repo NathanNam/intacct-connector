@@ -11,25 +11,21 @@
 
 package org.mule.module.intacct;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mule.module.intacct.schema.request.Function;
-import org.mule.modules.utils.mom.CxfMapObjectMappers;
+import org.mule.modules.utils.mom.JaxbMapObjectMappers;
 
-import ar.com.zauber.commons.mom.MapObjectMapper;
+import com.zauberlabs.commons.mom.MapObjectMapper;
 
 /**
- * TODO: Description of the class, Comments in english by default
- * 
  * @author Gaston Ponti
  * @since Sep 28, 2011
  */
 public class IntacctMapObjectMapper
 {   
-    private MapObjectMapper mom = CxfMapObjectMappers.default_("org.mule.module.intacct.schema");
+    private final MapObjectMapper mom = JaxbMapObjectMappers.default_("org.mule.module.intacct.schema");
 
 
     public Map<String,Object> nullifyEmptyListWrapper(final String propertyName,
