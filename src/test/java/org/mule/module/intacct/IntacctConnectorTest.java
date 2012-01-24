@@ -10,11 +10,8 @@
 
 package org.mule.module.intacct;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,6 @@ import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
 
-import ar.com.zauber.commons.mom.MapObjectMapper;
 
 /**
  * IntacctConnectorTest
@@ -44,7 +40,7 @@ public class IntacctConnectorTest
     private IntacctCloudConnector connector;
     private IntacctRestClient restClient;
     
-    private IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
+    private final IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
     
     @Before
     public void setUp() throws InitialisationException
