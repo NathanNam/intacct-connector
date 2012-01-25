@@ -14,8 +14,12 @@ import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import net.sf.staccatocommons.collections.Maps;
+import net.sf.staccatocommons.lang.MapBuilder;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,9 +43,9 @@ public class IntacctConnectorTest
 {
     private IntacctCloudConnector connector;
     private IntacctRestClient restClient;
-    
+
     private final IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
-    
+
     @Before
     public void setUp() throws InitialisationException
     {
@@ -52,78 +56,75 @@ public class IntacctConnectorTest
     }
 
     @Test
+    public void getListWithNoFiltersSucceeds() throws Exception
+    {
+        expectPostXml();
+        connector.getList("100", "glaccount", null, null, null, null, null, null);
+    }
+
+    @Test
     public void testControlIdIsNotCached() throws Exception
     {
-        when(restClient.postXml(anyString()))
-		.thenReturn(new Response(){{
-            setControl(new Control(){{
-                setControlid("XXXX");
-            }});
-        }});
-        
+        expectPostXml();
+
         Function function = new Function();
         function.setControlid("100");
         connector.operation(mom.toMap(function));
-        
+
         verify(restClient, times(1)).postXml(
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + 
-                "\n" + 
-                "<request>\n" + 
-                "  <control>\n" + 
-                "    <dtdversion>2.1</dtdversion>\n" + 
-                "  </control>\n" + 
-                "  <operation>\n" + 
-                "    <authentication>\n" + 
-                "      <login></login>\n" + 
-                "    </authentication>\n" + 
-                "    <content>\n" + 
-                "      <function controlid=\"100\"></function>\n" + 
-                "    </content>\n" + 
-                "  </operation>\n" + 
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "\n" +
+                "<request>\n" +
+                "  <control>\n" +
+                "    <dtdversion>2.1</dtdversion>\n" +
+                "  </control>\n" +
+                "  <operation>\n" +
+                "    <authentication>\n" +
+                "      <login></login>\n" +
+                "    </authentication>\n" +
+                "    <content>\n" +
+                "      <function controlid=\"100\"></function>\n" +
+                "    </content>\n" +
+                "  </operation>\n" +
                 "</request>");
-        
+
         Function function2 = new Function();
         function2.setControlid("200");
         connector.operation(mom.toMap(function2));
-        
+
         verify(restClient, times(1)).postXml(
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + 
-            "\n" + 
-            "<request>\n" + 
-            "  <control>\n" + 
-            "    <dtdversion>2.1</dtdversion>\n" + 
-            "  </control>\n" + 
-            "  <operation>\n" + 
-            "    <authentication>\n" + 
-            "      <login></login>\n" + 
-            "    </authentication>\n" + 
-            "    <content>\n" + 
-            "      <function controlid=\"200\"></function>\n" + 
-            "    </content>\n" + 
-            "  </operation>\n" + 
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+            "\n" +
+            "<request>\n" +
+            "  <control>\n" +
+            "    <dtdversion>2.1</dtdversion>\n" +
+            "  </control>\n" +
+            "  <operation>\n" +
+            "    <authentication>\n" +
+            "      <login></login>\n" +
+            "    </authentication>\n" +
+            "    <content>\n" +
+            "      <function controlid=\"200\"></function>\n" +
+            "    </content>\n" +
+            "  </operation>\n" +
             "</request>");
     }
-    
+
     @Test
     public void testCreateSotransactionTraductionFromMap() throws Exception
     {
-        when(restClient.postXml(anyString()))
-        .thenReturn(new Response(){{
-            setControl(new Control(){{
-                setControlid("XXXX");
-            }});
-        }});
-        
+        expectPostXml();
+
         Datecreated datecreated = new Datecreated();
         datecreated.setDay("1");
         datecreated.setMonth("1");
         datecreated.setYear("2000");
-        
+
         List<Map<String, Object>> mapShipTo = new ArrayList<Map<String, Object>>();
         Contactname contactname = new Contactname();
         contactname.setValue("fooContact");
         mapShipTo.add(mom.toMap(contactname));
-        
+
         List<Map<String, Object>> sotransitems = new ArrayList<Map<String, Object>>();
         Sotransitem sotransitem1 = new Sotransitem();
         Itemid itemid1 = new Itemid();
@@ -140,9 +141,9 @@ public class IntacctConnectorTest
 
         connector.createSOTransaction("100",
                                       "fooTransactionType",
-                                      mom.toMap(datecreated), 
+                                      mom.toMap(datecreated),
                                       null,
-                                      "25", 
+                                      "25",
                                       null,
                                       null,
                                       null,
@@ -163,19 +164,19 @@ public class IntacctConnectorTest
                                       sotransitems,
                                       null
                                       );
-        
+
         verify(restClient, times(1)).postXml(
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + 
-                "\n" + 
-                "<request>\n" + 
-                "  <control>\n" + 
-                "    <dtdversion>2.1</dtdversion>\n" + 
-                "  </control>\n" + 
-                "  <operation>\n" + 
-                "    <authentication>\n" + 
-                "      <login></login>\n" + 
-                "    </authentication>\n" + 
-                "    <content>\n" + 
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "\n" +
+                "<request>\n" +
+                "  <control>\n" +
+                "    <dtdversion>2.1</dtdversion>\n" +
+                "  </control>\n" +
+                "  <operation>\n" +
+                "    <authentication>\n" +
+                "      <login></login>\n" +
+                "    </authentication>\n" +
+                "    <content>\n" +
                 "      <function controlid=\"100\">\n" +
                 "        <create_sotransaction>\n" +
                 "          <transactiontype>fooTransactionType</transactiontype>\n" +
@@ -199,10 +200,20 @@ public class IntacctConnectorTest
                 "            </sotransitem>\n" +
                 "          </sotransitems>\n" +
                 "        </create_sotransaction>\n" +
-                "      </function>\n" + 
-                "    </content>\n" + 
-                "  </operation>\n" + 
+                "      </function>\n" +
+                "    </content>\n" +
+                "  </operation>\n" +
                 "</request>");
+    }
+
+    protected void expectPostXml()
+    {
+        when(restClient.postXml(anyString()))
+        .thenReturn(new Response(){{
+            setControl(new Control(){{
+                setControlid("XXXX");
+            }});
+        }});
     }
 }
 

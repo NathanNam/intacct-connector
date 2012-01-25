@@ -612,26 +612,22 @@ public class IntacctCloudConnector
     public Response getList(String functionControlId,
                             String obj,
                             @Optional String start,
-                            @Optional String maxItems, 
+                            @Optional String maxItems,
                             @Optional String showPrivate,
                             @Optional List<Object> filters,
                             @Optional List<Map<String, Object>> sorts,
                             @Optional List<Map<String, Object>> fields
                             ) throws JAXBException
     {
-        Filter filterAux = null;
-        if (coalesceList(filters) != null)
-        {
-            filterAux = new Filter();
-            filterAux.getLogicalOrExpression().addAll(filters);
-        }
-        
-        GetList getList = mom.toObject(GetList.class, 
+        Filter filter = new Filter();
+        filter.getLogicalOrExpression().addAll(coalesceList(filters));
+
+        GetList getList = mom.toObject(GetList.class,
             new MapBuilder().with("object", obj)
                             .with("start", start)
                             .with("maxitems", maxItems)
                             .with("showprivate", showPrivate)
-                            .with("filter", filterAux)
+                            .with("filter", filter)
                             .with("sorts", nullifyEmptyListWrapper("sortfield", sorts, Sortfield.class))
                             .with("fields", nullifyEmptyListWrapper("field", fields, Field.class))
                             .build()
@@ -640,9 +636,10 @@ public class IntacctCloudConnector
         Function function = new Function();
         function.getCmd().add(getList);
         function.setControlid(functionControlId);
-        
+
         return operationWithRequest(inicializeRequest(function));
     }
+
     
     /**
      * Allows you to retrieve all of the information about a single instance of an 
