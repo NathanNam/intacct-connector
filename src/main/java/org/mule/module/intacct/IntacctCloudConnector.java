@@ -28,9 +28,6 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
-import org.mule.module.intacct.schema.request.Authentication;
-import org.mule.module.intacct.schema.request.Content;
-import org.mule.module.intacct.schema.request.Control;
 import org.mule.module.intacct.schema.request.CreateAradjustment;
 import org.mule.module.intacct.schema.request.CreateInvoice;
 import org.mule.module.intacct.schema.request.CreateInvoicebatch;
@@ -42,8 +39,6 @@ import org.mule.module.intacct.schema.request.Function;
 import org.mule.module.intacct.schema.request.Get;
 import org.mule.module.intacct.schema.request.GetList;
 import org.mule.module.intacct.schema.request.Lineitem;
-import org.mule.module.intacct.schema.request.Login;
-import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.request.Sortfield;
 import org.mule.module.intacct.schema.request.Sotransitem;
@@ -124,6 +119,8 @@ public class IntacctCloudConnector
 
     private IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
 
+    private RequestFactory requestFactory;
+
 
     private static final String URL = "https://www.intacct.com/ia/xml/xmlgw.phtml";
 
@@ -141,7 +138,7 @@ public class IntacctCloudConnector
     @Processor
     public Response operation(final Map<String, Object> function) throws JAXBException
     {
-        return operationWithRequest(inicializeRequest(mom.toObject(Function.class, function)));
+        return sendRequest(requestFactory.createRequestFromFunction(mom.toObject(Function.class, function)));
     }
 
 
@@ -275,7 +272,7 @@ public class IntacctCloudConnector
                             .with("invoiceitems", invoiceItemsAux)
                             .build());
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
     /**
@@ -324,7 +321,7 @@ public class IntacctCloudConnector
                             .build()
             );
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
     /**
@@ -414,17 +411,9 @@ public class IntacctCloudConnector
                             .build()
             );
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
-
-    protected Function createFunction(String functionControlId, Object command)
-    {
-        Function function = new Function();
-        function.getCmd().add(command);
-        function.setControlid(functionControlId);
-        return function;
-    }
 
     /**
      * Creates an {@link org.mule.module.intacct.schema.response.Sotransaction}
@@ -538,7 +527,7 @@ public class IntacctCloudConnector
                             .build()
             );
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
     protected Map<String, Object> fromSingleValue(final Object value)
@@ -625,7 +614,7 @@ public class IntacctCloudConnector
                             .build()
             );
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
 
@@ -692,12 +681,12 @@ public class IntacctCloudConnector
                             .build()
             );
 
-        return operationWithCommand(functionControlId, command);
+        return sendRequest(functionControlId, command);
     }
 
-    protected Response operationWithCommand(String functionControlId, Object command) throws JAXBException
+    protected Response sendRequest(String functionControlId, Object command) throws JAXBException
     {
-        return operationWithRequest(inicializeRequest(createFunction(functionControlId, command)));
+        return sendRequest(requestFactory.createRequestFromCommand(functionControlId, command));
     }
 
     public Response sendRequest(final Request request) throws JAXBException
@@ -738,33 +727,11 @@ public class IntacctCloudConnector
         {
             intacctImplementation = new JerseySslIntacctFacade(URL);
         }
+        requestFactory = new RequestFactory(senderId, controlPassword, controlId, uniqueId, userId,
+            userPassword, companyId);
     }
 
-    private Request inicializeRequest(Function function)
-    {
-        final Request request = new Request();
-        final Control control = new Control();
-        control.setSenderid(senderId);
-        control.setPassword(controlPassword);
-        control.setControlid(controlId);
-        control.setUniqueid(uniqueId);
-        control.setDtdversion("2.1");
-        request.setControl(control);
-        final Operation operation = new Operation();
-        request.getOperation().add(operation);
-        final Authentication authentication = new Authentication();
-        final Login login = new Login();
-        login.setUserid(userId);
-        login.setPassword(userPassword);
-        login.setCompanyid(companyId);
-        authentication.getLoginOrSessionid().add(login);
-        operation.setAuthentication(authentication);
-        final Content content = new Content();
-        content.getFunction().add(function);
-        operation.getContent().add(content);
 
-        return request;
-    }
 
     /**
      * Returns the senderId.
