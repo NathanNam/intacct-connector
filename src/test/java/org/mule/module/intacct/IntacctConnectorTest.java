@@ -10,16 +10,17 @@
 
 package org.mule.module.intacct;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import net.sf.staccatocommons.collections.Maps;
-import net.sf.staccatocommons.lang.MapBuilder;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,7 @@ import org.mule.module.intacct.schema.request.Sotransitem;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
+import org.mule.module.intacct.utils.MapBuilder;
 
 
 /**
@@ -108,6 +110,59 @@ public class IntacctConnectorTest
             "    </content>\n" +
             "  </operation>\n" +
             "</request>");
+    }
+
+    @Test
+    public void testCreateAradjustment() throws Exception
+    {
+        expectPostXml();
+
+        connector.createARAdjustment(
+            "invoiceNo", //
+            "customerId", //
+            new MapBuilder().with("year", 2010).with("month", 10).with("day", 12).build(), //
+            null, //
+            "batchKey", //
+            "adjustmentNo", "invoiceNo", "description", "externalId", "basecurr", "currency",
+            ExchType.ExchRate, null, "nogl",
+            Arrays.<Map<String, Object>> asList(new HashMap<String, Object>()));
+
+        verify(restClient, times(1)).postXml(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+            "\n" +
+            "<request>\n" +
+            "  <control>\n" +
+            "    <dtdversion>2.1</dtdversion>\n" +
+            "  </control>\n" +
+            "  <operation>\n" +
+            "    <authentication>\n" +
+            "      <login></login>\n" +
+            "    </authentication>\n" +
+            "    <content>\n" +
+            "      <function controlid=\"invoiceNo\">\n" +
+            "        <create_aradjustment>\n" +
+            "          <customerid>customerId</customerid>\n" +
+            "          <datecreated>\n" +
+            "            <year>2010</year>\n" +
+            "            <month>10</month>\n" +
+            "            <day>12</day>\n" +
+            "          </datecreated>\n" +
+            "          <batchkey>batchKey</batchkey>\n" +
+            "          <adjustmentno>adjustmentNo</adjustmentno>\n" +
+            "          <invoiceno>invoiceNo</invoiceno>\n" +
+            "          <description>description</description>\n" +
+            "          <externalid>externalId</externalid>\n" +
+            "          <basecurr>basecurr</basecurr>\n" +
+            "          <currency>currency</currency>\n" +
+            "          <nogl>nogl</nogl>\n" +
+            "          <aradjustmentitems>\n" +
+            "            <lineitem></lineitem>\n" +
+            "          </aradjustmentitems>\n" +
+            "        </create_aradjustment>\n" +
+            "      </function>\n" +
+            "    </content>\n" +
+            "  </operation>\n" +
+            "</request>" );
     }
 
     @Test

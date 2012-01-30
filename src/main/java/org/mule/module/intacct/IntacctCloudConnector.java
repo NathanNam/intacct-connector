@@ -420,6 +420,7 @@ public class IntacctCloudConnector
                             .with("exchratedateOrExchratetypeOrExchrate", coalesceList(exchRateDateOrExchRateTypeOrExchRateAux))
                             .with("nogl", nogl)
                             .with("aradjustmentitems", arAdjustmentItemsAux)
+                            .with("adjustmentno", adjustmentNo)
                             .build()
             );
 
