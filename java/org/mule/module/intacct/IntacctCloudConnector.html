@@ -213,6 +213,7 @@
       <ul>
           <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/IntacctMapObjectMapper.html">IntacctMapObjectMapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/intacct/RequestFactory.html">RequestFactory</a></li>
       </ul>
     </li>
               
@@ -566,13 +567,24 @@ Summary:
           private
           
           
+          <a href="../../../../../java/org/mule/module/intacct/RequestFactory.html">RequestFactory</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#requestFactory">requestFactory</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#senderId">senderId</a></td>
           <td class="jd-descrcol" width="100%">Intacct-registered Web Services username.</td>
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -583,7 +595,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -594,7 +606,7 @@ Summary:
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -1167,10 +1179,10 @@ Summary:
             
             
             
-            <a href="../../../../../java/org/mule/module/intacct/schema/request/Function.html">Function</a></nobr>
+            Map&lt;String,&nbsp;Object&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#createFunction(java.lang.String, java.lang.Object)">createFunction</a></span>(String functionControlId, Object command)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#fromSingleValue(java.lang.Object)">fromSingleValue</a></span>(Object value)</nobr>
         
   </td></tr>
 
@@ -1183,26 +1195,10 @@ Summary:
             
             
             
-            Map&lt;String,&nbsp;Object&gt;</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#fromSingleValue(java.lang.Object)">fromSingleValue</a></span>(Object value)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#operationWithCommand(java.lang.String, java.lang.Object)">operationWithCommand</a></span>(String functionControlId, Object command)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/intacct/IntacctCloudConnector.html#sendRequest(java.lang.String, java.lang.Object)">sendRequest</a></span>(String functionControlId, Object command)</nobr>
         
   </td></tr>
 
@@ -1637,6 +1633,36 @@ From class
         <a href="../../../../../java/org/mule/module/intacct/IntacctMapObjectMapper.html">IntacctMapObjectMapper</a>
       </span>
         mom
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="requestFactory"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../java/org/mule/module/intacct/RequestFactory.html">RequestFactory</a>
+      </span>
+        requestFactory
     </h4>
       <div class="api-level">
         
@@ -3483,50 +3509,6 @@ From class
 
 
 
-<A NAME="createFunction(java.lang.String, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-         
-         
-        <a href="../../../../../java/org/mule/module/intacct/schema/request/Function.html">Function</a>
-      </span>
-      <span class="sympad">createFunction</span>
-      <span class="normal">(String functionControlId, Object command)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>functionControlId</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>command</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="fromSingleValue(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3567,7 +3549,7 @@ From class
 </div>
 
 
-<A NAME="operationWithCommand(java.lang.String, java.lang.Object)"></A>
+<A NAME="sendRequest(java.lang.String, java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3579,7 +3561,7 @@ From class
          
         <a href="../../../../../java/org/mule/module/intacct/schema/response/Response.html">Response</a>
       </span>
-      <span class="sympad">operationWithCommand</span>
+      <span class="sympad">sendRequest</span>
       <span class="normal">(String functionControlId, Object command)</span>
     </h4>
       <div class="api-level">
