@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
@@ -42,7 +43,8 @@ public class CreateCustomer
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String ignoreduplicates;
     @XmlElement(required = true)
-    protected Customerid customerid;
+    @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
+    protected String customerid;
     @XmlElement(required = true)
     protected String name;
     protected String parentid;
@@ -101,9 +103,9 @@ public class CreateCustomer
     /**
      * Gets the value of the customerid property.
      * 
-     * @return possible object is {@link Customerid }
+     * @return possible object is {@link String }
      */
-    public Customerid getCustomerid()
+    public String getCustomerid()
     {
         return customerid;
     }
@@ -111,9 +113,9 @@ public class CreateCustomer
     /**
      * Sets the value of the customerid property.
      * 
-     * @param value allowed object is {@link Customerid }
+     * @param value allowed object is {@link String }
      */
-    public void setCustomerid(Customerid value)
+    public void setCustomerid(String value)
     {
         this.customerid = value;
     }
