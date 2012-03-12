@@ -16,6 +16,33 @@
 </intacct:execute>
 <!-- END_INCLUDE(intacct:execute1) -->
 
+
+<!-- BEGIN_INCLUDE(intacct:execute1) -->
+<!-- Creates a customer -->
+        <intacct:execute functionControlId="some function control id"
+                         type="CreateCustomer">
+            <intacct:commands>
+                <intacct:command>
+                    <customerid>Some customer id</customerid>
+                    <name>Some name</name>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+<!-- END_INCLUDE(intacct:execute1) -->
+
+<!-- BEGIN_INCLUDE(intacct:execute1) -->
+<!-- Updates a customer -->
+        <intacct:execute functionControlId="some function control id"
+                         type="UpdateCustomer">
+            <intacct:commands>
+                <intacct:command>
+                    <customerid>Some existing customer id</customerid>
+                    <name>Some new name</name>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+<!-- END_INCLUDE(intacct:execute1) -->
+
 <!-- BEGIN_INCLUDE(intacct:execute2) -->
 <intacct:execute functionControlId="some function control id"
                  type="CreateBill">
