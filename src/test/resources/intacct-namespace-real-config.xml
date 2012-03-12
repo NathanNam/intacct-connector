@@ -22,6 +22,7 @@
 
     <intacct:config senderId="12345" controlPassword="password Control" controlId="mi id" uniqueId="false"
                     userId="usuario" userPassword="miPass" companyId="compId" intacctImplementation-ref="httpIntacct"/>
+                    
 
     <flow name="functionFlow">
         <intacct:get-list functionControlId="#[map-payload:controlid]" obj="glaccount">
@@ -44,18 +45,23 @@
                          type="CreateCustomer">
             <intacct:commands>
                 <intacct:command>
-                    <customerid>#[groovy: ['value' : map-payload.get('Intacct_Seed_Number__c1') ] ]</customerid>
+                    <customerid>#[map-payload:Intacct_Seed_Number__c1]</customerid>
                     <name>#[map-payload:Name1]</name>
-                    <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'Print'] ]]]</deliveryoptions>
+                    <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'print'] ]]]</deliveryoptions>
                     <status>active</status>
                     <contactinfo>#[groovy: ['contactOrContactname' : map-payload.get('ContactInfo1')] ]</contactinfo>
                 </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+    </flow>
+    
+    <flow name="updateCustomer">
+        <intacct:execute functionControlId="#[string:invoice- #[mule:message.id]]"
+                         type="UpdateCustomer">
+            <intacct:commands>
                 <intacct:command>
-                    <customerid>#[groovy: ['value' : map-payload.get('Intacct_Seed_Number__c2') ] ]</customerid>
-                    <name>#[map-payload:Name2]</name>
-                    <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'Print'] ]]]</deliveryoptions>
-                    <status>active</status>
-                    <contactinfo>#[groovy: ['contactOrContactname' : map-payload.get('ContactInfo2')] ]</contactinfo>
+                    <customerid>#[map-payload:Intacct_Seed_Number__c1]</customerid>
+                    <name>#[map-payload:NewName]</name>
                 </intacct:command>
             </intacct:commands>
         </intacct:execute>

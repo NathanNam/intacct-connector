@@ -138,11 +138,11 @@ public class RealHttpTestCase extends BaseIntacctTest
 
         Map<String, Object> payload = new HashMap<String, Object>();
         payload.put("Intacct_Seed_Number__c1", "Intacct_Seed_Number__c1");
-        payload.put("Name1", "Richard");
+        payload.put("Name1", "Test Customer");
         Contact contact1 = new Contact();
-        contact1.setContactname(new Contactname() { { value = "Richard"; } });
-        contact1.setPrintas("Richard");
-        contact1.setCompanyname("Richard");
+        contact1.setContactname(new Contactname() { { value = "Test Customer"; } });
+        contact1.setPrintas("Test Customer");
+        contact1.setCompanyname("Test Customer");
         contact1.setMailaddress(new Mailaddress() { { 
             address1 = "Any Street";
             city = "Any City";
@@ -157,11 +157,11 @@ public class RealHttpTestCase extends BaseIntacctTest
         payload.put("ContactInfo1", contactInfo);
 
         payload.put("Intacct_Seed_Number__c2", "Intacct_Seed_Number__c2");
-        payload.put("Name2", "Susan");
+        payload.put("Name2", "Test Customer 2");
         Contact contact2 = new Contact();
-        contact2.setContactname(new Contactname() { { value = "Susan"; } });
-        contact2.setPrintas("Susan");
-        contact2.setCompanyname("Susan");
+        contact2.setContactname(new Contactname() { { value = "Test Customer 2"; } });
+        contact2.setPrintas("Test Customer 2");
+        contact2.setCompanyname("Test Customer 2");
         contact2.setMailaddress(new Mailaddress() { { 
             address1 = "Other Street";
             city = "Other City";
@@ -175,6 +175,45 @@ public class RealHttpTestCase extends BaseIntacctTest
         
         payload.put("ContactInfo2", contactInfo2);
         MessageProcessor flow = lookupFlowConstruct("createCustomers");
+        final MuleEvent event = getTestEvent(payload);
+        final MuleEvent responseEvent = flow.process(event);
+
+        String encodedXml = IOUtils.toString(handler.getRequest().getInputStream()).substring(
+            "xmlrequest".length() + 1);
+        final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
+        String xml = URLDecoder.decode(encodedXml, charsetName);
+        InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
+        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        XMLReader reader = XMLReaderFactory.createXMLReader();
+        XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
+            "http://www.mulesoft.org/schema/mule/intacct"));
+        inFilter.setParent(reader);
+        InputSource is = new InputSource(in);
+        SAXSource source = new SAXSource(inFilter, is);
+
+        Request req = (Request) um.unmarshal(source);
+        Assert.assertEquals(controlId, req.getControl().getControlid());
+        Response resp = (Response) responseEvent.getMessage().getPayload();
+        Assert.assertNotNull(resp);
+        Assert.assertEquals(controlId, resp.getControl().getControlid());
+    }
+    
+    /**
+     * This test updates a customer using the execute processor.
+     */
+    public void testUpdateCustomerWithExecute() throws Exception
+    {
+        Response response = new Response();
+        Control control = new Control();
+        control.setControlid(controlId);
+        response.setControl(control);
+        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
+        startServer(handler);
+
+        Map<String, Object> payload = new HashMap<String, Object>();
+        payload.put("Intacct_Seed_Number__c1", "Intacct_Seed_Number__c1");
+        payload.put("NewName", "Updated Test Customer");
+        MessageProcessor flow = lookupFlowConstruct("updateCustomer");
         final MuleEvent event = getTestEvent(payload);
         final MuleEvent responseEvent = flow.process(event);
 
@@ -355,7 +394,7 @@ public class RealHttpTestCase extends BaseIntacctTest
 		MuleClient client = new DefaultLocalMuleClient(muleContext);
 
 		final CreateCustomer createCustomer = new CreateCustomer();
-	    createCustomer.setCustomerid(new Customerid(){{value = "C-Cust-001";}});
+		createCustomer.setCustomerid("C-Cust-001");
 	    createCustomer.setName("Dummy Customer 1");
 	    Deliveryoption deliveryOption = new Deliveryoption();
 	    deliveryOption.setValue("Print");
