@@ -13,15 +13,8 @@
  */
 package org.mule.module.intacct;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-
-import org.apache.commons.lang.Validate;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
@@ -45,6 +38,16 @@ import org.mule.module.intacct.schema.request.Sotransitem;
 import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
+
+import org.apache.commons.lang.Validate;
 
 
 /**
@@ -600,19 +603,24 @@ public class IntacctCloudConnector
                             @Optional List<Map<String, Object>> fields
                             ) throws JAXBException
     {
-        Filter filter = new Filter();
-        filter.getLogicalOrExpression().addAll(coalesceList(filters));
+        
+        MapBuilder builder = new MapBuilder().with("object", obj)
+                        .with("start", start)
+                        .with("maxitems", maxItems)
+                        .with("showprivate", showPrivate)
+                        .with("sorts", nullifyEmptyListWrapper("sortfield", sorts, Sortfield.class))
+                        .with("fields", nullifyEmptyListWrapper("field", fields, Field.class));
 
-        GetList command = mom.toObject(GetList.class,
-            new MapBuilder().with("object", obj)
-                            .with("start", start)
-                            .with("maxitems", maxItems)
-                            .with("showprivate", showPrivate)
-                            .with("filter", filter)
-                            .with("sorts", nullifyEmptyListWrapper("sortfield", sorts, Sortfield.class))
-                            .with("fields", nullifyEmptyListWrapper("field", fields, Field.class))
-                            .build()
-            );
+        
+        if (isNotEmpty(filters))
+        {
+            Filter filter = new Filter();
+            filter.getLogicalOrExpression().addAll(filters);
+            builder.with("filter", filter);
+        }
+            
+        
+        GetList command = mom.toObject(GetList.class, builder.build());
 
         return sendRequest(functionControlId, command);
     }
