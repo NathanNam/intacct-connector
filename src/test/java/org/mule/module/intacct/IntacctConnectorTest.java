@@ -11,19 +11,12 @@
 package org.mule.module.intacct;
 
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Before;
-import org.junit.Test;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.impl.IntacctRestClient;
 import org.mule.module.intacct.schema.request.Contactname;
@@ -35,6 +28,16 @@ import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
 import org.mule.module.intacct.utils.MapBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Matchers;
 
 
 /**
@@ -60,8 +63,27 @@ public class IntacctConnectorTest
     @Test
     public void getListWithNoFiltersSucceeds() throws Exception
     {
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                     "\n" +
+                     "<request>\n" +
+                     "  <control>\n" +
+                     "    <dtdversion>2.1</dtdversion>\n" +
+                     "  </control>\n" +
+                     "  <operation>\n" +
+                     "    <authentication>\n" +
+                     "      <login></login>\n" +
+                     "    </authentication>\n" +
+                     "    <content>\n" +
+                     "      <function controlid=\"100\">\n" +
+                     "        <get_list object=\"glaccount\"></get_list>\n" +
+                     "      </function>\n" +
+                     "    </content>\n" +
+                     "  </operation>\n" +
+                     "</request>\n";
+        
         expectPostXml();
         connector.getList("100", "glaccount", null, null, null, null, null, null);
+        verify(restClient).postXml(argThat(new StringMatchWithXml(xml)));
     }
 
     @Test
