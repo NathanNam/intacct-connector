@@ -166,49 +166,50 @@
         [ 'customfieldname' : 'other custom field' ,
           'customfieldvalue' : 'other custom field value' ] 
     ]]" />
-    <intacct:invoice-items ref="#[groovy: [ [
-        'accountlabelOrGlaccountno' : [ 
-            new Accountlabel(value : 'some account value'), 
-            new Accountlabel(value : 'other account value') ] ,
-        'amount' : 'some amount' ,
-        'allocationid' : 'some allocation id' ,
-        'memo' : 'some memo' ,
-        'locationid' : 
-            [ 'value' : 'some location id' ] ,
-        'departmentid' : 
-            [ 'value' : 'some department id' ] ,
-        'item1099' : 'some item 1099' ,
-        'key' : 'some key' ,
-        'totalpaid' : 'total paid' ,
-        'totaldue' : 'total due' ,
-        'customfields' : 
-            [ 'customfield' : 
-                [ [ 'customfieldname' : 'some custom field' ,
-                    'customfieldvalue' : 'some custom field value' ] ,
-                  [ 'customfieldname' : 'other custom field' ,
-                    'customfieldvalue' : 'other custom field value' ] ] ] ,
-        'revrectemplate' : 'some recvrec template' ,
-        'defrevaccount' : 'some defrev account' ,
-        'revrecstartdate' : 
-            [ 'year' : '2011' ,
-              'month' : '10' ,
-              'day' : '12' ],
-        'revrecenddate' : 
-            [ 'year' : '2011' ,
-              'month' : '10' ,
-              'day' : '12' ],
-        'projectid' : 'some proyect id' ,
-        'customerid' :
-            [ 'value' : 'customer id value' ] ,
-        'vendorid' :
-            [ 'value' : 'vendor id value' ] ,
-        'employeeid' :
-            [ 'value' : 'employee id value' ] ,
-        'itemid' : 
-            [ 'value' : 'item id value' ],
-        'classid' : 'some class id' ,
-        'billable' : 'some billable'
-    ] ] ]" />
+    <intacct:invoice-items ref="#[groovy: 
+        [ [
+            'accountlabelOrGlaccountno' : [ 
+                new org.mule.module.intacct.schema.request.Accountlabel(value : 'some account value'), 
+                new org.mule.module.intacct.schema.request.Accountlabel(value : 'other account value') ] ,
+            'amount' : 'some amount' ,
+            'allocationid' : 'some allocation id' ,
+            'memo' : 'some memo' ,
+            'locationid' : 
+                [ 'value' : 'some location id' ] ,
+            'departmentid' : 
+                [ 'value' : 'some department id' ] ,
+            'item1099' : 'some item 1099' ,
+            'key' : 'some key' ,
+            'totalpaid' : 'total paid' ,
+            'totaldue' : 'total due' ,
+            'customfields' : 
+                [ 'customfield' : 
+                    [ [ 'customfieldname' : 'some custom field' ,
+                        'customfieldvalue' : 'some custom field value' ] ,
+                      [ 'customfieldname' : 'other custom field' ,
+                        'customfieldvalue' : 'other custom field value' ] ] ] ,
+            'revrectemplate' : 'some recvrec template' ,
+            'defrevaccount' : 'some defrev account' ,
+            'revrecstartdate' : 
+                [ 'year' : '2011' ,
+                  'month' : '10' ,
+                  'day' : '12' ],
+            'revrecenddate' : 
+                [ 'year' : '2011' ,
+                  'month' : '10' ,
+                  'day' : '12' ],
+            'projectid' : 'some proyect id' ,
+            'customerid' :
+                [ 'value' : 'customer id value' ] ,
+            'vendorid' :
+                [ 'value' : 'vendor id value' ] ,
+            'employeeid' :
+                [ 'value' : 'employee id value' ] ,
+            'itemid' : 
+                [ 'value' : 'item id value' ],
+            'classid' : 'some class id' ,
+            'billable' : 'some billable' ] 
+    ] ]" />
 </intacct:create-invoice>
 <!-- END_INCLUDE(intacct:create-invoice) -->
 
@@ -236,7 +237,9 @@
     </intacct:custom-fields>
     <intacct:invoice-items>
         <intacct:invoice-item>
-            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : 'Sales' ) ] ]</accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: 
+                [new org.mule.module.intacct.schema.request.Accountlabel(value : 'Sales' ) ] 
+            ]</accountlabelOrGlaccountno>
             <amount>1234.56</amount>
             <memo> This is a sample of creating an invoice</memo>
         </intacct:invoice-item>
@@ -268,7 +271,9 @@
     </intacct:custom-fields>
     <intacct:invoice-items>
         <intacct:invoice-item>
-            <accountlabelOrGlaccountno>#[groovy: [new Accountlabel(value : 'Sales' ) ] ]</accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: 
+                [new org.mule.module.intacct.schema.request.Accountlabel(value : 'Sales' ) ] 
+            ]</accountlabelOrGlaccountno>
             <amount>1234.56</amount>
             <memo> This is a sample of creating an invoice</memo>
         </intacct:invoice-item>
@@ -280,159 +285,162 @@
 <intacct:create-invoice-batch functionControlId="some function control id"
                              batchTitle="some batch title">
     <intacct:date-created ref="#[groovy:[
-        'year' : '2011' ,
-        'month' : '10' ,
-        'day' : '12'
+        year : '2011' ,
+        month : '10' ,
+        day : '12'
     ] ]" />
     <intacct:create-invoices ref="#[groovy: [
-    [ 'customerid' : 'some customer id' ,
-      'datecreated' : 
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ] ,
-      'dateposted' : 
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ] ,
-      'datedue' : 
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ] ,
-      'termname' : 
-        [ 'value' : 'some term name value' ] ,
-      'batchkey' : 
-        [ 'value' : 'some batch key value' ] ,
-      'invoiceno' : 'invoice number' ,
-      'ponumber' : 'po number' ,
-      'description' : 'New invoice' ,
-      'externalid' : 123456' ,
-      'billto' : 
-        [ new Contactname(value : 'Richard') , 
-          new Contact(
-            contactname : new Contactname(value : 'Michael') ,
-            printas : 'some printas' ,
-            taxable : 'some taxable' ,
-            companyname : 'some company name' ,
-            taxgroup : 'some tax group' ,
-            prefix : 'some prefix' ,
-            firstname : 'some first name' ,
-            lastname : 'some last name' ,
-            initial : 'some initial' ,
-            phone1 : '1231231231' ,
-            phone2 : 'other phone' ,
-            cellphone : 'some cellphone' ,
-            pager : 'some pager' ,
-            fax : 'some fax' ,
-            email1 : 'some email' ,
-            email2 : 'other email' ,
-            url1 : 'some url' ,
-            url2 : 'other url' ,
-            status : 'some status' ,
-            mailaddress : new Mailaddress(
-               address1 : 'some address' ,
-               address2 : 'other address' ,
-               city : 'some city' ,
-               state : 'some state' ,
-               zip : 'some zip' ,
-               country : 'some country' ,
-               isocountrycode : 'some iso country code')
-          ) ] ,
-      'shipto' : 
-        [ new Contact(
-            contactname : new Contactname(
-                value : 'John') ,
-            printas : 'some printas' ,
-            taxable : 'some taxable' ,
-            companyname : 'some company name' ,
-            taxgroup : 'some tax group' ,
-            prefix : 'some prefix' ,
-            firstname : 'some first name' ,
-            lastname : 'some last name' ,
-            initial : 'some initial' ,
-            phone1 : '1231231231' ,
-            phone2 : 'other phone' ,
-            cellphone : 'some cellphone' ,
-            pager : 'some pager' ,
-            fax : 'some fax' ,
-            email1 : 'some email' ,
-            email2 : 'other email' ,
-            url1 : 'some url' ,
-            url2 : 'other url' ,
-            status : 'some status' ,
-            mailaddress : new Mailaddress( 
-               address1 : 'some address' ,
-               address2 : 'other address' ,
-               city : 'some city' ,
-               state : 'some state' ,
-               zip : 'some zip' ,
-               country : 'some country' ,
-               isocountrycode : 'some iso country code'
-            )
-          ) ,
-          new Contactname(
-            value = 'Vito') ] ,
-      'basecurr' : 'some base currency' ,
-      'currency' : 'some currency' ,
-      'nogl' : 'some nogl' ,
-      'exchratedateOrExchratetypeOrExchrate' : [
-        new Exchratedate(
-          year : '2011' ,
-          month : '10' ,
-          day : '12') , 
-        new Exchratetype(
-          value : 'some value'),
-        new Exchrate(
-          value : 'some value') ] ,
-      'customfields' : [
-        [ 'customfieldname' : 'some custom field' ,
-          'customfieldvalue' : 'some custom field value' ] ,
-        [ 'customfieldname' : 'other custom field' ,
-          'customfieldvalue' : 'other custom field value' ] 
-      'invoiceitems' : [ 
-        [ 'accountlabelOrGlaccountno' : [ 
-              new Accountlabel(
-                value : 'some account value') , 
-              new Accountlabel(
-                value : 'other account value') ] ,
-          'amount' : 'some amount' ,
-          'allocationid' : 'some allocation id' ,
-          'memo' : 'some memo' ,
-          'locationid' : 
-            [ 'value' : 'some location id' ] ,
-          'departmentid' : 
-            [ 'value' : 'some department id' ] ,
-          'item1099' : 'some item 1099' ,
-          'key' : 'some key' ,
-          'totalpaid' : 'total paid' ,
-          'totaldue' : 'total due' ,
-          'customfields' : 
-              [ 'customfield' : 
-                  [ [ 'customfieldname' : 'some custom field' ,
-                      'customfieldvalue' : 'some custom field value' ] ,
-                    [ 'customfieldname' : 'other custom field' ,
-                      'customfieldvalue' : 'other custom field value' ] ] ] ,
-          'revrectemplate' : 'some recvrec template' ,
-          'defrevaccount' : 'some defrev account' ,
-          'revrecstartdate' : 
-              [ 'year' : '2011' ,
-                'month' : '10' ,
-                'day' : '12' ],
-          'revrecenddate' : 
-              [ 'year' : '2011' ,
-                'month' : '10' ,
-                'day' : '12' ],
-          'projectid' : 'some proyect id' ,
-          'customerid' :
-              [ 'value' : 'customer id value' ] ,
-          'vendorid' :
-              [ 'value' : 'vendor id value' ] ,
-          'employeeid' :
-              [ 'value' : 'employee id value' ] ,
-          'itemid' : 
-              [ 'value' : 'item id value' ],
-          'classid' : 'some class id' ,
-          'billable' : 'some billable' ] ]
-    ] ] ]" />
+          [ customerid : [ value : 'some customer id'] ,
+            datecreated : 
+              [ year : '2011' ,
+                month : '10' ,
+                day : '12' ] ,
+            dateposted : 
+              [ year : '2011' ,
+                month : '10' ,
+                day : '12' ] ,
+            datedue : 
+              [ year : '2011' ,
+                month : '10' ,
+                day : '12' ] ,
+            termname : 
+              [ value : 'some term name value' ] ,
+            batchkey : 
+              [ value : 'some batch key value' ] ,
+            invoiceno : 'invoice number' ,
+            ponumber : 'po number' ,
+            description : 'New invoice' ,
+            externalid : '123456' ,
+            billto : [
+              contactOrContactname : [ 
+                new org.mule.module.intacct.schema.request.Contactname(value : 'Richard') , 
+                new org.mule.module.intacct.schema.request.Contact(
+                  contactname : new org.mule.module.intacct.schema.request.Contactname(value : 'Michael') ,
+                  printas : 'some printas' ,
+                  taxable : 'some taxable' ,
+                  companyname : 'some company name' ,
+                  taxgroup : 'some tax group' ,
+                  prefix : 'some prefix' ,
+                  firstname : 'some first name' ,
+                  lastname : 'some last name' ,
+                  initial : 'some initial' ,
+                  phone1 : '1231231231' ,
+                  phone2 : 'other phone' ,
+                  cellphone : 'some cellphone' ,
+                  pager : 'some pager' ,
+                  fax : 'some fax' ,
+                  email1 : 'some email' ,
+                  email2 : 'other email' ,
+                  url1 : 'some url' ,
+                  url2 : 'other url' ,
+                  status : 'some status' ,
+                  mailaddress : new org.mule.module.intacct.schema.request.Mailaddress(
+                     address1 : 'some address' ,
+                     address2 : 'other address' ,
+                     city : 'some city' ,
+                     state : 'some state' ,
+                     zip : 'some zip' ,
+                     country : 'some country' ,
+                     isocountrycode : 'some iso country code')
+                  ) 
+              ] ] ,
+            shipto : [
+              contactOrContactname : [ 
+                 new org.mule.module.intacct.schema.request.Contact(
+                    contactname : new org.mule.module.intacct.schema.request.Contactname(value : 'John') ,
+                    printas : 'some printas' ,
+                    taxable : 'some taxable' ,
+                    companyname : 'some company name' ,
+                    taxgroup : 'some tax group' ,
+                    prefix : 'some prefix' ,
+                    firstname : 'some first name' ,
+                    lastname : 'some last name' ,
+                    initial : 'some initial' ,
+                    phone1 : '1231231231' ,
+                    phone2 : 'other phone' ,
+                    cellphone : 'some cellphone' ,
+                    pager : 'some pager' ,
+                    fax : 'some fax' ,
+                    email1 : 'some email' ,
+                    email2 : 'other email' ,
+                    url1 : 'some url' ,
+                    url2 : 'other url' ,
+                    status : 'some status' ,
+                    mailaddress : new org.mule.module.intacct.schema.request.Mailaddress( 
+                       address1 : 'some address' ,
+                       address2 : 'other address' ,
+                       city : 'some city' ,
+                       state : 'some state' ,
+                       zip : 'some zip' ,
+                       country : 'some country' ,
+                       isocountrycode : 'some iso country code'
+                    )
+                 ) ,
+                 new org.mule.module.intacct.schema.request.Contactname(
+                    value : 'Vito') 
+            ] ] ,
+            basecurr : 'some base currency' ,
+            currency : 'some currency' ,
+            nogl : 'some nogl' ,
+            exchratedateOrExchratetypeOrExchrate : [
+              new org.mule.module.intacct.schema.request.Exchratedate(
+                year : '2011' ,
+                month : '10' ,
+                day : '12') , 
+              new org.mule.module.intacct.schema.request.Exchratetype(value : 'some value'),
+              new org.mule.module.intacct.schema.request.Exchrate(value : 'some value') ] ,
+            customfields : [
+              customfield : [ 
+                [ customfieldname : 'some custom field' ,
+                  customfieldvalue : 'some custom field value' ] ,
+                [ customfieldname : 'other custom field' ,
+                customfieldvalue : 'other custom field value' ] ] ] ,
+            invoiceitems : [ 
+              lineitem : [
+                  [ accountlabelOrGlaccountno : [ 
+                        new org.mule.module.intacct.schema.request.Accountlabel(
+                          value : 'some account value') , 
+                        new org.mule.module.intacct.schema.request.Accountlabel(
+                          value : 'other account value') ] ,
+                    amount : 'some amount' ,
+                    allocationid : 'some allocation id' ,
+                    memo : 'some memo' ,
+                    locationid : 
+                      [ value : 'some location id' ] ,
+                    departmentid : 
+                      [ value : 'some department id' ] ,
+                    item1099 : 'some item 1099' ,
+                    key : 'some key' ,
+                    totalpaid : 'total paid' ,
+                    totaldue : 'total due' ,
+                    customfields : 
+                        [ customfield : [ 
+                              [ customfieldname : 'some custom field' ,
+                                customfieldvalue : 'some custom field value' ] ,
+                              [ customfieldname : 'other custom field' ,
+                                customfieldvalue : 'other custom field value' ] ] ] ,
+                    revrectemplate : 'some recvrec template' ,
+                    defrevaccount : 'some defrev account' ,
+                    revrecstartdate : 
+                        [ year : '2011' ,
+                          month : '10' ,
+                          day : '12' ],
+                    revrecenddate : 
+                        [ year : '2011' ,
+                          month : '10' ,
+                          day : '12' ],
+                    projectid : 'some proyect id' ,
+                    customerid :
+                        [ value : 'customer id value' ] ,
+                    vendorid :
+                        [ value : 'vendor id value' ] ,
+                    employeeid :
+                        [ value : 'employee id value' ] ,
+                    itemid : 
+                        [ value : 'item id value' ],
+                    classid : 'some class id' ,
+                    billable : 'some billable' ] ] 
+            ] ] ] ]" />
 </intacct:create-invoice-batch>
 <!-- END_INCLUDE(intacct:create-invoice-batch) -->
 
@@ -446,30 +454,33 @@
     </intacct:date-created>
     <intacct:create-invoices>
         <intacct:create-invoice>
-            <customerid>C-00001</customerid>
-            <datecreated>#[groovy : [
-                'year' : '2010' ,
-                'month' : '02' ,
-                'day' : '2' ] ]
-            </datecreated>
-            <datedue>#[groovy : [
-                'year' : '2010' ,
-                'month' : '12' ,
-                'day' : '1' ] ]
-            </datedue>
+            <customerid>#[groovy: [ value : 'C-00001' ] ]</customerid>
+            <datecreated>#[groovy: [
+                year : '2010' ,
+                month : '02' ,
+                day : '2' ] 
+            ]</datecreated>
+            <datedue>#[groovy: [
+                year : '2010' ,
+                month : '12' ,
+                day : '1' ] 
+            ]</datedue>
             <basecurr>USD</basecurr>
             <currency>USD</currency>
-            <exchratetype>Intacct Daily Rate</exchratetype>
+            <exchratedateOrExchratetypeOrExchrate>#[groovy: [ 
+                new org.mule.module.intacct.schema.request.Exchratetype(value : 'Intacct Daily Rate')
+            ] ]</exchratedateOrExchratetypeOrExchrate>
             <invoiceitems>#[groovy: [
-                'lineitem' : [ [
-                    'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
-                    'amount' : -332 ] ] ]
-            </invoiceitems> 
+                lineitem : [ 
+                    [ accountlabelOrGlaccountno : [new org.mule.module.intacct.schema.request.Glaccountno(value : "7787" ) ] ,
+                      amount : -332 ] 
+                ]
+            ] ]</invoiceitems> 
         </intacct:create-invoice>
     </intacct:create-invoices>
 </intacct:create-invoice-batch>
 <!-- END_INCLUDE(intacct:create-invoice-batch2) -->
-
+ 
 <!-- BEGIN_INCLUDE(intacct:create-invoice-batch3) -->
 <intacct:create-invoice-batch functionControlId="59235-412312312-124123-223223"
                               batchTitle="XML Test Batch 3">
@@ -480,70 +491,77 @@
     </intacct:date-created>
     <intacct:create-invoices>
         <intacct:create-invoice>
-            <customerid>C-00027</customerid>
-            <datecreated>#[groovy : [
+            <customerid>#[groovy: ['value':'C-00027']]</customerid>
+            <datecreated>#[groovy: [
                 'year' : '2011' ,
                 'month' : '02' ,
-                'day' : '2' ] ]
-            </datecreated>
-            <datedue>#[groovy : [
+                'day' : '2' ] 
+            ]</datecreated>
+            <datedue>#[groovy: [
                 'year' : '2013' ,
                 'month' : '12' ,
-                'day' : '1' ] ]
-            </datedue>
+                'day' : '1' ] 
+            ]</datedue>
             <basecurr>USD</basecurr>
             <currency>USD</currency>
-            <exchratetype>Intacct Daily Rate</exchratetype>
-            <invoiceitems>#[groovy: [
-                'lineitem' : [ 
-                  [ 'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
-                    'amount' : 275 ] ,
-                  [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : "Sales" ) ] ,
-                    'amount' : -130 ] ] ]
-            </invoiceitems> 
+            <exchratedateOrExchratetypeOrExchrate>#[groovy: [ 
+                new org.mule.module.intacct.schema.request.Exchratetype(value : 'Intacct Daily Rate')
+            ] ]</exchratedateOrExchratetypeOrExchrate>
+            <invoiceitems>#[groovy: 
+                import org.mule.module.intacct.schema.request.*
+                [   'lineitem' : [ 
+                    [ 'accountlabelOrGlaccountno' : [new Glaccountno(value : "7787" ) ] ,
+                        'amount' : 275 ] ,
+                    [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : "Sales" ) ] ,
+                        'amount' : -130 ] ]
+            ] ]</invoiceitems> 
         </intacct:create-invoice>
         <intacct:create-invoice>
-            <customerid>C-101</customerid>
+            <customerid>#[groovy: ['value':'C-101']]</customerid>
             <invoiceno>TM125</invoiceno>
             <ponumber>PO2021</ponumber>
             <description>Invoice creation without currency setting</description>
-            <datecreated>#[grovy: [
+            <datecreated>#[groovy: [
                 'year' : '2009' ,
                 'month' : '10' ,
-                'day' : '05' ] ]
-            </datecreated>
-            <datedue>#[grovy: [
+                'day' : '05' ] 
+            ]</datecreated>
+            <datedue>#[groovy: [
                 'year' : '2014' ,
                 'month' : '10' ,
-                'day' : '05' ] ]
-            </datedue>
-            <billto>#[groovy: [ 
-                new Contactname(value : 'Richard') , 
-                new Contact(
-                    contactname : new Contactname(value : 'Michael') ,
-                    companyname : 'MuleSoft' ,
-                    firstname : 'Michael' ,
-                    lastname : 'Richarson' ,,
-                    phone1 : '1231231231' ,
-                    mailaddress : new Mailaddress(
-                       address1 : 'some address' ,
-                       city : 'some city' ,
-                       state : 'some state' ,
-                       zip : 'some zip' ,
-                       country : 'some country' )
-                  ) ] ]
-            </billto>
+                'day' : '05' ] 
+            ]</datedue>
+            <billto>#[groovy: 
+                import org.mule.module.intacct.schema.request.*
+                   [ 'contactOrContactname' : [   
+                        new Contactname(value : 'Richard') , 
+                        new Contact(
+                            contactname : new Contactname(value : 'Michael') ,
+                            companyname : 'MuleSoft' ,
+                            firstname : 'Michael' ,
+                            lastname : 'Richarson' ,,
+                            phone1 : '1231231231' ,
+                            mailaddress : new Mailaddress(
+                               address1 : 'some address' ,
+                               city : 'some city' ,
+                               state : 'some state' ,
+                               zip : 'some zip' ,
+                               country : 'some country' )
+                          ) ] 
+            ] ]</billto>
             <basecurr>USD</basecurr>
             <currency>USD</currency>
             <customfields>#[groovy: [
-                [ 'customfieldname' : 'MY_CUSTOM_FIELD' ,
-                  'customfieldvalue' : 'Value for Custom Field'] ]
-            </customfields>
+                'customfield' : [ 
+                    [ 'customfieldname' : 'MY_CUSTOM_FIELD' ,
+                      'customfieldvalue' : 'Value for Custom Field'] ] 
+            ] ]</customfields>
             <invoiceitems>#[groovy: [ 
-                [ 'accountlabelOrGlaccountno' : [new Accountlabel(value : 'Sales' ) ] ,
-                   'amount' : 1234.56 ,
-                   'memo' : 'This is a sample of creating an invoice' ] ]
-            </invoiceitems>
+                'lineitem' : [ 
+                    [ 'accountlabelOrGlaccountno' : [ new org.mule.module.intacct.schema.request.Accountlabel(value : 'Sales' ) ] ,
+                      'amount' : 1234.56 ,
+                      'memo' : 'This is a sample of creating an invoice' ] ] 
+            ] ]</invoiceitems>
         </intacct:create-invoice>
     </intacct:create-invoices>
 </intacct:create-invoice-batch>
@@ -561,73 +579,73 @@
                              currency="some currency"
                              exchType="ExchRateDate"
                              nogl="some nogl">
-    <intacct:date-created ref="#[groovy:[
-        'year' : '2011' ,
-        'month' : '10' ,
-        'day' : '12'
+    <intacct:date-created ref="#[groovy: [
+        year : '2011' ,
+        month : '10' ,
+        day : '12'
     ] ]" />
-    <intacct:date-posted ref="#[groovy:[
-        'year' : '2011' ,
-        'month' : '10' ,
-        'day' : '12'
+    <intacct:date-posted ref="#[groovy: [
+        year : '2011' ,
+        month : '10' ,
+        day : '12'
     ] ]" />
     <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ] , 
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ]
+        [ year : '2011' ,
+          month : '10' ,
+          day : '12' ] , 
+        [ year : '2011' ,
+          month : '10' ,
+          day : '12' ]
     ] ]" />
-    <intacct:a-r-adjustment-items ref="#[groovy : [ 
-        [ 'accountlabelOrGlaccountno' : [ 
-              new Accountlabel(
-                value = 'some account value') , 
-              new Accountlabel(
-                value = 'other account value') ] ,
-          'amount' : 'some amount' ,
-          'allocationid' : 'some allocation id' ,
-          'memo' : 'some memo' ,
-          'locationid' : 
-            [ 'value' : 'some location id' ] ,
-          'departmentid' : 
-            [ 'value' : 'some department id' ] ,
-          'item1099' : 'some item 1099' ,
-          'key' : 'some key' ,
-          'totalpaid' : 'total paid' ,
-          'totaldue' : 'total due' ,
-          'customfields' : 
-              [ 'customfield' : 
-                  [ [ 'customfieldname' : 'some custom field' ,
-                      'customfieldvalue' : 'some custom field value' ] ,
-                    [ 'customfieldname' : 'other custom field' ,
-                      'customfieldvalue' : 'other custom field value' ] ] ] ,
-          'revrectemplate' : 'some recvrec template' ,
-          'defrevaccount' : 'some defrev account' ,
-          'revrecstartdate' : 
-              [ 'year' : '2011' ,
-                'month' : '10' ,
-                'day' : '12' ],
-          'revrecenddate' : 
-              [ 'year' : '2011' ,
-                'month' : '10' ,
-                'day' : '12' ],
-          'projectid' : 'some proyect id' ,
-          'customerid' :
-              [ 'value' : 'customer id value' ] ,
-          'vendorid' :
-              [ 'value' : 'vendor id value' ] ,
-          'employeeid' :
-              [ 'value' : 'employee id value' ] ,
-          'itemid' : 
-              [ 'value' : 'item id value' ],
-          'classid' : 'some class id' ,
-          'billable' : 'some billable' ] 
+    <intacct:a-r-adjustment-items ref="#[groovy: [ 
+        [ accountlabelOrGlaccountno : [ 
+              new org.mule.module.intacct.schema.request.Accountlabel(
+                value : 'some account value') , 
+              new org.mule.module.intacct.schema.request.Accountlabel(
+                value : 'other account value') ] ,
+          amount : 'some amount' ,
+          allocationid : 'some allocation id' ,
+          memo : 'some memo' ,
+          locationid : 
+            [ value : 'some location id' ] ,
+          departmentid : 
+            [ value : 'some department id' ] ,
+          item1099 : 'some item 1099' ,
+          key : 'some key' ,
+          totalpaid : 'total paid' ,
+          totaldue : 'total due' ,
+          customfields : 
+              [ customfield : 
+                  [ [ customfieldname : 'some custom field' ,
+                      customfieldvalue : 'some custom field value' ] ,
+                    [ customfieldname : 'other custom field' ,
+                      customfieldvalue : 'other custom field value' ] ] ] ,
+          revrectemplate : 'some recvrec template' ,
+          defrevaccount : 'some defrev account' ,
+          revrecstartdate : 
+              [ year : '2011' ,
+                month : '10' ,
+                day : '12' ],
+          revrecenddate : 
+              [ year : '2011' ,
+                month : '10' ,
+                day : '12' ],
+          projectid : 'some proyect id' ,
+          customerid :
+              [ value : 'customer id value' ] ,
+          vendorid :
+              [ value : 'vendor id value' ] ,
+          employeeid :
+              [ value : 'employee id value' ] ,
+          itemid : 
+              [ value : 'item id value' ],
+          classid : 'some class id' ,
+          billable : 'some billable' ] 
     ] ]" />
 </intacct:create-a-r-adjustment>
 <!-- END_INCLUDE(intacct:create-a-r-adjustment) -->
 
-<!-- BEGIN_INCLUDE(intacct:create-a-r-adjustment2) -->
+<!-- BEGIN_INCLUDE(intacct:create-a-r-adjustment2) --> 
 <intacct:create-a-r-adjustment functionControlId="324EB0F1-3CD4-4aa3-917F-3A15BF326F11"
                              customerId="C-00001"
                              invoiceNo="TM126"
@@ -640,7 +658,9 @@
     </intacct:date-created>
     <intacct:a-r-adjustment-items>
         <intacct:a-r-adjustment-item>
-            <accountlabelOrGlaccountno>#[groovy: [new Glaccountno(value : "7787" ) ] ]</accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: 
+                [ new org.mule.module.intacct.schema.request.Glaccountno(value : "7787" ) ] 
+            ]</accountlabelOrGlaccountno>
             <amount>-200</amount>
             <memo>This is a sample of creating an ar adjustment</memo>
         </intacct:a-r-adjustment-item>
@@ -674,10 +694,11 @@
     </intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates>
     <intacct:a-r-adjustment-items>
         <intacct:a-r-adjustment-item>
-            <accountlabelOrGlaccountno>#[groovy: [
-                new Glaccountno(value : "7787" ), 
-                new Glaccountno(value : "3397" ) ] ]
-            </accountlabelOrGlaccountno>
+            <accountlabelOrGlaccountno>#[groovy: 
+                import org.mule.module.intacct.schema.request.*
+                [   new Glaccountno(value : "7787" ), 
+                    new Glaccountno(value : "3397" ) ] 
+            ]</accountlabelOrGlaccountno>
             <amount>-200</amount>
             <memo>This is a sample of creating an ar adjustment</memo>
         </intacct:a-r-adjustment-item>
@@ -703,156 +724,158 @@
                               exchType="ExchRateDate"
                               vsoePriceList="some vsow price list">
     <intacct:date-created ref="#[groovy:[
-        'year' : '2011' ,
-        'month' : '10' ,
-        'day' : '12'
+        year : '2011' ,
+        month : '10' ,
+        day : '12'
     ] ]" />
     <intacct:date-due ref="#[groovy:[
-        'year' : '2011' ,
-        'month' : '10' ,
-        'day' : '12'
+        year : '2011' ,
+        month : '10' ,
+        day : '12'
     ] ]" />
     <intacct:bill-to-contacts ref="#[groovy:[
-        ['value' : 'Richard'] , ['value' : 'Steve']
+        [ value : 'Richard'] , [ value : 'Steve']
     ] ]" />
     <intacct:ship-to-contacts ref="#[groovy:[
-        [ 'contactname' : ['value' : 'Michael'] ,
-          'printas' : 'some printas' ,
-          'taxable' : 'some taxable' ,
-          'companyname' : 'some company name' ,
-          'taxgroup' : 'some tax group' ,
-          'prefix' : 'some prefix' ,
-          'firstname' : 'some first name' ,
-          'lastname' : 'some last name' ,
-          'initial' : 'some initial' ,
-          'phone1' : '1231231231' ,
-          'phone2' : 'other phone' ,
-          'cellphone' : 'some cellphone',
-          'pager' : 'some pager' ,
-          'fax' : 'some fax' ,
-          'email1' : 'some email' ,
-          'email2' : 'other email' ,
-          'url1' : 'some url' ,
-          'url2' : 'other url' ,
-          'status' : 'some status' ,
-          'mailaddress' : 
-             [ 'address1' : 'some address' ,
-               'address2' : 'other address' ,
-               'city' : 'some city' ,
-               'state' : 'some state' ,
-               'zip' : 'some zip' ,
-               'country' : 'some country' ,
-               'isocountrycode' : 'some iso country code']] , 
-        [ 'contactname' : 
-             ['value' : 'John'] ,
-          'printas' : 'some printas' ,
-          'taxable' : 'some taxable' ,
-          'companyname' : 'some company name' ,
-          'taxgroup' : 'some tax group' ,
-          'prefix' : 'some prefix' ,
-          'firstname' : 'some first name' ,
-          'lastname' : 'some last name' ,
-          'initial' : 'some initial' ,
-          'phone1' : '1231231231' ,
-          'phone2' : 'other phone' ,
-          'cellphone' : 'some cellphone',
-          'pager' : 'some pager' ,
-          'fax' : 'some fax' ,
-          'email1' : 'some email' ,
-          'email2' : 'other email' ,
-          'url1' : 'some url' ,
-          'url2' : 'other url' ,
-          'status' : 'some status' ,
-          'mailaddress' : 
-             [ 'address1' : 'some address' ,
-               'address2' : 'other address' ,
-               'city' : 'some city' ,
-               'state' : 'some state' ,
-               'zip' : 'some zip' ,
-               'country' : 'some country' ,
-               'isocountrycode' : 'some iso country code']]
+        [ contactname : 
+            [ value  : 'Michael'] ,
+          printas : 'some printas' ,
+          taxable : 'some taxable' ,
+          companyname : 'some company name' ,
+          taxgroup : 'some tax group' ,
+          prefix : 'some prefix' ,
+          firstname : 'some first name' ,
+          lastname : 'some last name' ,
+          initial : 'some initial' ,
+          phone1 : '1231231231' ,
+          phone2 : 'other phone' ,
+          cellphone : 'some cellphone',
+          pager : 'some pager' ,
+          fax : 'some fax' ,
+          email1 : 'some email' ,
+          email2 : 'other email' ,
+          url1 : 'some url' ,
+          url2 : 'other url' ,
+          status : 'some status' ,
+          mailaddress : 
+             [ address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code'] ] , 
+        [ contactname : 
+            [ value : 'John'] ,
+          printas : 'some printas' ,
+          taxable : 'some taxable' ,
+          companyname : 'some company name' ,
+          taxgroup : 'some tax group' ,
+          prefix : 'some prefix' ,
+          firstname : 'some first name' ,
+          lastname : 'some last name' ,
+          initial : 'some initial' ,
+          phone1 : '1231231231' ,
+          phone2 : 'other phone' ,
+          cellphone : 'some cellphone',
+          pager : 'some pager' ,
+          fax : 'some fax' ,
+          email1 : 'some email' ,
+          email2 : 'other email' ,
+          url1 : 'some url' ,
+          url2 : 'other url' ,
+          status : 'some status' ,
+          mailaddress : 
+             [ address1 : 'some address' ,
+               address2 : 'other address' ,
+               city : 'some city' ,
+               state : 'some state' ,
+               zip : 'some zip' ,
+               country : 'some country' ,
+               isocountrycode : 'some iso country code'] ]
     ] ]" />
     <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ] , 
-        [ 'year' : '2011' ,
-          'month' : '10' ,
-          'day' : '12' ]
+        [ year : '2011' ,
+          month : '10' ,
+          day : '12' ] , 
+        [ year : '2011' ,
+          month : '10' ,
+          day : '12' ]
     ] ]" />
     <intacct:custom-fields ref="#[groovy: [
-        [ 'customfieldname' : 'some custom field' ,
-          'customfieldvalue' : 'some custom field value' ] ,
-        [ 'customfieldname' : 'other custom field' ,
-          'customfieldvalue' : 'other custom field value' ] 
-    ]]" />
-    <intacct:s-o-trans-items ref="#[groovy :[
-        [ 'bundlenumber' : 'some bundle number' ,
-          'itemid' : 
-            [ 'value' : 'some item id value' ] ,
-          'itemdesc' : 'some item description' ,
-          'taxable' : 'some taxable' ,
-          'warehouseid' : 'some warehouse id' ,
-          'quantity' : 'some quantity' ,
-          'unit' : 'some unit' ,
-          'price' : 'some price' ,
-          'discsurchargememo' : 'some discsurcharge memo'
-          'locationid' : 
-            [ 'value' : 'some location id value' ] ,
-          'departmentid' : 
-            [ 'value' : 'some department id value' ] ,
-          'memo' : 'some memo' ,
-          'itemdetails' : [
-             'itemdetail' : [ 
-                [ 'quantity' : 'some quantity' ,
-                  'serialnoOrLotno' : [
-                    new Serialno(
-                        value = 'some serial number') ,
-                    new Lotno(
-                        value = 'some lot number') ],
-                  'aisle' : 'some aisle' ,
-                  'row' : 'some row' ,
-                  'bin' : 'some bin' ,
-                  'itemexpiration' : 
-                    [ 'year' : '2011' ,
-                      'month' : '10' ,
-                      'day' : '12' ]
+        [ customfieldname : 'some custom field' ,
+          customfieldvalue : 'some custom field value' ] ,
+        [ customfieldname : 'other custom field' ,
+          customfieldvalue : 'other custom field value' ] 
+    ] ]" />
+    <intacct:s-o-trans-items ref="#[groovy: [
+        [ bundlenumber : 'some bundle number' ,
+          itemid : 
+            [ value : 'some item id value' ] ,
+          itemdesc : 'some item description' ,
+          taxable : 'some taxable' ,
+          warehouseid : 'some warehouse id' ,
+          quantity : 'some quantity' ,
+          unit : 'some unit' ,
+          price : 'some price' ,
+          discsurchargememo : 'some discsurcharge memo' ,
+          locationid : 
+            [ value : 'some location id value' ] ,
+          departmentid : 
+            [ value : 'some department id value' ] ,
+          memo : 'some memo' ,
+          itemdetails : [
+             itemdetail : [ 
+                [ quantity : 'some quantity' ,
+                  serialnoOrLotno : [
+                    new org.mule.module.intacct.schema.request.Serialno(
+                        value : 'some serial number') ,
+                    new org.mule.module.intacct.schema.request.Lotno(
+                        value : 'some lot number') ],
+                  aisle : 'some aisle' ,
+                  row : 'some row' ,
+                  bin : 'some bin' ,
+                  itemexpiration : [
+                      year : '2011' ,
+                      month : '10' ,
+                      day : '12' ]
                 ] ] 
              ] ,
-          'customfields' : 
-              [ 'customfield' : 
-                  [ [ 'customfieldname' : 'some custom field' ,
-                      'customfieldvalue' : 'some custom field value' ] ,
-                    [ 'customfieldname' : 'other custom field' ,
-                      'customfieldvalue' : 'other custom field value' ] ] ] ,
-          'revrectemplate' : 'some revrect template' ,
-          'revrecstartdate' : 
-            [ 'year' : '2011' ,
-              'month' : '10' ,
-              'day' : '12' ] ,
-          'revrecenddate' : 
-            [ 'year' : '2011' ,
-              'month' : '10' ,
-              'day' : '12' ] ,
-          'renewalmacro' : 'some renew al macro' ,
-          'projectid' : 'some project id' ,
-          'customerid' : 
-            [ 'value' : 'some customer id value' ] ,
-          'vendorid' : 
-            [ 'value' : 'some vendor id value' ] ,
-          'employeeid' : 
-            [ 'value' : 'some employee id value' ] ,
-          'classid' : 'some class id' ]
-    ] ]" />
+          customfields : 
+              [ customfield : 
+                  [ [ customfieldname : 'some custom field' ,
+                      customfieldvalue : 'some custom field value' ] ,
+                    [ customfieldname : 'other custom field' ,
+                      customfieldvalue : 'other custom field value' ] ] ] ,
+          revrectemplate : 'some revrect template' ,
+          revrecstartdate : 
+            [ year : '2011' ,
+              month : '10' ,
+              day : '12' ] ,
+          revrecenddate : 
+            [ year : '2011' ,
+              month : '10' ,
+              day : '12' ] ,
+          renewalmacro : 'some renew al macro' ,
+          projectid : 'some project id' ,
+          customerid : 
+            [ value : 'some customer id value' ] ,
+          vendorid : 
+            [ value : 'some vendor id value' ] ,
+          employeeid : 
+            [ value : 'some employee id value' ] ,
+          classid : 'some class id' ]
+        ]
+    ]" />
     <intacct:sub-totals ref="#[groovy: [
-        [ 'description' : 'some description' ,
-          'total' : 'some total' ,
-          'absval' : 'some abs value' ,
-          'percentval' : 'some precent value' ,
-          'locationid' : 
-            [ 'value' : 'some location id value' ] ,
-          'departmentid' : 
-            [ 'value' : 'some department id value' ] ]
+        [ description : 'some description' ,
+          total : 'some total' ,
+          absval : 'some abs value' ,
+          percentval : 'some precent value' ,
+          locationid : 
+            [ value : 'some location id value' ],
+          departmentid : 
+            [ value : 'some department id value' ] ]
     ] ]" />
 </intacct:create-s-o-transaction>
 <!-- END_INCLUDE(intacct:create-s-o-transaction) -->
@@ -869,14 +892,14 @@
     </intacct:date-created>
     <intacct:s-o-trans-items>
         <intacct:s-o-trans-item>
-            <itemid>BP-100</itemid>
+            <itemid>#[groovy: [ value : 'BP-100'] ]</itemid>
             <itemdesc>Super Widget 100</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>1</quantity>
             <unit>Each</unit>
         </intacct:s-o-trans-item>
         <intacct:s-o-trans-item>
-            <itemid>BP-101</itemid>
+            <itemid>#[groovy: [ value : 'BP-101'] ]</itemid>
             <itemdesc>Super Widget 101</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>3</quantity>
@@ -916,14 +939,14 @@
     </intacct:bill-to-contacts>
     <intacct:s-o-trans-items>
         <intacct:s-o-trans-item>
-            <itemid>BP-100</itemid>
+            <itemid>#[groovy: [ value : 'BP-100'] ]</itemid>
             <itemdesc>Super Widget 100</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>1</quantity>
             <unit>Each</unit>
         </intacct:s-o-trans-item>
         <intacct:s-o-trans-item>
-            <itemid>BP-101</itemid>
+            <itemid>#[groovy: [ value : 'BP-101'] ]</itemid>
             <itemdesc>Super Widget 101</itemdesc>
             <warehouseid>SFO</warehouseid>
             <quantity>3</quantity>
@@ -946,41 +969,56 @@
                   start="some start"
                   maxItems="some maxItems"
                   showPrivate="some show private" >
-    <intacct:filters ref="#[groovy : [
-        new Logical(
-            logicalOperator : 'or' ,
-            logicalOrExpression : [
-                new Logical(
-                    logicalOperator : 'and' ,
-                    logicalOrExpression : [
-                        new Expression(
-                            field : new Field( value : 'accountno') ,
-                            operator : '>' ,
-                            value = new Value(value : '500' ) 
-                        ), 
-                        new Expression(
-                            field : new Field(value : 'normalbalance' ) ,
-                            operator : '=' ,
-                            value = new Value(value : 'debit' )
-                        )
-                    ]
-                ) , 
-                new Expression(
-                    field : new Field(value : 'normalbalance' ) ,
-                    operator : '=' ,
-                    value : new Value(value : 'credit' )
-                )
-            ]
-        ) ] ]" />
-    <intacct:sorts ref="#[groovy : [
-        [ 'order' : 'some order' ,
-          'value' : 'some value' ] ,
-        [ 'order' : 'other order' ,
-          'value' : 'other value' ]
+    <intacct:filters ref="#[groovy: 
+        [
+            new org.mule.module.intacct.schema.request.Logical(
+                logicalOperator : 'or' ,
+                logicalOrExpression : [
+                    new org.mule.module.intacct.schema.request.Logical(
+                        logicalOperator : 'and' ,
+                        logicalOrExpression : [
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field( 
+                                            value : 'accountno'
+                                        ) ,
+                                operator : '>' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : '500' 
+                                        ) 
+                            ), 
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field(
+                                            value : 'normalbalance' 
+                                        ) ,
+                                operator : '=' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : 'debit' 
+                                        )
+                            )
+                        ]
+                    ) , 
+                    new org.mule.module.intacct.schema.request.Expression(
+                        field : new org.mule.module.intacct.schema.request.Field(
+                                    value : 'normalbalance' 
+                                ) ,
+                        operator : '=' ,
+                        value : new org.mule.module.intacct.schema.request.Value(
+                                    value : 'credit' 
+                                )
+                    )
+                ]
+            ) 
+        ] 
+    ]" />
+    <intacct:sorts ref="#[groovy: [
+        [ order : 'some order' ,
+          value : 'some value' ] ,
+        [ order : 'other order' ,
+          value : 'other value' ]
     ] ]" />
-    <intacct:fields ref="#[groovy : [
-        [ 'value' :  'title' ] , 
-        [ 'value' :  'normalbalance' ]
+    <intacct:fields ref="#[groovy: [
+        [ value :  'title' ] , 
+        [ value :  'normalbalance' ]
     ] ]" />
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list) -->
@@ -992,41 +1030,56 @@ list is sorted by account title and then by balance. The only fields returned ar
 account title and balance. -->
 <intacct:get-list functionControlId="f4"
                   obj="glaccount" >
-    <intacct:filters ref="#[groovy : [
-        new Logical(
-            logicalOperator : 'or' ,
-            logicalOrExpression : [
-                new Logical(
-                    logicalOperator : 'and' ,
-                    logicalOrExpression : [
-                        new Expression(
-                            field : new Field( value : 'accountno') ,
-                            operator : '>' ,
-                            value = new Value(value : '5000' ) 
-                        ), 
-                        new Expression(
-                            field : new Field(value : 'normalbalance' ) ,
-                            operator : '=' ,
-                            value = new Value(value : 'debit' )
-                        )
-                    ]
-                ) , 
-                new Expression(
-                    field : new Field(value : 'normalbalance' ) ,
-                    operator : '=' ,
-                    value : new Value(value : 'credit' )
-                )
-            ]
-        ) ] ]" />
-    <intacct:sorts ref="#[groovy : [
-        [ 'order' : 'asc' ,
-          'value' : 'normalbalance' ] ,
-        [ 'order' : 'asc' ,
-          'value' : 'title' ]
+    <intacct:filters ref="#[groovy: 
+        [
+            new org.mule.module.intacct.schema.request.Logical(
+                logicalOperator : 'or' ,
+                logicalOrExpression : [
+                    new org.mule.module.intacct.schema.request.Logical(
+                        logicalOperator : 'and' ,
+                        logicalOrExpression : [
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field( 
+                                            value : 'accountno'
+                                        ) ,
+                                operator : '>' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : '5000' 
+                                        ) 
+                            ), 
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field(
+                                            value : 'normalbalance' 
+                                        ) ,
+                                operator : '=' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : 'debit' 
+                                        )
+                            )
+                        ]
+                    ) , 
+                    new org.mule.module.intacct.schema.request.Expression(
+                        field : new org.mule.module.intacct.schema.request.Field(
+                                    value : 'normalbalance' 
+                                ) ,
+                        operator : '=' ,
+                        value : new org.mule.module.intacct.schema.request.Value(
+                                    value : 'credit' 
+                                )
+                    )
+                ]
+            ) 
+        ] 
+    ]" />
+    <intacct:sorts ref="#[groovy: [
+        [ order : 'asc' ,
+          value : 'normalbalance' ] ,
+        [ order : 'asc' ,
+          value : 'title' ]
     ] ]" />
-    <intacct:fields ref="#[groovy : [
-        [ 'value' :  'title' ] , 
-        [ 'value' :  'normalbalance' ]
+    <intacct:fields ref="#[groovy: [
+        [ value :  'title' ] , 
+        [ value :  'normalbalance' ]
     ] ]" />
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list2) -->
@@ -1036,12 +1089,18 @@ account title and balance. -->
 a single expression where the field is totalamount, operator is >, and value is 2500. -->
 <intacct:get-list functionControlId="f1"
                   obj="invoice" >
-    <intacct:filters ref="#[groovy : [
-        new Expression(
-            field : new Field(value : 'totalamount' ) ,
-            operator : '>' ,
-            value : new Value(value : '2500' )
-    ) ] ]" />
+    <intacct:filters ref="#[groovy: 
+        [ new org.mule.module.intacct.schema.request.Expression(
+                field : new org.mule.module.intacct.schema.request.Field(
+                            value : 'totalamount' 
+                        ) ,
+                operator : '>' ,
+                value : new org.mule.module.intacct.schema.request.Value(
+                            value : '2500' 
+                        )
+            ) 
+        ] 
+    ]" />
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list3) -->
 
@@ -1051,22 +1110,25 @@ Retrieve all invoices where the amount is greater than $2,500, AND where the
 customer ID is defined as "DO" -->
 <intacct:get-list functionControlId="f2"
                   obj="invoice" >
-    <intacct:filters ref="#[groovy : [
-        new Logical(
-            logicalOperator : 'and' ,
-            logicalOrExpression : [
-                new Expression(
-                    field : new Field( value : 'totalamount') ,
-                    operator : '>' ,
-                    value = new Value(value : '2500' ) 
-                ) , 
-                new Expression(
-                    field : new Field(value : 'customerid' ) ,
-                    operator : '=' ,
-                    value : new Value(value : 'DO' )
-                )
-            ]
-        ) ] ]" />
+    <intacct:filters ref="#[groovy: 
+        [
+            new org.mule.module.intacct.schema.request.Logical(
+                logicalOperator : 'and' ,
+                logicalOrExpression : [
+                    new org.mule.module.intacct.schema.request.Expression(
+                        field : new org.mule.module.intacct.schema.request.Field(value : 'totalamount' ) ,
+                        operator : '>' ,
+                        value : new org.mule.module.intacct.schema.request.Value(value : '2500' ) 
+                    ) , 
+                    new org.mule.module.intacct.schema.request.Expression(
+                        field : new org.mule.module.intacct.schema.request.Field(value : 'customerid' ) ,
+                        operator : '=' ,
+                        value : new org.mule.module.intacct.schema.request.Value(value : 'DO' )
+                    )
+                ]
+            ) 
+        ] 
+    ]" />
 </intacct:get-list>
 <!-- END_INCLUDE(intacct:get-list4) -->
 
@@ -1075,9 +1137,9 @@ customer ID is defined as "DO" -->
              obj="subscription"
              key="some key" 
              externalKey="some external key">
-    <intacct:fields ref="#[groovy : [
-        [ 'value' :  'title' ] , 
-        [ 'value' :  'normalbalance' ]
+    <intacct:fields ref="#[groovy: [
+        [ value :  'title' ] , 
+        [ value :  'normalbalance' ]
     ] ]" />
 </intacct:get>
 <!-- END_INCLUDE(intacct:get) -->
@@ -1106,46 +1168,48 @@ customer ID is defined as "DO" -->
 
 <!-- BEGIN_INCLUDE(intacct:operation-with-request) -->
 <intacct:operation-with-request>
-    <intacct:request ref="#[groovy :[ 
-        'control' : 
-            [ 'senderid' : 'some sender id' ,
-              'password' : 'some password' ,
-              'controlid' : 'some control id' ,
-              'uniqueid' : 'some unique id' ,
-              'dtdversion' : 'some dtd version' ,
-              'policyid' : 'some policy id' ,
-              'debug' : 'some debug' ] ,
-        'operation' : [
-            [ 'transaction' : 'some transaction' ,
-              'authentication' : 
-                 [ 'loginOrSessionid' : [ 
-                        new Sessionid(value : 'some session id value') ] ],
-              'preferences' : [ 
-                 [ 'companyprefs' : [
-                      [ 'companypref' : 
-                           [ 'application' : 'some application' ,
-                             'preference' : 'some preference' ,
-                             'prefvalue' : 'some preference value' ] ] ] ,
-                   'moduleprefs' :[
-                      [ 'modulepref' : 
-                           [ 'application' : 'some application' ,
-                             'preference' : 'some preference' ,
-                             'prefvalue' : 'some preference value' ] ] ] 
-                 ] ],
-              'content' : [
-                 [ 'function' : 
-                     [ 'controlid' : 'some control id' ,
-                       'cmd' : [
-                          new CreateCustomer(
-                              //etc (fields of CreateCustomer)
-                          ) ,
-                          new CreateSotransaction(
-                              //etc (fields of CreateSotransaction)
-                          )
-                       ] ] 
-                 ] ]
-            ] ]
-    ] ]" />
+    <intacct:request ref="#[groovy:
+        [ 
+            control : 
+                [ senderid : 'some sender id' ,
+                  password : 'some password' ,
+                  controlid : 'some control id' ,
+                  uniqueid : 'some unique id' ,
+                  dtdversion : 'some dtd version' ,
+                  policyid : 'some policy id' ,
+                  debug : 'some debug' ] ,
+            operation : [
+                [ transaction : 'some transaction' ,
+                  authentication : 
+                     [ loginOrSessionid : [ 
+                            new import org.mule.module.intacct.schema.request.Sessionid(value : 'some session id value') ] ],
+                  preferences : [ 
+                     [ companyprefs : [
+                          [ companypref : 
+                               [ application : 'some application' ,
+                                 preference : 'some preference' ,
+                                 prefvalue : 'some preference value' ] ] ] ,
+                       moduleprefs :[
+                          [ modulepref : 
+                               [ application : 'some application' ,
+                                 preference : 'some preference' ,
+                                 prefvalue : 'some preference value' ] ] ] 
+                     ] ],
+                  content : [
+                     [ function : 
+                         [ controlid : 'some control id' ,
+                           cmd : [
+                              new org.mule.module.intacct.schema.request.CreateCustomer(
+                                  //etc (fields of CreateCustomer)
+                              ) ,
+                              new org.mule.module.intacct.schema.request.CreateSotransaction(
+                                  //etc (fields of CreateSotransaction)
+                              )
+                           ] ] 
+                     ] ]
+                ] ]
+        ] 
+    ]" />
 </intacct:operation-with-request>
 <!-- END_INCLUDE(intacct:operation-with-request) -->
 
@@ -1153,52 +1217,52 @@ customer ID is defined as "DO" -->
 <intacct:operation-with-request>
     <intacct:request> 
         <control>#[groovy: [ 
-              'senderid' : '65' ,
-              'password' : 'pass1234' ,
-              'controlid' : '16572' ,
-              'uniqueid' : 'true' ,
-              'dtdversion' : '2.1' ] ]
-        </control>
+              senderid : '65' ,
+              password : 'pass1234' ,
+              controlid : '16572' ,
+              uniqueid : 'true' ,
+              dtdversion : '2.1' ] 
+        ]</control>
         <operation>#[groovy: [
-            [ 'authentication' : 
-                 [ 'loginOrSessionid' : [ 
-                        new Login(
+            [ authentication : 
+                 [ loginOrSessionid : [ 
+                        new org.mule.module.intacct.schema.request.Login(
                             userid : '86732235', 
                             companyid : '6433578',
                             password : '4325passW) ] ],
-              'content' : [
-                 [ 'function' : 
-                     [ 'controlid' : 'C-003-T8' ,
-                       'cmd' : [
-                             new CreateContact(
-                                'contactname': [ 'value' : 'van Buuren, Armin' ],
-                                'printas' : 'Armin Buuren',
-                                'companyname' : 'Trance Co.',
-                                'prefix' : 'Mr.',
-                                'firstname' : 'Armin',
-                                'lastname' : 'Buuren',
-                                'initial' : 'V.',
-                                'phone1' : '(212) 445-4554',
-                                'phone2' : '(212) 632-7151',
-                                'cellphone' : '(212) 734-1612',
-                                'pager' : '(212) 632-7151',
-                                'fax' : '(212) 641-7937',
-                                'email1' : 'AVB@illustrate.com',
-                                'email2' : 'AVB@illustrate.org',
-                                'url1' : 'http://www.illustrate.com',
-                                'url2' : 'http://www.illustrate.org',
-                                'mailaddress' : [
-                                    'address1' : '368 Outskirts Rd',
-                                    'address2' : ', Apt 19',
-                                    'city' : 'Bronx',
-                                    'state' : 'NY',
-                                    'zip' : 10400,
-                                    'country' : 'US' ]
+              content : [
+                 [ function : 
+                     [ controlid : 'C-003-T8' ,
+                       cmd : [
+                             new org.mule.module.intacct.schema.request.CreateContact(
+                                contactname: [ value : 'van Buuren, Armin' ],
+                                printas : 'Armin Buuren',
+                                companyname : 'Trance Co.',
+                                prefix : 'Mr.',
+                                firstname : 'Armin',
+                                lastname : 'Buuren',
+                                initial : 'V.',
+                                phone1 : '(212) 445-4554',
+                                phone2 : '(212) 632-7151',
+                                cellphone : '(212) 734-1612',
+                                pager : '(212) 632-7151',
+                                fax : '(212) 641-7937',
+                                email1 : 'AVB@illustrate.com',
+                                email2 : 'AVB@illustrate.org',
+                                url1 : 'http://www.illustrate.com',
+                                url2 : 'http://www.illustrate.org',
+                                mailaddress : [
+                                    address1 : '368 Outskirts Rd',
+                                    address2 : ', Apt 19',
+                                    city : 'Bronx',
+                                    state : 'NY',
+                                    zip : 10400,
+                                    country : 'US' ]
                             )
                        ] ] 
                  ] ]
-            ] ] ]
-        </operation>
+            ] ] 
+        ]</operation>
     </intacct:request>
 </intacct:operation-with-request>
 <!-- END_INCLUDE(intacct:operation-with-request2) -->
