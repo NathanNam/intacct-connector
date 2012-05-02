@@ -14,8 +14,13 @@ import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.core.util.ReaderWriter;
 import org.apache.commons.io.IOUtils;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.mortbay.jetty.handler.AbstractHandler;
+
+import org.mule.api.MessagingException;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
 import org.mule.api.client.MuleClient;
@@ -60,6 +65,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.*;
 
@@ -80,10 +86,16 @@ public class RealHttpTestCase extends BaseIntacctTest
         return "intacct-namespace-real-config.xml";
     }
 
-    @Override
+    @After
     protected void doTearDown() throws Exception
     {
         if (server != null) server.stop();
+    }
+    
+    @Before
+    protected void doBefore() throws Exception
+    {
+        server = null;
     }
 
     /**
@@ -333,55 +345,6 @@ public class RealHttpTestCase extends BaseIntacctTest
         Assert.assertEquals(controlId, resp.getControl().getControlid());
     }
 	
-    public void testSendNoResponse() throws Exception
-    {
-        startServer(new EmptyResponseHandler());
-        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-        
-        MessageProcessor flow = lookupFlowConstruct("functionFlow");
-        final MuleEvent event = getTestEvent(payload);
-        MuleEvent result = flow.process(event);
-        
-        assertExceptionThrown(result, WebApplicationException.class);
-    }
-    
-    public void testSendResponseWithNoControlId() throws Exception
-    {
-        Response response = new Response();
-        Control control = new Control();
-        response.setControl(control);
-        IntacctJaxBOkHandler handler = new IntacctJaxBOkHandler(response);
-        startServer(handler);
-
-        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-        
-        MessageProcessor flow = lookupFlowConstruct("functionFlow");
-        final MuleEvent event = getTestEvent(payload);
-        MuleEvent result = flow.process(event);
-        assertExceptionThrown(result, IntacctException.class);
-    }
-    
-    public void testServerDown() throws Exception
-    {
-        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-        
-        MessageProcessor flow = lookupFlowConstruct("functionFlow");
-        final MuleEvent event = getTestEvent(payload);
-        MuleEvent result = flow.process(event);
-        assertExceptionThrown(result, ClientHandlerException.class);
-    }
-    
-    public void testNotFoundResponse() throws Exception
-    {
-        startServer(new NotFoundResponseHandler());
-        final Map<String, Object> payload = makePayloadWithValidParametersForFunctionFlow();
-        MessageProcessor flow = lookupFlowConstruct("functionFlow");
-        final MuleEvent event = getTestEvent(payload);
-        MuleEvent result = flow.process(event);
-        assertExceptionThrown(result, UniformInterfaceException.class);
-        
-
-    }
     public void testControlId() throws Exception {
         Response response = new Response();
 		Control control = new Control();
@@ -438,20 +401,6 @@ public class RealHttpTestCase extends BaseIntacctTest
 		System.out.println("Message2 = " + msg2.getPayloadAsString());
 		
 	}
-
-    /**
-     * Gets the domain exception from the exception or returns null otherwise
-     */
-    private IntacctException getDomainException(Throwable t)
-    {
-        Throwable ex = t;
-        while (ex != null && !(ex instanceof IntacctException))
-        {
-            ex = ex.getCause();
-        }
-        return (IntacctException) ex;
-
-    }
 
     private void startServer(AbstractHandler handler) throws Exception
     {

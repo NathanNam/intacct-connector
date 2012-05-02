@@ -49,7 +49,7 @@
                     <name>#[map-payload:Name1]</name>
                     <deliveryoptions>#[groovy: [ 'deliveryoption':[ ['value': 'print'] ]]]</deliveryoptions>
                     <status>active</status>
-                    <contactinfo>#[groovy: ['contactOrContactname' : map-payload.get('ContactInfo1')] ]</contactinfo>
+                    <contactinfo>#[groovy: ['contactOrContactname' : payload.ContactInfo1] ]</contactinfo>
                 </intacct:command>
             </intacct:commands>
         </intacct:execute>
