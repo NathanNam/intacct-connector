@@ -64,6 +64,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -85,6 +87,7 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 <script src="../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
 <script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
 <script src="../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -101,6 +104,27 @@
     #resize-packages-nav{border-bottom:3px solid #666;}
   </style>
 </noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Intacct Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 </head>
 
 <body class="">
@@ -196,7 +220,6 @@ Summary:
 <div id="jd-header">
     org.mule.modules
 <h1>mule-module-intacct</h1>
-    2.5-SNAPSHOT
 
 </div><!-- end header -->
 
@@ -205,15 +228,17 @@ Summary:
 <div id="jd-content" class="api apilevel-">
 
 
+<br/>
+
 <div class="jd-tagdata">
       <table class="jd-tagtable">
         <tbody><tr>
           <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/intacct</td>
         </tr><tr>
-          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/intacct/1.0/mule-intacct.xsd</td>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/intacct/current/mule-intacct.xsd&nbsp;&nbsp;(<a href="intacct-schema.html">View Schema</a>)</td>
         </tr>
 <tr>
-          <th>Version</th><td>1.0</td>
+          <th>Schema Version</th><td>1.0</td>
         </tr>
 <tr>
           <th>Minimum Mule Version</th><td>3.2</td>
@@ -271,9 +296,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#create-a-r-adjustment">&lt;intacct:create-a-r-adjustment&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
+        <div class="jd-descrdiv">Creates an <code><a href="../java/org/mule/module/intacct/schema/response/Aradjustment.html">Aradjustment</a></code>
  <p>
- An AR Adjustment is a document within the Intacct system.<br/></div>
+ An AR Adjustment is a document within the Intacct system.</div>
         
   </td></tr>
 
@@ -283,9 +308,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#create-invoice">&lt;intacct:create-invoice&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
+        <div class="jd-descrdiv">Creates an <code><a href="../java/org/mule/module/intacct/schema/response/Invoice.html">Invoice</a></code>
  <p>
- An invoice is a document within the Intacct system.<br/></div>
+ An invoice is a document within the Intacct system.</div>
         
   </td></tr>
 
@@ -295,9 +320,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#create-invoice-batch">&lt;intacct:create-invoice-batch&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
+        <div class="jd-descrdiv">Creates an <code><a href="../java/org/mule/module/intacct/schema/response/Invoicebatch.html">Invoicebatch</a></code>
  <p>
- An invoice batch is an entity that groups invoices.<br/></div>
+ An invoice batch is an entity that groups invoices.</div>
         
   </td></tr>
 
@@ -307,10 +332,10 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#create-s-o-transaction">&lt;intacct:create-s-o-transaction&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Creates an <br/><code><a href="../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
+        <div class="jd-descrdiv">Creates an <code><a href="../java/org/mule/module/intacct/schema/response/Sotransaction.html">Sotransaction</a></code>
  <p>
  A SOTransaction represents any transactional document created in the Order
- Entry application.<br/></div>
+ Entry application.</div>
         
   </td></tr>
 
@@ -320,7 +345,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#execute">&lt;intacct:execute&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Batch executes a list of commands of the given CommandType.<br/></div>
+        <div class="jd-descrdiv">Batch executes a list of commands of the given CommandType.</div>
         
   </td></tr>
 
@@ -331,7 +356,7 @@ Summary:
         <span class="sympad"><a href="../mule/intacct.html#get">&lt;intacct:get&gt;</a></nobr>
         
         <div class="jd-descrdiv">Allows you to retrieve all of the information about a single instance of an
- Intacct object.<br/></div>
+ Intacct object.</div>
         
   </td></tr>
 
@@ -341,7 +366,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/intacct.html#get-list">&lt;intacct:get-list&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Allows you to retrieve a list object with optional filter and/or sort specifications.<br/></div>
+        <div class="jd-descrdiv">Allows you to retrieve a list object with optional filter and/or sort specifications.</div>
         
   </td></tr>
 
@@ -354,9 +379,9 @@ Summary:
         <div class="jd-descrdiv">
       <em>
   This method is deprecated.
-      use <br/>#execute(CommandType, List) instead
+      use #execute(CommandType, List) instead
 
- <br/></em></div>
+ </em></div>
         
   </td></tr>
 
@@ -368,8 +393,8 @@ Summary:
         
         <div class="jd-descrdiv">Reconoce la operacion con valores default setteados en el config
 
- <br/>
- <br/></div>
+ 
+ </div>
         
   </td></tr>
 
@@ -387,7 +412,6 @@ Summary:
 </div><!-- jd-descr (summary) -->
 
 
-
 <!-- ========= CONFIGURATION DETAIL ======== -->
 <A NAME="config"></A>
 <h2>Configuration</h2>
@@ -401,14 +425,15 @@ similar to the following:</p>
                http://www.mulesoft.org/schema/mule/core
                http://www.mulesoft.org/schema/mule/core/current/mule.xsd
                http://www.mulesoft.org/schema/mule/intacct
-               http://www.mulesoft.org/schema/mule/intacct/1.0/mule-intacct.xsd"&gt;
+               http://www.mulesoft.org/schema/mule/intacct/current/mule-intacct.xsd"&gt;
 
       &lt;!-- here goes your flows and configuration elements --&gt;
 
 &lt;/mule&gt;
 </pre>
+
 <p>This module is configured using the <i>config</i> element. This element must be placed outside of your flows and at
-the root of your Mule application. You can create as many configurations as you deem necesary as long as each carries
+the root of your Mule application. You can create as many configurations as you deem necessary as long as each carries
 its own name.</p>
 <p>Each message processor, message source or transformer carries a <i>config-ref</i> attribute that allows the invoker to
 specify which configuration to use.</p>
@@ -495,6 +520,7 @@ specify which configuration to use.</p>
       
     
 </table>
+
 
 
 
@@ -800,17 +826,13 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateCreated&gt;</nobr></br><span style="font-weight: normal;">Date when the adjustment to the customer's account has been made.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-created&gt;</nobr></br><span style="font-weight: normal;">Date when the adjustment to the customer's account has been made.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:datePosted&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the adjustment to the customer's account has been posted.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-posted&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the adjustment to the customer's account has been posted.</span></th></tr>
             
-            
-          
-            
-          
             
           
             
@@ -826,14 +848,18 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:exchRateDatesOrExchRateTypesOrExchRates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
+          
+            
+          
+            
+            <tr><th colspan="12"><nobr>&lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
             
             
           
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:aRAdjustmentItems&gt;</nobr></br><span style="font-weight: normal;">List of AR adjustment items.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:a-r-adjustment-items&gt;</nobr></br><span style="font-weight: normal;">List of AR adjustment items.</span></th></tr>
             
             
           
@@ -847,10 +873,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -1230,22 +1258,18 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateCreated&gt;</nobr></br><span style="font-weight: normal;">Date when the invoice has been created.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-created&gt;</nobr></br><span style="font-weight: normal;">Date when the invoice has been created.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:datePosted&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice has been posted.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-posted&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice has been posted.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateDue&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice expires.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-due&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice expires.</span></th></tr>
             
-            
-          
-            
-          
             
           
             
@@ -1259,14 +1283,18 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:billToContacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to bill.</span></th></tr>
+          
+            
+          
+            
+            <tr><th colspan="12"><nobr>&lt;intacct:bill-to-contacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to bill.</span></th></tr>
             
             
           
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:shipToContacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to ship.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:ship-to-contacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to ship.</span></th></tr>
             
             
           
@@ -1277,19 +1305,19 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:exchRateDatesOrExchRateTypesOrExchRates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
             
             
           
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:customFields&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of custom fields.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:custom-fields&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of custom fields.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:invoiceItems&gt;</nobr></br><span style="font-weight: normal;">List of invoice items.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:invoice-items&gt;</nobr></br><span style="font-weight: normal;">List of invoice items.</span></th></tr>
             
             
           
@@ -1303,10 +1331,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -1650,12 +1680,12 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateCreated&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>The date when the invoices have been created.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-created&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>The date when the invoices have been created.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:createInvoices&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of <code><a href="../java/org/mule/module/intacct/schema/request/CreateInvoice.html">CreateInvoice</a></code>s.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:create-invoices&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of <code><a href="../java/org/mule/module/intacct/schema/request/CreateInvoice.html">CreateInvoice</a></code>s.</span></th></tr>
             
             
           
@@ -1669,10 +1699,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2142,7 +2174,7 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateCreated&gt;</nobr></br><span style="font-weight: normal;">Date when the SO Transaction has been made.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-created&gt;</nobr></br><span style="font-weight: normal;">Date when the SO Transaction has been made.</span></th></tr>
             
             
           
@@ -2157,7 +2189,7 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:dateDue&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice expires.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:date-due&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>Date when the invoice expires.</span></th></tr>
             
             
           
@@ -2168,14 +2200,14 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:billToContacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to bill.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:bill-to-contacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to bill.</span></th></tr>
             
             
           
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:shipToContacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to ship.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:ship-to-contacts&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of contacts to ship.</span></th></tr>
             
             
           
@@ -2188,24 +2220,24 @@ specify which configuration to use.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:exchRateDatesOrExchRateTypesOrExchRates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of exchanges.</span></th></tr>
             
             
           
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:customFields&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of custom fields.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:custom-fields&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of custom fields.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:sOTransItems&gt;</nobr></br><span style="font-weight: normal;">List of SO transactions items.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:s-o-trans-items&gt;</nobr></br><span style="font-weight: normal;">List of SO transactions items.</span></th></tr>
             
             
           
             
-            <tr><th colspan="12"><nobr>&lt;intacct:subTotals&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of sub-totals.</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;intacct:sub-totals&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>List of sub-totals.</span></th></tr>
             
             
           
@@ -2219,10 +2251,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2338,10 +2372,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2503,10 +2539,12 @@ specify which configuration to use.</p>
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2748,10 +2786,12 @@ customer ID is defined as "DO" --&gt;
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2818,10 +2858,12 @@ customer ID is defined as "DO" --&gt;
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>
@@ -2980,10 +3022,12 @@ customer ID is defined as "DO" --&gt;
     
   
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Exception Payload</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
         <tr>
-            <th>JAXBException</td>
+            <td>JAXBException</td>
             <td></td>
         </tr>
       </table>

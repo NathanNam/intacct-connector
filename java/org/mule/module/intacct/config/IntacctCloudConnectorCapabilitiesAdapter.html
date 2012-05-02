@@ -63,6 +63,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -84,6 +86,7 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 <script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
 <script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
 <script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -102,6 +105,27 @@
     #resize-packages-nav{border-bottom:3px solid #666;}
   </style>
 </noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Intacct Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 </head>
 
 <body class="">
@@ -180,6 +204,8 @@
                 
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/package-summary.html">org.mule.module.intacct</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/intacct/adapters/package-summary.html">org.mule.module.intacct.adapters</a></li>
     <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/config/package-summary.html">org.mule.module.intacct.config</a></li>
     <li class="api apilevel-">
@@ -189,9 +215,13 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/impl/package-summary.html">org.mule.module.intacct.impl</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/intacct/processors/package-summary.html">org.mule.module.intacct.processors</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/schema/request/package-summary.html">org.mule.module.intacct.schema.request</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/schema/response/package-summary.html">org.mule.module.intacct.schema.response</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/intacct/transformers/package-summary.html">org.mule.module.intacct.transformers</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/intacct/utils/package-summary.html">org.mule.module.intacct.utils</a></li>
     <li class="api apilevel-">
@@ -207,24 +237,35 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CommandTypeEnumTransformer.html">CommandTypeEnumTransformer</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/ContactTypeEnumTransformer.html">ContactTypeEnumTransformer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateARAdjustmentDefinitionParser.html">CreateARAdjustmentDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateAradjustmentMessageProcessor.html">CreateAradjustmentMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateARAdjustmentMessageProcessor.html">CreateARAdjustmentMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateInvoiceBatchDefinitionParser.html">CreateInvoiceBatchDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateInvoiceBatchMessageProcessor.html">CreateInvoiceBatchMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateInvoicebatchMessageProcessor.html">CreateInvoicebatchMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateInvoiceDefinitionParser.html">CreateInvoiceDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateInvoiceMessageProcessor.html">CreateInvoiceMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateSOTransactionDefinitionParser.html">CreateSOTransactionDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateSotransactionMessageProcessor.html">CreateSotransactionMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/CreateSOTransactionMessageProcessor.html">CreateSOTransactionMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/DTOChildDefinitionParserNoAttributes.html">DTOChildDefinitionParserNoAttributes</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/DTOEvaluationInvokerMessageProcessor.html">DTOEvaluationInvokerMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/DTOEvaluationInvokerMessageProcessorFactoryBean.html">DTOEvaluationInvokerMessageProcessorFactoryBean</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/ExchTypeEnumTransformer.html">ExchTypeEnumTransformer</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/ExecuteDefinitionParser.html">ExecuteDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/ExecuteMessageProcessor.html">ExecuteMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/GetDefinitionParser.html">GetDefinitionParser</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/GetListDefinitionParser.html">GetListDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/GetListMessageProcessor.html">GetListMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/GetMessageProcessor.html">GetMessageProcessor</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorCapabilitiesAdapter.html">IntacctCloudConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorConfigDefinitionParser.html">IntacctCloudConnectorConfigDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/IntacctCloudConnectorNamespaceHandler.html">IntacctCloudConnectorNamespaceHandler</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/IntacctNamespaceHandler.html">IntacctNamespaceHandler</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/OperationDefinitionParser.html">OperationDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/OperationMessageProcessor.html">OperationMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/OperationWithRequestDefinitionParser.html">OperationWithRequestDefinitionParser</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/OperationWithRequestMessageProcessor.html">OperationWithRequestMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/intacct/config/RequestTypeJaxbTransformer.html">RequestTypeJaxbTransformer</a></li>
       </ul>

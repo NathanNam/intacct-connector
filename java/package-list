@@ -1,10 +1,13 @@
 org.mule.module.intacct
+org.mule.module.intacct.adapters
 org.mule.module.intacct.config
 org.mule.module.intacct.config.spring
 org.mule.module.intacct.exception
 org.mule.module.intacct.impl
+org.mule.module.intacct.processors
 org.mule.module.intacct.schema.request
 org.mule.module.intacct.schema.response
+org.mule.module.intacct.transformers
 org.mule.module.intacct.utils
 org.mule.module.intacct.xml
 

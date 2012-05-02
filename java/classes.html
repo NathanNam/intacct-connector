@@ -64,6 +64,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -85,6 +87,7 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 <script src="../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
 <script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
 <script src="../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -103,6 +106,27 @@
     #resize-packages-nav{border-bottom:3px solid #666;}
   </style>
 </noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Intacct Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 </head>
 
 
@@ -181,6 +205,8 @@
     <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/package-summary.html">org.mule.module.intacct</a></li>
     <li class="api apilevel-">
+  <a href="../java/org/mule/module/intacct/adapters/package-summary.html">org.mule.module.intacct.adapters</a></li>
+    <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/config/package-summary.html">org.mule.module.intacct.config</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/config/spring/package-summary.html">org.mule.module.intacct.config.spring</a></li>
@@ -189,9 +215,13 @@
     <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/impl/package-summary.html">org.mule.module.intacct.impl</a></li>
     <li class="api apilevel-">
+  <a href="../java/org/mule/module/intacct/processors/package-summary.html">org.mule.module.intacct.processors</a></li>
+    <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/schema/request/package-summary.html">org.mule.module.intacct.schema.request</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/schema/response/package-summary.html">org.mule.module.intacct.schema.response</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/module/intacct/transformers/package-summary.html">org.mule.module.intacct.transformers</a></li>
     <li class="api apilevel-">
   <a href="../java/org/mule/module/intacct/utils/package-summary.html">org.mule.module.intacct.utils</a></li>
     <li class="api apilevel-">
@@ -1154,157 +1184,169 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/transformers/CommandTypeEnumTransformer.html">CommandTypeEnumTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/CompanyInfo.html">CompanyInfo</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Companypref.html">Companypref</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Companypref.html">Companypref</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Companyprefs.html">Companyprefs</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Companyprefs.html">Companyprefs</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Companytype.html">Companytype</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Complineitem.html">Complineitem</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Complineitem.html">Complineitem</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Complineitems.html">Complineitems</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Complineitems.html">Complineitems</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Computeforshortterm.html">Computeforshortterm</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Computepriceforshortterm.html">Computepriceforshortterm</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contact.html">Contact</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contact.html">Contact</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contactinfo.html">Contactinfo</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contactinfo.html">Contactinfo</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contactitem.html">Contactitem</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contactitem.html">Contactitem</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contactlist.html">Contactlist</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contactlist.html">Contactlist</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contactname.html">Contactname</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contactname.html">Contactname</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Contacttaxgroup.html">Contacttaxgroup</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Contacttaxgroup.html">Contacttaxgroup</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/ContactType.html">ContactType</a></td>
             <td class="jd-descrcol" width="100%">Diferents types of reference to a contact.&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/ContactTypeEnumTransformer.html">ContactTypeEnumTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/transformers/ContactTypeEnumTransformer.html">ContactTypeEnumTransformer</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
@@ -1400,25 +1442,37 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateARAdjustmentDefinitionParser.html">CreateARAdjustmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateAradjustmentDefinitionParser.html">CreateAradjustmentDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateARAdjustmentDefinitionParser.html">CreateARAdjustmentDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateAradjustmentMessageProcessor.html">CreateAradjustmentMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateAradjustmentMessageProcessor invokes the org.mule.module.intacct.IntacctCloudConnector#createAradjustment(java.lang.String, java.lang.String, java.util.Map, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List) method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateARAdjustmentMessageProcessor.html">CreateARAdjustmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateARAdjustmentMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createARAdjustment(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createARAdjustment(java.lang.String, java.lang.String, java.util.Map, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/CreateARAdjustmentMessageProcessor.html">CreateARAdjustmentMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateARAdjustmentMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createARAdjustment(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createARAdjustment(java.lang.String, java.lang.String, java.util.Map, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
@@ -1592,37 +1646,61 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateInvoiceBatchDefinitionParser.html">CreateInvoiceBatchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateInvoicebatchDefinitionParser.html">CreateInvoicebatchDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateInvoiceBatchDefinitionParser.html">CreateInvoiceBatchDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateInvoiceBatchMessageProcessor.html">CreateInvoiceBatchMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateInvoiceBatchMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createInvoiceBatch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoiceBatch(java.lang.String, java.lang.String, java.util.Map, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateInvoicebatchMessageProcessor.html">CreateInvoicebatchMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateInvoicebatchMessageProcessor invokes the org.mule.module.intacct.IntacctCloudConnector#createInvoicebatch(java.lang.String, java.lang.String, java.util.Map, java.util.List) method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
     
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/CreateInvoiceBatchMessageProcessor.html">CreateInvoiceBatchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateInvoiceBatchMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createInvoiceBatch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoiceBatch(java.lang.String, java.lang.String, java.util.Map, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
         <tr class=" api apilevel-" >
-            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateInvoiceDefinitionParser.html">CreateInvoiceDefinitionParser</a></td>
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateInvoiceDefinitionParser.html">CreateInvoiceDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateInvoiceDefinitionParser.html">CreateInvoiceDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateInvoiceMessageProcessor.html">CreateInvoiceMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateInvoiceMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createInvoice(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoice(java.lang.String, java.lang.String, java.util.Map, java.util.Map, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List, org.mule.module.intacct.ContactType, java.util.List, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/CreateInvoiceMessageProcessor.html">CreateInvoiceMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateInvoiceMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createInvoice(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createInvoice(java.lang.String, java.lang.String, java.util.Map, java.util.Map, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List, org.mule.module.intacct.ContactType, java.util.List, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
@@ -1772,25 +1850,37 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateSotransactionDefinitionParser.html">CreateSotransactionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateSOTransactionDefinitionParser.html">CreateSOTransactionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateSOTransactionDefinitionParser.html">CreateSOTransactionDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
         <tr class="alt-color api apilevel-" >
-            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/CreateSotransactionDefinitionParser.html">CreateSotransactionDefinitionParser</a></td>
-            <td class="jd-descrcol" width="100%">&nbsp;</td>
-        </tr>
-    
-    
-        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateSotransactionMessageProcessor.html">CreateSotransactionMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateSotransactionMessageProcessor invokes the org.mule.module.intacct.IntacctCloudConnector#createSotransaction(java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List, org.mule.module.intacct.ContactType, java.util.List, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List, java.util.List, java.util.List) method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/CreateSOTransactionMessageProcessor.html">CreateSOTransactionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateSOTransactionMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createSOTransaction(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createSOTransaction(java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List, org.mule.module.intacct.ContactType, java.util.List, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List, java.util.List, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/CreateSOTransactionMessageProcessor.html">CreateSOTransactionMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">CreateSOTransactionMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#createSOTransaction(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, org.mule.module.intacct.ContactType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">createSOTransaction(java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.lang.String, org.mule.module.intacct.ContactType, java.util.List, org.mule.module.intacct.ContactType, java.util.List, java.lang.String, java.lang.String, java.lang.String, org.mule.module.intacct.ExchType, java.util.List, java.lang.String, java.util.List, java.util.List, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
@@ -3225,6 +3315,18 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/transformers/ExchTypeEnumTransformer.html">ExchTypeEnumTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/ExecuteDefinitionParser.html">ExecuteDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/ExecuteDefinitionParser.html">ExecuteDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
@@ -3237,120 +3339,126 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/ExecuteMessageProcessor.html">ExecuteMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ExecuteMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#execute(java.lang.String, org.mule.module.intacct.CommandType, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">execute(java.lang.String, org.mule.module.intacct.CommandType, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expense.html">Expense</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expense.html">Expense</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expenseaccount.html">Expenseaccount</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expensedate.html">Expensedate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expensedate.html">Expensedate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expensereport.html">Expensereport</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expensereportbatch.html">Expensereportbatch</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expenses.html">Expenses</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expenses.html">Expenses</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expensetype.html">Expensetype</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expensetypes.html">Expensetypes</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expirednotify.html">Expirednotify</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Expirednotifyemail.html">Expirednotifyemail</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expires.html">Expires</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expirydate.html">Expirydate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Expression.html">Expression</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Extdescription.html">Extdescription</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/ExtendedDescription.html">ExtendedDescription</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Externalid.html">Externalid</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Externalurl.html">Externalurl</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
@@ -3533,31 +3641,43 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/GetDefinitionParser.html">GetDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/GetDefinitionParser.html">GetDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/GetExpensereport.html">GetExpensereport</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/GetIcitemtotals.html">GetIcitemtotals</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/GetInvoice.html">GetInvoice</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/GetList.html">GetList</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/GetListDefinitionParser.html">GetListDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
@@ -3575,7 +3695,19 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/GetListMessageProcessor.html">GetListMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetListMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#getList(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.lang.Object>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">getList(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List, java.util.List, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/GetMessageProcessor.html">GetMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/GetMessageProcessor.html">GetMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">GetMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)">get(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
@@ -3871,8 +4003,20 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/adapters/IntacctCloudConnectorCapabilitiesAdapter.html">IntacctCloudConnectorCapabilitiesAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/IntacctCloudConnectorCapabilitiesAdapter.html">IntacctCloudConnectorCapabilitiesAdapter</a></td>
             <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/IntacctCloudConnectorConfigDefinitionParser.html">IntacctCloudConnectorConfigDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
@@ -3883,8 +4027,20 @@
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/adapters/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/IntacctCloudConnectorLifecycleAdapter.html">IntacctCloudConnectorLifecycleAdapter</a></td>
             <td class="jd-descrcol" width="100%">A <code>IntacctCloudConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/IntacctCloudConnectorNamespaceHandler.html">IntacctCloudConnectorNamespaceHandler</a></td>
+            <td class="jd-descrcol" width="100%">Registers bean definitions parsers for handling elements in <code>http://www.mulesoft.org/schema/mule/intacct</code>.&nbsp;</td>
         </tr>
     
     
@@ -4597,25 +4753,49 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/OperationDefinitionParser.html">OperationDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/OperationDefinitionParser.html">OperationDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/OperationMessageProcessor.html">OperationMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">OperationMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operation(java.util.Map<java.lang.String, java.lang.Object>)">operation(java.util.Map)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
     
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/OperationMessageProcessor.html">OperationMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">OperationMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operation(java.util.Map<java.lang.String, java.lang.Object>)">operation(java.util.Map)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
         <tr class="alt-color api apilevel-" >
-            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/OperationWithRequestDefinitionParser.html">OperationWithRequestDefinitionParser</a></td>
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/OperationWithRequestDefinitionParser.html">OperationWithRequestDefinitionParser</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
         <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/spring/OperationWithRequestDefinitionParser.html">OperationWithRequestDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/config/OperationWithRequestMessageProcessor.html">OperationWithRequestMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">OperationWithRequestMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operationWithRequest(org.mule.module.intacct.schema.request.Request)">operationWithRequest(org.mule.module.intacct.schema.request.Request)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/processors/OperationWithRequestMessageProcessor.html">OperationWithRequestMessageProcessor</a></td>
             <td class="jd-descrcol" width="100%">OperationWithRequestMessageProcessor invokes the <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html#operationWithRequest(org.mule.module.intacct.schema.request.Request)">operationWithRequest(org.mule.module.intacct.schema.request.Request)</a></code> method in <code><a href="../java/org/mule/module/intacct/IntacctCloudConnector.html">IntacctCloudConnector</a></code>.&nbsp;</td>
         </tr>
     
@@ -5614,180 +5794,186 @@
     
     
         <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/transformers/RequestTypeJaxbTransformer.html">RequestTypeJaxbTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Response.html">Response</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/RestrictedDepts.html">RestrictedDepts</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/RestrictedDepts.html">RestrictedDepts</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/RestrictedLocs.html">RestrictedLocs</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/RestrictedLocs.html">RestrictedLocs</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Result.html">Result</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Retailprice.html">Retailprice</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Returnto.html">Returnto</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Returnto.html">Returnto</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Revending.html">Revending</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revending.html">Revending</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Reveom.html">Reveom</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Reverrnotifyemailids.html">Reverrnotifyemailids</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/ReverseAppayment.html">ReverseAppayment</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/ReverseBill.html">ReverseBill</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/ReverseCctransaction.html">ReverseCctransaction</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revinterval.html">Revinterval</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revmodenew.html">Revmodenew</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Revrecenddate.html">Revrecenddate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revrecenddate.html">Revrecenddate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revrecschedule.html">Revrecschedule</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revrecscheduleentry.html">Revrecscheduleentry</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Revrecstartdate.html">Revrecstartdate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revrecstartdate.html">Revrecstartdate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revrectemplate.html">Revrectemplate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Revstartdate.html">Revstartdate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Revstartdate.html">Revstartdate</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Routingnumber.html">Routingnumber</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/response/Row.html">Row</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
     
     
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
             <td class="jd-linkcol"><a href="../java/org/mule/module/intacct/schema/request/Rowkey.html">Rowkey</a></td>
             <td class="jd-descrcol" width="100%">&nbsp;</td>
         </tr>
