@@ -13,11 +13,13 @@
  */
 package org.mule.module.intacct;
 
-import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
-
+import org.apache.commons.lang.Validate;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.display.FriendlyName;
+import org.mule.api.annotations.display.Password;
+import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
@@ -39,15 +41,14 @@ import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
 
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-
-import org.apache.commons.lang.Validate;
+import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
 
 /**
@@ -68,6 +69,7 @@ public class IntacctCloudConnector
      * Registered Web Services password
      */
     @Configurable
+    @Password
     private String controlPassword;
 
     /**
@@ -104,6 +106,7 @@ public class IntacctCloudConnector
 
      */
     @Configurable
+    @Password
     private String userPassword;
 
     /**
@@ -139,7 +142,7 @@ public class IntacctCloudConnector
      */
     @Deprecated
     @Processor
-    public Response operation(final Map<String, Object> function) throws JAXBException
+    public Response operation(@Placement(group = "Function") final Map<String, Object> function) throws JAXBException
     {
         return sendRequest(requestFactory.createRequestFromFunction(mom.toObject(Function.class, function)));
     }
@@ -164,7 +167,7 @@ public class IntacctCloudConnector
      * @return the {@link Response}
      */
     @Processor
-    public Response execute(String functionControlId, final CommandType type, final List<Map<String, Object>> commands) throws JAXBException
+    public Response execute(String functionControlId, final CommandType type, @Placement(group = "Commands") final List<Map<String, Object>> commands) throws JAXBException
     {
         Map<String, Object> function = mom.wrapList("cmd", commands, type.getRequestType());
         function.put("controlid", functionControlId);
@@ -220,9 +223,9 @@ public class IntacctCloudConnector
     @Processor
     public Response createInvoice(String functionControlId,
                                   String customerId,
-                                  Map<String, Object> dateCreated,
-                                  @Optional Map<String, Object> datePosted,
-                                  @Optional Map<String, Object> dateDue,
+                                  @Placement(group = "Date Created") Map<String, Object> dateCreated,
+                                  @Placement(group = "Date Posted") @Optional Map<String, Object> datePosted,
+                                  @Placement(group = "Date Due") @Optional Map<String, Object> dateDue,
                                   @Optional String termName,
                                   @Optional String batchKey,
                                   @Optional String invoiceNo,
@@ -230,16 +233,16 @@ public class IntacctCloudConnector
                                   @Optional String description,
                                   @Optional String externalId,
                                   @Optional ContactType billToContactType,
-                                  @Optional List<Map<String, Object>> billToContacts,
+                                  @Placement(group = "Bill To Contacts")  @Optional List<Map<String, Object>> billToContacts,
                                   @Optional ContactType shipToContactType,
-                                  @Optional List<Map<String, Object>> shipToContacts,
+                                  @Placement(group = "Ship To Contacts") @Optional List<Map<String, Object>> shipToContacts,
                                   @Optional String basecurr,
                                   @Optional String currency,
                                   @Optional ExchType exchType,
-                                  @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
+                                  @Placement(group = "Exchange Rates") @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
                                   @Optional String nogl,
-                                  @Optional List<Map<String, Object>> customFields,
-                                  List<Map<String, Object>> invoiceItems) throws JAXBException
+                                  @Placement(group = "Custom Fields") @Optional List<Map<String, Object>> customFields,
+                                  @Placement(group = "Invoice Items") List<Map<String, Object>> invoiceItems) throws JAXBException
     {
         Validate.notEmpty(dateCreated);
         Object invoiceItemsAux = nullifyEmptyListWrapper("lineitem", invoiceItems, Lineitem.class);
@@ -303,8 +306,8 @@ public class IntacctCloudConnector
     @Processor
     public Response createInvoiceBatch(String functionControlId,
                                        String batchTitle,
-                                       @Optional Map<String, Object> dateCreated,
-                                       @Optional List<Map<String, Object>> createInvoices
+                                       @Placement(group = "Date Created") @Optional Map<String, Object> dateCreated,
+                                       @Placement(group = "Create Invoices") @Optional List<Map<String, Object>> createInvoices
                                        ) throws JAXBException
     {
         List<CreateInvoice> createInvoiceList = new ArrayList<CreateInvoice>();
@@ -367,11 +370,11 @@ public class IntacctCloudConnector
      * @return A{@link Response}.
      * @throws JAXBException
      */
-    @Processor
+    @Processor(friendlyName = "Create AR adjustment")
     public Response createARAdjustment(String functionControlId,
                                        String customerId,
-                                       Map<String, Object> dateCreated,
-                                       @Optional Map<String, Object> datePosted,
+                                       @Placement(group = "Date Created") Map<String, Object> dateCreated,
+                                       @Placement(group = "Date Posted") @Optional Map<String, Object> datePosted,
                                        @Optional String batchKey,
                                        @Optional String adjustmentNo,
                                        @Optional String invoiceNo,
@@ -380,9 +383,9 @@ public class IntacctCloudConnector
                                        @Optional String basecurr,
                                        @Optional String currency,
                                        @Optional ExchType exchType,
-                                       @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
+                                       @Placement(group = "Exchange Rates") @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
                                        @Optional String nogl,
-                                       List<Map<String, Object>> aRAdjustmentItems
+                                       @Placement(group = "AR Adjustment Items") @FriendlyName("AR Adjustment Items") List<Map<String, Object>> aRAdjustmentItems
                                        ) throws JAXBException
     {
         Validate.notEmpty(dateCreated);
@@ -466,31 +469,31 @@ public class IntacctCloudConnector
      * @return A {@link Response}.
      * @throws JAXBException
      */
-    @Processor
+    @Processor(friendlyName = "Create SO transaction")
     public Response createSOTransaction(String functionControlId,
                                         String transactionType,
-                                        Map<String, Object> dateCreated,
+                                        @Placement(group = "Date Created") Map<String, Object> dateCreated,
                                         @Optional String createdFrom,
                                         String customerId,
                                         @Optional String documentNo,
                                         @Optional String referenceNo,
                                         @Optional String termName,
-                                        @Optional Map<String, Object> dateDue,
+                                        @Placement(group = "Date Due") @Optional Map<String, Object> dateDue,
                                         @Optional String message,
                                         @Optional String shippingMethod,
                                         @Optional ContactType billToContactType,
-                                        @Optional List<Map<String, Object>> billToContacts,
+                                        @Placement(group = "Bill To Contacts") @Optional List<Map<String, Object>> billToContacts,
                                         @Optional ContactType shipToContactType,
-                                        @Optional List<Map<String, Object>> shipToContacts,
+                                        @Placement(group = "Ship To Contacts") @Optional List<Map<String, Object>> shipToContacts,
                                         @Optional String externalId,
                                         @Optional String basecurr,
                                         @Optional String currency,
                                         @Optional ExchType exchType,
-                                        @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
+                                        @Placement(group = "Exchange Rates") @Optional List<Map<String, Object>> exchRateDatesOrExchRateTypesOrExchRates,
                                         @Optional String vsoePriceList,
-                                        @Optional List<Map<String, Object>> customFields,
-                                        List<Map<String, Object>> sOTransItems,
-                                        @Optional List<Map<String, Object>> subTotals
+                                        @Placement(group = "Custom Fields") @Optional List<Map<String, Object>> customFields,
+                                        @Placement(group = "SO Transaction Items") List<Map<String, Object>> sOTransItems,
+                                        @Placement(group = "SubTotals") @Optional List<Map<String, Object>> subTotals
                                         ) throws JAXBException
     {
         Validate.notEmpty(dateCreated);
@@ -598,9 +601,9 @@ public class IntacctCloudConnector
                             @Optional String start,
                             @Optional String maxItems,
                             @Optional String showPrivate,
-                            @Optional List<Object> filters,
-                            @Optional List<Map<String, Object>> sorts,
-                            @Optional List<Map<String, Object>> fields
+                            @Placement(group = "Filters") @Optional List<Object> filters,
+                            @Placement(group = "Sorters") @Optional List<Map<String, Object>> sorts,
+                            @Placement(group = "Fields") @Optional List<Map<String, Object>> fields
                             ) throws JAXBException
     {
         
@@ -678,7 +681,7 @@ public class IntacctCloudConnector
                         String obj,
                         String key,
                         @Optional String externalKey,
-                        @Optional List<Map<String, Object>> fields
+                        @Placement(group = "Fields") @Optional List<Map<String, Object>> fields
                         ) throws JAXBException
     {
         Get command = mom.toObject(Get.class,
