@@ -12,13 +12,15 @@
     <parent>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-parent</artifactId>
-        <version>3.3-EA</version>
+        <version>3.3.0</version>
     </parent>
 
     <properties>
         <jetty.version>6.1.9</jetty.version>
         <sonar.exclusions>org/mule/module/intacct/schema/**</sonar.exclusions>
         <mule.module.utils.version>1.0</mule.module.utils.version>
+        <category>Standard</category>
+        <licensePath>LICENSE.md</licensePath>
     </properties>
 
     <build>
