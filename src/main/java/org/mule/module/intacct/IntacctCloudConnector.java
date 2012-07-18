@@ -123,6 +123,22 @@ public class IntacctCloudConnector
     @Optional
     private IntacctFacade intacctImplementation;
 
+    /**
+     * The login information specifies the user's Intacct client id.
+     * This is the same information you see when you log onto the Intacct system.
+     */
+    @Configurable
+    @Optional
+    protected String clientId;
+
+    /**
+     * The login information specifies the user's Intacct location id.
+     * This is the same information you see when you log onto the Intacct system.
+     */
+    @Configurable
+    @Optional
+    protected String locationId;
+
     private IntacctMapObjectMapper mom =  new IntacctMapObjectMapper();
 
     private RequestFactory requestFactory;
@@ -739,7 +755,7 @@ public class IntacctCloudConnector
             intacctImplementation = new JerseySslIntacctFacade(URL);
         }
         requestFactory = new RequestFactory(senderId, controlPassword, controlId, uniqueId, userId,
-            userPassword, companyId);
+            userPassword, companyId, clientId, locationId);
     }
 
 
@@ -916,6 +932,50 @@ public class IntacctCloudConnector
     public void setIntacctImplementation(IntacctFacade intacctImplementation)
     {
         this.intacctImplementation = intacctImplementation;
+    }
+
+    /**
+     * Returns clientId.
+     *
+     * @return client id.
+     */
+
+    public String getClientId()
+    {
+        return clientId;
+    }
+
+    /**
+     * Sets the clientId.
+     *
+     * @param clientId: client id.
+     */
+
+    public void setClientId(String clientId)
+    {
+        this.clientId = clientId;
+    }
+
+    /**
+     * Returns locationId.
+     *
+     * @return location id.
+     */
+
+    public String getLocationId()
+    {
+        return locationId;
+    }
+
+    /**
+     * Sets the locationId.
+     *
+     * @param clientId: client id.
+     */
+
+    public void setLocationId(String locationId)
+    {
+        this.locationId = locationId;
     }
 
     @SuppressWarnings("unchecked")

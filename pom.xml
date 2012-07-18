@@ -20,6 +20,7 @@
         <sonar.exclusions>org/mule/module/intacct/schema/**</sonar.exclusions>
         <category>Standard</category>
         <licensePath>LICENSE.md</licensePath>
+        <devkit.studio.package.skip>false</devkit.studio.package.skip>
     </properties>
 
     <build>

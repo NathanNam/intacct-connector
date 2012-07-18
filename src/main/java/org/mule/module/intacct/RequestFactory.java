@@ -12,9 +12,11 @@
 package org.mule.module.intacct;
 
 import org.mule.module.intacct.schema.request.Authentication;
+import org.mule.module.intacct.schema.request.Clientid;
 import org.mule.module.intacct.schema.request.Content;
 import org.mule.module.intacct.schema.request.Control;
 import org.mule.module.intacct.schema.request.Function;
+import org.mule.module.intacct.schema.request.Locationid;
 import org.mule.module.intacct.schema.request.Login;
 import org.mule.module.intacct.schema.request.Operation;
 import org.mule.module.intacct.schema.request.Request;
@@ -28,6 +30,8 @@ public class RequestFactory
     private String userId;
     private String userPassword;
     private String companyId;
+    private String clientId;
+    private String locationId;
 
     public RequestFactory(String senderId,
                           String controlPassword,
@@ -35,7 +39,9 @@ public class RequestFactory
                           String uniqueId,
                           String userId,
                           String userPassword,
-                          String companyId)
+                          String companyId,
+                          String clientId,
+                          String locationId)
     {
         super();
         this.senderId = senderId;
@@ -45,6 +51,8 @@ public class RequestFactory
         this.userId = userId;
         this.userPassword = userPassword;
         this.companyId = companyId;
+        this.clientId = clientId;
+        this.locationId = locationId;
     }
 
     public Request createRequestFromFunction(Function function)
@@ -64,6 +72,18 @@ public class RequestFactory
         login.setUserid(userId);
         login.setPassword(userPassword);
         login.setCompanyid(companyId);
+        if (clientId != null)
+        {
+            Clientid clientId_object = new Clientid();
+            clientId_object.setValue(clientId);
+            login.getClientidOrLocationid().add(clientId_object);
+        }
+        if (locationId != null)
+        {
+            Locationid locationId_object = new Locationid();
+            locationId_object.setValue(locationId);
+            login.getClientidOrLocationid().add(locationId_object);
+        }
         authentication.getLoginOrSessionid().add(login);
         operation.setAuthentication(authentication);
         final Content content = new Content();
