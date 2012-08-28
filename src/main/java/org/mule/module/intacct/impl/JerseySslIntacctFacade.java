@@ -20,7 +20,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.UnhandledException;
 import org.apache.commons.lang.Validate;
 import org.mule.module.intacct.IntacctFacade;
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
@@ -61,7 +61,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
         {
             // As the xml sent doesn't have the namespace we're removing it here
             Writer writer = JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
-                IntacctNamespaceHandler.REQUEST_JAXB_CTX);
+                IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX);
             // We must send an attribute xmlrequest with the xml value
             String requestString = writer.toString();
             Response post = client.postXml(requestString);

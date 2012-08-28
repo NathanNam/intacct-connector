@@ -26,7 +26,7 @@ import org.mule.api.MuleMessage;
 import org.mule.api.client.MuleClient;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.client.DefaultLocalMuleClient;
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.schema.request.Contact;
 import org.mule.module.intacct.schema.request.Contactinfo;
@@ -121,7 +121,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        Unmarshaller um = IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
             "http://www.mulesoft.org/schema/mule/intacct"));
@@ -195,7 +195,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        Unmarshaller um = IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
             "http://www.mulesoft.org/schema/mule/intacct"));
@@ -234,7 +234,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        Unmarshaller um = IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
             "http://www.mulesoft.org/schema/mule/intacct"));
@@ -330,7 +330,7 @@ public class RealHttpTestCase extends BaseIntacctTest
         final String charsetName = ReaderWriter.getCharset(MediaType.APPLICATION_FORM_URLENCODED_TYPE).name();
         String xml = URLDecoder.decode(encodedXml, charsetName);
         InputStream in = new ByteArrayInputStream(xml.getBytes(charsetName));
-        Unmarshaller um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+        Unmarshaller um = IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlFilterWrapper inFilter = new XmlFilterWrapper(new XmlNamespaceFilter(
             "http://www.mulesoft.org/schema/mule/intacct"));

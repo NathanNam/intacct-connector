@@ -11,7 +11,7 @@
 package org.mule.module.intacct.impl;
 
 import org.mule.module.intacct.IntacctFacade;
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.xml.JaxBUtils;
@@ -37,7 +37,7 @@ public class MockIntacctFacade implements IntacctFacade
         try
         {
             setRequestAsString(JaxBUtils.marshallWithoutNamespaceAndUnderscoreReplacement(request,
-                IntacctNamespaceHandler.REQUEST_JAXB_CTX).toString());
+                IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX).toString());
             return new Response();
         }
         catch (final JAXBException e)

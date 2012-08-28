@@ -12,7 +12,7 @@ package org.mule.module.intacct.utils;
 
 import javax.xml.bind.JAXBContext;
 
-import org.mule.module.intacct.config.IntacctNamespaceHandler;
+import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
 
 /**
  *  A {@link JaxBOkHandler} that uses the response context for intacct
@@ -28,7 +28,7 @@ public class IntacctJaxBOkHandler extends JaxBOkHandler
     @Override
     protected JAXBContext getContext()
     {
-        return IntacctNamespaceHandler.RESPONSE_JAXB_CTX;
+        return IntacctConnectorNamespaceHandler.RESPONSE_JAXB_CTX;
     }
 
 }

@@ -105,7 +105,7 @@ public class DTOChildDefinitionParserNoAttributes extends ChildDefinitionParser
                     TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
                     
                     InputStream in = new ByteArrayInputStream(outputStream.toByteArray());
-                    um = IntacctNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
+                    um = IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX.createUnmarshaller();
                     XMLReader reader;
                     reader = XMLReaderFactory.createXMLReader();
                     

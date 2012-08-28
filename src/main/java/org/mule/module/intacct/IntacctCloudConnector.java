@@ -154,7 +154,7 @@ public class IntacctCloudConnector
      *
      * @param function function
      * @return {@Response}
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Deprecated
     @Processor
@@ -180,6 +180,7 @@ public class IntacctCloudConnector
      *                          asynchronous requests.
      * @param type the type of commands to execute
      * @param commands the commands list
+     * @throws JAXBException if the marshalling failed
      * @return the {@link Response}
      */
     @Processor
@@ -234,7 +235,7 @@ public class IntacctCloudConnector
      * @param customFields List of custom fields.
      * @param invoiceItems List of invoice items.
      * @return A {@link Response}
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor
     public Response createInvoice(String functionControlId,
@@ -317,7 +318,7 @@ public class IntacctCloudConnector
      * @param dateCreated The date when the invoices have been created.
      * @param createInvoices List of {@link CreateInvoice}s.
      * @return A {@link Response}.
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor
     public Response createInvoiceBatch(String functionControlId,
@@ -384,7 +385,7 @@ public class IntacctCloudConnector
      * @param nogl The General Ledger number.
      * @param aRAdjustmentItems List of AR adjustment items.
      * @return A{@link Response}.
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor(friendlyName = "Create AR adjustment")
     public Response createARAdjustment(String functionControlId,
@@ -483,7 +484,7 @@ public class IntacctCloudConnector
      * @param sOTransItems List of SO transactions items.
      * @param subTotals List of sub-totals.
      * @return A {@link Response}.
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor(friendlyName = "Create SO transaction")
     public Response createSOTransaction(String functionControlId,
@@ -609,7 +610,7 @@ public class IntacctCloudConnector
      *               will be returned in the order requested. If the request does not include
      *               a fields element, the web service will return the default set of fields.
      * @return {@link Response}
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor
     public Response getList(String functionControlId,
@@ -690,7 +691,7 @@ public class IntacctCloudConnector
      *               objects that have them.
      * @return {@link Response}
      *
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor
     public Response get(String functionControlId,
@@ -739,7 +740,7 @@ public class IntacctCloudConnector
      *
      * @param request The {@link Request}
      * @return {@link Response}
-     * @throws JAXBException
+     * @throws JAXBException if the marshalling failed
      */
     @Processor
     public Response operationWithRequest(final Request request) throws JAXBException

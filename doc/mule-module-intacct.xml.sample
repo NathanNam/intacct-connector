@@ -1,5 +1,10 @@
 <!-- BEGIN_INCLUDE(intacct:operation) -->
-    Please, never use this processor. Thanks.
+<intacct:operation>
+    <intacct:function>
+    <intacct:function key="key1">value</intacct:function>
+    </intacct:function>
+</intacct:operation>
+
 <!-- END_INCLUDE(intacct:operation) -->
 
 <!-- BEGIN_INCLUDE(intacct:execute1) -->

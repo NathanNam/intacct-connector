@@ -24,7 +24,7 @@ import org.mule.module.intacct.schema.response.Response;
 /**
  * This namespace handler for spring for intacct
  */
-public class IntacctNamespaceHandler extends AbstractMuleNamespaceHandler
+public class IntacctConnectorNamespaceHandler extends AbstractMuleNamespaceHandler
 {
     
     public static final JAXBContext REQUEST_JAXB_CTX = loadJaxBCtx(Request.class.getPackage().getName());
