@@ -55,8 +55,7 @@ import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
  * Cloud Connector Facade for <a href="http://us.intacct.com/">Intacct</a>
  * @author jcodagnone
  */
-@SuppressWarnings("serial")
-@Module(name = "intacct")
+@Module(name = "intacct", friendlyName="Intacct")
 public class IntacctCloudConnector
 {
     /**
