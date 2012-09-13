@@ -13,6 +13,16 @@
  */
 package org.mule.module.intacct;
 
+import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
+
 import org.apache.commons.lang.Validate;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
@@ -23,6 +33,7 @@ import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.intacct.exception.IntacctException;
 import org.mule.module.intacct.impl.JerseySslIntacctFacade;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.CreateAradjustment;
 import org.mule.module.intacct.schema.request.CreateInvoice;
 import org.mule.module.intacct.schema.request.CreateInvoicebatch;
@@ -40,15 +51,6 @@ import org.mule.module.intacct.schema.request.Sotransitem;
 import org.mule.module.intacct.schema.request.Subtotal;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.MapBuilder;
-
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
 
 /**
@@ -157,7 +159,7 @@ public class IntacctCloudConnector
      */
     @Deprecated
     @Processor
-    public Response operation(@Placement(group = "Function") final Map<String, Object> function) throws JAXBException
+    public IntacctResponseWrapper operation(@Placement(group = "Function") final Map<String, Object> function) throws JAXBException
     {
         return sendRequest(requestFactory.createRequestFromFunction(mom.toObject(Function.class, function)));
     }
@@ -183,7 +185,7 @@ public class IntacctCloudConnector
      * @return the {@link Response}
      */
     @Processor
-    public Response execute(String functionControlId, final CommandType type, @Placement(group = "Commands") final List<Map<String, Object>> commands) throws JAXBException
+    public IntacctResponseWrapper execute(String functionControlId, final CommandType type, @Placement(group = "Commands") final List<Map<String, Object>> commands) throws JAXBException
     {
         Map<String, Object> function = mom.wrapList("cmd", commands, type.getRequestType());
         function.put("controlid", functionControlId);
@@ -237,7 +239,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor
-    public Response createInvoice(String functionControlId,
+    public IntacctResponseWrapper createInvoice(String functionControlId,
                                   String customerId,
                                   @Placement(group = "Date Created") Map<String, Object> dateCreated,
                                   @Placement(group = "Date Posted") @Optional Map<String, Object> datePosted,
@@ -320,7 +322,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor
-    public Response createInvoiceBatch(String functionControlId,
+    public IntacctResponseWrapper createInvoiceBatch(String functionControlId,
                                        String batchTitle,
                                        @Placement(group = "Date Created") @Optional Map<String, Object> dateCreated,
                                        @Placement(group = "Create Invoices") @Optional List<Map<String, Object>> createInvoices
@@ -387,7 +389,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor(friendlyName = "Create AR adjustment")
-    public Response createARAdjustment(String functionControlId,
+    public IntacctResponseWrapper createARAdjustment(String functionControlId,
                                        String customerId,
                                        @Placement(group = "Date Created") Map<String, Object> dateCreated,
                                        @Placement(group = "Date Posted") @Optional Map<String, Object> datePosted,
@@ -486,7 +488,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor(friendlyName = "Create SO transaction")
-    public Response createSOTransaction(String functionControlId,
+    public IntacctResponseWrapper createSOTransaction(String functionControlId,
                                         String transactionType,
                                         @Placement(group = "Date Created") Map<String, Object> dateCreated,
                                         @Optional String createdFrom,
@@ -612,7 +614,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor
-    public Response getList(String functionControlId,
+    public IntacctResponseWrapper getList(String functionControlId,
                             String obj,
                             @Optional String start,
                             @Optional String maxItems,
@@ -693,7 +695,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor
-    public Response get(String functionControlId,
+    public IntacctResponseWrapper get(String functionControlId,
                         String obj,
                         String key,
                         @Optional String externalKey,
@@ -711,12 +713,12 @@ public class IntacctCloudConnector
         return sendRequest(functionControlId, command);
     }
 
-    protected Response sendRequest(String functionControlId, Object command) throws JAXBException
+    protected IntacctResponseWrapper sendRequest(String functionControlId, Object command) throws JAXBException
     {
         return sendRequest(requestFactory.createRequestFromCommand(functionControlId, command));
     }
 
-    public Response sendRequest(final Request request) throws JAXBException
+    public IntacctResponseWrapper sendRequest(final Request request) throws JAXBException
     {
         try
         {
@@ -742,7 +744,7 @@ public class IntacctCloudConnector
      * @throws JAXBException if the marshalling failed
      */
     @Processor
-    public Response operationWithRequest(final Request request) throws JAXBException
+    public IntacctResponseWrapper operationWithRequest(final Request request) throws JAXBException
     {
         return sendRequest(request);
     }
