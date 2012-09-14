@@ -811,11 +811,11 @@ public class ObjectFactory
     }
 
     /**
-     * Create an instance of {@link Errormessage }
+     * Create an instance of {@link ErrorMessage }
      */
-    public Errormessage createErrormessage()
+    public ErrorMessage createErrormessage()
     {
-        return new Errormessage();
+        return new ErrorMessage();
     }
 
     /**

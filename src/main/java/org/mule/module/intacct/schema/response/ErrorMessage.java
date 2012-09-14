@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {"error"})
 @XmlRootElement(name = "errormessage")
-public class Errormessage
+public class ErrorMessage
 {
 
     protected List<Error> error;

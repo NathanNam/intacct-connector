@@ -37,7 +37,7 @@ public class Operation
 
     @XmlElement(required = true)
     protected Authentication authentication;
-    @XmlElements({@XmlElement(name = "errormessage", type = Errormessage.class),
+    @XmlElements({@XmlElement(name = "errormessage", type = ErrorMessage.class),
         @XmlElement(name = "result", type = Result.class)})
     protected List<Object> errormessageOrResult;
 
@@ -75,7 +75,7 @@ public class Operation
      * getErrormessageOrResult().add(newItem);
      * </pre>
      * <p>
-     * Objects of the following type(s) are allowed in the list {@link Errormessage }
+     * Objects of the following type(s) are allowed in the list {@link ErrorMessage }
      * {@link Result }
      */
     public List<Object> getErrormessageOrResult()

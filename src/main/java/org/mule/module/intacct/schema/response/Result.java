@@ -45,7 +45,7 @@ public class Result
         @XmlElement(name = "key", type = Key.class)})
     protected List<Object> listtypeOrKey;
     protected Data data;
-    protected Errormessage errormessage;
+    protected ErrorMessage errormessage;
 
     /**
      * Gets the value of the status property.
@@ -156,9 +156,9 @@ public class Result
     /**
      * Gets the value of the errormessage property.
      * 
-     * @return possible object is {@link Errormessage }
+     * @return possible object is {@link ErrorMessage }
      */
-    public Errormessage getErrormessage()
+    public ErrorMessage getErrormessage()
     {
         return errormessage;
     }
@@ -166,9 +166,9 @@ public class Result
     /**
      * Sets the value of the errormessage property.
      * 
-     * @param value allowed object is {@link Errormessage }
+     * @param value allowed object is {@link ErrorMessage }
      */
-    public void setErrormessage(Errormessage value)
+    public void setErrormessage(ErrorMessage value)
     {
         this.errormessage = value;
     }

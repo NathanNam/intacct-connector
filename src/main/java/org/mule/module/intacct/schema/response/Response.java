@@ -38,7 +38,7 @@ public class Response
     @XmlElement(required = true)
     protected Control control;
     @XmlElements({@XmlElement(name = "operation", required = true, type = Operation.class),
-        @XmlElement(name = "errormessage", required = true, type = Errormessage.class)})
+        @XmlElement(name = "errormessage", required = true, type = ErrorMessage.class)})
     protected List<Object> operationOrErrormessage;
 
     /**
@@ -76,7 +76,7 @@ public class Response
      * </pre>
      * <p>
      * Objects of the following type(s) are allowed in the list {@link Operation }
-     * {@link Errormessage }
+     * {@link ErrorMessage }
      */
     public List<Object> getOperationOrErrormessage()
     {
