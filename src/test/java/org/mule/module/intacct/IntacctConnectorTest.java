@@ -17,8 +17,17 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.module.intacct.impl.IntacctRestClient;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.Contactname;
 import org.mule.module.intacct.schema.request.Datecreated;
 import org.mule.module.intacct.schema.request.Function;
@@ -28,16 +37,6 @@ import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.utils.JerseyIntacctFacade;
 import org.mule.module.intacct.utils.MapBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Matchers;
 
 
 /**
@@ -286,11 +285,11 @@ public class IntacctConnectorTest
     protected void expectPostXml()
     {
         when(restClient.postXml(anyString()))
-        .thenReturn(new Response(){{
+        .thenReturn(new IntacctResponseWrapper(new Response(){{
             setControl(new Control(){{
                 setControlid("XXXX");
             }});
-        }});
+        }}));
     }
 }
 

@@ -10,24 +10,33 @@
 
 package org.mule.module.intacct;
 
-import com.sun.jersey.api.client.ClientHandlerException;
-import com.sun.jersey.api.client.UniformInterfaceException;
-import com.sun.jersey.core.util.ReaderWriter;
+import static org.hamcrest.CoreMatchers.instanceOf;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.sax.SAXSource;
+
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.mortbay.jetty.handler.AbstractHandler;
-
-import org.mule.api.MessagingException;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
 import org.mule.api.client.MuleClient;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.client.DefaultLocalMuleClient;
 import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
-import org.mule.module.intacct.exception.IntacctException;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.Contact;
 import org.mule.module.intacct.schema.request.Contactinfo;
 import org.mule.module.intacct.schema.request.Contactname;
@@ -43,31 +52,15 @@ import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.request.Value;
 import org.mule.module.intacct.schema.response.Control;
 import org.mule.module.intacct.schema.response.Response;
-import org.mule.module.intacct.utils.EmptyResponseHandler;
 import org.mule.module.intacct.utils.HttpTestServer;
 import org.mule.module.intacct.utils.IntacctJaxBOkHandler;
-import org.mule.module.intacct.utils.NotFoundResponseHandler;
 import org.mule.module.intacct.xml.XmlFilterWrapper;
 import org.mule.module.intacct.xml.XmlNamespaceFilter;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.sax.SAXSource;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.CoreMatchers.*;
+import com.sun.jersey.core.util.ReaderWriter;
 
 /**
  * This uses the Http Server and does real testing (integration). It tests success
@@ -131,9 +124,9 @@ public class RealHttpTestCase extends BaseIntacctTest
 
         Request req = (Request) um.unmarshal(source);
         Assert.assertEquals(controlId, req.getControl().getControlid());
-        Response resp = (Response) responseEvent.getMessage().getPayload();
+        IntacctResponseWrapper resp = (IntacctResponseWrapper) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);
-        Assert.assertEquals(controlId, resp.getControl().getControlid());
+        Assert.assertEquals(controlId, resp.getResponse().getControl().getControlid());
     }
 
     /**
@@ -205,9 +198,9 @@ public class RealHttpTestCase extends BaseIntacctTest
 
         Request req = (Request) um.unmarshal(source);
         Assert.assertEquals(controlId, req.getControl().getControlid());
-        Response resp = (Response) responseEvent.getMessage().getPayload();
+        IntacctResponseWrapper resp = (IntacctResponseWrapper) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);
-        Assert.assertEquals(controlId, resp.getControl().getControlid());
+        Assert.assertEquals(controlId, resp.getResponse().getControl().getControlid());
     }
     
     /**
@@ -244,9 +237,9 @@ public class RealHttpTestCase extends BaseIntacctTest
 
         Request req = (Request) um.unmarshal(source);
         Assert.assertEquals(controlId, req.getControl().getControlid());
-        Response resp = (Response) responseEvent.getMessage().getPayload();
+        IntacctResponseWrapper resp = (IntacctResponseWrapper) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);
-        Assert.assertEquals(controlId, resp.getControl().getControlid());
+        Assert.assertEquals(controlId, resp.getResponse().getControl().getControlid());
     }
     
     /**
@@ -340,9 +333,9 @@ public class RealHttpTestCase extends BaseIntacctTest
 
         Request req = (Request) um.unmarshal(source);
         Assert.assertEquals(controlId, req.getControl().getControlid());
-        Response resp = (Response) responseEvent.getMessage().getPayload();
+        IntacctResponseWrapper resp = (IntacctResponseWrapper) responseEvent.getMessage().getPayload();
         Assert.assertNotNull(resp);
-        Assert.assertEquals(controlId, resp.getControl().getControlid());
+        Assert.assertEquals(controlId, resp.getResponse().getControl().getControlid());
     }
 	
     public void testControlId() throws Exception {
