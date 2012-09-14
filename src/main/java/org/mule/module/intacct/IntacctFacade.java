@@ -10,8 +10,8 @@
 
 package org.mule.module.intacct;
 
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.response.Response;
 
 /**
  * Facade for Intacct's Connection layer
@@ -20,7 +20,7 @@ public interface IntacctFacade
 {
 
     /** executes an API operation synchronously */
-    Response executeOperation(Request request);
+    IntacctResponseWrapper executeOperation(Request request);
 }
 
 

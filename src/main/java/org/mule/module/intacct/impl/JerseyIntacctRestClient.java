@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.apache.commons.lang.Validate;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.Request;
 import org.mule.module.intacct.schema.response.Response;
 
@@ -61,7 +62,7 @@ public class JerseyIntacctRestClient implements IntacctRestClient
     }
 
     @Override
-    public Response postXml(String xml)
+    public IntacctResponseWrapper postXml(String xml)
     {
         // It is important to make clear that we are using FORM URLENCODED
         // instead of
@@ -78,7 +79,7 @@ public class JerseyIntacctRestClient implements IntacctRestClient
         map.add("xmlrequest", xml);
         final Response post = gateway.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE).post(Response.class,
             map);
-        return post;
+        return new IntacctResponseWrapper(post);
     }
 
     @Override

@@ -10,7 +10,7 @@
 
 package org.mule.module.intacct.impl;
 
-import org.mule.module.intacct.schema.response.Response;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 
 /**
  * IntacctRestClient
@@ -24,7 +24,7 @@ public interface IntacctRestClient
      * @param xml
      * @return the resposne
      */
-    Response postXml(String xml);
+    IntacctResponseWrapper postXml(String xml);
 
     void addSslConfiguration();
 

@@ -17,20 +17,12 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.JAXBException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.UnhandledException;
-import org.apache.commons.lang.Validate;
 import org.mule.module.intacct.IntacctFacade;
 import org.mule.module.intacct.config.IntacctConnectorNamespaceHandler;
 import org.mule.module.intacct.exception.IntacctException;
+import org.mule.module.intacct.response.IntacctResponseWrapper;
 import org.mule.module.intacct.schema.request.Request;
-import org.mule.module.intacct.schema.response.Response;
 import org.mule.module.intacct.xml.JaxBUtils;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.representation.Form;
 
 /**
  * Executes an operation using Intacct XML Gateway.
@@ -55,7 +47,7 @@ public class JerseySslIntacctFacade implements IntacctFacade
     }
 
     @Override
-    public Response executeOperation(final Request request)
+    public IntacctResponseWrapper executeOperation(final Request request)
     {
         try
         {
@@ -64,10 +56,10 @@ public class JerseySslIntacctFacade implements IntacctFacade
                 IntacctConnectorNamespaceHandler.REQUEST_JAXB_CTX);
             // We must send an attribute xmlrequest with the xml value
             String requestString = writer.toString();
-            Response post = client.postXml(requestString);
+            IntacctResponseWrapper post = client.postXml(requestString);
             // If there's no response or it has no control id it must "explode"
-            if (post == null || post.getControl() == null
-                || StringUtils.isBlank(post.getControl().getControlid()))
+            if (post == null || post.getResponse().getControl() == null
+                || StringUtils.isBlank(post.getResponse().getControl().getControlid()))
             {
                 throw new IntacctException(
                     "The response from the server is empty or doesn't have a control id");
