@@ -12,6 +12,7 @@ package org.mule.module.intacct.response;
 
 import java.util.List;
 
+import static org.junit.Assert.*;
 import org.mule.module.intacct.schema.response.Error;
 import org.mule.module.intacct.schema.response.ErrorMessage;
 import org.mule.module.intacct.schema.response.Operation;
@@ -44,6 +45,7 @@ public class IntacctResponseWrapper {
 	
 	public IntacctResponseWrapper(final Response response)
 	{
+		assertNotNull(response);
 		this.setResponse(response);
 		setData();
 	}
@@ -79,6 +81,11 @@ public class IntacctResponseWrapper {
 
 	public List<Object> getDataList() {
 		return dataList;
+	}
+	
+	public Integer getDataSize()
+	{
+		return dataList == null ? 0 : getDataList().size();
 	}
 
 	public void setDataList(List<Object> dataList) {
