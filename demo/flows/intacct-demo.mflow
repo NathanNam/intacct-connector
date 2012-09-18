@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="intacct-demo">
+    <global-element type="http://www.mulesoft.org/schema/mule/intacct/config" name="Intacct" entity-id="Intacct#1">
+        <properties>
+            <property value="Intacct" name="name"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="${companyId}" name="companyId"/>
+            <property value="${controlId}" name="controlId"/>
+            <property value="${controlPassword}" name="controlPassword"/>
+            <property value="${senderId}" name="senderId"/>
+            <property value="false" name="uniqueId"/>
+            <property value="${userId}" name="userId"/>
+            <property value="${userPassword}" name="userPassword"/>
+            <property name="intacctImplementation-ref"/>
+            <property name="clientId"/>
+            <property name="locationId"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+        </properties>
+    </global-element>
+    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="Property Placeholder#1">
+        <properties>
+            <property value="mule.properties" name="location"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="intacct-demoFlow1" entity-id="f09abe79-d6c2-4e0f-a7ed-efc6b23d445c">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="3" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8081" name="port"/>
+                    <property value="intacct-demo" name="path"/>
+                    <property name="method"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Create Customer" entity-id="Intacct#2">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="customer_0001" name="functionControlId"/>
+                    <property value="CreateCustomer" name="type"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="6" name="auxiliary;wrapIn"/>
+                        <property value="6" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="7" name="auxiliary;wrapIn"/>
+                            <property value="7" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;2">
+<property value="Demo Customer" name="value"/>
+<property value="9" name="auxiliary;wrapIn"/>
+<property value="9" name="auxiliary;index"/>
+<property value="name" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;3">
+<property value="#[groovy: [&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;'deliveryoption':[ ['value': 'print'] ]]]" name="value"/>
+<property value="10" name="auxiliary;wrapIn"/>
+<property value="10" name="auxiliary;index"/>
+<property value="deliveryoptions" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;4">
+<property value="active" name="value"/>
+<property value="11" name="auxiliary;wrapIn"/>
+<property value="11" name="auxiliary;index"/>
+<property value="status" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="customer_0001" name="value"/>
+<property value="8" name="auxiliary;wrapIn"/>
+<property value="8" name="auxiliary;index"/>
+<property value="customerid" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
+                <properties>
+                    <property value="Was the customer successfuly created? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="12" name="auxiliary;index"/>
+                    <property value="12" name="auxiliary;index"/>
+                    <property value="12" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Create GL Account" entity-id="Intacct#3">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="create_glaccount_0001" name="functionControlId"/>
+                    <property value="CreateGlaccount" name="type"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="14" name="auxiliary;wrapIn"/>
+                        <property value="14" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="15" name="auxiliary;wrapIn"/>
+                            <property value="15" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;2">
+<property value="Demo GL Account" name="value"/>
+<property value="17" name="auxiliary;wrapIn"/>
+<property value="17" name="auxiliary;index"/>
+<property value="title" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;3">
+<property value="debit" name="value"/>
+<property value="18" name="auxiliary;wrapIn"/>
+<property value="18" name="auxiliary;index"/>
+<property value="normalbalance" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;4">
+<property value="balancesheet" name="value"/>
+<property value="19" name="auxiliary;wrapIn"/>
+<property value="19" name="auxiliary;index"/>
+<property value="accounttype" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;5">
+<property value="non-closing account" name="value"/>
+<property value="20" name="auxiliary;wrapIn"/>
+<property value="20" name="auxiliary;index"/>
+<property value="closingtype" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="#[groovy: ['value' : '9901']]" name="value"/>
+<property value="16" name="auxiliary;wrapIn"/>
+<property value="16" name="auxiliary;index"/>
+<property value="glaccountno" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+                <properties>
+                    <property value="Was the GL Account successfuly created =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Create AR Account" entity-id="Intacct#4">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="create_account_0001" name="functionControlId"/>
+                    <property value="CreateAraccountlabel" name="type"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="23" name="auxiliary;wrapIn"/>
+                        <property value="23" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="24" name="auxiliary;wrapIn"/>
+                            <property value="24" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;2">
+<property value="#[groovy: ['value' : 'accountlabel_0001']]" name="value"/>
+<property value="26" name="auxiliary;wrapIn"/>
+<property value="26" name="auxiliary;index"/>
+<property value="accountlabel" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;3">
+<property value="Demo account creation" name="value"/>
+<property value="27" name="auxiliary;wrapIn"/>
+<property value="27" name="auxiliary;index"/>
+<property value="description" name="key"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="#[groovy: ['value' : '9901']]" name="value"/>
+<property value="25" name="auxiliary;wrapIn"/>
+<property value="25" name="auxiliary;index"/>
+<property value="glaccountno" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#3">
+                <properties>
+                    <property value="Was the Account successfuly created? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Get Customer" entity-id="Intacct#5">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/get" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property name="externalKey"/>
+                    <property value="get_customer_0001" name="functionControlId"/>
+                    <property value="customer_0001" name="key"/>
+                    <property value="customer" name="obj"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#4">
+                <properties>
+                    <property value="The customer '#[payload.dataList.get(0).name]' was retrieved from intacct" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Create Invoice" entity-id="Intacct#6">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/create-invoice" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="customer_0001" name="customerId"/>
+                    <property value="create_invoice_customer_0001" name="functionControlId"/>
+                    <property name="batchKey"/>
+                    <property value="Demo Invoice" name="description"/>
+                    <property name="externalId"/>
+                    <property name="invoiceNo"/>
+                    <property name="poNumber"/>
+                    <property name="termName"/>
+                    <property name="billToContactType"/>
+                    <property name="shipToContactType"/>
+                    <property name="basecurr"/>
+                    <property name="currency"/>
+                    <property name="exchType"/>
+                    <property name="nogl"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-createds;0">
+                        <property value="32" name="auxiliary;wrapIn"/>
+                        <property value="32" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-created;1">
+                            <property value="24" name="value"/>
+                            <property value="33" name="auxiliary;wrapIn"/>
+                            <property value="33" name="auxiliary;index"/>
+                            <property value="day" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-created;2">
+                            <property value="4" name="value"/>
+                            <property value="34" name="auxiliary;wrapIn"/>
+                            <property value="34" name="auxiliary;index"/>
+                            <property value="month" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-created;3">
+                            <property value="2012" name="value"/>
+                            <property value="35" name="auxiliary;wrapIn"/>
+                            <property value="35" name="auxiliary;index"/>
+                            <property value="year" name="key"/>
+                        </property-collection>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-dues;0">
+                        <property value="36" name="auxiliary;wrapIn"/>
+                        <property value="36" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-due;1">
+                            <property value="24" name="value"/>
+                            <property value="37" name="auxiliary;wrapIn"/>
+                            <property value="37" name="auxiliary;index"/>
+                            <property value="day" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-due;2">
+                            <property value="4" name="value"/>
+                            <property value="38" name="auxiliary;wrapIn"/>
+                            <property value="38" name="auxiliary;index"/>
+                            <property value="month" name="key"/>
+                        </property-collection>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-date-due;3">
+                            <property value="2014" name="value"/>
+                            <property value="39" name="auxiliary;wrapIn"/>
+                            <property value="39" name="auxiliary;index"/>
+                            <property value="year" name="key"/>
+                        </property-collection>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-bill-to-contactss;0">
+                        <property value="#[groovy: [ ['value' : 'Richard'] ] ]" name="ref"/>
+                        <property value="40" name="auxiliary;wrapIn"/>
+                        <property value="40" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-exch-rate-dates-or-exch-rate-types-or-exch-ratess;0">
+                        <property value="#[groovy: [         [ 'year' : '2011' ,           'month' : '10' ,           'day' : '12' ] ,          [ 'year' : '2011' ,           'month' : '10' ,           'day' : '12' ]     ] ]" name="ref"/>
+                        <property value="41" name="auxiliary;wrapIn"/>
+                        <property value="41" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/create-invoice-invoice-itemss;0">
+                        <property value="#[groovy:          [ [             'accountlabelOrGlaccountno' : [                  new org.mule.module.intacct.schema.request.Accountlabel(value : 'accountlabel_0001') ] ,             'amount' : '71.89' ,             'revrecstartdate' :                  [ 'year' : '2011' ,                   'month' : '10' ,                   'day' : '12' ],             'revrecenddate' :                  [ 'year' : '2011' ,                   'month' : '10' ,                   'day' : '12' ],             'customerid' :                 [ 'value' : 'customer_00001']]]]" name="ref"/>
+                        <property value="42" name="auxiliary;wrapIn"/>
+                        <property value="42" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#5">
+                <properties>
+                    <property value="Was the invoice successfuly created =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="43" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
+                    <property value="43" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Get Invoices by Customer" entity-id="Intacct#7">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/get-list" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="get_list_invoices_customer_0001" name="functionControlId"/>
+                    <property name="maxItems"/>
+                    <property value="invoice" name="obj"/>
+                    <property name="showPrivate"/>
+                    <property name="start"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property value="44" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/get-list-filterss;0">
+                        <property value="#[groovy:          [             new org.mule.module.intacct.schema.request.Logical(                 logicalOperator : 'or' ,                 logicalOrExpression : [                     new org.mule.module.intacct.schema.request.Logical(                         logicalOperator : 'and' ,                         logicalOrExpression : [                             new org.mule.module.intacct.schema.request.Expression(                                 field : new org.mule.module.intacct.schema.request.Field(                                              value : 'customerid'                                         ) ,                                 operator : '=' ,                                 value : new org.mule.module.intacct.schema.request.Value(                                             value : 'customer_inexistent_1'                                          )                              ),                              new org.mule.module.intacct.schema.request.Expression(                                 field : new org.mule.module.intacct.schema.request.Field(                                             value : 'trx_totalamount'                                          ) ,                                 operator : '&gt;' ,                                 value : new org.mule.module.intacct.schema.request.Value(                                             value : '10'                                          )                             )                         ]                     ) ,                      new org.mule.module.intacct.schema.request.Expression(                         field : new org.mule.module.intacct.schema.request.Field(                                     value : 'customerid'                                  ) ,                         operator : '=' ,                         value : new org.mule.module.intacct.schema.request.Value(                                     value : 'customer_0001'                                  )                     )                 ]             )          ]      ]" name="ref"/>
+                        <property value="45" name="auxiliary;wrapIn"/>
+                        <property value="45" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#6">
+                <properties>
+                    <property value="Was the invoice successfuly retrieved from intacct? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                    <property value="46" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#7">
+                <properties>
+                    <property value="The amount of invoices found is =&gt; #[payload.dataSize]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                    <property value="47" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Delete Invoice" entity-id="Intacct#8">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="delete_invoice_0001" name="functionControlId"/>
+                    <property value="DeleteInvoice" name="type"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property value="48" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="49" name="auxiliary;wrapIn"/>
+                        <property value="49" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="50" name="auxiliary;wrapIn"/>
+                            <property value="50" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="#[payload.dataList.get(0).key.value]" name="value"/>
+<property value="51" name="auxiliary;wrapIn"/>
+<property value="51" name="auxiliary;index"/>
+<property value="key" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#8">
+                <properties>
+                    <property value="Was the invoice deleted successfuly? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                    <property value="52" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Delete Account" entity-id="Intacct#9">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="delete_araccountlabel_0001" name="functionControlId"/>
+                    <property value="DeleteAraccountlabel" name="type"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property value="53" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="54" name="auxiliary;wrapIn"/>
+                        <property value="54" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="55" name="auxiliary;wrapIn"/>
+                            <property value="55" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="accountlabel_0001" name="value"/>
+<property value="56" name="auxiliary;wrapIn"/>
+<property value="56" name="auxiliary;index"/>
+<property value="accountlabel" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#9">
+                <properties>
+                    <property value="Was the account deleted successfuly? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="57" name="auxiliary;index"/>
+                    <property value="57" name="auxiliary;index"/>
+                    <property value="57" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Delete GL Account" entity-id="Intacct#10">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="delete_glaccount_0001" name="functionControlId"/>
+                    <property value="DeleteGlaccount" name="type"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property value="58" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="59" name="auxiliary;wrapIn"/>
+                        <property value="59" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="60" name="auxiliary;wrapIn"/>
+                            <property value="60" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="9901" name="value"/>
+<property value="61" name="auxiliary;wrapIn"/>
+<property value="61" name="auxiliary;index"/>
+<property value="glaccountno" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#10">
+                <properties>
+                    <property value="Was the GL Account deleted successfuly? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                    <property value="62" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/intacct/intacct-connector" name="Delete Customer" entity-id="Intacct#11">
+                <properties>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/intacct/execute" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Intacct" name="config-ref"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="delete_customer_0001" name="functionControlId"/>
+                    <property value="DeleteCustomer" name="type"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property value="63" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commandss;0">
+                        <property value="64" name="auxiliary;wrapIn"/>
+                        <property value="64" name="auxiliary;index"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/execute-commands;1">
+                            <property value="65" name="auxiliary;wrapIn"/>
+                            <property value="65" name="auxiliary;index"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/intacct/inner-execute-commands;1">
+<property value="customer_0001" name="value"/>
+<property value="66" name="auxiliary;wrapIn"/>
+<property value="66" name="auxiliary;index"/>
+<property value="customerid" name="key"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#11">
+                <properties>
+                    <property value="Was the customer deleted successfuly? =&gt; #[payload.requestSuccess]" name="message"/>
+                    <property value="INFO" name="level"/>
+                    <property name="category"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                    <property value="67" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="Set Payload" entity-id="Set Payload#1">
+                <properties>
+                    <property value="Demo application finished" name="value"/>
+                    <property value="68" name="auxiliary;index"/>
+                    <property value="68" name="auxiliary;index"/>
+                    <property value="68" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

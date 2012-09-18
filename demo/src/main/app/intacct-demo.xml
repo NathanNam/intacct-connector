@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:context="http://www.springframework.org/schema/context" xmlns:intacct="http://www.mulesoft.org/schema/mule/intacct"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/intacct http://www.mulesoft.org/schema/mule/intacct/1.0/mule-intacct.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd ">
+	<intacct:config name="Intacct" companyId="${companyId}"
+		controlId="${controlId}" controlPassword="${controlPassword}" senderId="${senderId}"
+		uniqueId="false" userId="${userId}" userPassword="${userPassword}" doc:name="Intacct" />
+    <context:property-placeholder location="mule.properties"/>
+	<flow name="intacct-demoFlow1" doc:name="intacct-demoFlow1">
+		<http:inbound-endpoint exchange-pattern="request-response"
+			host="localhost" port="8081" path="intacct-demo" doc:name="HTTP" />
+		<intacct:execute config-ref="Intacct"
+			functionControlId="customer_0001" doc:name="Create Customer" type="CreateCustomer">
+			<intacct:commands>
+				<intacct:command>
+					<intacct:inner-command key="customerid">customer_0001</intacct:inner-command>
+					<intacct:inner-command key="name">Demo Customer</intacct:inner-command>
+					<intacct:inner-command key="deliveryoptions">#[groovy: [
+						'deliveryoption':[ ['value': 'print'] ]]]</intacct:inner-command>
+					<intacct:inner-command key="status">active</intacct:inner-command>
+				</intacct:command>
+			</intacct:commands>
+		</intacct:execute>
+		<logger level="INFO" doc:name="Logger"
+			message="Was the customer successfuly created? => #[payload.requestSuccess]" />
+        <intacct:execute config-ref="Intacct" functionControlId="create_glaccount_0001" type="CreateGlaccount" doc:name="Create GL Account">
+            <intacct:commands>
+                <intacct:command>
+                    <intacct:inner-command key="glaccountno">#[groovy: ['value' : '9901']]</intacct:inner-command>
+                    <intacct:inner-command key="title">Demo GL Account</intacct:inner-command>
+                    <intacct:inner-command key="normalbalance">debit</intacct:inner-command>
+                    <intacct:inner-command key="accounttype">balancesheet</intacct:inner-command>
+                    <intacct:inner-command key="closingtype">non-closing account</intacct:inner-command>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger message="Was the GL Account successfuly created => #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <intacct:execute config-ref="Intacct" functionControlId="create_account_0001" type="CreateAraccountlabel" doc:name="Create AR Account">
+            <intacct:commands>
+              <intacct:command>
+                <intacct:inner-command key="glaccountno">#[groovy: ['value' : '9901']]</intacct:inner-command>
+                <intacct:inner-command key="accountlabel">#[groovy: ['value' : 'accountlabel_0001']]</intacct:inner-command>
+                <intacct:inner-command key="description">Demo account creation</intacct:inner-command>
+              </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger level="INFO" doc:name="Logger"
+			message="Was the Account successfuly created? => #[payload.requestSuccess]" />
+		<intacct:get config-ref="Intacct" functionControlId="get_customer_0001"
+			key="customer_0001" obj="customer" doc:name="Get Customer" />
+		<logger
+			message="The customer '#[payload.dataList.get(0).name]' was retrieved from intacct"
+			level="INFO" doc:name="Logger" />
+		<intacct:create-invoice config-ref="Intacct"
+			customerId="customer_0001" functionControlId="create_invoice_customer_0001"
+			description="Demo Invoice" doc:name="Create Invoice">
+			<intacct:date-created>
+				<intacct:date-created key="day">24</intacct:date-created>
+				<intacct:date-created key="month">4</intacct:date-created>
+				<intacct:date-created key="year">2012</intacct:date-created>
+			</intacct:date-created>
+			<intacct:date-due>
+				<intacct:date-due key="day">24</intacct:date-due>
+				<intacct:date-due key="month">4</intacct:date-due>
+				<intacct:date-due key="year">2014</intacct:date-due>
+			</intacct:date-due>
+            <intacct:bill-to-contacts ref="#[groovy: [ ['value' : 'Richard'] ] ]"/>
+    <intacct:exch-rate-dates-or-exch-rate-types-or-exch-rates ref="#[groovy: [
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ] , 
+        [ 'year' : '2011' ,
+          'month' : '10' ,
+          'day' : '12' ]
+    ] ]" />
+    <intacct:invoice-items ref="#[groovy: 
+        [ [
+            'accountlabelOrGlaccountno' : [ 
+                new org.mule.module.intacct.schema.request.Accountlabel(value : 'accountlabel_0001') ] ,
+            'amount' : '71.89' ,
+            'revrecstartdate' : 
+                [ 'year' : '2011' ,
+                  'month' : '10' ,
+                  'day' : '12' ],
+            'revrecenddate' : 
+                [ 'year' : '2011' ,
+                  'month' : '10' ,
+                  'day' : '12' ],
+            'customerid' :
+                [ 'value' : 'customer_00001']]]]" />
+
+            </intacct:create-invoice>
+    
+		<logger message="Was the invoice successfuly created => #[payload.requestSuccess]" level="INFO" doc:name="Logger" />
+        <intacct:get-list config-ref="Intacct" functionControlId="get_list_invoices_customer_0001" obj="invoice" doc:name="Get Invoices by Customer">
+            <intacct:filters ref="#[groovy: 
+        [
+            new org.mule.module.intacct.schema.request.Logical(
+                logicalOperator : 'or' ,
+                logicalOrExpression : [
+                    new org.mule.module.intacct.schema.request.Logical(
+                        logicalOperator : 'and' ,
+                        logicalOrExpression : [
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field( 
+                                            value : 'customerid'
+                                        ) ,
+                                operator : '=' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : 'customer_inexistent_1' 
+                                        ) 
+                            ), 
+                            new org.mule.module.intacct.schema.request.Expression(
+                                field : new org.mule.module.intacct.schema.request.Field(
+                                            value : 'trx_totalamount' 
+                                        ) ,
+                                operator : '>' ,
+                                value : new org.mule.module.intacct.schema.request.Value(
+                                            value : '10' 
+                                        )
+                            )
+                        ]
+                    ) , 
+                    new org.mule.module.intacct.schema.request.Expression(
+                        field : new org.mule.module.intacct.schema.request.Field(
+                                    value : 'customerid' 
+                                ) ,
+                        operator : '=' ,
+                        value : new org.mule.module.intacct.schema.request.Value(
+                                    value : 'customer_0001' 
+                                )
+                    )
+                ]
+            ) 
+        ] 
+    ]" />
+        </intacct:get-list>
+        <logger message="Was the invoice successfuly retrieved from intacct? => #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <logger message="The amount of invoices found is => #[payload.dataSize]" level="INFO" doc:name="Logger"/>
+        <intacct:execute config-ref="Intacct" functionControlId="delete_invoice_0001" type="DeleteInvoice" doc:name="Delete Invoice">
+            <intacct:commands>
+                <intacct:command>
+                    <intacct:inner-command key="key">#[payload.dataList.get(0).key.value]</intacct:inner-command>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger message="Was the invoice deleted successfuly? =&gt; #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <intacct:execute config-ref="Intacct" functionControlId="delete_araccountlabel_0001" type="DeleteAraccountlabel" doc:name="Delete Account">
+            <intacct:commands>
+                <intacct:command>
+                    <intacct:inner-command key="accountlabel">accountlabel_0001</intacct:inner-command>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger message="Was the account deleted successfuly? => #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <intacct:execute config-ref="Intacct" functionControlId="delete_glaccount_0001" type="DeleteGlaccount" doc:name="Delete GL Account">
+            <intacct:commands>
+                <intacct:command>
+                    <intacct:inner-command key="glaccountno">9901</intacct:inner-command>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger message="Was the GL Account deleted successfuly? =&gt; #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <intacct:execute config-ref="Intacct" functionControlId="delete_customer_0001" type="DeleteCustomer" doc:name="Delete Customer">
+            <intacct:commands>
+                <intacct:command>
+                    <intacct:inner-command key="customerid">customer_0001</intacct:inner-command>
+                </intacct:command>
+            </intacct:commands>
+        </intacct:execute>
+        <logger message="Was the customer deleted successfuly? =&gt; #[payload.requestSuccess]" level="INFO" doc:name="Logger"/>
+        <set-payload value="Demo application finished" doc:name="Set Payload"/>
+	</flow>
+</mule>
