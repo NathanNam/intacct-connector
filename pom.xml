@@ -18,7 +18,7 @@
     <properties>
         <jetty.version>6.1.9</jetty.version>
         <sonar.exclusions>org/mule/module/intacct/schema/**</sonar.exclusions>
-        <category>Standard</category>
+        <category>Community</category>
         <licensePath>LICENSE.md</licensePath>
         <devkit.studio.package.skip>false</devkit.studio.package.skip>
     </properties>
